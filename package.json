@@ -15,5 +15,7 @@
     "svelte": "^3.44.0"
   },
   "type": "module",
-  "dependencies": {}
+  "dependencies": {
+    "gsap": "file:gsap-bonus.tgz"
+  }
 }
