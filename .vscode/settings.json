@@ -1,8 +1,0 @@
-{
-    "files.exclude": {
-        "**/package-lock.json": true,
-        "**/.svelte-kit": true,
-        "**/.vscode": true,
-        "**/.npmrc": true,
-    }
-}
