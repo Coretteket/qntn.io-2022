@@ -16,5 +16,6 @@
     font-size: 22px;
     margin: 2em auto;
     width: min(800px, 90vw);
+    color: white;
   }
 </style>
