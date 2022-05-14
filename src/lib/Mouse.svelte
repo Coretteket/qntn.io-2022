@@ -1,7 +1,7 @@
 <script>
   import { spring } from 'svelte/motion';
 
-  const coords = spring({ x: 0, y: 0 }, { stiffness: 0.2 });
+  const coords = spring({ x: 0, y: 0 }, { stiffness: 0.25 });
 
   const handleMouseMove = (e) => {
     coords.set({
@@ -27,9 +27,9 @@
     border-radius: 100%;
     background: rgba(20, 1, 20, 0.6);
     border: solid 2px white;
-    width: 20px;
+    width: 18px;
     aspect-ratio: 1;
-    mix-blend-mode: exclusion;
+    /* mix-blend-mode: exclusion; */
     pointer-events: none;
     z-index: 99;
   }
