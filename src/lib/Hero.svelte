@@ -1,7 +1,7 @@
 <script>
   import { gsap } from 'gsap';
-  import { SplitText } from 'gsap/dist/SplitText';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+  import { SplitText } from 'gsap/dist/SplitText.js';
+  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
   import { onMount } from 'svelte';
 
   import { spring } from 'svelte/motion';
