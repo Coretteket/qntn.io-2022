@@ -1,119 +1,129 @@
 <script>
-  import { gsap } from 'gsap';
-  import { SplitText } from 'gsap/dist/SplitText.js';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
-  import { onMount } from 'svelte';
-
-  import { spring } from 'svelte/motion';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  let scrollY;
-
-  onMount(() => {
-    const split = new SplitText('.qc h1', { type: 'lines' });
-    const tl = gsap.timeline();
-
-    tl.from('.qc', {
-      clipPath: 'circle(0% at 0% 50%)',
-      duration: 1.5,
-      ease: 'power3.out',
-    });
-
-    tl.from(
-      split.lines,
-      {
-        x: '10vw',
-        rotateY: 20,
-        duration: 2,
-        stagger: 0.1,
-        ease: 'power3.out',
-      },
-      '-=1.5'
-    );
-
-    gsap.to('.qc', {
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-      y: '-30vh',
-      duration: 1,
-    });
-
-    gsap.to('.scroll', {
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-      y: '-15vh',
-      duration: 1,
-    });
-  });
-
-  const coords = spring({ x: 0, y: 0 }, { stiffness: 0.03, damping: 0.2 });
-
-  const handleMouseMove = (e) => {
-    coords.set({
-      x: (e.clientX / window.innerWidth) * -10 + 5,
-      y: (e.clientY / window.innerHeight) * -10 + 5,
-    });
-  };
+  import Button from '$lib/Button.svelte';
+  import CurvyArrow from '$svg/CurvyArrow.svelte';
+  import Stars from '$svg/Stars.svelte';
 </script>
 
-<svelte:window bind:scrollY />
-
-<section id="hero" on:mousemove={handleMouseMove} on:mousedown={() => console.log($coords)}>
-  <div class="qc">
-    <h1 style:transform="translate({$coords.x}px, {$coords.y}px)">quinten coret</h1>
+<section class="left">
+  <div class="stars">
+    <Stars />
   </div>
-  <div class="scroll"><i>Scroll down...</i></div>
+  <h1>quinten <span>coret</span></h1>
+  <p>
+    <!-- Hey, ik studeer Econometrie en Data Science aan de Vrije Universiteit, en ik hou ervan om data
+    op een creatieve manier toegangelijk te maken. -->
+    Hey, I study Econometrics and Data Science at the VU Amsterdam, and I love creating accessible ways
+    to interact with data.
+  </p>
+  <div class="button">
+    <!-- <Button>get in touch</Button> -->
+    <Button>neem contact op</Button>
+  </div>
+  <div class="arrow">
+    <CurvyArrow />
+  </div>
+</section>
+
+<section class="right">
+  <div class="window">
+    {#each ['red', 'yellow', 'green'] as color}
+      <div class="circle" style:background-color="var(--{color})" />
+    {/each}
+  </div>
 </section>
 
 <style>
   section {
-    font-family: 'Newsreader', serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+    position: relative;
+    float: left;
+    width: 50vw;
+    height: calc(100vh - var(--header));
   }
 
-  .qc {
-    width: min-content;
-    user-select: none;
-    clip-path: circle(140% at 0 50%);
-  }
-
-  .scroll {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
+  .left {
+    background: white;
+    border-right: var(--border);
   }
 
   h1 {
+    position: absolute;
     margin: 0;
-    color: #ffffff;
-    font-weight: 100;
-    font-size: 19vw;
-    line-height: 0.6;
+    left: 50%;
+    top: 11%;
+    transform: translateX(-50%);
+    font-family: 'Josefin Sans', sans-serif;
+    width: min-content;
     text-align: right;
-    transform-origin: right;
-    perspective: 100vh;
-    transform-style: preserve-3d;
+    font-size: 10vw;
+    line-height: 0.75;
+    letter-spacing: -0.25vw;
   }
 
-  .v {
+  span {
+    margin-right: -0.7vw;
+  }
+
+  p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.75vw;
+    position: absolute;
+    margin: 0;
+    width: 60%;
+    left: 15%;
+    bottom: 29%;
+  }
+
+  .left .button {
+    position: absolute;
+    width: 15rem;
+    overflow: visible;
+    height: 4.2rem;
+    bottom: 12%;
+    right: 14%;
+  }
+
+  .left .stars {
+    width: 3.5vw;
+    position: absolute;
+    left: 83%;
+    top: 9%;
+  }
+
+  .left .arrow {
+    position: absolute;
+    bottom: calc(12% - 1.5vw);
+    right: 50%;
+    width: 12vw;
+  }
+
+  .right {
+    background: var(--pink);
+  }
+
+  .window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    height: 60%;
+    background: white;
+    /* border-radius: 0.3vw; */
+    box-shadow: var(--shadow);
+    border: var(--border);
+  }
+
+  .circle:first-child {
+    margin-left: 0.5vw;
+  }
+
+  .circle {
     display: inline-block;
-    opacity: 0;
-    width: 0;
+    border-radius: 50%;
+    border: var(--border);
+    width: 0.3vw;
+    margin: 0.7vh 0.1vw;
+    aspect-ratio: 1;
   }
 </style>

@@ -1,15 +1,17 @@
 <script>
-  import Mouse from '$lib/Mouse.svelte';
-  import '../global.css';
-  import { onMount } from 'svelte';
+  import Window from '$stores/Window.svelte';
+  import Header from '$lib/Header.svelte';
 
-  let mobile = false;
-  onMount(() => {
-    mobile = 'ontouchstart' in document.documentElement;
-  });
+  import { onMount } from 'svelte';
+  import '../global.css';
+
+  // let touchScreen = true;
+  // onMount(() => {
+  //   touchScreen = 'ontouchstart' in document.documentElement;
+  // });
 </script>
 
+<Window />
+
+<Header />
 <slot />
-{#if !mobile}
-  <Mouse />
-{/if}

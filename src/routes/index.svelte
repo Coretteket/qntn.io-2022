@@ -4,18 +4,25 @@
 
 <main>
   <Hero />
-  {#each Array(10) as i}
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cumque nam ea officia possimus dolores quasi. Consequatur aperiam aliquid, illo veniam mollitia sunt modi blanditiis adipisci laboriosam quos. Distinctio, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cumque nam ea officia possimus dolores quasi. Consequatur aperiam aliquid, illo veniam mollitia sunt modi blanditiis adipisci laboriosam quos. Distinctio, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cumque nam ea officia possimus dolores quasi. Consequatur aperiam aliquid, illo veniam mollitia sunt modi blanditiis adipisci laboriosam quos. Distinctio, quos.</p>
-  {/each}
 </main>
 
+{#each Array(50) as e}
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, ipsum! Distinctio nobis molestias
+    ut voluptas mollitia, voluptates voluptatem exercitationem dolorem modi ratione delectus quis
+    ipsum vitae reprehenderit nostrum expedita dolores.
+  </p>
+{/each}
+
+<p id="contact">Contact</p>
+
 <style>
+  main {
+    display: flex;
+  }
+
   p {
-    font-family: 'Newsreader', serif;
-    font-weight: 300;
-    font-size: 22px;
+    max-width: 400px;
     margin: 2em auto;
-    width: min(800px, 90vw);
-    color: white;
   }
 </style>

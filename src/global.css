@@ -1,6 +1,22 @@
 html, body {
+  scroll-behavior: smooth;
   margin: 0;
-  overflow-x: hidden;
+}
 
-  background: radial-gradient(circle, rgba(20, 1, 20, 1) 0%, rgba(22, 10, 22, 1) 100%);
+:root {
+  --red: #f76f59;
+  --yellow: #ffd95f;
+  --green: #b3df7a;
+  --blue: #a9def9;
+  --pink: #ff97d3;
+
+  --stroke: 2px;
+  --header: 3.5rem;
+
+  --border: solid var(--stroke) black;
+  --shadow: 6px 6px 0 0 black;
+}
+
+section ::selection {
+  background: var(--pink);
 }

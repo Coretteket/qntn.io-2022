@@ -1,17 +1,10 @@
 <script>
+  import { mouse } from '$stores/Window.svelte';
   import { spring } from 'svelte/motion';
 
-  const coords = spring({ x: 0, y: 0 }, { stiffness: 0.25 });
-
-  const handleMouseMove = (e) => {
-    coords.set({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  };
+  const coords = spring({ x: 0, y: 0 }, { stiffness: 0.3 });
+  $: coords.set($mouse);
 </script>
-
-<svelte:window on:mousemove={handleMouseMove} />
 
 <div style:left="{$coords.x}px" style:top="{$coords.y}px" />
 
@@ -29,8 +22,8 @@
     border: solid 2px white;
     width: 18px;
     aspect-ratio: 1;
-    /* mix-blend-mode: exclusion; */
     pointer-events: none;
     z-index: 99;
+    /* mix-blend-mode: exclusion; */
   }
 </style>
