@@ -11,11 +11,9 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "gsap": "file:static/gsap-bonus.tgz",
     "iwanthue": "^2.0.0",
     "svelte": "^3.44.0"
   },
-  "type": "module",
-  "dependencies": {
-    "gsap": "file:gsap-bonus.tgz"
-  }
+  "type": "module"
 }
