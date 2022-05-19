@@ -1,5 +1,5 @@
 <script>
-  import '../global.css';
+  import '../../app.css';
   export let width;
 </script>
 

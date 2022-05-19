@@ -5,14 +5,6 @@ import path from 'path';
 const config = {
   kit: {
     adapter: adapter(),
-    vite: {
-      resolve: {
-        alias: {
-          $stores: path.resolve('./src/stores'),
-          $svg: path.resolve('./src/svg'),
-        },
-      },
-    },
   },
   preprocess: [
     preprocess({

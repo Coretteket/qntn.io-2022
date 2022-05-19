@@ -1,9 +1,17 @@
-<script>
-  import Window from '$stores/Window.svelte';
-  import Header from '$lib/Header.svelte';
+<script context="module">
+  import { locale } from '../scripts/stores';
 
-  import { onMount } from 'svelte';
-  import '../global.css';
+  export async function load({ params, fetch, session, stuff }) {
+    locale.set(session.locale);
+
+    return {};
+  }
+</script>
+
+<script>
+  import Window from '../lib/Window.svelte';
+  import Navigation from '../lib/Navigation.svelte';
+  import '../app.css';
 
   // let touchScreen = true;
   // onMount(() => {
@@ -13,5 +21,5 @@
 
 <Window />
 
-<Header />
+<Navigation />
 <slot />

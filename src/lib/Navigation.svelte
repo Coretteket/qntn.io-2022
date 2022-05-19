@@ -2,7 +2,6 @@
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
   import { onMount } from 'svelte';
-  // import { spring } from 'svelte/motion';
 
   gsap.registerPlugin(ScrollTrigger);
 

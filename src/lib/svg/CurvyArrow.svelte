@@ -1,5 +1,5 @@
 <script>
-  import '../global.css';
+  import '../../app.css';
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262.33 167.18">

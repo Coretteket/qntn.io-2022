@@ -1,7 +1,13 @@
 <script>
-  import Button from '$lib/Button.svelte';
-  import CurvyArrow from '$svg/CurvyArrow.svelte';
-  import Stars from '$svg/Stars.svelte';
+  import Button from './Button.svelte';
+  import CurvyArrow from './svg/CurvyArrow.svelte';
+  import Stars from './svg/Stars.svelte';
+  import { locale } from '../scripts/stores';
+  import T from './Translate.svelte';
+
+  const toggleLang = () => {
+    locale.set($locale === 'en' ? 'nl' : 'en');
+  };
 </script>
 
 <section class="left">
@@ -10,14 +16,10 @@
   </div>
   <h1>quinten <span>coret</span></h1>
   <p>
-    <!-- Hey, ik studeer Econometrie en Data Science aan de Vrije Universiteit, en ik hou ervan om data
-    op een creatieve manier toegangelijk te maken. -->
-    Hey, I study Econometrics and Data Science at the VU Amsterdam, and I love creating accessible ways
-    to interact with data.
+    <T key="subtitle" />
   </p>
-  <div class="button">
-    <!-- <Button>get in touch</Button> -->
-    <Button>neem contact op</Button>
+  <div on:click={toggleLang} class="button">
+    <Button><T key="button" /></Button>
   </div>
   <div class="arrow">
     <CurvyArrow />
@@ -76,7 +78,7 @@
 
   .left .button {
     position: absolute;
-    width: 15rem;
+    width: 18rem;
     overflow: visible;
     height: 4.2rem;
     bottom: 12%;
