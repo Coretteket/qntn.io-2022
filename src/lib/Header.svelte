@@ -17,12 +17,12 @@
       },
       x: 0,
       ease: 'power',
-      duration: .5,
+      duration: 0.5,
     });
   });
 </script>
 
-<header>
+<nav>
   <div class="shift">
     <a class="title" href="/">quinten coret</a>
     <a href="#bdh">beter dan hugo</a>
@@ -31,16 +31,16 @@
     <a href="#about">over mij</a>
     <a href="#contact">contact</a>
   </div>
-</header>
+</nav>
 
 <style>
-  header {
+  nav {
     box-sizing: border-box;
     top: 0;
     position: sticky;
     overflow: none;
     width: 100%;
-    height: var(--header);
+    height: var(--nav);
     border-bottom: var(--border);
     background: #fff;
     padding: 0 2rem;
@@ -54,7 +54,7 @@
     margin: 0;
   }
 
-  header a {
+  nav a {
     display: flex;
     align-items: center;
     justify-content: center;

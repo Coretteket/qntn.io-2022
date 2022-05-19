@@ -37,7 +37,7 @@
     position: relative;
     float: left;
     width: 50vw;
-    height: calc(100vh - var(--header));
+    height: calc(100vh - var(--nav));
   }
 
   .left {

@@ -30,7 +30,7 @@
     font-weight: 400;
     font-size: 1.6vw;
     transform: translate(-6px, -6px);
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
     user-select: none;
     cursor: pointer;
     z-index: 2;
