@@ -12,7 +12,7 @@ body {
   --pink: #ff97d3;
 
   --stroke: 2px;
-  --nav: 3.5rem;
+  --nav: 3.3rem;
 
   --border: solid var(--stroke) black;
   --shadow: 6px 6px 0 0 black;
@@ -20,4 +20,16 @@ body {
 
 section ::selection {
   background: var(--pink);
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+button {
+  background: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
 }
