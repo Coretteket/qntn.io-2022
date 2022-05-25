@@ -26,9 +26,9 @@
     justify-content: center;
     align-items: center;
     border: var(--border);
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-weight: 400;
-    font-size: 1.6vw;
+    font-size: 1.5vw;
     transform: translate(-6px, -6px);
     transition: transform 0.1s ease;
     user-select: none;
