@@ -1,81 +1,96 @@
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
-  import { onMount } from 'svelte';
+  // import { gsap } from 'gsap';
+  // import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
+  // import { onMount } from 'svelte';
 
-  gsap.registerPlugin(ScrollTrigger);
+  // gsap.registerPlugin(ScrollTrigger);
 
-  onMount(() => {
-    gsap.to('.shift', {
-      scrollTrigger: {
-        trigger: 'main',
-        start: 'center top',
-        toggleActions: 'play none none reverse',
-        // end: 'bottom center',
-        // scrub: 0.5,
-      },
-      x: 0,
-      ease: 'power',
-      duration: 0.5,
-    });
-  });
+  // onMount(() => {
+  //   gsap.to('.shift', {
+  //     scrollTrigger: {
+  //       trigger: 'main',
+  //       start: 'center top',
+  //       toggleActions: 'play none none reverse',
+  //       // end: 'bottom center',
+  //       // scrub: 0.5,
+  //     },
+  //     x: 0,
+  //     ease: 'power',
+  //     duration: 0.5,
+  //   });
+  // });
+
+  import { toggleLocale } from '../i18n/translate';
+  import T from './Translate.svelte';
+  import Language from './svg/Language.svelte';
+  import Moon from './svg/Moon.svelte';
+  import Sun from './svg/Sun.svelte';
+  import '../app.css';
 </script>
 
 <nav>
-  <div class="shift">
+  <div>
     <a class="title" href="/">quinten coret</a>
-    <a href="#bdh">beter dan hugo</a>
-    <a href="#nidk">nieuw in de kamer</a>
-    <a href="#qntn">over qntn.io</a>
-    <a href="#about">over mij</a>
-    <a href="#contact">contact</a>
+    <a href="#projects"><T key="projects" /></a>
+    <a href="#about"><T key="about" /></a>
+    <a href="#contact"><T key="contact" /></a>
+  </div>
+  <div>
+    <a href="https://www.linkedin.com/in/qcoret/" target="_blank">linkedin</a>
+    <a href="https://twitter.com/coretteket" target="_blank">twitter</a>
+    <a href="https://github.com/coretteket" target="_blank">github</a>
+    <button class="theme"><Moon /></button>
+    <button class="locale" on:click={toggleLocale}><Language /></button>
   </div>
 </nav>
 
 <style>
   nav {
     box-sizing: border-box;
-    top: 0;
     position: sticky;
-    overflow: none;
-    width: 100%;
+    top: 0;
+    z-index: 10;
+    background: white;
     height: var(--nav);
     border-bottom: var(--border);
-    background: #fff;
-    padding: 0 2rem;
-    z-index: 9;
+    display: flex;
+    justify-content: space-between;
   }
 
   div {
     display: flex;
-    gap: 2rem;
-    height: 101%;
-    margin: 0;
   }
 
-  nav a {
+  a,
+  button {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    padding-inline: 1rem;
   }
 
-  a {
-    font-size: 1.3vw;
-    font-weight: 350;
-    text-decoration: none;
-    color: black;
+  .title,
+  .theme,
+  .locale {
+    height: var(--nav);
   }
 
   .title {
-    font-size: 1.6vw;
-    font-weight: 700;
+    font-weight: 600;
     border-right: var(--border);
-    padding-right: 2rem;
+    padding-inline: 2rem;
+    margin-right: 1rem;
   }
 
-  .shift {
-    transform: translateX(-15vw);
+  button {
+    padding: 0.5rem;
+    border-left: var(--border);
+    aspect-ratio: 1;
+  }
+
+  .theme {
+    margin-left: 1rem;
   }
 </style>
