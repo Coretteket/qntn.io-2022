@@ -1,5 +1,5 @@
 {
-  "name": "quinten.cc",
+  "name": "qntn.io",
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
@@ -11,7 +11,6 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
-    "autoprefixer": "^10.4.4",
     "cssnano": "^5.1.8",
     "gsap": "file:static/gsap-bonus.tgz",
     "postcss": "^8.4.12",
