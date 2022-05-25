@@ -2,23 +2,19 @@
   import Button from './Button.svelte';
   import CurvyArrow from './svg/CurvyArrow.svelte';
   import Stars from './svg/Stars.svelte';
-  import { locale } from '../scripts/stores';
   import T from './Translate.svelte';
-
-  const toggleLang = () => {
-    locale.set($locale === 'en' ? 'nl' : 'en');
-  };
+  import { toggleLocale } from '../i18n/translate';
 </script>
 
 <section class="left">
   <div class="stars">
     <Stars />
   </div>
-  <h1>quinten <span>coret</span></h1>
+  <h1>Quinten Coret</h1>
   <p>
     <T key="subtitle" />
   </p>
-  <div on:click={toggleLang} class="button">
+  <div on:click={toggleLocale} class="button">
     <Button><T key="button" /></Button>
   </div>
   <div class="arrow">
@@ -53,12 +49,14 @@
     left: 50%;
     top: 11%;
     transform: translateX(-50%);
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     width: min-content;
     text-align: right;
-    font-size: 10vw;
+    font-weight: 700;
+    font-size: 8vw;
     line-height: 0.75;
-    letter-spacing: -0.25vw;
+    text-transform: lowercase;
+    /* letter-spacing: -0.25vw; */
   }
 
   span {
@@ -66,12 +64,12 @@
   }
 
   p {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-weight: 300;
     font-size: 1.75vw;
     position: absolute;
     margin: 0;
-    width: 60%;
+    width: 62%;
     left: 15%;
     bottom: 29%;
   }
