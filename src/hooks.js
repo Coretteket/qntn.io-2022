@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 
 export async function handle({ event, resolve }) {
-  const acceptLanguageHeader = event.request.headers.get('accept-language');
+  const acceptLanguageHeader = event.request.headers.get('accept-language') || 'en';
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
   const locale = cookies['locale'] || acceptLanguageHeader.substring(0, 2);
   const theme = cookies['theme'] || 'auto';
