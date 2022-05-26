@@ -10,8 +10,8 @@
 
 <style>
   svg {
-    fill: #fff;
-    stroke: #000;
+    fill: var(--white);
+    stroke: var(--black);
     stroke-linejoin: round;
     stroke-width: var(--stroke);
   }

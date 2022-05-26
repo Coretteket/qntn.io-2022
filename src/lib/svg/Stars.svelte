@@ -16,7 +16,7 @@
 <style>
   svg {
     fill: var(--yellow);
-    stroke: black;
+    stroke: var(--black);
     stroke-miterlimit: 10;
     stroke-width: var(--stroke);
   }

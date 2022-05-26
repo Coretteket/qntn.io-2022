@@ -13,7 +13,7 @@
 <style>
   svg {
     fill: none;
-    stroke: #000;
+    stroke: var(--black);
     stroke-width: var(--stroke);
     stroke-linecap: round;
     stroke-linejoin: round;

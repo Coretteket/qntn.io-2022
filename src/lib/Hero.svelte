@@ -36,10 +36,11 @@
     float: left;
     width: 50vw;
     height: calc(100vh - var(--nav));
+    color: var(--black);
   }
 
   .left {
-    background: white;
+    background: var(--white);
     border-right: var(--border);
   }
 
@@ -108,7 +109,7 @@
     transform: translate(-50%, -50%);
     width: 65%;
     height: 60%;
-    background: white;
+    background: var(--white);
     /* border-radius: 0.3vw; */
     box-shadow: var(--shadow);
     border: var(--border);

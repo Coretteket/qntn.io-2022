@@ -5,6 +5,9 @@ body {
 }
 
 :root {
+  --black: black;
+  --white: white;
+
   --red: #f76f59;
   --yellow: #ffd95f;
   --green: #b3df7a;
@@ -14,9 +17,11 @@ body {
   --stroke: 2px;
   --nav: 3.3rem;
 
-  --border: solid var(--stroke) black;
-  --shadow: 6px 6px 0 0 black;
+  --border: solid var(--stroke) var(--black);
+  --shadow: 6px 6px 0 0 var(--black);
 }
+
+
 
 section ::selection {
   background: var(--pink);
@@ -32,4 +37,9 @@ button {
   cursor: pointer;
   border: 0;
   padding: 0;
+}
+
+[data-theme="dark"] {
+  --black: white;
+  --white: black;
 }
