@@ -1,0 +1,24 @@
+<script>
+  import { theme } from '../scripts/stores';
+  import { onMount } from 'svelte';
+  import { browser } from '$app/env';
+
+  $: if (browser) {
+    document.documentElement.setAttribute('data-theme', $theme);
+    document.cookie = `theme=${$theme}`;
+  }
+
+  onMount(() => {
+    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ($theme == 'auto' && prefers) $theme = 'dark';
+    else if ($theme == 'auto') $theme = 'light';
+  });
+</script>
+
+<svelte:head>
+  <script>
+    !document.cookie.match(/(^| )theme=([^;]+)/) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches &&
+      document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+</svelte:head>

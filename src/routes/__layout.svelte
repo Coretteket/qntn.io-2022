@@ -1,25 +1,21 @@
 <script context="module">
-  import { locale } from '../scripts/stores';
+  import { locale, theme } from '../scripts/stores';
 
-  export async function load({ params, fetch, session, stuff }) {
+  export async function load({ session }) {
     locale.set(session.locale);
-
+    theme.set(session.theme);
     return {};
   }
 </script>
 
 <script>
-  import Window from '../lib/Window.svelte';
+  import ThemeHandler from '../lib/ThemeHandler.svelte';
+  import LocaleHandler from '../lib/LocaleHandler.svelte';
   import Navigation from '../lib/Navigation.svelte';
   import '../app.css';
-
-  // let touchScreen = true;
-  // onMount(() => {
-  //   touchScreen = 'ontouchstart' in document.documentElement;
-  // });
 </script>
 
-<Window />
-
+<ThemeHandler />
+<LocaleHandler />
 <Navigation />
 <slot />

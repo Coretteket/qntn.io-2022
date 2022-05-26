@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const locale = writable('nl');
+export const theme = writable('auto');
+export const locale = writable('en');
 export const route = writable('index');
 
 export const screenH = writable(1);

@@ -21,6 +21,7 @@
   // });
 
   import { toggleLocale } from '../i18n/translate';
+  import { theme } from '../scripts/stores';
   import T from './Translate.svelte';
   import Language from './svg/Language.svelte';
   import Moon from './svg/Moon.svelte';
@@ -39,7 +40,13 @@
     <a href="https://www.linkedin.com/in/qcoret/" target="_blank">linkedin</a>
     <a href="https://twitter.com/coretteket" target="_blank">twitter</a>
     <a href="https://github.com/coretteket" target="_blank">github</a>
-    <button class="theme"><Moon /></button>
+    <button class="theme" on:click={() => theme.update((t) => (t == 'light' ? 'dark' : 'light'))}>
+      {#if $theme=='light'}
+        <Moon />
+      {:else}
+        <Sun />
+      {/if}
+    </button>
     <button class="locale" on:click={toggleLocale}><Language /></button>
   </div>
 </nav>
@@ -50,7 +57,8 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: white;
+    background: var(--white);
+    color: var(--black);
     height: var(--nav);
     border-bottom: var(--border);
     display: flex;
