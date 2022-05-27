@@ -6,7 +6,7 @@
 
 <style>
   h1 {
-    font-family: 'Anybody', sans-serif;
+    font-family: 'AnybodyVariable', sans-serif;
     max-width: 400px;
     margin: 2em auto;
   }
