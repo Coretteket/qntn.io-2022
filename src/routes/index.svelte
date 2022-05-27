@@ -1,6 +1,7 @@
 <script>
   import Hero from '../lib/Hero.svelte';
   import { locale, route } from '../scripts/stores';
+  export let city;
 
   route.set('index');
 </script>
@@ -8,6 +9,10 @@
 <main>
   <Hero />
 </main>
+
+<p>
+  {city}
+</p>
 
 {#each Array(50) as e}
   <p>
