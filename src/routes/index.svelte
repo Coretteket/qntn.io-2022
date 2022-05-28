@@ -1,8 +1,5 @@
 <script>
   import Hero from '../lib/Hero.svelte';
-  import { locale, route } from '../scripts/stores';
-
-  route.set('index');
 </script>
 
 <main>

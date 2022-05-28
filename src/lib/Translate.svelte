@@ -1,12 +1,19 @@
 <script>
-  export let key;
-
   import translations from '../scripts/translate';
-  import { locale, route } from '../scripts/stores';
+  import { locale } from '../scripts/stores';
+  import { page } from '$app/stores';
 
-  export const locales = Object.keys(translations);
+  export let key;
+  export let g = false;
+  let route;
 
-  function translate(locale, route, key, vars = {}) {
+  function translate(locale, page, key, vars = {}) {
+    if (g) route = 'global';
+    else route = page?.routeId;
+    if (route == '') route = 'index';
+
+    if (!route in translations) throw new Error(`No translations for route ${route}`);
+
     let text = translations[locale][route][key];
 
     if (!text) throw new Error(`No translation found for ${locale}.${route}.${key}`);
@@ -19,4 +26,4 @@
   }
 </script>
 
-{translate($locale, $route, key)}
+{translate($locale, $page, key)}

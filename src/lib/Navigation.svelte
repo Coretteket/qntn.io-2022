@@ -11,9 +11,9 @@
 <nav>
   <div>
     <a class="title" href="/">quinten coret</a>
-    <a href="#projects"><T key="projects" /></a>
-    <a href="#about"><T key="about" /></a>
-    <a href="#contact"><T key="contact" /></a>
+    <a href="#projects"><T g key="projects" /></a>
+    <a href="#about"><T g key="about" /></a>
+    <a href="#contact"><T g key="contact" /></a>
   </div>
   <div>
     <a href="https://www.linkedin.com/in/qcoret/" target="_blank">linkedin</a>
