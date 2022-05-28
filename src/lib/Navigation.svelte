@@ -1,31 +1,10 @@
 <script>
-  // import { gsap } from 'gsap';
-  // import { ScrollTrigger } from 'gsap/dist/ScrollTrigger.js';
-  // import { onMount } from 'svelte';
-
-  // gsap.registerPlugin(ScrollTrigger);
-
-  // onMount(() => {
-  //   gsap.to('.shift', {
-  //     scrollTrigger: {
-  //       trigger: 'main',
-  //       start: 'center top',
-  //       toggleActions: 'play none none reverse',
-  //       // end: 'bottom center',
-  //       // scrub: 0.5,
-  //     },
-  //     x: 0,
-  //     ease: 'power',
-  //     duration: 0.5,
-  //   });
-  // });
-
-  import { toggleLocale } from '../i18n/translate';
+  import { toggleLocale } from '../scripts/translate';
   import { theme } from '../scripts/stores';
   import T from './Translate.svelte';
-  import Language from './svg/Language.svelte';
-  import Moon from './svg/Moon.svelte';
-  import Sun from './svg/Sun.svelte';
+  import Language from '$svg/language.svg';
+  import Moon from '$svg/moon.svg';
+  import Sun from '$svg/sun.svg';
   import '../app.css';
 </script>
 

@@ -43,3 +43,8 @@ button {
   --black: white;
   --white: black;
 }
+
+svg {
+  fill: none;
+  stroke: var(--black);
+}
