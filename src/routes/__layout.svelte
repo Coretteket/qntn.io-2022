@@ -1,5 +1,7 @@
 <script context="module">
   import { locale, theme } from '../scripts/stores';
+  import '@fontsource/anybody/variable.css';
+  import '@fontsource/mulish'
 
   export async function load({ session }) {
     locale.set(session.locale);
@@ -7,6 +9,7 @@
     return {};
   }
 </script>
+
 
 <script>
   import ThemeHandler from '../lib/ThemeHandler.svelte';

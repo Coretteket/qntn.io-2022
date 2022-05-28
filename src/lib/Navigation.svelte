@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 1.1rem;
     padding-inline: 1rem;
   }

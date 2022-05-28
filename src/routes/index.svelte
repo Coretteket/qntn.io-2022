@@ -25,6 +25,7 @@
   }
 
   p {
+    font-family: 'Mulish', sans-serif;
     max-width: 400px;
     margin: 2em auto;
   }

@@ -1,7 +1,3 @@
-<script>
-  import '@fontsource/anybody/variable.css';
-</script>
-
 <h1>quinten coret</h1>
 
 <style>
