@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.8 52.8">
   <defs>
-    <style>.a,.b{fill:inherit;stroke:inherit;stroke-linejoin:round;stroke-width:2px;}.b{stroke-linecap:round;}</style>
+    <style>.a,.b{stroke-linejoin:round;stroke-width:1.5px;stroke-linecap:round;}</style>
   </defs>
   <circle class="a" cx="26" cy="26" r="11.26"/>
   <line class="b" x1="26" y1="6" x2="26" y2="11"/>
