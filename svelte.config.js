@@ -5,11 +5,7 @@ const config = {
   kit: {
     adapter: adapter({ edge: true }),
   },
-  preprocess: [
-    preprocess({
-      postcss: true,
-    }),
-  ],
+  preprocess: [preprocess({ postcss: true })],
 };
 
 export default config;
