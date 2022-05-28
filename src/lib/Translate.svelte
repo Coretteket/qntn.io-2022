@@ -1,7 +1,7 @@
 <script>
   export let key;
 
-  import translations from '../i18n/translate';
+  import translations from '../scripts/translate';
   import { locale, route } from '../scripts/stores';
 
   export const locales = Object.keys(translations);

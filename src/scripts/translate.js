@@ -1,4 +1,4 @@
-import { locale } from '../scripts/stores';
+import { locale } from './stores';
 
 export const toggleLocale = () => {
   locale.update((locale) => {
