@@ -41,7 +41,7 @@
     <a href="https://twitter.com/coretteket" target="_blank">twitter</a>
     <a href="https://github.com/coretteket" target="_blank">github</a>
     <button class="theme" on:click={() => theme.update((t) => (t == 'light' ? 'dark' : 'light'))}>
-      {#if $theme=='light'}
+      {#if $theme == 'light'}
         <Moon />
       {:else}
         <Sun />
