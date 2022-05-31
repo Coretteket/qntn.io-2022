@@ -6,7 +6,7 @@ import path from 'path';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
-    adapter: adapter(),
+    adapter: adapter({ edge: true }),
     vite: { plugins: [svg()], resolve: { alias: { $svg: path.resolve('./static/svg') } } },
   },
   preprocess: [preprocess({ postcss: true })],
