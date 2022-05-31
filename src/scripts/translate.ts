@@ -1,3 +1,4 @@
+import type { Translations } from './types';
 import { locale } from './stores';
 
 export const toggleLocale = () => {
@@ -8,7 +9,7 @@ export const toggleLocale = () => {
   });
 };
 
-export default {
+const translations: Translations = {
   en: {
     global: {
       projects: 'projects',
@@ -33,4 +34,6 @@ export default {
       button: 'neem contact op',
     },
   },
-};
+}
+
+export default translations;

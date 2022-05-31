@@ -1,7 +1,7 @@
-<script context="module">
+<script context="module" lang="ts">
   import { screenH, screenW, scrollY, mouse } from '../scripts/stores';
 
-  const mouseMove = (e) => {
+  const mouseMove = (e: any) => {
     mouse.update(() => ({ x: e.clientX, y: e.clientY }));
   };
 </script>

@@ -6,7 +6,7 @@
   <Hero />
 </main>
 
-{#each Array(10) as e}
+{#each Array(10) as _}
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, ipsum! Distinctio nobis molestias
     ut voluptas mollitia, voluptates voluptatem exercitationem dolorem modi ratione delectus quis

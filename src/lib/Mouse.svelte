@@ -1,5 +1,5 @@
 <script>
-  import { mouse } from './Window.svelte';
+  import { mouse } from '../scripts/stores';
   import { spring } from 'svelte/motion';
 
   const coords = spring({ x: 0, y: 0 }, { stiffness: 0.3 });

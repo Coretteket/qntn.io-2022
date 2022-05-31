@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   export let color = 'var(--pink)';
-  export let className;
+  export let className: string;
   let click = false;
 </script>
 
