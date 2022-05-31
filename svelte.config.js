@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-static';
 import svg from '@poppanator/sveltekit-svg';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
