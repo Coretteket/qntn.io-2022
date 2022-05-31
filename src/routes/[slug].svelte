@@ -16,8 +16,8 @@
     console.log(slug);
     console.log(redir[slug]);
     console.log(encodeURI(redir[slug]));
-    if (slug in redir) return { status: 302, redirect: encodeURI(redir[slug]) };
-    return { status: 404 };
+    // if (slug in redir) return { status: 302, redirect: encodeURI(redir[slug]) };
+    return { status: 200 };
   };
 </script>
 
