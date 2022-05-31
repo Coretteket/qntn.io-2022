@@ -8,8 +8,11 @@
     feit: 'https://docs.google.com/document/d/1UeTlVLlBv6X6TB_nUJgCZukggSW8raRi5yoGkP_IvvY',
   };
 
+  let hello: keyof typeof redir;
+
   export const load: Load = async ({ params }) => {
     const slug = params.slug as keyof typeof redir;
+    hello = slug;
     console.log(slug);
     console.log(redir[slug]);
     console.log(encodeURI(redir[slug]));
@@ -17,3 +20,6 @@
     return { status: 404 };
   };
 </script>
+
+{hello}
+hello?
