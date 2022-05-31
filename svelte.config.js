@@ -1,8 +1,9 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import svg from '@poppanator/sveltekit-svg';
 import preprocess from 'svelte-preprocess';
 import path from 'path';
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
   kit: {
     adapter: adapter(),
