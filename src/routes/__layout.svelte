@@ -2,11 +2,11 @@
   import type { Load } from '@sveltejs/kit';
   import { locale, theme } from '../scripts/stores';
 
-  export const load: Load = async ({ session }) => {
-    locale.set(session.locale);
-    theme.set(session.theme);
-    return {};
-  };
+  // export const load: Load = async ({ session }) => {
+  //   locale.set(session.locale);
+  //   theme.set(session.theme);
+  //   return {};
+  // };
 </script>
 
 <script>

@@ -7,6 +7,7 @@ import path from 'path';
 const config = {
   kit: {
     adapter: adapter(),
+    prerender: { default: true },
     vite: {
       plugins: [svg()],
       resolve: {
