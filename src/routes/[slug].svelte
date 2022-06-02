@@ -9,7 +9,7 @@
 
   export const load: Load = async ({ params }) => {
     const slug = params.slug as keyof typeof redir;
-    if (slug in redir) return { status: 302, redirect: encodeURI(redir[slug]) };
+    if (slug in redir) return { status: 301, redirect: encodeURI(redir[slug]) };
     else return { status: 404 };
   };
 </script>
