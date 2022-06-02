@@ -7,6 +7,7 @@ import path from 'path';
 const config = {
   kit: {
     adapter: adapter({ edge: true }),
+    prerender: { default: true },
     vite: { plugins: [svg()], resolve: { alias: { $svg: path.resolve('./static/svg') } } },
   },
   preprocess: [preprocess({ postcss: true })],
