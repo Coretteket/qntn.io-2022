@@ -1,6 +1,6 @@
 export type Translations = Record<Locale, Record<Route, Record<string, string>>>;
 
-export type Mutable<T> = { -readonly [P in keyof T ]: T[P] };
+export type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 export const mutable = <T>(t: T): Mutable<T> => t as Mutable<T>;
 
 export const routes = ['global', 'index'] as const;

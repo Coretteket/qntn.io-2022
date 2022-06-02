@@ -2,7 +2,7 @@ import type { Translations } from './types';
 import { locale } from './stores';
 
 export const toggleLocale = () => {
-  locale.update((l) => l === 'en' ? 'nl' : 'en');
+  locale.update((l) => (l === 'en' ? 'nl' : 'en'));
 };
 
 const translations: Translations = {
