@@ -7,7 +7,9 @@
     linkedin: 'https://www.linkedin.com/in/qcoret/',
   };
 
-  export const load: Load = async () => {
-    return { status: 302, redirect: 'https://github.com/coretteket/' };
+  export const load: Load = async ({ params }) => {
+    const slug = params.slug as keyof typeof redir;
+    if (slug in redir) return { status: 302, redirect: encodeURIComponent(redir[slug]) };
+    else return { status: 404 };
   };
 </script>
