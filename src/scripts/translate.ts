@@ -2,11 +2,7 @@ import type { Translations } from './types';
 import { locale } from './stores';
 
 export const toggleLocale = () => {
-  locale.update((locale) => {
-    locale = locale == 'en' ? 'nl' : 'en';
-    document.documentElement.setAttribute('lang', locale);
-    return locale;
-  });
+  locale.update((l) => l === 'en' ? 'nl' : 'en');
 };
 
 const translations: Translations = {
@@ -34,6 +30,6 @@ const translations: Translations = {
       button: 'neem contact op',
     },
   },
-}
+};
 
 export default translations;

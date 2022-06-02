@@ -9,4 +9,4 @@ export type Locale = typeof locales[number];
 export const themes = ['dark', 'light', 'auto'] as const;
 export type Theme = typeof themes[number];
 
-export const isType = <T>(t: any, arr: readonly T[]): t is T => arr.includes(t as T);
+export const isType = <T>(t: any, l: readonly T[]): t is T => l.includes(t as T);

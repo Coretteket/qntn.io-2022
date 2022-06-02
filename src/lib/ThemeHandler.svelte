@@ -14,11 +14,11 @@
   });
 </script>
 
-<!--
 <svelte:head>
   <script>
-    !document.cookie.match(/(^| )theme=([^;]+)/) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches &&
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if ('auto' === document.documentElement.getAttribute('data-theme')) {
+      const p = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', p ? 'dark' : 'light');
+    }
   </script>
-</svelte:head> -->
+</svelte:head>

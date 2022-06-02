@@ -5,10 +5,7 @@
     twitter: 'https://twitter.com/coretteket',
     github: 'https://github.com/coretteket',
     linkedin: 'https://www.linkedin.com/in/qcoret/',
-    feit: 'https://docs.google.com/document/d/1UeTlVLlBv6X6TB_nUJgCZukggSW8raRi5yoGkP_IvvY',
   };
-
-  let hello: keyof typeof redir;
 
   export const load: Load = async ({ params }) => {
     const slug = params.slug as keyof typeof redir;
@@ -16,6 +13,3 @@
     return { status: 404 };
   };
 </script>
-
-{hello}
-hello?
