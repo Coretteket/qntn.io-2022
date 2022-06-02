@@ -1,4 +1,4 @@
-import { isType, locales, themes, makeMutable, type Locale, type Theme } from './scripts/types';
+import { isType, locales, themes, mutable, type Locale, type Theme } from './scripts/types';
 import type { Handle, GetSession } from '@sveltejs/kit';
 import { pick } from 'accept-language-parser';
 import cookie from 'cookie';
@@ -7,7 +7,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   const { headers } = event.request;
 
   const acceptLang = headers.get('accept-language') || '';
-  const pickAcceptLang = pick(makeMutable(locales), acceptLang, { loose: true });
+  const pickAcceptLang = pick(mutable(locales), acceptLang, { loose: true });
   const acceptPrefers = headers.get('sec-ch-prefers-color-scheme');
   const cookies = cookie.parse(headers.get('cookie') || '');
 
