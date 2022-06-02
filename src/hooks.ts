@@ -31,6 +31,4 @@ export const handle: Handle = async ({ event, resolve }) => {
   return response;
 };
 
-export const getSession: GetSession = ({ locals }) => {
-  return { locale: locals.locale, theme: locals.theme };
-};
+export const getSession: GetSession = ({ locals }) => locals;

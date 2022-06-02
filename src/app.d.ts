@@ -5,17 +5,16 @@
 declare namespace App {
   import type { Locale, Theme } from './scripts/types';
 
-  interface Locals {
+  interface Globals {
     locale: Locale;
     theme: Theme;
   }
+
+  interface Locals extends Globals {}
 
   interface Platform {}
 
-  interface Session {
-    locale: Locale;
-    theme: Theme;
-  }
+  interface Session extends Globals {}
 
   interface Stuff {}
 }
