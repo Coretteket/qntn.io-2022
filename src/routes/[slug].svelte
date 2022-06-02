@@ -7,9 +7,19 @@
     linkedin: 'https://www.linkedin.com/in/qcoret/',
   };
 
+  let slug: keyof typeof redir;
+
   export const load: Load = async ({ params }) => {
-    const slug = params.slug as keyof typeof redir;
-    if (slug in redir) return { status: 308, redirect: encodeURIComponent(redir[slug]) };
-    return { status: 404 };
+    slug = params.slug as typeof slug;
+    console.debug(params);
+    console.debug(slug);
+    console.debug(redir[slug]);
+    console.debug(encodeURIComponent(redir[slug]));
+    if (!(slug in redir)) return { status: 404 };
+    else return {};
   };
 </script>
+
+{slug}<br>
+{redir[slug]}<br>
+{encodeURIComponent(redir[slug])}
