@@ -1,5 +1,5 @@
 <script>
-  import { toggleLocale } from '../scripts/translate';
+  import { toggleLocale, toggleTheme } from '../scripts/util';
   import { theme } from '../scripts/stores';
   import T from './Translate.svelte';
   import Language from '$svg/language.svg';
@@ -10,7 +10,7 @@
 
 <nav>
   <div>
-    <a class="title" href="/">quinten coret</a>
+    <a class="title" href="/">qc</a>
     <a href="#projects"><T g key="projects" /></a>
     <a href="#about"><T g key="about" /></a>
     <a href="#contact"><T g key="contact" /></a>
@@ -19,33 +19,37 @@
     <a href="https://www.linkedin.com/in/qcoret/" target="_blank">linkedin</a>
     <a href="https://twitter.com/coretteket" target="_blank">twitter</a>
     <a href="https://github.com/coretteket" target="_blank">github</a>
-    <button class="theme" on:click={() => theme.update((t) => (t == 'light' ? 'dark' : 'light'))}>
+
+    <button on:click={toggleTheme}>
       {#if $theme == 'light'}
         <Moon />
       {:else}
         <Sun />
       {/if}
     </button>
-    <button class="locale" on:click={toggleLocale}><Language /></button>
+    <button on:click={toggleLocale}><Language /></button>
   </div>
 </nav>
 
 <style>
   nav {
-    box-sizing: border-box;
+    max-width: var(--maxwidth);
+    margin-inline: auto;
+    /* box-sizing: border-box;
     position: sticky;
-    top: 0;
+    top: 0; */
     z-index: 10;
     background: var(--white);
     color: var(--black);
-    height: var(--nav);
-    border-bottom: var(--border);
+    padding: 2.5rem 3rem;
     display: flex;
     justify-content: space-between;
   }
 
   div {
+    width: max-content;
     display: flex;
+    gap: 2.5rem;
   }
 
   a,
@@ -54,30 +58,16 @@
     align-items: center;
     justify-content: center;
     font-family: 'Mulish', sans-serif;
-    font-size: 1.1rem;
-    padding-inline: 1rem;
-  }
-
-  .title,
-  .theme,
-  .locale {
-    height: var(--nav);
+    font-size: 1.3rem;
   }
 
   .title {
     font-weight: 600;
-    border-right: var(--border);
-    padding-inline: 2rem;
-    margin-right: 1rem;
   }
 
   button {
-    padding: 0.5rem;
-    border-left: var(--border);
-    aspect-ratio: 1;
-  }
-
-  .theme {
-    margin-left: 1rem;
+    /* padding: 1rem; */
+    /* aspect-ratio: 1; */
+    width: 2rem;
   }
 </style>

@@ -1,24 +1,39 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit';
-  import { locale, theme } from '../scripts/stores';
+  import { theme } from '../scripts/stores';
+  import { loadTranslations } from '../i18n';
 
-  export const load: Load = async ({ session }) => {
-    locale.set(session.locale);
+  export const load: Load = async ({ url, session }) => {
     theme.set(session.theme);
+
+    await loadTranslations(session.locale, url.pathname);
+
     return {};
   };
 </script>
 
-<script>
+<script lang="ts">
   import ThemeHandler from '../lib/ThemeHandler.svelte';
   import LocaleHandler from '../lib/LocaleHandler.svelte';
   import Navigation from '../lib/Navigation.svelte';
-  import '@fontsource/anybody/variable.css';
+  import '@fontsource/anybody/variable-full.css';
   import '@fontsource/mulish';
   import '../app.css';
 </script>
 
 <ThemeHandler />
 <LocaleHandler />
+
 <Navigation />
-<slot />
+
+<main>
+  <slot />
+</main>
+
+<style>
+  main {
+    max-width: var(--maxwidth);
+    margin-inline: auto;
+    padding-inline: 3rem;
+  }
+</style>

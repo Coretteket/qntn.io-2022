@@ -2,9 +2,7 @@
   import Hero from '../lib/Hero.svelte';
 </script>
 
-<main>
-  <Hero />
-</main>
+<Hero />
 
 {#each Array(10) as _}
   <p>
@@ -17,10 +15,6 @@
 <p id="contact">Contact</p>
 
 <style>
-  main {
-    display: flex;
-  }
-
   p {
     font-family: 'Mulish', sans-serif;
     max-width: 400px;
