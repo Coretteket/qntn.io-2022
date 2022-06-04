@@ -18,9 +18,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   event.locals = { locale, theme };
 
+  // media query for theme auto
+  const themeDetect = `
+    <script>document.documentElement.setAttribute("data-theme",window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")</script>
+  `;
+
   const response = await resolve(event, {
     transformPage: ({ html }) =>
-      html.replace('<html>', `<html lang="${locale}" data-theme="${theme}">`),
+      html
+        .replace('<html>', `<html lang="${locale}" data-theme="${theme}">`)
+        .replace('<head>', `<head>${theme === 'auto' ? themeDetect : ''}`),
   });
 
   // set experimental client hints
