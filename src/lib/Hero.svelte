@@ -47,7 +47,7 @@
     right: 0;
     width: 100%;
     height: 40rem;
-    background: url('/static/header.webp');
+    background: url('/header.webp');
     background-size: auto 100%;
     background-position: 80%;
     border-radius: 10px;
