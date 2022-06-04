@@ -1,5 +1,5 @@
 <script>
-  import { locale } from '../scripts/stores';
+  import { locale } from '../i18n';
   import { browser } from '$app/env';
 
   $: if (browser) {
