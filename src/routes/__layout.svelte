@@ -13,16 +13,14 @@
 </script>
 
 <script lang="ts">
-  import ThemeHandler from '../lib/ThemeHandler.svelte';
-  import LocaleHandler from '../lib/LocaleHandler.svelte';
+  import SessionHandler from '$lib/SessionHandler.svelte';
   import Navigation from '../lib/Navigation.svelte';
   import '@fontsource/anybody/variable-full.css';
   import '@fontsource/mulish';
   import '../app.css';
 </script>
 
-<ThemeHandler />
-<LocaleHandler />
+<SessionHandler />
 
 <Navigation />
 

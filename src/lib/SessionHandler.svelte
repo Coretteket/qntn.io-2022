@@ -1,7 +1,13 @@
 <script>
   import { theme } from '../scripts/stores';
+  import { locale } from '../i18n';
   import { onMount } from 'svelte';
   import { browser } from '$app/env';
+
+  $: if (browser) {
+    document.documentElement.setAttribute('lang', $locale);
+    document.cookie = `locale=${$locale}`;
+  }
 
   $: if (browser) {
     document.documentElement.setAttribute('data-theme', $theme);
