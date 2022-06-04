@@ -13,7 +13,7 @@
     <T key="intro" />
   </p>
 
-  <div role="img" alt={$t('home.headerImg')} />
+  <div role="img" aria-label={$t('home.headerImg')} />
 </header>
 
 <style>
