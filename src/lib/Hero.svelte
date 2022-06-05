@@ -1,9 +1,10 @@
 <script lang="ts">
   import T from './Translate.svelte';
   import { t } from '../i18n';
+  import { headerParallax } from '../scripts/gsap';
 </script>
 
-<header>
+<header id="#hero">
   <h1>
     <T key="title" /><br />
     <T key="subtitle" />
@@ -13,7 +14,7 @@
     <T key="intro" />
   </p>
 
-  <div role="img" aria-label={$t('headerImg')} />
+  <div role="img" use:headerParallax aria-label={$t('headerImg')} />
 </header>
 
 <style>
@@ -28,7 +29,7 @@
     font-variation-settings: 'wght' 370;
     text-transform: lowercase;
     position: absolute;
-    font-size: 4rem;
+    font-size: 4.2rem;
     line-height: 1.2;
     top: 3rem;
     z-index: 2;
@@ -39,7 +40,7 @@
     font-size: 2rem;
     font-family: 'Mulish', sans-serif;
     font-weight: 200;
-    margin-top: 18rem;
+    margin-top: 19rem;
   }
 
   div {
@@ -48,8 +49,8 @@
     width: 100%;
     height: 40rem;
     background: url('/header.webp');
-    background-size: auto 100%;
-    background-position: 50%;
+    background-size: auto 125%;
+    background-position: 50% 60%;
     border-radius: 10px;
   }
 </style>
