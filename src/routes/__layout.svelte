@@ -2,14 +2,18 @@
   import type { Load } from '@sveltejs/kit';
   import { theme, locale, dict } from '../scripts/stores';
   import { loadTranslations } from '../i18n';
-  import routes from '../i18n/routes.json';
+  import { routes } from '../scripts/types';
 
   export const load: Load = async ({ url, session }) => {
+    const { pathname } = url;
+    if (pathname.endsWith('.woff2')) return {};
+
     theme.set(session.theme);
     locale.set(session.locale);
 
-    const data = url.pathname in routes ? await loadTranslations(session, url) : {};
-    dict.update((dict) => ({ ...dict, ...data }));
+    const global = await loadTranslations(session, '*');
+    const route = await loadTranslations(session, url);
+    dict.update((dict) => ({ ...dict, ...global, ...route }));
 
     return {};
   };
@@ -21,6 +25,7 @@
   import '@fontsource/anybody/variable.css';
   import '@fontsource/mulish';
   import '../app.css';
+  import { page } from '$app/stores';
 </script>
 
 <SessionHandler />
@@ -28,6 +33,7 @@
 <Navigation />
 
 <main>
+  {$page.routeId}
   <slot />
 </main>
 

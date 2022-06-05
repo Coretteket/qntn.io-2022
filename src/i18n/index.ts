@@ -1,25 +1,24 @@
-import type { Dict, Locale } from '../scripts/types';
+import { isType, paths, type Dict, type Locale, type Route } from '../scripts/types';
 import { dict } from '../scripts/stores';
 import { derived } from 'svelte/store';
 import type { Page } from '@sveltejs/kit';
 import { page } from '$app/stores';
-import routesJson from './routes.json';
+import { routes, type Path } from '../scripts/types';
 
-const loader = (locale: Locale, path: string) => import(`../i18n/${locale}/${path}.json`);
-const routes: Record<string, string> = routesJson;
+const loader = (locale: Locale, route: Route) => import(`../i18n/${locale}/${route}.json`);
 
-export const loadTranslations = async (session: App.Session, url: URL): Promise<Dict> => {
+export const loadTranslations = async (
+  session: App.Session,
+  url: URL | '*'
+): Promise<Partial<Dict>> => {
+  const pathname = url === '*' ? '*' : url.pathname;
+  if (!isType(pathname, paths)) return {};
+
   const { locale } = session;
-  const { pathname } = url;
-
   const route = routes[pathname];
-
-  const global = routes['*'];
-
   const routeLoader = await loader(locale, route);
-  const globalLoader = await loader(locale, global);
 
-  return { [route]: routeLoader, global: globalLoader };
+  return { [route]: routeLoader };
 };
 
 export const translate = (
@@ -31,21 +30,20 @@ export const translate = (
   const { routeId } = page;
 
   const global = key.startsWith('g.');
-  const route = global ? 'global' : routes['/' + routeId];
+  const route: Route = global ? 'global' : routes[('/' + routeId) as Path];
 
-  if (!route) throw new Error(`No route found for /${routeId}.`);
-  if (!(route in dict)) throw new Error(`Route ${route} not found in dict.`);
+  const routedDict = dict[route];
+  const parsedKey = key.replace(/^g\./, '');
 
-  let parsedKey = key.replace(/^g\./, '');
-  if (!(parsedKey in dict[route])) throw new Error(`Key ${parsedKey} not found in dict.${route}.`);
+  if (!routedDict || !routedDict[parsedKey]) return key;
 
-  let text = dict[route][parsedKey];
+  let text = routedDict[parsedKey];
 
-  if (vars)
+  if (vars) {
     Object.entries(vars).forEach((e) => {
       text = text.replace(`{${e[0]}}`, e[1]);
-      console.log(parsedKey);
     });
+  }
 
   return text;
 };

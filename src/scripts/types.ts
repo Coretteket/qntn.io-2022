@@ -1,7 +1,10 @@
-export type Dict = Record<string, Record<string, string>>;
+export type Dict = { [route in Route]?: Record<string, string> };
 
-export const routes = ['global', 'index'] as const;
-export type Route = typeof routes[number];
+export const routes = { '/': 'index', '*': 'global' } as const;
+export type Route = typeof routes[Path];
+
+export const paths = Object.keys(routes) as Readonly<Path[]>;
+export type Path = keyof typeof routes;
 
 export const locales = ['en', 'nl'] as const;
 export type Locale = typeof locales[number];
