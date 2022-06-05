@@ -25,7 +25,6 @@
   import '@fontsource/anybody/variable.css';
   import '@fontsource/mulish';
   import '../app.css';
-  import { page } from '$app/stores';
 </script>
 
 <SessionHandler />
@@ -33,7 +32,6 @@
 <Navigation />
 
 <main>
-  {$page.routeId}
   <slot />
 </main>
 
