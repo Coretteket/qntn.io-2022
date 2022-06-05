@@ -1,17 +1,19 @@
 <script>
-  import { theme } from '../scripts/stores';
-  import { locale } from '../i18n';
+  import { theme, locale } from '../scripts/stores';
   import { onMount } from 'svelte';
   import { browser } from '$app/env';
+  import { session } from '$app/stores';
 
   $: if (browser) {
     document.documentElement.setAttribute('lang', $locale);
     document.cookie = `locale=${$locale}`;
+    $session.locale = $locale;
   }
 
   $: if (browser) {
     document.documentElement.setAttribute('data-theme', $theme);
     document.cookie = `theme=${$theme}`;
+    $session.theme = $theme;
   }
 
   onMount(() => {

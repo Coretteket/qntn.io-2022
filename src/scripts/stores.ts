@@ -1,7 +1,9 @@
 import { writable, type Writable } from 'svelte/store';
-import type { Theme } from './types';
+import type { Dict, Locale, Theme } from './types';
 
 export const theme: Writable<Theme> = writable('auto');
+export const locale: Writable<Locale> = writable('en');
+export const dict: Writable<Dict> = writable({});
 
 export const screenH = writable(1);
 export const screenW = writable(1);

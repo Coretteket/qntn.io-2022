@@ -10,10 +10,10 @@
 
 <nav>
   <div>
-    <a class="title" href="/">qc</a>
-    <a href="#projects"><T g key="projects" /></a>
-    <a href="#about"><T g key="about" /></a>
-    <a href="#contact"><T g key="contact" /></a>
+    <a sveltekit:prefetch class="title" href="/">qc</a>
+    <a href="#projects"><T key="g.projects" /></a>
+    <a href="#about"><T key="g.about" /></a>
+    <a href="#contact"><T key="g.contact" /></a>
   </div>
   <div>
     <a href="https://www.linkedin.com/in/qcoret/" target="_blank">linkedin</a>

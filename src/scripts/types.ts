@@ -1,3 +1,5 @@
+export type Dict = Record<string, Record<string, string>>;
+
 export const routes = ['global', 'index'] as const;
 export type Route = typeof routes[number];
 

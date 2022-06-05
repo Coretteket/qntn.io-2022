@@ -1,5 +1,4 @@
-import { locale } from '../i18n';
-import { theme } from './stores';
+import { theme, locale } from './stores';
 
 export const toggleLocale = () => {
   locale.update((l) => (l === 'en' ? 'nl' : 'en'));

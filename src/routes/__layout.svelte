@@ -1,12 +1,15 @@
 <script context="module" lang="ts">
   import type { Load } from '@sveltejs/kit';
-  import { theme } from '../scripts/stores';
+  import { theme, locale, dict } from '../scripts/stores';
   import { loadTranslations } from '../i18n';
+  import routes from '../i18n/routes.json';
 
   export const load: Load = async ({ url, session }) => {
     theme.set(session.theme);
+    locale.set(session.locale);
 
-    await loadTranslations(session.locale, url.pathname);
+    const data = url.pathname in routes ? await loadTranslations(session, url) : {};
+    dict.update((dict) => ({ ...dict, ...data }));
 
     return {};
   };
