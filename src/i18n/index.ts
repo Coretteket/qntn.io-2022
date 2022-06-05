@@ -22,25 +22,37 @@ export const loadTranslations = async (session: App.Session, url: URL): Promise<
   return { [route]: routeLoader, global: globalLoader };
 };
 
-export const translate = (dict: Dict, page: Page, key: string): string => {
+export const translate = (
+  dict: Dict,
+  page: Page,
+  key: string,
+  vars?: Record<string, string>
+): string => {
   const { routeId } = page;
 
   const global = key.startsWith('g.');
   const route = global ? 'global' : routes['/' + routeId];
 
   if (!route) throw new Error(`No route found for /${routeId}.`);
+  if (!(route in dict)) throw new Error(`Route ${route} not found in dict.`);
 
   let parsedKey = key.replace(/^g\./, '');
-
-  if (!(route in dict)) throw new Error(`Route ${route} not found in dict.`);
   if (!(parsedKey in dict[route])) throw new Error(`Key ${parsedKey} not found in dict.${route}.`);
 
-  return dict[route][parsedKey];
+  let text = dict[route][parsedKey];
+
+  if (vars)
+    Object.entries(vars).forEach((e) => {
+      text = text.replace(`{${e[0]}}`, e[1]);
+      console.log(parsedKey);
+    });
+
+  return text;
 };
 
 export const t = derived(
   [dict, page],
   ([dict, page]) =>
-    (key: string) =>
-      translate(dict, page, key)
+    (key: string, vars?: {}) =>
+      translate(dict, page, key, vars)
 );
