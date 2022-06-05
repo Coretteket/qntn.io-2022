@@ -1,5 +1,9 @@
 {
   "projects": "projects",
   "about": "about me",
-  "contact": "contact"
+  "contact": "contact",
+  "localeSwitch": "Ga naar Nederlandse website",
+  "themeSwitch": "Switch to {theme} mode",
+  "dark": "dark",
+  "light": "light"
 }
