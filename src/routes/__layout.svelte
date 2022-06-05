@@ -18,7 +18,7 @@
 <script lang="ts">
   import SessionHandler from '$lib/SessionHandler.svelte';
   import Navigation from '../lib/Navigation.svelte';
-  import '@fontsource/anybody/variable-full.css';
+  import '@fontsource/anybody/variable.css';
   import '@fontsource/mulish';
   import '../app.css';
 </script>

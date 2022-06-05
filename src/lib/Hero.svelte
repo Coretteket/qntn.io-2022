@@ -25,7 +25,7 @@
 
   h1 {
     font-family: 'AnybodyVariable', sans-serif;
-    font-variation-settings: 'wght' 360, 'wdth' 105;
+    font-variation-settings: 'wght' 370;
     text-transform: lowercase;
     position: absolute;
     font-size: 4rem;
@@ -49,7 +49,7 @@
     height: 40rem;
     background: url('/header.webp');
     background-size: auto 100%;
-    background-position: 80%;
+    background-position: 50%;
     border-radius: 10px;
   }
 </style>
