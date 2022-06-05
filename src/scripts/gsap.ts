@@ -1,9 +1,13 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+const loadScrollTrigger = async () => {
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+  gsap.registerPlugin(ScrollTrigger);
+};
 
-export const headerParallax = (node: HTMLElement) => {
+export const headerParallax = async (node: HTMLElement) => {
+  await loadScrollTrigger();
+
   gsap.to(node, {
     backgroundPositionY: '20%',
     scrollTrigger: {
