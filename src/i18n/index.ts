@@ -45,6 +45,17 @@ export const translate = (
     });
   }
 
+  const replace = {
+    _: '&nbsp;',
+    '`': '&lsquo;',
+    "'": '&rsquo;',
+  };
+
+  type Replace = keyof typeof replace;
+  Object.keys(replace).forEach((e) => {
+    text = text.replace(e, replace[e as Replace]);
+  });
+
   return text;
 };
 

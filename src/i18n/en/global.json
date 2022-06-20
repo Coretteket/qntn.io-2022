@@ -1,8 +1,9 @@
 {
-  "projects": "projects",
-  "about": "about me",
-  "contact": "contact",
-  "localeSwitch": "Ga naar Nederlandse website",
+  "projects": "Projects",
+  "blog": "Blog",
+  "about": "About me",
+  "contact": "Contact",
+  "localeSwitch": "Switch to Dutch website (Nederlands)",
   "themeSwitch": "Switch to {theme} mode",
   "dark": "dark",
   "light": "light"

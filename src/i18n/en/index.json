@@ -1,7 +1,12 @@
 {
-  "title": "Hey, I am Quinten Coret.",
-  "subtitle": "And I make stuff.",
-  "intro": "I study Econometrics and Data Science at VU Amsterdam, and  I love creating accessible ways to interact with data.",
-  "headerImg": "A picture of me",
-  "button": "get in touch"
+  "title": "Hey, I'm Quinten_Coret.",
+  "subtitle": "And I build things.",
+  "intro": "I study Econometrics and Data Science at VU Amsterdam, and I love creating accessible ways to interact with data.",
+  "headshot": "A picture of Quinten",
+  "contact": "Get in touch",
+  "projects": "The projects I'm proud of",
+  "beterdanhugo": "Better than Hugo",
+  "viralgame": "The game went <i>viral</i>",
+  "nieuwindekamer": "New in Parliament",
+  "nichebot": "The bot found a <i>niche</i>"
 }
