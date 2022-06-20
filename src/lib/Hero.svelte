@@ -1,10 +1,14 @@
 <script lang="ts">
   import T from './Translate.svelte';
   import { t } from '../i18n';
-  import { headerParallax } from '../scripts/gsap';
 </script>
 
 <header id="#hero">
+  <picture>
+    <!-- <source srcset="https://source.unsplash.com/random/800x600" media="(min-width: 800px)" /> -->
+    <img src="/headshot.webp" alt={$t('headshot')} />
+  </picture>
+
   <h1>
     <T key="title" /><br />
     <T key="subtitle" />
@@ -14,43 +18,52 @@
     <T key="intro" />
   </p>
 
-  <div role="img" use:headerParallax aria-label={$t('headerImg')} />
+  <a href="#contact">
+    <T key="contact" />
+  </a>
 </header>
 
 <style>
   header {
-    position: relative;
-    display: flex;
-    gap: 10rem;
+    padding-block: 3rem;
+  }
+
+  img {
+    width: 5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
   }
 
   h1 {
-    font-family: 'AnybodyVariable', sans-serif;
-    font-variation-settings: 'wght' 370;
-    text-transform: lowercase;
-    position: absolute;
-    font-size: 4.2rem;
-    line-height: 1.2;
-    top: 3rem;
-    z-index: 2;
+    font-size: clamp(1.6rem, 2.8vw + 1.1rem, 3rem);
+    font-variation-settings: 'wght' 320, 'SOFT' 100, 'WONK' 1;
+    line-height: 1.1;
+    margin-top: 2rem;
+  }
+
+  a,
+  p {
+    font-size: clamp(1.2rem, 0.6vw + 1rem, 1.5rem);
+    font-variation-settings: 'wght' 350;
   }
 
   p {
-    flex: 1;
-    font-size: 2rem;
-    font-family: 'Mulish', sans-serif;
-    font-weight: 200;
-    margin-top: 19rem;
+    max-width: 50rem;
   }
 
-  div {
-    flex: 1;
-    right: 0;
+  a {
+    position: relative;
+    color: --ntrl-20;
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    top: 110%;
+    transition: top 50ms ease-in-out;
     width: 100%;
-    height: 40rem;
-    background: url('/header.webp');
-    background-size: auto 125%;
-    background-position: 50% 60%;
-    border-radius: 10px;
+    height: 1px;
+    background-color: --ntrl-40;
   }
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let color = 'var(--pink)';
-  export let className: string;
+  export let color = '--ntrl-10';
+  export let className = '';
   let click = false;
 </script>
 
@@ -21,12 +21,12 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: var(--white);
+    background: --ntrl-10;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: var(--border);
-    font-family: 'Mulish', sans-serif;
+    border: --border;
+    font-family: --mulish;
     font-weight: 400;
     font-size: 1.5vw;
     transform: translate(-6px, -6px);
@@ -44,8 +44,8 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: var(--pink);
-    border: var(--border);
+    background: --color;
+    border: --border;
     /* z-index: -1; */
   }
 </style>

@@ -1,34 +1,86 @@
-html,
-body {
-  scroll-behavior: smooth;
-  margin: 0;
-}
+/* custom properties */
 
-body {
-  background: var(--white);
-  color: var(--black);
-}
+@custom-media --xs (width > 300px);
+@custom-media --sm (width > 600px);
+@custom-media --md (width > 900px);
+@custom-media --lg (width > 1200px);
+@custom-media --xl (width > 1600px);
+
+@custom-media --XS (width <= 300px);
+@custom-media --SM (width <= 600px);
+@custom-media --MD (width <= 900px);
+@custom-media --LG (width <= 1200px);
+@custom-media --XL (width <= 1600px);
 
 :root {
-  --black: black;
-  --white: white;
+  --maxwidth: 70rem;
+  --radius: 0.8rem;
 
-  --red: #f76f59;
-  --yellow: #ffd95f;
-  --green: #b3df7a;
-  --blue: #a9def9;
-  --pink: #ff97d3;
+  --fraunces: 'FrauncesVariable', serif;
+  --mulish: 'MulishVariable', sans-serif;
+}
 
-  --maxwidth: 1200px;
-  --stroke: 2px;
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  --ntrl-10: #121212;
+  --ntrl-20: #363636;
+  --ntrl-30: #909090;
+  --ntrl-40: #e2e2e2;
+  --ntrl-50: #f7f7f7;
 
-  --border: solid var(--stroke) var(--black);
-  --shadow: 6px 6px 0 0 var(--black);
+  --scrn-10: --ntrl-40;
+  --scrn-20: --ntrl-50;
+
+  --blue-10: #a1c7f5;
+  --yllw-10: #f6daa7;
+
+  --highlight: #a7d0f07f;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --ntrl-10: #f7f7f7;
+  --ntrl-20: #c3c3c3;
+  --ntrl-30: #8f8f8f;
+  --ntrl-40: #2e2e2e;
+  --ntrl-50: #171717;
+
+  --scrn-10: --ntrl-50;
+  --scrn-20: --ntrl-40;
+
+  --blue-10: #16314e;
+  --yllw-10: #33251b;
+
+  --highlight: #173a557f;
+}
+
+/* global styles */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: --ntrl-50;
+  color: --ntrl-10;
+  scroll-padding-top: 3rem;
+  scroll-behavior: smooth;
+  font-family: --mulish;
 }
 
 ::selection {
-  background: rgb(167, 204, 255);
+  background: --highlight;
   text-shadow: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: --fraunces;
 }
 
 a {
@@ -43,14 +95,9 @@ button {
   padding: 0;
 }
 
-[data-theme='dark'] {
-  --black: white;
-  --white: black;
-}
-
 svg {
   fill: none;
-  stroke: var(--black);
+  stroke: --ntrl-10;
 }
 
 svg * {

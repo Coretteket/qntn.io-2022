@@ -14,15 +14,16 @@
 
 <nav>
   <div>
-    <a sveltekit:prefetch class="title" href="/">qc</a>
+    <a sveltekit:prefetch class="title" href="/">Quinten Coret</a>
     <a href="#projects"><T key="g.projects" /></a>
+    <a href="#projects"><T key="g.blog" /></a>
     <a href="#about"><T key="g.about" /></a>
     <a href="#contact"><T key="g.contact" /></a>
   </div>
   <div>
-    <a href="https://www.linkedin.com/in/qcoret/" target="_blank">linkedin</a>
-    <a href="https://twitter.com/coretteket" target="_blank">twitter</a>
-    <a href="https://github.com/coretteket" target="_blank">github</a>
+    <a href="https://qntn.io/linkedin/" target="_blank">Linkedin</a>
+    <a href="https://qntn.io/twitter/" target="_blank">Twitter</a>
+    <a href="https://qntn.io/github/" target="_blank">Github</a>
 
     <button on:click={toggleTheme} title={themeSwitch} aria-label={themeSwitch}>
       {#if $theme == 'light'}
@@ -39,17 +40,24 @@
 
 <style>
   nav {
-    max-width: var(--maxwidth);
+    max-width: --maxwidth;
     margin-inline: auto;
     /* box-sizing: border-box;
     position: sticky;
     top: 0; */
     z-index: 10;
-    background: var(--white);
-    color: var(--black);
-    padding: 2.5rem 3rem;
+    background: --ntrl-50;
+    color: --ntrl-10;
+    padding: 2.5rem 1.5rem;
     display: flex;
     justify-content: space-between;
+  }
+
+  /* TODO: make responsive */
+  a:not(.title) {
+    @media (--LG) {
+      display: none;
+    }
   }
 
   div {
@@ -63,11 +71,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Mulish', sans-serif;
-    font-size: 1.3rem;
+    font-family: --mulish;
+    font-size: 1.2rem;
   }
 
   .title {
+    font-family: --fraunces;
+    font-size: 1.25rem;
+    font-variation-settings: 'wght' 450, 'SOFT' 100, 'WONK' 1;
     font-weight: 600;
   }
 

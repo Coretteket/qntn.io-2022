@@ -2,7 +2,6 @@
   import type { Load } from '@sveltejs/kit';
   import { theme, locale, dict } from '../scripts/stores';
   import { loadTranslations } from '../i18n';
-  import { routes } from '../scripts/types';
 
   export const load: Load = async ({ url, session }) => {
     const { pathname } = url;
@@ -20,10 +19,10 @@
 </script>
 
 <script lang="ts">
-  import SessionHandler from '$lib/SessionHandler.svelte';
+  import SessionHandler from '../lib/SessionHandler.svelte';
   import Navigation from '../lib/Navigation.svelte';
-  import '@fontsource/anybody/variable.css';
-  import '@fontsource/mulish';
+  import '@fontsource/fraunces/variable-full.css';
+  import '@fontsource/mulish/variable.css';
   import '../app.css';
 </script>
 
@@ -37,8 +36,9 @@
 
 <style>
   main {
-    max-width: var(--maxwidth);
+    max-width: --maxwidth;
     margin-inline: auto;
-    padding-inline: 3rem;
+    padding-inline: 1.5rem;
+    font-family: --mulish;
   }
 </style>
