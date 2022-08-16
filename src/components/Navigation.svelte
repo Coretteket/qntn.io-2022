@@ -3,9 +3,9 @@
   import { theme } from '../scripts/stores';
   import T from './Translate.svelte';
   import { t } from '../i18n';
-  import Language from '$svg/language.svg';
-  import Moon from '$svg/moon.svg';
-  import Sun from '$svg/sun.svg';
+  import Language from '../svg/language.svg';
+  import Moon from '../svg/moon.svg';
+  import Sun from '../svg/sun.svg';
   import '../app.css';
 
   $: themeSwitch = $t('g.themeSwitch', { theme: $theme == 'dark' ? $t('g.light') : $t('g.dark') });
@@ -72,14 +72,14 @@
     align-items: center;
     justify-content: center;
     font-family: --mulish;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .title {
     font-family: --fraunces;
     font-size: 1.25rem;
-    font-variation-settings: 'wght' 450, 'SOFT' 100, 'WONK' 1;
-    font-weight: 600;
+    font-variation-settings: 'SOFT' 100, 'WONK' 1;
+    font-weight: 450;
   }
 
   button {

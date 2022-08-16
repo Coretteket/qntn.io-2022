@@ -1,11 +1,10 @@
-import { writable, type Writable } from 'svelte/store';
+import { browser } from '$app/env';
+import { readable, writable } from 'svelte/store';
 import type { Dict, Locale, Theme } from './types';
 
-export const theme: Writable<Theme> = writable('auto');
-export const locale: Writable<Locale> = writable('en');
-export const dict: Writable<Dict> = writable({});
+export const theme = writable<Theme>('auto');
+export const locale = writable<Locale>('en');
+export const dict = writable<Dict>({});
 
-export const screenH = writable(1);
-export const screenW = writable(1);
-export const scrollY = writable(0);
-export const mouse = writable({ x: 0, y: 0 });
+const getMotionPreference = () => browser && window.matchMedia('(prefers-reduced-motion)').matches;
+export const reducedMotion = readable(getMotionPreference());

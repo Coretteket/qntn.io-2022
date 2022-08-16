@@ -1,11 +1,20 @@
-import { isType, paths, type Dict, type Locale, type Route } from '../scripts/types';
+import {
+  isType,
+  paths,
+  type Dict,
+  type Locale,
+  type PartialDict,
+  type Route,
+} from '../scripts/types';
 import { dict } from '../scripts/stores';
 import { derived } from 'svelte/store';
 import type { Page } from '@sveltejs/kit';
 import { page } from '$app/stores';
 import { routes, type Path } from '../scripts/types';
 
-const loader = (locale: Locale, route: Route) => import(`../i18n/${locale}/${route}.json`);
+const files = import.meta.glob('../i18n/*/*.json');
+
+const loader = (locale: Locale, route: Route) => files[`./${locale}/${route}.json`]();
 
 export const loadTranslations = async (
   session: App.Session,
@@ -26,35 +35,35 @@ export const translate = (
   page: Page,
   key: string,
   vars?: Record<string, string>
-): string => {
+): string | null => {
   const { routeId } = page;
 
   const global = key.startsWith('g.');
-  const route: Route = global ? 'global' : routes[('/' + routeId) as Path];
+  const route = global ? 'global' : routes[('/' + routeId) as Path];
 
-  const routedDict = dict[route];
-  const parsedKey = key.replace(/^g\./, '');
+  const parsedKeys = key.replace(/^g\./, '').split('.');
+  let partialDict: string | PartialDict = dict[route];
+  if (!partialDict) return null;
 
-  if (!routedDict || !routedDict[parsedKey]) return key;
-
-  let text = routedDict[parsedKey];
-
-  if (vars) {
-    Object.entries(vars).forEach((e) => {
-      text = text.replace(`{${e[0]}}`, e[1]);
-    });
+  let text: string;
+  for (const key of parsedKeys) {
+    if (typeof partialDict == 'string') return null;
+    partialDict = (partialDict as PartialDict)[key];
   }
 
-  const replace = {
-    _: '&nbsp;',
-    '`': '&lsquo;',
-    "'": '&rsquo;',
-  };
+  if (typeof partialDict != 'string') return null;
+  text = partialDict;
 
-  type Replace = keyof typeof replace;
-  Object.keys(replace).forEach((e) => {
-    text = text.replace(e, replace[e as Replace]);
-  });
+  if (vars) for (const k in vars) text = text.replace(`{${k}}`, vars[k]);
+
+  const replace = new Map([
+    ['_', '&nbsp;'],
+    ['`', '&lsquo;'],
+    ["'", '&rsquo;'],
+    ['\\*(.*)\\*', '<i>$1</i>'],
+  ]);
+
+  replace.forEach((v, k) => (text = text.replace(new RegExp(k, 'g'), v)));
 
   return text;
 };

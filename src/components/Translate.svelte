@@ -3,4 +3,4 @@
   export let key: string;
 </script>
 
-{@html $t(key)}
+{@html $t(key) ?? ''}

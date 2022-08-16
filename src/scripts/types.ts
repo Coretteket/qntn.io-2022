@@ -1,4 +1,5 @@
-export type Dict = { [route in Route]?: Record<string, string> };
+export type PartialDict = { [key: string]: string | PartialDict };
+export type Dict = Record<Route, PartialDict>;
 
 export const routes = { '/': 'index', '*': 'global' } as const;
 export type Route = typeof routes[Path];

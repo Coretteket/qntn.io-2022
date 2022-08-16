@@ -18,8 +18,3 @@ declare namespace App {
 
   interface Stuff {}
 }
-
-declare module 'gsap/dist/ScrollTrigger.js' {
-  export * from 'gsap/ScrollTrigger';
-  export { ScrollTrigger as default } from 'gsap/ScrollTrigger';
-}

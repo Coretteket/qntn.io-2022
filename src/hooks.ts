@@ -6,11 +6,11 @@ import { parse } from 'cookie';
 export const handle: Handle = async ({ event, resolve }) => {
   const { headers } = event.request;
 
-  const acceptLang = headers.get('accept-language') || '';
+  const acceptLang = headers.get('accept-language') ?? '';
   const acceptPrefers = headers.get('sec-ch-prefers-color-scheme');
-  const cookies = parse(headers.get('cookie') || '');
+  const cookies = parse(headers.get('cookie') ?? '');
 
-  const localeHeader = pick(mutable(locales), acceptLang, { loose: true }) || 'en';
+  const localeHeader = pick(mutable(locales), acceptLang, { loose: true }) ?? 'en';
   const locale = isType(cookies.locale, locales) ? cookies.locale : localeHeader;
 
   const themeHeader = isType(acceptPrefers, themes) ? acceptPrefers : 'auto';
@@ -24,7 +24,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   `;
 
   const response = await resolve(event, {
-    transformPage: ({ html }) =>
+    transformPageChunk: ({ html }) =>
       html
         .replace('<html>', `<html lang="${locale}" data-theme="${theme}">`)
         .replace('<head>', `<head>${theme === 'auto' ? themeDetect : ''}`),

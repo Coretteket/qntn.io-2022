@@ -16,8 +16,10 @@
   --maxwidth: 70rem;
   --radius: 0.8rem;
 
-  --fraunces: 'FrauncesVariable', serif;
-  --mulish: 'MulishVariable', sans-serif;
+  --fraunces: Fraunces, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif,
+    Times, Source Serif Pro, serif;
+  --mulish: Mulish, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
+    helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
 }
 
 :root,
@@ -26,8 +28,9 @@
   --ntrl-10: #121212;
   --ntrl-20: #363636;
   --ntrl-30: #909090;
-  --ntrl-40: #e2e2e2;
+  --ntrl-40: #e7e7e7;
   --ntrl-50: #f7f7f7;
+  --ntrl-60: white;
 
   --scrn-10: --ntrl-40;
   --scrn-20: --ntrl-50;
@@ -43,8 +46,9 @@
   --ntrl-10: #f7f7f7;
   --ntrl-20: #c3c3c3;
   --ntrl-30: #8f8f8f;
-  --ntrl-40: #2e2e2e;
+  --ntrl-40: #272727;
   --ntrl-50: #171717;
+  --ntrl-60: black;
 
   --scrn-10: --ntrl-50;
   --scrn-20: --ntrl-40;
@@ -76,11 +80,36 @@ body {
   text-shadow: none;
 }
 
+section {
+  margin-block: 3rem;
+}
+
 h1,
 h2,
 h3,
 h4 {
   font-family: --fraunces;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+}
+
+h2 {
+  font-weight: 380;
+  font-size: 1.6rem;
+  padding-block: 0.2rem;
+  border-bottom: 2px solid --ntrl-40;
+  margin-bottom: 3rem;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+h4 {
+  font-weight: 450;
+  font-size: 1.3rem;
+  margin-top: 0;
 }
 
 a {
@@ -102,4 +131,24 @@ svg {
 
 svg * {
   vector-effect: non-scaling-stroke;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Fraunces;
+  font-style: normal;
+  font-weight: 100 900;
+  src: url(/fonts/fraunces.woff2) format('woff2');
+  unicode-range: U+0020-007F, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF,
+    U+FB00-FB4F, U+2190-21BB;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 200 1000;
+  src: url(/fonts/mulish.woff2) format('woff2');
+  unicode-range: U+0020-007F, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2200-22FF,
+    U+FB00-FB4F, U+2190-21BB;
 }

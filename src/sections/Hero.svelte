@@ -1,11 +1,11 @@
 <script lang="ts">
-  import T from './Translate.svelte';
+  import T from '../components/Translate.svelte';
   import { t } from '../i18n';
 </script>
 
-<header id="#hero">
+<header id="hero">
   <picture>
-    <!-- <source srcset="https://source.unsplash.com/random/800x600" media="(min-width: 800px)" /> -->
+    <!-- <source srcset="/headshot.png, /headshot@2x.png 2x" /> -->
     <img src="/headshot.webp" alt={$t('headshot')} />
   </picture>
 
@@ -36,15 +36,14 @@
 
   h1 {
     font-size: clamp(1.6rem, 2.8vw + 1.1rem, 3rem);
-    font-variation-settings: 'wght' 320, 'SOFT' 100, 'WONK' 1;
-    line-height: 1.1;
+    font-weight: 350;
     margin-top: 2rem;
   }
 
   a,
   p {
     font-size: clamp(1.2rem, 0.6vw + 1rem, 1.5rem);
-    font-variation-settings: 'wght' 350;
+    font-weight: 350;
   }
 
   p {

@@ -18,9 +18,9 @@
   .block {
     min-height: 25rem;
     border-radius: --radius;
-    margin-block: 2.5rem;
+    margin-bottom: 7rem;
     display: grid;
-    grid-auto-rows: 1fr;
+    grid-auto-rows: 1fr 80vw;
     grid-auto-columns: 1fr;
     overflow: hidden;
 
@@ -40,6 +40,9 @@
 
   .side {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .reversed {

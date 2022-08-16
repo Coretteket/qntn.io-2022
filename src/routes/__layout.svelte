@@ -4,9 +4,6 @@
   import { loadTranslations } from '../i18n';
 
   export const load: Load = async ({ url, session }) => {
-    const { pathname } = url;
-    if (pathname.endsWith('.woff2')) return {};
-
     theme.set(session.theme);
     locale.set(session.locale);
 
@@ -19,10 +16,8 @@
 </script>
 
 <script lang="ts">
-  import SessionHandler from '../lib/SessionHandler.svelte';
-  import Navigation from '../lib/Navigation.svelte';
-  import '@fontsource/fraunces/variable-full.css';
-  import '@fontsource/mulish/variable.css';
+  import SessionHandler from '../components/SessionHandler.svelte';
+  import Navigation from '../components/Navigation.svelte';
   import '../app.css';
 </script>
 
