@@ -1,8 +1,11 @@
 <script lang="ts">
-  import SessionHandler from '../components/SessionHandler.svelte';
-  import Navigation from '../components/sections/Navigation.svelte';
+  import SessionHandler from '../lib/components/SessionHandler.svelte';
+  import Navigation from '../lib/sections/Navigation.svelte';
+  import Seo from '../lib/sections/SEO.svelte';
   import '../app.css';
 </script>
+
+<Seo />
 
 <SessionHandler />
 
