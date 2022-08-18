@@ -1,5 +1,5 @@
 <script>
-  import { theme, locale } from '../scripts/stores';
+  import { theme, locale } from '../../scripts/stores';
   import { session } from '$app/stores';
   import { onMount } from 'svelte';
 

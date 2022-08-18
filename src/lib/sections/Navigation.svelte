@@ -1,7 +1,7 @@
 <script>
   import { toggleLocale, toggleTheme } from '../../scripts/util';
   import { theme } from '../../scripts/stores';
-  import T from '../Translate.svelte';
+  import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
   import Language from '../../svg/language.svg';
   import Moon from '../../svg/moon.svg';

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import T from '../../components/Translate.svelte';
+  import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
 </script>
 

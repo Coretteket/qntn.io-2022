@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { modulo } from '../scripts/util';
+  import { modulo } from '../../scripts/util';
   import { onMount } from 'svelte';
   import { tweened } from 'svelte/motion';
   import { quadInOut } from 'svelte/easing';

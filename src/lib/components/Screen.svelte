@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { spring } from 'svelte/motion';
-  import { reducedMotion } from '../scripts/stores';
+  import { reducedMotion } from '../../scripts/stores';
 
   export let url: string;
   export let offset = 40;
