@@ -133,6 +133,8 @@ svg * {
   vector-effect: non-scaling-stroke;
 }
 
+/* font styles */
+
 @font-face {
   font-display: swap;
   font-family: Fraunces;

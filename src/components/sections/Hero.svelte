@@ -1,6 +1,6 @@
 <script lang="ts">
-  import T from '../components/Translate.svelte';
-  import { t } from '../i18n';
+  import T from '../../components/Translate.svelte';
+  import { t } from '../../i18n';
 </script>
 
 <header id="hero">
@@ -26,6 +26,7 @@
 <style>
   header {
     padding-block: 3rem;
+    position: relative;
   }
 
   img {
@@ -47,7 +48,11 @@
   }
 
   p {
-    max-width: 50rem;
+    max-width: 18rem;
+
+    @media (--sm) {
+      max-width: 50rem;
+    }
   }
 
   a {

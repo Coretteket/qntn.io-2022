@@ -1,10 +1,10 @@
 <script>
-  import Block from '../components/Block.svelte';
-  import Screen from '../components/Screen.svelte';
-  import Tweet from '../components/Tweet.svelte';
-  import T from '../components/Translate.svelte';
-  import { theme } from '../scripts/stores';
-  import Carousel from '../components/Carousel.svelte';
+  import Block from '../../components/Block.svelte';
+  import Screen from '../../components/Screen.svelte';
+  import Tweet from '../../components/Tweet.svelte';
+  import T from '../../components/Translate.svelte';
+  import { theme } from '../../scripts/stores';
+  import Carousel from '../../components/Carousel.svelte';
 </script>
 
 <section id="projects">
