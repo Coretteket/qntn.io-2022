@@ -1,5 +1,5 @@
 import { isType, locales, themes, mutable } from './scripts/types';
-import type { Handle, GetSession } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit';
 import { pick } from 'accept-language-parser';
 import { parse } from 'cookie';
 
@@ -36,5 +36,3 @@ export const handle: Handle = async ({ event, resolve }) => {
 
   return response;
 };
-
-export const getSession: GetSession = ({ locals }) => locals;

@@ -4,7 +4,7 @@ import type { Dict, Locale, Theme } from './types';
 
 export const theme = writable<Theme>('auto');
 export const locale = writable<Locale>('en');
-export const dict = writable<Dict>({});
+export const dict = writable<Dict>({ index: {}, global: {} });
 
 const getMotionPreference = () => browser && window.matchMedia('(prefers-reduced-motion)').matches;
 export const reducedMotion = readable(getMotionPreference());

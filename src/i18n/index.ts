@@ -16,14 +16,10 @@ const files = import.meta.glob('../i18n/*/*.json');
 
 const loader = (locale: Locale, route: Route) => files[`./${locale}/${route}.json`]();
 
-export const loadTranslations = async (
-  session: App.Session,
-  url: URL | '*'
-): Promise<Partial<Dict>> => {
+export const loadTranslations = async (locale: Locale, url: URL | '*'): Promise<Partial<Dict>> => {
   const pathname = url === '*' ? '*' : url.pathname;
   if (!isType(pathname, paths)) return {};
 
-  const { locale } = session;
   const route = routes[pathname];
   const routeLoader = await loader(locale, route);
 

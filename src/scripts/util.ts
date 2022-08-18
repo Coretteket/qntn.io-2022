@@ -1,6 +1,10 @@
+import { invalidate } from '$app/navigation';
 import { theme, locale } from './stores';
 
-export const toggleLocale = () => locale.update((l) => (l === 'en' ? 'nl' : 'en'));
+export const toggleLocale = () => {
+  locale.update((l) => (l === 'en' ? 'nl' : 'en'));
+  invalidate();
+};
 
 export const toggleTheme = () => theme.update((t) => (t === 'light' ? 'dark' : 'light'));
 
