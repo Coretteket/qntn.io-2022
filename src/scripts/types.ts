@@ -1,7 +1,8 @@
-export type PartialDict = { [key: string]: string | PartialDict };
-export type Dict = Record<Route, PartialDict>;
+import routes from '../i18n/routes';
 
-export const routes = { '/': 'index', '*': 'global' } as const;
+export type PartialDict = { [key: string]: string | PartialDict };
+export type Dict = Partial<Record<Route, PartialDict>>;
+
 export type Route = typeof routes[Path];
 
 export const paths = Object.keys(routes) as Readonly<Path[]>;

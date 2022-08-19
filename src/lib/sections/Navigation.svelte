@@ -1,12 +1,11 @@
 <script>
-  import { toggleLocale, toggleTheme } from '../../scripts/util';
+  import { toggleLocale, toggleTheme } from '../../scripts/stores';
   import { theme } from '../../scripts/stores';
   import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
   import Language from '../../svg/language.svg';
   import Moon from '../../svg/moon.svg';
   import Sun from '../../svg/sun.svg';
-  // import '../../app.css';
 
   $: themeSwitch = $t('g.themeSwitch', { theme: $theme == 'dark' ? $t('g.light') : $t('g.dark') });
   $: localeSwitch = $t('g.localeSwitch');
@@ -26,11 +25,8 @@
     <a href="https://qntn.io/github/" target="_blank">Github</a>
 
     <button on:click={toggleTheme} title={themeSwitch} aria-label={themeSwitch}>
-      {#if $theme == 'light'}
-        <Moon />
-      {:else}
-        <Sun />
-      {/if}
+      {#if $theme == 'light'}<Moon />
+      {:else}<Sun />{/if}
     </button>
     <button on:click={toggleLocale} title={localeSwitch} aria-label={localeSwitch}>
       <Language />

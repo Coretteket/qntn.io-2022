@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { spring } from 'svelte/motion';
-  import { reducedMotion } from '../../scripts/stores';
 
   export let url: string;
   export let offset = 40;
@@ -19,7 +18,9 @@
   let screen: HTMLElement;
   const resizeHandler = () => {
     top = screen.getBoundingClientRect().top;
-    nomotion = $reducedMotion || !window.matchMedia('(min-width: 900px)').matches;
+    nomotion =
+      window.matchMedia('(prefers-reduced-motion)').matches ||
+      !window.matchMedia('(min-width: 900px)').matches;
   };
 
   const constrain = (v: number, a: number, b: number) => {

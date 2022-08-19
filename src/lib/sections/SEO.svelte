@@ -4,7 +4,7 @@
 
   const title = `${json.title} ${json.subtitle}`;
   const description = json.intro;
-  const url = $page.url.host;
+  const url = $page.url.origin;
 </script>
 
 <svelte:head>

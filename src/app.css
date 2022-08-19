@@ -75,6 +75,10 @@ body {
   font-family: --mulish;
 }
 
+html {
+  margin-left: calc(100vw - 100%);
+}
+
 ::selection {
   background: --highlight;
   text-shadow: none;
