@@ -131,6 +131,7 @@ button {
 svg {
   fill: none;
   stroke: --ntrl-10;
+  stroke-width: 1.5;
 }
 
 svg * {

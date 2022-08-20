@@ -3,9 +3,14 @@
   import { theme } from '../../scripts/stores';
   import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
-  import Language from '../../svg/language.svg';
-  import Moon from '../../svg/moon.svg';
-  import Sun from '../../svg/sun.svg';
+  import { page } from '$app/stores';
+
+  import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
+  import Twitter from 'feather-icons/dist/icons/twitter.svg';
+  import Github from 'feather-icons/dist/icons/github.svg';
+  import Moon from 'feather-icons/dist/icons/moon.svg';
+  import Sun from 'feather-icons/dist/icons/sun.svg';
+  import Globe from 'feather-icons/dist/icons/globe.svg';
 
   $: themeSwitch = $t('g.themeSwitch', { theme: $theme == 'dark' ? $t('g.light') : $t('g.dark') });
   $: localeSwitch = $t('g.localeSwitch');
@@ -20,16 +25,16 @@
     <a href="#contact"><T key="g.contact" /></a>
   </div>
   <div>
-    <a href="https://qntn.io/linkedin/" target="_blank">Linkedin</a>
-    <a href="https://qntn.io/twitter/" target="_blank">Twitter</a>
-    <a href="https://qntn.io/github/" target="_blank">Github</a>
+    <a href="/linkedin" sveltekit:prefetch target="_blank"><LinkedIn /></a>
+    <a href="/github" sveltekit:prefetch target="_blank"><Github /></a>
+    <a href="/twitter" sveltekit:prefetch target="_blank"><Twitter /></a>
 
     <button on:click={toggleTheme} title={themeSwitch} aria-label={themeSwitch}>
       {#if $theme == 'light'}<Moon />
       {:else}<Sun />{/if}
     </button>
     <button on:click={toggleLocale} title={localeSwitch} aria-label={localeSwitch}>
-      <Language />
+      <Globe />
     </button>
   </div>
 </nav>
