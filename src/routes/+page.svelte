@@ -1,11 +1,17 @@
 <script>
   import Hero from '../lib/sections/Hero.svelte';
-  import Projects from '../lib/sections/Projects.svelte';
-  import Blog from '../lib/sections/Blog.svelte';
+  import T from '../lib/components/Translate.svelte';
 </script>
 
 <Hero />
 
-<Projects />
+<p>
+  <T key="wip" />
+</p>
 
-<Blog />
+<style>
+  p {
+    color: --ntrl-30;
+    margin-block: 24px;
+  }
+</style>

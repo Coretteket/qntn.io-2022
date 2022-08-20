@@ -1,4 +1,7 @@
 <script lang="ts">
+  import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
+  import Twitter from 'feather-icons/dist/icons/twitter.svg';
+  import Github from 'feather-icons/dist/icons/github.svg';
   import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
 </script>
@@ -18,9 +21,9 @@
     <T key="intro" />
   </p>
 
-  <a href="#contact">
-    <T key="contact" />
-  </a>
+  <a href="/github" sveltekit:prefetch target="_blank"><Github /></a>
+  <a href="/twitter" sveltekit:prefetch target="_blank"><Twitter /></a>
+  <a href="/linkedin" sveltekit:prefetch target="_blank"><LinkedIn /></a>
 </header>
 
 <style>
@@ -45,6 +48,7 @@
   p {
     font-size: clamp(1.2rem, 0.6vw + 1rem, 1.5rem);
     font-weight: 350;
+    margin-bottom: 2.5rem;
   }
 
   p {
@@ -56,18 +60,6 @@
   }
 
   a {
-    position: relative;
-    color: --ntrl-20;
-  }
-
-  a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    top: 110%;
-    transition: top 50ms ease-in-out;
-    width: 100%;
-    height: 1px;
-    background-color: --ntrl-40;
+    margin-right: 1.5rem;
   }
 </style>

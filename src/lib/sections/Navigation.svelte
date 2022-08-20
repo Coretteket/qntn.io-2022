@@ -3,7 +3,6 @@
   import { theme } from '../../scripts/stores';
   import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
-  import { page } from '$app/stores';
 
   import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
   import Twitter from 'feather-icons/dist/icons/twitter.svg';
@@ -19,16 +18,8 @@
 <nav>
   <div>
     <a sveltekit:prefetch class="title" href="/">Quinten Coret</a>
-    <a href="#projects"><T key="g.projects" /></a>
-    <a href="#projects"><T key="g.blog" /></a>
-    <a href="#about"><T key="g.about" /></a>
-    <a href="#contact"><T key="g.contact" /></a>
   </div>
   <div>
-    <a href="/linkedin" sveltekit:prefetch target="_blank"><LinkedIn /></a>
-    <a href="/github" sveltekit:prefetch target="_blank"><Github /></a>
-    <a href="/twitter" sveltekit:prefetch target="_blank"><Twitter /></a>
-
     <button on:click={toggleTheme} title={themeSwitch} aria-label={themeSwitch}>
       {#if $theme == 'light'}<Moon />
       {:else}<Sun />{/if}
