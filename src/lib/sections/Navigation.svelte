@@ -3,7 +3,6 @@
   import { theme } from '../../scripts/stores';
   import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
-  import { page } from '$app/stores';
 
   import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
   import Twitter from 'feather-icons/dist/icons/twitter.svg';
@@ -30,8 +29,11 @@
     <a href="/twitter" sveltekit:prefetch target="_blank"><Twitter /></a>
 
     <button on:click={toggleTheme} title={themeSwitch} aria-label={themeSwitch}>
-      {#if $theme == 'light'}<Moon />
-      {:else}<Sun />{/if}
+      {#if $theme == 'light'}
+        <Moon />
+      {:else}
+        <Sun />
+      {/if}
     </button>
     <button on:click={toggleLocale} title={localeSwitch} aria-label={localeSwitch}>
       <Globe />
