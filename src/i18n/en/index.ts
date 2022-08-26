@@ -10,14 +10,14 @@ export default {
     bdh: {
       title: 'Better than Hugo',
       desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dicta, ratione laborum ipsum saepe inventore quas totam ullam, officiis, architecto quos animi. Modi doloremque nihil cum libero, enim iste voluptatibus!',
-      subtitle: 'The game went <i>viral</i>',
+      subtitle: 'The game went viral',
       subdesc:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dicta, ratione laborum ipsum saepe inventore quas totam ullam, officiis, architecto quos animi. Modi doloremque nihil cum libero, enim iste voluptatibus!',
     },
     nidk: {
       title: 'New in Parliament',
       desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dicta, ratione laborum ipsum saepe inventore quas totam ullam, officiis, architecto quos animi. Modi doloremque nihil cum libero, enim iste voluptatibus!',
-      subtitle: 'The bot found a <i>niche</i>',
+      subtitle: 'The bot found a niche',
       subdesc:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dicta, ratione laborum ipsum saepe inventore quas totam ullam, officiis, architecto quos animi. Modi doloremque nihil cum libero, enim iste voluptatibus!',
     },
