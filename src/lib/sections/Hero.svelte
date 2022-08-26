@@ -10,7 +10,7 @@
   </picture>
 
   <h1>
-    {$t('i.bdh.title')}<br />
+    {$t('i.title')}<br />
     {$t('i.subtitle')}
   </h1>
 
