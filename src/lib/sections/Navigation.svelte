@@ -1,7 +1,6 @@
 <script>
   import { toggleLocale, toggleTheme } from '../../scripts/stores';
   import { theme } from '../../scripts/stores';
-  import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
 
   import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
@@ -10,20 +9,21 @@
   import Moon from 'feather-icons/dist/icons/moon.svg';
   import Sun from 'feather-icons/dist/icons/sun.svg';
   import Globe from 'feather-icons/dist/icons/globe.svg';
+  import PageSelect from '$lib/components/PageSelect.svelte';
 
   $: themeSwitch = $t('g.themeSwitch', { theme: $theme == 'dark' ? $t('g.light') : $t('g.dark') });
   $: localeSwitch = $t('g.localeSwitch');
 </script>
 
 <nav>
-  <div>
-    <a sveltekit:prefetch class="title" href="/">Quinten Coret</a>
-    <a href="/#projects">{$t('g.projects')}</a>
-    <a href="/#blog">{$t('g.blog')}</a>
-    <a href="/about">{$t('g.about')}</a>
-    <a href="/#contact">{$t('g.contact')}</a>
+  <div class="links">
+    <PageSelect href="/">{$t('g.home')}</PageSelect>
+    <PageSelect href="/#projects">{$t('g.projects')}</PageSelect>
+    <PageSelect href="/#blog">{$t('g.blog')}</PageSelect>
+    <PageSelect href="/about">{$t('g.about')}</PageSelect>
+    <PageSelect href="/#contact">{$t('g.contact')}</PageSelect>
   </div>
-  <div>
+  <div class="icons">
     <a href="/linkedin" sveltekit:prefetch target="_blank"><LinkedIn /></a>
     <a href="/github" sveltekit:prefetch target="_blank"><Github /></a>
     <a href="/twitter" sveltekit:prefetch target="_blank"><Twitter /></a>
@@ -66,6 +66,10 @@
   div {
     width: max-content;
     display: flex;
+    gap: 0.5rem;
+  }
+
+  .icons {
     gap: 2.5rem;
   }
 

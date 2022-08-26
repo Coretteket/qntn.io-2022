@@ -13,7 +13,7 @@
 @custom-media --XL (width <= 1600px);
 
 :root {
-  --maxwidth: 70rem;
+  --maxwidth: 60rem;
   --radius: 0.8rem;
 
   --fraunces: Fraunces, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif,
