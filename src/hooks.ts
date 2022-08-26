@@ -1,6 +1,5 @@
 import { isType, locales, themes, mutable } from './scripts/types';
 import type { Handle } from '@sveltejs/kit';
-import { pick } from 'accept-language-parser';
 import { parse } from 'cookie';
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -10,11 +9,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   const acceptPrefers = headers.get('sec-ch-prefers-color-scheme');
   const cookies = parse(headers.get('cookie') ?? '');
 
-  const localeHeader = pick(mutable(locales), acceptLang, { loose: true }) ?? 'en';
+  const localeHeader = acceptLang.includes('nl') ? 'nl' : 'en';
   const locale = isType(cookies.locale, locales) ? cookies.locale : localeHeader;
 
-  const themeHeader = isType(acceptPrefers, themes) ? acceptPrefers : 'auto';
-  const theme = isType(cookies.theme, themes) ? cookies.theme : themeHeader;
+  // const themeHeader = isType(acceptPrefers, themes) ? acceptPrefers : 'auto';
+  const theme = isType(cookies.theme, themes) ? cookies.theme : 'auto';
 
   event.locals = { locale, theme };
 
@@ -31,8 +30,8 @@ export const handle: Handle = async ({ event, resolve }) => {
   });
 
   // set experimental client hints
-  response.headers.set('accept-ch', 'sec-ch-prefers-color-scheme');
-  response.headers.set('vary', 'sec-ch-prefers-color-scheme');
+  // response.headers.set('accept-ch', 'sec-ch-prefers-color-scheme');
+  // response.headers.set('vary', 'sec-ch-prefers-color-scheme');
 
   return response;
 };

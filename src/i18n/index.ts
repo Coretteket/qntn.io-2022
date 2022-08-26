@@ -2,12 +2,6 @@ import type { Dict } from '../scripts/types';
 import { dict } from '../scripts/stores';
 import { derived } from 'svelte/store';
 
-// const specialCharacters = new Map([
-//   ['_', '\u00A0'],
-//   ['`', '\u2018'],
-//   ["'", '\u2019'],
-// ]);
-
 /** Replaces parameters such as `{foo}` with given values for translation strings. */
 export const formatParams = (value: string, params: Record<string, string> | undefined) => {
   for (const param in params) {
@@ -18,11 +12,23 @@ export const formatParams = (value: string, params: Record<string, string> | und
   return value;
 };
 
+/** Special characters replaced in `formatValue()`. */
+const characters = [
+  ['`', '\u2018'],
+  ["'", '\u2019'],
+];
+
+/** Formats translation strings. */
+export const formatValue = (value: string) => {
+  characters.forEach(([k, v]) => (value = value.replace(new RegExp(k, 'g'), v)));
+  return value;
+};
+
 /** Localizes content based on a given `dictionary`, `key`, and optional `params`. */
 export const translate = (key: keyof Dict, dict?: Dict, params?: Record<string, string>) => {
   if (!dict) throw new Error(`No dictionary loaded.`);
   if (!(key in dict)) throw new Error(`No key '${key}' found in dictionary.`);
-  return formatParams(dict[key], params);
+  return formatValue(formatParams(dict[key], params));
 };
 
 /** Localizes content based on a given `key` and optional `params`. */

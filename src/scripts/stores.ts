@@ -8,10 +8,18 @@ export const locale = writable<Locale>('en');
 export const dict = writable<Dict | undefined>();
 
 export const toggleLocale = () => {
-  locale.update((l) => (l === 'en' ? 'nl' : 'en'));
+  locale.update((l) => {
+    l = l === 'en' ? 'nl' : 'en';
+    document.cookie = `locale=${l}`;
+    return l;
+  });
   invalidate(); // force reload of translation .ts files
 };
 
 export const toggleTheme = () => {
-  theme.update((t) => (t === 'light' ? 'dark' : 'light'));
+  theme.update((t) => {
+    t = t === 'light' ? 'dark' : 'light';
+    document.cookie = `theme=${t}`;
+    return t;
+  });
 };

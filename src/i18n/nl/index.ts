@@ -1,6 +1,6 @@
 export default {
   i: {
-    title: 'Hey, ik ben Quinten.',
+    title: 'Hey, ik ben Quinten Coret.',
     subtitle: 'En ik maak dingen.',
     intro:
       'Ik studeer Econometrie en Data Science aan de Vrije Universiteit, en ik hou ervan om data creatief toegangelijk te maken.',
