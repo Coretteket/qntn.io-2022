@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { modulo } from '../../scripts/util';
   import { onMount } from 'svelte';
   import { tweened } from 'svelte/motion';
   import { quadInOut } from 'svelte/easing';
@@ -7,6 +6,8 @@
   let items: HTMLDivElement;
   let offsetWidth: number;
   let length = 0;
+
+  const modulo = (a: number, b: number) => ((a % b) + b) % b;
 
   let offset = tweened(0, { easing: quadInOut });
   $: transform = modulo($offset, length) * offsetWidth;
