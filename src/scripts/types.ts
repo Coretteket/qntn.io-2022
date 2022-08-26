@@ -1,12 +1,10 @@
-import routes from '../i18n/routes';
+import type { loadTranslations } from '../i18n/loader';
+import type { loaders } from '../i18n/loader';
 
 export type PartialDict = { [key: string]: string | PartialDict };
-export type Dict = Partial<Record<Route, PartialDict>>;
+export type Dict = NonNullable<Awaited<ReturnType<typeof loadTranslations>>>;
 
-export type Route = typeof routes[Path];
-
-export const paths = Object.keys(routes) as Readonly<Path[]>;
-export type Path = keyof typeof routes;
+export type Path = keyof typeof loaders[Locale];
 
 export const locales = ['en', 'nl'] as const;
 export type Locale = typeof locales[number];
@@ -18,3 +16,9 @@ export const isType = <T>(t: unknown, l: readonly T[]): t is T => l.includes(t a
 
 export type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 export const mutable = <T>(t: T) => t as Mutable<T>;
+
+export type Intersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void
+  ? I
+  : never;
+
+export const intersect = <U>(obj: U) => obj as Intersection<U>;

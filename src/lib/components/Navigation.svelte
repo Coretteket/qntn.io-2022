@@ -18,10 +18,10 @@
 <nav>
   <div>
     <a sveltekit:prefetch class="title" href="/">Quinten Coret</a>
-    <a href="#projects"><T key="g.projects" /></a>
-    <a href="#projects"><T key="g.blog" /></a>
-    <a href="#about"><T key="g.about" /></a>
-    <a href="#contact"><T key="g.contact" /></a>
+    <a href="/#projects">{$t('g.projects')}</a>
+    <a href="/#blog">{$t('g.blog')}</a>
+    <a href="/about">{$t('g.about')}</a>
+    <a href="/#contact">{$t('g.contact')}</a>
   </div>
   <div>
     <a href="/linkedin" sveltekit:prefetch target="_blank"><LinkedIn /></a>

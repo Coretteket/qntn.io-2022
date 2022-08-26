@@ -1,16 +1,24 @@
-import { isType, paths, type Dict, type Locale, type Route } from '../scripts/types';
-import routes from './routes';
+import { flatten } from '../scripts/flatten';
+import { intersect, type Locale, type Path } from '../scripts/types';
 
-const files = import.meta.glob('../i18n/*/*.json');
+export const loaders = {
+  en: {
+    '*': () => import('./en/global'),
+    '/': () => import('./en/index'),
+    '/about': () => import('./en/about'),
+  },
+  nl: {
+    '*': () => import('./nl/global'),
+    '/': () => import('./nl/index'),
+    '/about': () => import('./nl/about'),
+  },
+};
 
-const loader = (locale: Locale, route: Route) => files[`./${locale}/${route}.json`]();
+const loader = async (locale: Locale, path: Path) => loaders[locale][path]();
 
-export const loadTranslations = async (locale: Locale, url: URL | '*'): Promise<Dict> => {
-  const pathname = url === '*' ? '*' : url.pathname;
-  if (!isType(pathname, paths)) return {};
-
-  const route = routes[pathname];
-  const routeLoader = await loader(locale, route);
-
-  return { [route]: routeLoader };
+export const loadTranslations = async (locale: Locale, url: URL | '*') => {
+  const pathname = url === '*' ? '*' : (url.pathname as Path);
+  if (!(pathname in loaders[locale])) return undefined;
+  const routedDict = (await loader(locale, pathname)).default;
+  return flatten(intersect(routedDict));
 };

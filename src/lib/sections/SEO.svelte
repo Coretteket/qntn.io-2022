@@ -1,9 +1,9 @@
 <script>
-  import json from '../../i18n/en/index.json';
+  import dict from '../../i18n/en/index';
   import { page } from '$app/stores';
 
-  const title = `${json.title} ${json.subtitle}`;
-  const description = json.intro;
+  const title = `${dict.i.title} ${dict.i.subtitle}`;
+  const description = dict.i.intro;
   const url = $page.url.origin;
 </script>
 

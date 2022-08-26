@@ -1,55 +1,36 @@
-import type { Dict, PartialDict } from '../scripts/types';
+import type { Dict } from '../scripts/types';
 import { dict } from '../scripts/stores';
 import { derived } from 'svelte/store';
-import type { Page } from '@sveltejs/kit';
-import { page } from '$app/stores';
-import routes from './routes';
-import type { Path } from '../scripts/types';
 
-const specialCharacters = new Map([
-  ['_', '\u00A0'],
-  ['`', '\u2018'],
-  ["'", '\u2019'],
-]);
+// const specialCharacters = new Map([
+//   ['_', '\u00A0'],
+//   ['`', '\u2018'],
+//   ["'", '\u2019'],
+// ]);
 
-const regExpReplace = (text: string, k: string, v: string) => text.replace(new RegExp(k, 'g'), v);
-
-export const translate = (dict: Dict, page: Page, key: string, vars?: Record<string, string>) => {
-  const { routeId } = page;
-  const path = `/${routeId}`;
-
-  const route = key.startsWith('g.') ? 'global' : routes[path as Path];
-
-  let partialDict: string | PartialDict | undefined = dict[route];
-  if (!partialDict) throw new Error(`No translations found for path '${path}'.`);
-
-  const parsedKeys = key.replace(/^g\./, '').split('.');
-  for (const key of parsedKeys) {
-    if (typeof partialDict == 'string' || !(key in partialDict))
-      throw new Error(`Key '${key}' not found for path '${path}'.`);
-
-    partialDict = (partialDict as PartialDict)[key];
+/** Replaces parameters such as `{foo}` with given values for translation strings. */
+export const formatParams = (value: string, params: Record<string, string> | undefined) => {
+  for (const param in params) {
+    const regex = new RegExp(`{${param}}`, 'g');
+    if (!value.match(regex)) throw new Error(`No parameter '${param}' found in '${value}'`);
+    value = value.replace(regex, params[param]);
   }
-
-  if (typeof partialDict != 'string') throw new Error(`Key '${key}' not found for path '${path}'.`);
-  let text = partialDict;
-
-  if (vars) for (const k in vars) text = text.replace(`{${k}}`, vars[k]);
-
-  specialCharacters.forEach((v, k) => (text = regExpReplace(text, k, v)));
-
-  if (text.match('</?[^>]*>')) return { html: text, text: regExpReplace(text, '</?[^>]*>', '') };
-
-  return text;
+  return value;
 };
 
-export const t = derived([dict, page], ([dict, page]) => (key: string, vars?: {}) => {
+/** Localizes content based on a given `dictionary`, `key`, and optional `params`. */
+export const translate = (key: keyof Dict, dict?: Dict, params?: Record<string, string>) => {
+  if (!dict) throw new Error(`No dictionary loaded.`);
+  if (!(key in dict)) throw new Error(`No key '${key}' found in dictionary.`);
+  return formatParams(dict[key], params);
+};
+
+/** Localizes content based on a given `key` and optional `params`. */
+export const t = derived(dict, (dict) => (key: keyof Dict, params?: Record<string, string>) => {
   try {
-    const translation = translate(dict, page, key, vars);
-    if (typeof translation === 'object') return translation.text;
-    else return translation;
+    return translate(key, dict, params);
   } catch (e) {
-    // console.warn(e);
+    console.warn(e);
     return '';
   }
 });

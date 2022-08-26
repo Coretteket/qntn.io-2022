@@ -3,17 +3,18 @@
   import Screen from '../components/Screen.svelte';
   import T from '../components/Translate.svelte';
   import { theme } from '../../scripts/stores';
+  import { t } from '../../i18n';
 </script>
 
 <section id="projects">
   <h2>
-    <T key="projects" />
+    {$t('i.projects')}
   </h2>
 
   <Block color="var(--blue-10)" main="start">
     <div slot="main">
-      <h3><T key="bdh.title" /></h3>
-      <p><T key="bdh.desc" /></p>
+      <h3>{$t('i.bdh.title')}</h3>
+      <p>{$t('i.bdh.desc')}</p>
       <a href="/">Play the game</a>
     </div>
     <Screen slot="side" url="beterdanhugo.nl">
@@ -24,15 +25,15 @@
 
   <Block main="end">
     <div slot="main">
-      <h4><T key="bdh.subtitle" /></h4>
-      <p><T key="bdh.subdesc" /></p>
+      <h4>{$t('i.bdh.subtitle')}</h4>
+      <p>{$t('i.bdh.subdesc')}</p>
     </div>
   </Block>
 
   <Block color="var(--yllw-10)" main="start">
     <div slot="main">
-      <h3><T key="nidk.title" /></h3>
-      <p><T key="nidk.desc" /></p>
+      <h3>{$t('i.nidk.title')}</h3>
+      <p>{$t('i.nidk.desc')}</p>
       <a href="/">Play the game</a>
     </div>
     <Screen slot="side" url="twitter.com/nieuwindekamer" />
@@ -40,8 +41,8 @@
 
   <Block main="end">
     <div slot="main">
-      <h4><T key="nidk.subtitle" /></h4>
-      <p><T key="nidk.subdesc" /></p>
+      <h4>{$t('i.nidk.subtitle')}</h4>
+      <p>{$t('i.nidk.subdesc')}</p>
     </div>
   </Block>
 </section>

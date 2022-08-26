@@ -6,20 +6,20 @@
 <header id="hero">
   <picture>
     <!-- <source srcset="/headshot.png, /headshot@2x.png 2x" /> -->
-    <img src="/headshot.webp" alt={$t('headshot')} />
+    <img src="/headshot.webp" alt={$t('i.headshot')} />
   </picture>
 
   <h1>
-    <T key="title" /><br />
-    <T key="subtitle" />
+    {$t('i.bdh.title')}<br />
+    {$t('i.subtitle')}
   </h1>
 
   <p>
-    <T key="intro" />
+    {$t('i.intro')}
   </p>
 
   <a href="#contact">
-    <T key="contact" />
+    {$t('i.contact')}
   </a>
 </header>
 

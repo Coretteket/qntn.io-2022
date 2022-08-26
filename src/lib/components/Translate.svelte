@@ -1,16 +1,9 @@
 <script lang="ts">
-  import { translate } from '../../i18n';
-  import { dict } from '../../scripts/stores';
-  import { page } from '$app/stores';
+  import { t } from '../../i18n';
+  import type { Dict } from 'src/scripts/types';
 
-  export let key: string;
-  export let vars = {};
-
-  $: value = translate($dict, $page, key, vars);
+  export let key: keyof Dict;
+  export let params: Record<string, string> = {};
 </script>
 
-{#if typeof value === 'object'}
-  {@html value.html}
-{:else}
-  {value}
-{/if}
+{$t(key, params)}

@@ -7,9 +7,9 @@ export const load: LayoutLoad = async ({ url, data }) => {
   locale.set(data.locale);
 
   const global = await loadTranslations(data.locale, '*');
+  if (global) dict.update((dict) => ({ ...dict, ...global }));
   const routes = await loadTranslations(data.locale, url);
-
-  dict.update((dict) => ({ ...dict, ...global, ...routes }));
+  if (routes) dict.update((dict) => ({ ...dict, ...routes }));
 
   return { path: url.pathname };
 };
