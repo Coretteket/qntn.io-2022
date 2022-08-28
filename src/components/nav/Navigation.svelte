@@ -1,9 +1,8 @@
 <script>
   import PageSelect from './PageSelect.svelte';
   import { toggleLocale, toggleTheme } from '../../scripts/stores';
-  import { theme } from '../../scripts/stores';
+  // import { theme } from '../../scripts/stores';
   import { t } from '../../i18n';
-  import { page } from '$app/stores';
   import Button from './Button.svelte';
 
   // import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
@@ -13,12 +12,10 @@
   // import Sun from 'feather-icons/dist/icons/sun.svg';
   // import Globe from 'feather-icons/dist/icons/globe.svg';
 
-  $: themeSwitch = $t('global.themeSwitch', {
-    theme: $theme == 'dark' ? $t('global.light') : $t('global.dark'),
-  });
-  $: localeSwitch = $t('global.localeSwitch');
-
-  const test = ['i-eva-color-palette-fill', 'i-eva-globe-fill'];
+  // $: themeSwitch = $t('global.themeSwitch', {
+  //   theme: $theme == 'dark' ? $t('global.light') : $t('global.dark'),
+  // });
+  // $: localeSwitch = $t('global.localeSwitch');
 </script>
 
 <nav class="u flex child:flex child:w-max justify-between mx-auto z-10 px-10 py-6">

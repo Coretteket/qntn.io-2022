@@ -1,12 +1,6 @@
 // https://uno.antfu.me/
 
-import {
-  defineConfig,
-  presetUno,
-  presetIcons,
-  transformerCompileClass,
-  type SourceCodeTransformer,
-} from 'unocss';
+import { defineConfig, presetUno, presetIcons, transformerCompileClass } from 'unocss';
 
 import dotenv from 'dotenv';
 dotenv.config();

@@ -1,6 +1,6 @@
 import type { LayoutLoad } from './$types';
 import { loadTranslations } from '../i18n/loader';
-import { dict, locale, theme } from '../scripts/stores';
+import { dict } from '../scripts/stores';
 import type { Locale, Theme } from 'src/scripts/types';
 
 export const load: LayoutLoad = async ({ url, data }) => {
