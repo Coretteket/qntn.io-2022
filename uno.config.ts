@@ -18,10 +18,10 @@ export default defineConfig({
   ],
   transformers: [
     transformerTheme({
-      prefix: process.env.UNO_AUTO,
+      prefix: process.env.UNO_THEME_TRIGGER,
     }),
     transformerCompileClass({
-      trigger: process.env.UNO_TRIGGER,
+      trigger: process.env.UNO_COMPILE_TRIGGER,
     }),
   ],
   variants: [
