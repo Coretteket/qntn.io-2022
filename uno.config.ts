@@ -11,19 +11,8 @@ import {
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log(process.env.UNO_TRIGGER);
-
 const createVariant = (v: string, selector: (s: string) => string) => (m: string) =>
   m.startsWith(v) ? { matcher: m.slice(v.length), selector: selector } : undefined;
-
-const createTransformer = <T extends (opts: {}) => SourceCodeTransformer>(
-  transformer: T,
-  opts: Parameters<T>[0] & { disable?: boolean }
-) => {
-  const t = transformer(opts);
-  if (opts.disable) t.transform = () => {};
-  return t;
-};
 
 export default defineConfig({
   presets: [
@@ -31,8 +20,7 @@ export default defineConfig({
     presetIcons({ extraProperties: { display: 'inline-block', 'font-size': '1.25rem' } }),
   ],
   transformers: [
-    createTransformer(transformerCompileClass, {
-      disable: false,
+    transformerCompileClass({
       trigger: process.env.UNO_TRIGGER,
       classPrefix: 'u-',
     }),
