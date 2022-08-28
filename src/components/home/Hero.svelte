@@ -1,25 +1,24 @@
 <script lang="ts">
-  import T from '../components/Translate.svelte';
   import { t } from '../../i18n';
 </script>
 
 <header id="hero">
   <picture>
     <!-- <source srcset="/headshot.png, /headshot@2x.png 2x" /> -->
-    <img src="/headshot.webp" alt={$t('i.headshot')} />
+    <img src="/headshot.webp" alt={$t('home.headshot')} />
   </picture>
 
   <h1>
-    {$t('i.title')}<br />
-    {$t('i.subtitle')}
+    {$t('home.title')}<br />
+    {$t('home.subtitle')}
   </h1>
 
   <p>
-    {$t('i.intro')}
+    {$t('home.intro')}
   </p>
 
   <a href="#contact">
-    {$t('i.contact')}
+    {$t('home.contact')}
   </a>
 </header>
 
@@ -50,14 +49,14 @@
   p {
     max-width: 18rem;
 
-    @media (--sm) {
+    @media (min-width: 600px) {
       max-width: 50rem;
     }
   }
 
   a {
     position: relative;
-    color: --ntrl-20;
+    color: var(--ntrl-20);
   }
 
   a::after {
@@ -68,6 +67,6 @@
     transition: top 50ms ease-in-out;
     width: 100%;
     height: 1px;
-    background-color: --ntrl-40;
+    background-color: var(--ntrl-40);
   }
 </style>

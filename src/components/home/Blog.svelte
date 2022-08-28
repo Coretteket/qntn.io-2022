@@ -34,7 +34,7 @@
     display: flex;
     gap: 3rem;
 
-    @media (--MD) {
+    @media (max-width: 900px) {
       flex-direction: column;
     }
   }
@@ -43,15 +43,15 @@
     width: 100%;
     padding: 2rem;
     min-height: 30rem;
-    border-radius: --radius;
+    border-radius: var(--radius);
   }
 
   .blue {
-    background-color: --blue-10;
+    background-color: var(--blue-10);
   }
 
   .yellow {
-    background-color: --yllw-10;
+    background-color: var(--yllw-10);
   }
 
   h3 {

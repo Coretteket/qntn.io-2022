@@ -1,9 +1,9 @@
 <script>
-  import dict from '../../i18n/en/index';
+  import dict from '../../i18n/en/home';
   import { page } from '$app/stores';
 
-  const title = `${dict.i.title} ${dict.i.subtitle}`;
-  const description = dict.i.intro;
+  const title = `${dict.home.title} ${dict.home.subtitle}`;
+  const description = dict.home.intro;
   const url = $page.url.origin;
 </script>
 

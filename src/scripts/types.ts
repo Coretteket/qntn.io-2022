@@ -18,7 +18,7 @@ export type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 export const mutable = <T>(t: T) => t as Mutable<T>;
 
 export type Intersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void
-  ? I
-  : never;
+	? I
+	: never;
 
 export const intersect = <U>(obj: U) => obj as Intersection<U>;

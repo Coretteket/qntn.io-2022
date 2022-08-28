@@ -1,5 +1,5 @@
 export default {
-  a: {
-    name: 'My name is Quinten.',
-  },
+	about: {
+		name: 'My name is Quinten.'
+	}
 };

@@ -4,12 +4,12 @@ import { intersect, type Locale, type Path } from '../scripts/types';
 export const loaders = {
   en: {
     '*': () => import('./en/global'),
-    '/': () => import('./en/index'),
+    '/': () => import('./en/home'),
     '/about': () => import('./en/about'),
   },
   nl: {
     '*': () => import('./nl/global'),
-    '/': () => import('./nl/index'),
+    '/': () => import('./nl/home'),
     '/about': () => import('./nl/about'),
   },
 };

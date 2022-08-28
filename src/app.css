@@ -1,21 +1,6 @@
-/* custom properties */
-
-@custom-media --xs (width > 300px);
-@custom-media --sm (width > 600px);
-@custom-media --md (width > 900px);
-@custom-media --lg (width > 1200px);
-@custom-media --xl (width > 1600px);
-
-@custom-media --XS (width <= 300px);
-@custom-media --SM (width <= 600px);
-@custom-media --MD (width <= 900px);
-@custom-media --LG (width <= 1200px);
-@custom-media --XL (width <= 1600px);
-
 :root {
   --maxwidth: 60rem;
   --radius: 0.8rem;
-
   --fraunces: Fraunces, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif,
     Times, Source Serif Pro, serif;
   --mulish: Mulish, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
@@ -32,8 +17,8 @@
   --ntrl-50: #f7f7f7;
   --ntrl-60: white;
 
-  --scrn-10: --ntrl-40;
-  --scrn-20: --ntrl-50;
+  --scrn-10: var(--ntrl-40);
+  --scrn-20: var(--ntrl-50);
 
   --blue-10: #a1c7f5;
   --yllw-10: #f6daa7;
@@ -43,6 +28,7 @@
 
 [data-theme='dark'] {
   color-scheme: dark;
+
   --ntrl-10: #f7f7f7;
   --ntrl-20: #c3c3c3;
   --ntrl-30: #8f8f8f;
@@ -50,8 +36,8 @@
   --ntrl-50: #171717;
   --ntrl-60: black;
 
-  --scrn-10: --ntrl-50;
-  --scrn-20: --ntrl-40;
+  --scrn-10: var(--ntrl-50);
+  --scrn-20: var(--ntrl-40);
 
   --blue-10: #16314e;
   --yllw-10: #33251b;
@@ -61,27 +47,34 @@
 
 /* global styles */
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 html,
 body {
   margin: 0;
-  background: --ntrl-50;
-  color: --ntrl-10;
+  background: var(--ntrl-50);
+  color: var(--ntrl-10);
   scroll-padding-top: 3rem;
   scroll-behavior: smooth;
-  font-family: --mulish;
+  font-family: var(--mulish);
 }
 
 html {
-  margin-left: calc(100vw - 100%);
+  scrollbar-gutter: stable;
+  @supports not (scrollbar-gutter: stable) {
+    margin-left: calc(100vw - 100%);
+  }
 }
 
 ::selection {
-  background: --highlight;
+  background: var(--highlight);
   text-shadow: none;
+}
+
+[data-transition='false'] :not([data-transition='true'], [data-transition='true'] *) {
+  transition: none !important;
 }
 
 section {
@@ -92,7 +85,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: --fraunces;
+  font-family: var(--fraunces);
   font-variation-settings: 'SOFT' 100, 'WONK' 1;
 }
 
@@ -100,7 +93,7 @@ h2 {
   font-weight: 380;
   font-size: 1.6rem;
   padding-block: 0.2rem;
-  border-bottom: 2px solid --ntrl-40;
+  border-bottom: 2px solid var(--ntrl-40);
   margin-bottom: 3rem;
 }
 
@@ -116,10 +109,10 @@ h4 {
   margin-top: 0;
 }
 
-a {
+/* a {
   text-decoration: none;
   color: unset;
-}
+} */
 
 button {
   background: transparent;
@@ -130,7 +123,7 @@ button {
 
 svg {
   fill: none;
-  stroke: --ntrl-10;
+  stroke: var(--ntrl-10);
   stroke-width: 1.5;
 }
 

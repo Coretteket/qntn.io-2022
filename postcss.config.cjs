@@ -7,11 +7,8 @@ const config = {
     postcssShortVar,
     postcssPresetEnv({
       stage: 0,
-      importFrom: './src/app.css',
-      // TODO: stay alert to future importFrom deprecation
-      features: { 'custom-properties': { disableDeprecationNotice: true } },
     }),
-    cssnano,
+    // cssnano,
   ],
 };
 

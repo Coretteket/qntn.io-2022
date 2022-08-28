@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import type { Dict, Locale, Theme } from './types';
 import { invalidate } from '$app/navigation';
-import type { loadTranslations } from 'src/i18n/loader';
+import { disableTransitionUntil } from './util';
 
 export const theme = writable<Theme>('auto');
 export const locale = writable<Locale>('en');
@@ -17,9 +17,11 @@ export const toggleLocale = () => {
 };
 
 export const toggleTheme = () => {
-  theme.update((t) => {
-    t = t === 'light' ? 'dark' : 'light';
-    document.cookie = `theme=${t}`;
-    return t;
-  });
+  disableTransitionUntil(() =>
+    theme.update((t) => {
+      t = t === 'light' ? 'dark' : 'light';
+      document.cookie = `theme=${t}`;
+      return t;
+    })
+  );
 };

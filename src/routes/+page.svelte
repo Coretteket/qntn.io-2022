@@ -1,7 +1,7 @@
 <script>
-  import Hero from '../lib/sections/Hero.svelte';
-  import Projects from '../lib/sections/Projects.svelte';
-  import Blog from '../lib/sections/Blog.svelte';
+  import Hero from '../components/home/Hero.svelte';
+  import Projects from '../components/home/Projects.svelte';
+  import Blog from '../components/home/Blog.svelte';
 </script>
 
 <Hero />
