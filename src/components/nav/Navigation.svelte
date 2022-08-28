@@ -18,15 +18,15 @@
   // $: localeSwitch = $t('global.localeSwitch');
 </script>
 
-<nav class="u flex child:flex child:w-max justify-between mx-auto z-10 px-10 py-6">
-  <div class="u gap-2 child:transition-colors font-600">
+<nav class="u flex justify-between mx-auto z-10 px-10 py-6 child:flex child:w-max">
+  <div class="u gap-8 font-600">
     <PageSelect href="/">{$t('global.home')}</PageSelect>
     <PageSelect href="/#projects">{$t('global.projects')}</PageSelect>
     <PageSelect href="/#blog">{$t('global.blog')}</PageSelect>
     <PageSelect href="/about">{$t('global.about')}</PageSelect>
     <PageSelect href="/#contact">{$t('global.contact')}</PageSelect>
   </div>
-  <div class="u gap-4 text-zinc-3 items-center">
+  <div class="u gap-4 items-center auto:text-zinc-7">
     <Button icon="i-eva-color-palette-fill" action={toggleTheme} />
     <Button icon="i-eva-globe-fill" action={toggleLocale} />
   </div>
