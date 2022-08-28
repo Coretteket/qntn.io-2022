@@ -16,7 +16,6 @@ export default defineConfig({
   transformers: [
     transformerCompileClass({
       trigger: process.env.UNO_TRIGGER,
-      classPrefix: 'u-',
     }),
   ],
   variants: [
