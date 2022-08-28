@@ -1,7 +1,7 @@
 // https://uno.antfu.me/
 
-import { defineConfig, presetUno, presetIcons } from 'unocss';
-import transformerCompileClass from './src/scripts/transform';
+import { defineConfig, presetUno, presetIcons, transformerCompileClass } from 'unocss';
+// import transformerCompileClass from './src/scripts/transform';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -14,11 +14,7 @@ export default defineConfig({
     presetUno(),
     presetIcons({ extraProperties: { display: 'inline-block', 'font-size': '1.25rem' } }),
   ],
-  transformers: [
-    transformerCompileClass({
-      disable: process.env.VERCEL === '0',
-    }),
-  ],
+  transformers: [transformerCompileClass()],
   variants: [
     createVariant('child:', (s) => `${s} > *`),
     createVariant('current:', (s) => `${s}[aria-current="true"]`),

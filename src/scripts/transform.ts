@@ -77,6 +77,7 @@ export default function transformerCompileClass(
           start + match[0].length - 1,
           replacements.join(' ')
         );
+        console.log(s.toString());
       }
     },
   };

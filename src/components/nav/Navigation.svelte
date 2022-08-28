@@ -21,15 +21,15 @@
   const test = ['i-eva-color-palette-fill', 'i-eva-globe-fill'];
 </script>
 
-<nav class="flex child:flex child:w-max justify-between mx-auto z-10 px-10 py-6">
-  <div class="gap-2 child:transition-colors font-600">
+<nav class=":uno: flex child:flex child:w-max justify-between mx-auto z-10 px-10 py-6">
+  <div class=":uno: gap-2 child:transition-colors font-600">
     <PageSelect href="/">{$t('global.home')}</PageSelect>
     <PageSelect href="/#projects">{$t('global.projects')}</PageSelect>
     <PageSelect href="/#blog">{$t('global.blog')}</PageSelect>
     <PageSelect href="/about">{$t('global.about')}</PageSelect>
     <PageSelect href="/#contact">{$t('global.contact')}</PageSelect>
   </div>
-  <div class="gap-4 text-zinc-3 items-center">
+  <div class=":uno: gap-4 text-zinc-3 items-center">
     <Button icon="i-eva-color-palette-fill" action={toggleTheme} />
     <Button icon="i-eva-globe-fill" action={toggleLocale} />
   </div>
