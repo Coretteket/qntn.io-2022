@@ -9,7 +9,7 @@
 <a
   {href}
   aria-current={current}
-  class="u auto:text-zinc-6 auto:current:text-zinc-8 current:font-800"
+  class="u font-medium auto:text-zinc-600 auto:current:text-zinc-8 current:font-extrabold"
 >
   <slot />
 </a>

@@ -1,6 +1,5 @@
 const postcssShortVar = require('postcss-short-var');
 const postcssPresetEnv = require('postcss-preset-env');
-const cssnano = require('cssnano');
 
 const config = {
   plugins: [
@@ -8,7 +7,6 @@ const config = {
     postcssPresetEnv({
       stage: 0,
     }),
-    // cssnano,
   ],
 };
 

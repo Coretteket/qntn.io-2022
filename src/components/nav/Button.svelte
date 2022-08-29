@@ -3,6 +3,9 @@
   export let action: () => void;
 </script>
 
-<button on:click={action} class="u h-9 p-2 rounded-2 auto:bg-zinc-2 hover:ring-2 auto:ring-zinc-3">
+<button
+  on:click={action}
+  class="u h-9 p-2 rounded-2 auto:text-zinc-7 auto:bg-zinc-2 hover:ring-2 auto:ring-zinc-3 transition-all"
+>
   <span class={icon} />
 </button>

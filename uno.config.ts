@@ -1,7 +1,7 @@
 // https://uno.antfu.me/
 
 import { defineConfig, presetUno, presetIcons, transformerCompileClass } from 'unocss';
-import transformerTheme from './src/scripts/transformer';
+import transformerAutoTheme from './src/styles/transformer-auto-theme';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -14,10 +14,12 @@ export default defineConfig({
     presetUno({
       dark: { dark: "[data-theme='dark']" },
     }),
-    presetIcons({ extraProperties: { display: 'inline-block', 'font-size': '1.25rem' } }),
+    presetIcons({
+      extraProperties: { display: 'inline-block', 'font-size': '1.25rem' },
+    }),
   ],
   transformers: [
-    transformerTheme({
+    transformerAutoTheme({
       prefix: process.env.UNO_THEME_TRIGGER,
     }),
     transformerCompileClass({

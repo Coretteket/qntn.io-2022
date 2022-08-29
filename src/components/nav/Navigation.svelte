@@ -19,14 +19,14 @@
 </script>
 
 <nav class="u flex justify-between mx-auto z-10 px-10 py-6 child:flex child:w-max">
-  <div class="u gap-8 font-600">
+  <div class="u gap-8">
     <PageSelect href="/">{$t('global.home')}</PageSelect>
     <PageSelect href="/#projects">{$t('global.projects')}</PageSelect>
     <PageSelect href="/#blog">{$t('global.blog')}</PageSelect>
     <PageSelect href="/about">{$t('global.about')}</PageSelect>
     <PageSelect href="/#contact">{$t('global.contact')}</PageSelect>
   </div>
-  <div class="u gap-4 items-center auto:text-zinc-7">
+  <div class="u gap-4 items-center">
     <Button icon="i-eva-color-palette-fill" action={toggleTheme} />
     <Button icon="i-eva-globe-fill" action={toggleLocale} />
   </div>
