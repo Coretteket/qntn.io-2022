@@ -1,5 +1,5 @@
-import type { loadTranslations } from '../i18n/loader';
-import type { loaders } from '../i18n/loader';
+import type { loadTranslations } from '../locales/loader';
+import type { loaders } from '../locales/loader';
 
 export type PartialDict = { [key: string]: string | PartialDict };
 export type Dict = NonNullable<Awaited<ReturnType<typeof loadTranslations>>>;
@@ -18,7 +18,7 @@ export type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 export const mutable = <T>(t: T) => t as Mutable<T>;
 
 export type Intersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void
-	? I
-	: never;
+  ? I
+  : never;
 
 export const intersect = <U>(obj: U) => obj as Intersection<U>;

@@ -2,7 +2,7 @@
   import PageSelect from './PageSelect.svelte';
   import { toggleLocale, toggleTheme } from '../../scripts/stores';
   // import { theme } from '../../scripts/stores';
-  import { t } from '../../i18n';
+  import { t } from '../../locales';
   import Button from './Button.svelte';
 
   // import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';

@@ -1,5 +1,5 @@
 <script>
-  import { t } from '../../i18n';
+  import { t } from '../../locales';
 </script>
 
 <section id="projects">

@@ -1,5 +1,5 @@
 <script>
-  import dict from '../../i18n/en/home';
+  import dict from '../../locales/en/home';
   import { page } from '$app/stores';
 
   const title = `${dict.home.title} ${dict.home.subtitle}`;

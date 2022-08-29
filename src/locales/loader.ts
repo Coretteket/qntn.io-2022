@@ -1,4 +1,4 @@
-import { flatten } from '../scripts/flatten';
+import { flatten } from '../scripts/util/nest-deep';
 import { intersect, type Locale, type Path } from '../scripts/types';
 
 export const loaders = {

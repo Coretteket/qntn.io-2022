@@ -1,5 +1,5 @@
 import type { LayoutLoad } from './$types';
-import { loadTranslations } from '../i18n/loader';
+import { loadTranslations } from '../locales/loader';
 import { dict } from '../scripts/stores';
 import type { Locale, Theme } from 'src/scripts/types';
 

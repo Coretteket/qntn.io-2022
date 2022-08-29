@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import type { Dict, Locale, Theme } from './types';
 import { invalidate } from '$app/navigation';
-import { disableTransitionUntil } from './util';
+import { disableTransitionUntil } from './util/disable-transition';
 
 export const theme = writable<Theme>('auto');
 export const locale = writable<Locale>('en');
