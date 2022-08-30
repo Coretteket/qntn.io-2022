@@ -17,7 +17,7 @@
     {$t('home.intro')}
   </p>
 
-  <a href="/github" target="__blank">
+  <a href="#contact">
     {$t('home.contact')}
   </a>
 </header>
