@@ -5,7 +5,9 @@
     "build": "vite build",
     "package": "svelte-kit package",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json --watch"
+    "check": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check --plugin-search-dir=. . --ignore-path .gitignore",
+    "format": "prettier --write --plugin-search-dir=. . --ignore-path .gitignore"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.100",
@@ -21,6 +23,8 @@
     "postcss-load-config": "^3.1.4",
     "postcss-preset-env": "^7.8.0",
     "postcss-short-var": "^0.0.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-svelte": "^2.7.0",
     "svelte": "^3.49.0",
     "svelte-check": "^2.9.0",
     "svelte-preprocess": "^4.10.7",
@@ -29,5 +33,18 @@
     "unocss": "^0.45.13",
     "vite": "^3.1.0-beta.1"
   },
-  "type": "module"
+  "type": "module",
+  "prettier": {
+    "useTabs": false,
+    "singleQuote": true,
+    "printWidth": 100,
+    "overrides": [
+      {
+        "files": "*.svelte",
+        "options": {
+          "parser": "svelte"
+        }
+      }
+    ]
+  }
 }

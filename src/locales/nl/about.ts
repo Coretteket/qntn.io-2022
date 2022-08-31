@@ -1,5 +1,5 @@
 export default {
-	about: {
-		name: 'Mijn naam is Quinten.'
-	}
+  about: {
+    name: 'Mijn naam is Quinten.',
+  },
 };

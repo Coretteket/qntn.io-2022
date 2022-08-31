@@ -3,14 +3,14 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare namespace App {
-	import type { Locale, Theme } from './scripts/types';
+  import type { Locale, Theme } from './scripts/types';
 
-	interface Locals {
-		locale: Locale;
-		theme: Theme;
-	}
+  interface Locals {
+    locale: Locale;
+    theme: Theme;
+  }
 
-	interface Platform {}
+  interface Platform {}
 
-	interface Stuff {}
+  interface Stuff {}
 }
