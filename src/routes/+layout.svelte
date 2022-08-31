@@ -28,6 +28,6 @@
     max-width: var(--maxwidth);
     margin-inline: auto;
     padding-inline: 1.5rem;
-    font-family: var(--mulish);
+    /* font-family: var(--mulish); */
   }
 </style>

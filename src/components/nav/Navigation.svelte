@@ -1,77 +1,55 @@
 <script>
   import PageSelect from './PageSelect.svelte';
-  import { toggleLocale, toggleTheme } from '../../scripts/stores';
-  // import { theme } from '../../scripts/stores';
+  import { loading, toggleLocale, toggleTheme } from '../../scripts/stores';
+  import { theme } from '../../scripts/stores';
   import { t } from '../../locales';
   import Button from './Button.svelte';
-
-  // import LinkedIn from 'feather-icons/dist/icons/linkedin.svg';
-  // import Twitter from 'feather-icons/dist/icons/twitter.svg';
-  // import Github from 'feather-icons/dist/icons/github.svg';
-  // import Moon from 'feather-icons/dist/icons/moon.svg';
-  // import Sun from 'feather-icons/dist/icons/sun.svg';
-  // import Globe from 'feather-icons/dist/icons/globe.svg';
-
-  // $: themeSwitch = $t('global.themeSwitch', {
-  //   theme: $theme == 'dark' ? $t('global.light') : $t('global.dark'),
-  // });
-  // $: localeSwitch = $t('global.localeSwitch');
 </script>
 
-<nav class="u flex justify-between mx-auto z-10 px-10 py-6 child:flex child:w-max">
-  <div class="u gap-8">
+<nav class="u flex items-center justify-between max-w-200 mx-auto z-10 px-6 py-6">
+  <div class="u flex w-max gap-8">
     <PageSelect href="/">{$t('global.home')}</PageSelect>
     <PageSelect href="/#projects">{$t('global.projects')}</PageSelect>
     <PageSelect href="/#blog">{$t('global.blog')}</PageSelect>
     <PageSelect href="/about">{$t('global.about')}</PageSelect>
     <PageSelect href="/#contact">{$t('global.contact')}</PageSelect>
   </div>
-  <div class="u gap-4 items-center">
-    <Button icon="i-eva-color-palette-fill" action={toggleTheme} />
-    <Button icon="i-eva-globe-fill" action={toggleLocale} />
+  <div class="u flex w-max gap-4 items-center">
+    <Button
+      on:click={toggleTheme}
+      title={$t('global.theme-button', {
+        theme: $t(`global.${$theme === 'dark' ? 'light' : 'dark'}`),
+      })}
+    >
+      <span data-transition="true" class="u grid gap-2 self-start w-min child:transition-transform">
+        <span class="i-tabler-moon" />
+        <span class="i-tabler-sun-high" />
+      </span>
+    </Button>
+    <Button on:click={toggleLocale} title={$t('global.locale-button')}>
+      {#if $loading}<span class="i-tabler-loader-2" />
+      {:else}<span class="i-ion-language" />{/if}
+      <span id="locale" class="u w-24 transition-all font-bold">{$t('global.other-locale')}</span>
+    </Button>
   </div>
 </nav>
 
 <style>
-  nav {
-    max-width: var(--maxwidth);
-    /* margin-inline: auto; */
-    /* box-sizing: border-box;
-    position: sticky;
-    top: 0; */
-    /* z-index: 10; */
-    background: var(--ntrl-50);
-    color: var(--ntrl-10);
-    /* padding: 2.5rem 1.5rem; */
-    /* display: flex; */
-    /* justify-content: space-between; */
+  :global([data-theme='dark']) :is(.i-tabler-moon, .i-tabler-sun-high) {
+    transform: translateY(-1.75rem);
   }
 
-  /* TODO: make responsive */
-  /* a:not(.title) {
-    @media (max-width: 1200px) {
-      display: none;
+  :lang(nl) #locale {
+    width: 4rem;
+  }
+
+  .i-tabler-loader-2 {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
     }
-  } */
-
-  div {
-    width: max-content;
-    display: flex;
   }
-  /*
-  a,
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mulish);
-    font-size: 1.1rem;
-  } */
-
-  /* .title {
-    font-family: var(--fraunces);
-    font-size: 1.25rem;
-    font-variation-settings: 'SOFT' 100, 'WONK' 1;
-    font-weight: 450;
-  } */
 </style>

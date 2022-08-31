@@ -6,6 +6,6 @@
 
 <Hero />
 
-<Projects />
+<!-- <Projects />
 
-<Blog />
+<Blog /> -->

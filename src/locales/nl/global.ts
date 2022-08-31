@@ -5,8 +5,9 @@ export default {
     blog: 'Blog',
     about: 'Over',
     contact: 'Contact',
-    localeSwitch: 'Gebruik Engelse website (English)',
-    themeSwitch: 'Gebruik {theme} thema',
+    'other-locale': 'English',
+    'locale-button': 'Ga naar Engelse website',
+    'theme-button': 'Gebruik {theme} thema',
     dark: 'donker',
     light: 'licht',
     seo: {

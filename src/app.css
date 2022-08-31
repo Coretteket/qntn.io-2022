@@ -1,5 +1,5 @@
 :root {
-  --maxwidth: 60rem;
+  --maxwidth: 50rem;
   --radius: 0.8rem;
   --fraunces: Fraunces, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif,
     Times, Source Serif Pro, serif;
@@ -59,6 +59,7 @@ body {
   scroll-padding-top: 3rem;
   scroll-behavior: smooth;
   font-family: var(--mulish);
+  /* font-family: 'Inter'; */
 }
 
 html {
@@ -87,6 +88,8 @@ h3,
 h4 {
   font-family: var(--fraunces);
   font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  /* font-family: 'Public Sans';
+  font-weight: 700; */
 }
 
 h2 {
