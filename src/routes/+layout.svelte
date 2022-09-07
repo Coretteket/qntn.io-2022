@@ -5,12 +5,10 @@
   import '@unocss/reset/tailwind.css';
   import 'uno.css';
   import '../app.css';
-  import type { LayoutData } from './$types';
-  import { locale, theme } from '../scripts/stores';
+  // import type { LayoutData } from './$types';
+  // import { dict, locale, theme } from '../scripts/stores';
 
-  export let data: LayoutData;
-  theme.set(data.theme);
-  locale.set(data.locale);
+  // export let data: LayoutData;
 </script>
 
 <Seo />
