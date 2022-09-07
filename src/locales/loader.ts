@@ -18,7 +18,12 @@ const loader = async (locale: Locale, path: Path) => loaders[locale][path]();
 
 export const loadTranslations = async (locale: Locale, url: URL | '*') => {
   const pathname = url === '*' ? '*' : (url.pathname as Path);
-  if (!(pathname in loaders[locale])) return undefined;
-  const routedDict = (await loader(locale, pathname)).default;
-  return flatten(intersect(routedDict));
+  if (pathname in loaders[locale])
+    return flatten(intersect((await loader(locale, pathname)).default));
+};
+
+export const loadAllTranslations = async (locale: Locale, url: URL) => {
+  const global = await loadTranslations(locale, '*');
+  const routed = await loadTranslations(locale, url);
+  if (routed && global) return { ...global, ...routed };
 };

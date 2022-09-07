@@ -6,7 +6,7 @@
 </script>
 
 <nav class="u flex items-center justify-between max-w-200 mx-auto z-10 px-6 py-6">
-  <div class="u flex w-max gap-8">
+  <div class="u flex w-max gap-8" data-sveltekit-prefetch>
     <PageSelect href="/">{$t('global.home')}</PageSelect>
     <PageSelect href="/#projects">{$t('global.projects')}</PageSelect>
     <PageSelect href="/#blog">{$t('global.blog')}</PageSelect>
