@@ -8,7 +8,10 @@
 <Button on:click={toggleLocale} title={$t('global.locale-button')}>
   {#if $loading}<span class="i-tabler-loader-2" />
   {:else}<span class="i-ion-language" />{/if}
-  <span id="locale" class="u w-24 transition-all font-bold">{$t('global.other-locale')}</span>
+  <span id="locale" class="u w-24 transition-all font-bold">
+    <span class="nl">Nederlands</span>
+    <span class="en">English</span>
+  </span>
 </Button>
 
 <style>
@@ -16,8 +19,13 @@
     width: 4rem;
   }
 
+  :global(:lang(en)) .en,
+  :global(:lang(nl)) .nl {
+    display: none;
+  }
+
   .i-tabler-loader-2 {
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
   }
 
   @keyframes spin {

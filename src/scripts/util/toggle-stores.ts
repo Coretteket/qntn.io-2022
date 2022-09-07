@@ -3,13 +3,14 @@ import { loading, locale, theme } from '../stores';
 import { disableTransitionUntil } from './disable-transition';
 
 export const toggleLocale = async () => {
-  loading.set(true);
+  const timer = setTimeout(() => loading.set(true), 100);
   locale.update((l) => {
     const locale = l === 'en' ? 'nl' : 'en';
     document.cookie = `locale=${locale}`;
     return locale;
   });
   await invalidateAll(); // force reload of translation .ts files
+  clearTimeout(timer);
   loading.set(false);
 };
 
