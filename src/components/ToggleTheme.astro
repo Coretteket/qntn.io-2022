@@ -1,0 +1,26 @@
+---
+import { translations } from '../scripts/stores';
+const t = translations.get();
+---
+
+<script>
+  import { onClick } from '../scripts/util/on-click';
+  onClick('.toggleTheme', () => {
+    const dataTheme = document.documentElement.getAttribute('data-theme');
+    const theme = dataTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    document.cookie = `theme=${theme}`;
+  });
+</script>
+
+<button class="toggleTheme">
+  <span class="light">{t.toggleTheme(t.darkTheme)}</span>
+  <span class="dark">{t.toggleTheme(t.lightTheme)}</span>
+</button>
+
+<style is:global>
+  [data-theme='dark'] .toggleTheme > .light,
+  [data-theme='light'] .toggleTheme > .dark {
+    display: none;
+  }
+</style>

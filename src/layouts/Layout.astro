@@ -1,0 +1,28 @@
+---
+import Button from '../components/Button.astro';
+import ToggleLocale from '../components/ToggleLocale.astro';
+import ToggleTheme from '../components/ToggleTheme.astro';
+import { locale, theme, translations } from '../scripts/stores';
+import '../styles/global.css';
+const t = translations.get();
+
+const test = () => console.log('clicked!!!');
+---
+
+<html lang={locale.get()} data-theme={theme.get()}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Quinten Coret</title>
+  </head>
+  <body>
+    <ToggleLocale />
+    <ToggleTheme />
+    <Button @click={test}>Click me</Button>
+    <p>{t.title}</p>
+    <slot />
+    <p>Built with {Astro.generator}</p>
+  </body>
+</html>

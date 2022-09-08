@@ -1,0 +1,15 @@
+---
+import { translations } from '../scripts/stores';
+const t = translations.get();
+---
+
+<script>
+  import { onClick } from '../scripts/util/on-click';
+  onClick('.toggleLocale', () => {
+    const locale = document.documentElement.lang;
+    document.cookie = `locale=${locale === 'en' ? 'nl' : 'en'}`;
+    location.reload();
+  });
+</script>
+
+<button class="toggleLocale">{t.otherLocale}</button>
