@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 150ms var(--easing);
     &:hover {
       box-shadow: 0 0 0 2px var(--gray-3);
     }

@@ -10,18 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/svelte": "^1.0.0",
     "@astrojs/vercel": "^1.0.2",
     "@iconify-icons/ion": "^1.2.3",
     "@iconify-icons/tabler": "^1.2.33",
+    "@iconify/svelte": "^3.0.0",
+    "@types/cookie": "^0.5.1",
     "astro": "^1.2.0",
     "astro-icon": "^0.7.3",
     "cookie": "^0.5.0",
-    "nanostores": "^0.6.0"
-  },
-  "devDependencies": {
-    "@astrojs/svelte": "^1.0.0",
-    "@iconify/svelte": "^3.0.0",
-    "@types/cookie": "^0.5.1",
+    "nanostores": "^0.6.0",
     "sass": "^1.54.9",
     "svelte": "^3.50.1"
   }

@@ -3,17 +3,22 @@
   import moon from '@iconify-icons/tabler/moon';
   import sun from '@iconify-icons/tabler/sun-high';
 
-  import { disableTransitionUntil } from '../utils/disable-transition';
+  import { onMount } from 'svelte';
   import Button from './Button.svelte';
+  import { disableTransition } from '../utils/disable-transition';
+
   import type { Theme } from '../scripts/types';
   export let theme: Theme;
 
-  const toggleTheme = () => {
-    disableTransitionUntil(() => {
-      theme = theme === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', theme);
-      document.cookie = `theme=${theme}`;
+  if (theme === 'auto')
+    onMount(() => {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     });
+
+  const toggleTheme = () => {
+    theme = theme === 'light' ? 'dark' : 'light';
+    document.cookie = `theme=${theme}`;
+    disableTransition(() => (document.documentElement.dataset.theme = theme));
   };
 </script>
 
@@ -26,7 +31,7 @@
 
 <style lang="scss">
   span :global(svg:is(.light, .dark)) {
-    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 150ms var(--easing);
 
     :global([data-theme='dark']) & {
       transform: translateY(-1.75rem);

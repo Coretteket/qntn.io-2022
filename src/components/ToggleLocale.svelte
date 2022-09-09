@@ -15,7 +15,7 @@
   };
 </script>
 
-<Button class="toggleLocale" on:click={toggleLocale} title={t.other} {...$$restProps}>
+<Button class="toggleLocale" on:click={toggleLocale} title={t.toggle} {...$$restProps}>
   <Icon width={20} icon={language} />
   <span>{t.other}</span>
 </Button>
