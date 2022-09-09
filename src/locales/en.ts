@@ -1,7 +1,12 @@
 export default {
   title: "Hey, I'm Quinten Coret. And I build stuff.",
-  otherLocale: 'Nederlands',
-  toggleTheme: (t: string) => `Use ${t} theme`,
-  darkTheme: 'dark',
-  lightTheme: 'light',
+  locale: {
+    toggle: 'Go to Dutch site',
+    other: 'Nederlands',
+  },
+  theme: {
+    toggle: (t: string) => `Use ${t} theme`,
+    dark: 'dark',
+    light: 'light',
+  },
 };

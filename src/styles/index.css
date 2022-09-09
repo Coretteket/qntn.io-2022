@@ -1,0 +1,14 @@
+@import url('colors.css');
+
+html {
+  font-family: 'Mulish', sans-serif;
+}
+
+html[data-theme='dark'] {
+  background-color: var(--gray-1);
+  color: var(--gray-9);
+}
+
+[data-transition='false'] :not([data-transition='true'], [data-transition='true'] *) {
+  transition: none !important;
+}

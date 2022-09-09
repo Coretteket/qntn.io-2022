@@ -1,11 +1,11 @@
-import type { loaders } from './translate';
+import type { loaders, loadTranslations } from './translate';
 
 export const locales = ['en', 'nl'] as const;
 export const themes = ['light', 'dark', 'auto'] as const;
 
 export type Locale = typeof locales[number];
 export type Theme = typeof themes[number];
-export type Translations = Awaited<typeof loaders[Locale]>['default'];
+export type Translations = Awaited<ReturnType<typeof loadTranslations>>;
 
 export const isType = <T>(l: readonly T[], t: unknown): t is T => l.includes(t as T);
 export const parseType = <T>(l: readonly T[], t: unknown, d: T): T => (isType(l, t) ? t : d);

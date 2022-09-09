@@ -1,8 +1,7 @@
 ---
-import ToggleLocale from '../components/ToggleLocale.astro';
-import ToggleTheme from '../components/ToggleTheme.astro';
+import Navigation from '../components/Navigation.astro';
 import { locale, theme, translations } from '../scripts/stores';
-import '../styles/global.css';
+import '../styles/index.css';
 const t = translations.get();
 ---
 
@@ -15,8 +14,7 @@ const t = translations.get();
     <title>Quinten Coret</title>
   </head>
   <body>
-    <ToggleLocale />
-    <ToggleTheme />
+    <Navigation />
     <p>{t.title}</p>
     <slot />
     <p>Built with {Astro.generator}</p>

@@ -2,9 +2,9 @@ import type { Locale } from './types';
 
 /** Object of translations for defined locales. */
 export const loaders = {
-  en: import('../locales/en'),
-  nl: import('../locales/nl'),
+  en: () => import('../locales/en'),
+  nl: () => import('../locales/nl'),
 };
 
 /** Loads the translations for a given locale. */
-export const loadTranslations = async (locale: Locale) => (await loaders[locale])['default'];
+export const loadTranslations = async (locale: Locale) => (await loaders[locale]())['default'];
