@@ -4,7 +4,7 @@ const t = translations.get();
 ---
 
 <script>
-  import { onClick } from '../scripts/util/on-click';
+  import { onClick } from '../utils/on-click';
   onClick('.toggleLocale', () => {
     const locale = document.documentElement.lang;
     document.cookie = `locale=${locale === 'en' ? 'nl' : 'en'}`;
@@ -12,4 +12,4 @@ const t = translations.get();
   });
 </script>
 
-<button class="toggleLocale">{t.otherLocale}</button>
+<button type="button" class="toggleLocale">{t.otherLocale}</button>

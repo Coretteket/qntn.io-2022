@@ -1,10 +1,11 @@
 ---
+import { Icon } from 'astro-icon';
 import { translations } from '../scripts/stores';
 const t = translations.get();
 ---
 
 <script>
-  import { onClick } from '../scripts/util/on-click';
+  import { onClick } from '../utils/on-click';
   onClick('.toggleTheme', () => {
     const dataTheme = document.documentElement.getAttribute('data-theme');
     const theme = dataTheme === 'dark' ? 'light' : 'dark';
@@ -13,14 +14,31 @@ const t = translations.get();
   });
 </script>
 
-<button class="toggleTheme">
-  <span class="light">{t.toggleTheme(t.darkTheme)}</span>
-  <span class="dark">{t.toggleTheme(t.lightTheme)}</span>
+<button type="button" class="toggleTheme">
+  <Icon name="tabler:moon" class="light" />
+  <Icon name="tabler:sun" class="dark" />
 </button>
+
+<style>
+  .toggleTheme {
+    padding: 0;
+    margin: 0;
+  }
+
+  span {
+    display: inline-block;
+    width: 20px;
+  }
+</style>
 
 <style is:global>
   [data-theme='dark'] .toggleTheme > .light,
   [data-theme='light'] .toggleTheme > .dark {
     display: none;
+  }
+
+  .toggleTheme > svg {
+    width: 20px;
+    height: 20px;
   }
 </style>
