@@ -1,7 +1,5 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-  import moon from '@iconify-icons/tabler/moon';
-  import sun from '@iconify-icons/tabler/sun-high';
+  import Icon from './Icon.svelte';
 
   import { onMount } from 'svelte';
   import Button from './Button.svelte';
@@ -24,8 +22,8 @@
 
 <Button class="toggleTheme" on:click={toggleTheme}>
   <span data-transition="true">
-    <Icon width={20} icon={moon} class="light" />
-    <Icon width={20} icon={sun} class="dark" />
+    <Icon width={20} name="moon" class="light" />
+    <Icon width={20} name="sun" class="dark" />
   </span>
 </Button>
 

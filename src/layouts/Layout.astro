@@ -1,8 +1,11 @@
 ---
 import Navigation from '../components/Navigation.astro';
-import SocialLinks from '../components/SocialLinks.astro';
+import SocialLinks from '../components/SocialLinks.svelte';
+import { load } from '../scripts/load';
 import { locale, theme, translations } from '../scripts/stores';
 import '../styles/index.css';
+
+await load(Astro);
 const t = translations.get();
 ---
 

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-  import language from '@iconify-icons/ion/language';
+  import Icon from './Icon.svelte';
 
   import Button from './Button.svelte';
 
@@ -16,6 +15,6 @@
 </script>
 
 <Button class="toggleLocale" on:click={toggleLocale} title={t.toggle} {...$$restProps}>
-  <Icon width={20} icon={language} />
+  <Icon width={20} name="language" />
   <span>{t.other}</span>
 </Button>
