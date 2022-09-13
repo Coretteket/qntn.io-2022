@@ -1,42 +1,21 @@
 ---
+import Head from './Head.astro';
 import Navigation from '../components/Navigation.astro';
-import SocialLinks from '../components/SocialLinks.astro';
+import { locale, theme } from '../scripts/stores';
 import { load } from '../scripts/load';
-import { locale, theme, translations } from '../scripts/stores';
-import '../styles/index.css';
 
 await load(Astro);
-const t = translations.get();
 ---
 
 <html lang={locale.get()} data-theme={theme.get()}>
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Quinten Coret</title>
-    <script is:inline>
-      const dataset = document.documentElement.dataset;
-      if (dataset.theme === 'auto') {
-        const media = window.matchMedia('(prefers-color-scheme: dark)');
-        dataset.theme = media.matches ? 'dark' : 'light';
-      }
-    </script>
-    <script>
-      import { listen } from 'quicklink';
-      import { slugs } from '../pages/[slug]';
-      const ignores = (s: string) => new URL(s).pathname.replace('/', '') in slugs;
-      window.addEventListener('load', listen({ ignores }));
-    </script>
-    <script data-goatcounter="https://qntn.goatcounter.com/count" async src="//gc.zgo.at/count.js"
-    ></script>
-  </head>
+  <Head />
   <body>
     <Navigation />
-    <p>{t.title}</p>
-    <SocialLinks />
-    <slot />
-    <p>Built with {Astro.generator}</p>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>Built with {Astro.generator}</p>
+    </footer>
   </body>
 </html>
