@@ -1,0 +1,25 @@
+---
+import { translations } from '../scripts/stores';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+
+const t = translations.get();
+---
+
+<script>
+  const toggleLocale = () => {
+    const locale = document.documentElement.lang;
+    document.cookie = `locale=${locale === 'en' ? 'nl' : 'en'}`;
+    location.reload();
+  };
+
+  window.addEventListener('load', () => {
+    const buttons = document.querySelectorAll('.toggleLocale');
+    buttons.forEach((e) => e.addEventListener('click', toggleLocale));
+  });
+</script>
+
+<Button class="toggleLocale" title={t.locale.toggle}>
+  <Icon name="ion:language" size={20} />
+  <span>{t.locale.other}</span>
+</Button>

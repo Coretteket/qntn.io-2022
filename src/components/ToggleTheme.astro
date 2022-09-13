@@ -1,0 +1,45 @@
+---
+import { translations } from '../scripts/stores';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+
+const t = translations.get();
+---
+
+<script>
+  import { disableTransition } from '../utils/disable-transition';
+
+  const toggleTheme = () => {
+    const dataTheme = document.documentElement.dataset.theme;
+    const theme = dataTheme === 'light' ? 'dark' : 'light';
+    document.cookie = `theme=${theme}`;
+    disableTransition(() => (document.documentElement.dataset.theme = theme));
+  };
+
+  window.addEventListener('load', () => {
+    const buttons = document.querySelectorAll('.toggleTheme');
+    buttons.forEach((e) => e.addEventListener('click', toggleTheme));
+  });
+</script>
+
+<Button class="toggleTheme" title={t.locale.toggle}>
+  <span data-transition="true">
+    <Icon name="tabler:moon" size={20} class="light" />
+    <Icon name="tabler:sun-high" size={20} class="dark" />
+  </span>
+</Button>
+
+<style lang="scss" is:global>
+  .toggleTheme svg:is(.light, .dark) {
+    transition: transform 150ms var(--easing);
+    [data-theme='dark'] & {
+      transform: translateY(-1.75rem);
+    }
+  }
+
+  .toggleTheme [data-transition] {
+    display: grid;
+    gap: 0.5rem;
+    align-self: flex-start;
+  }
+</style>

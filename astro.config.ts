@@ -6,6 +6,5 @@ import svelte from '@astrojs/svelte';
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
-  vite: { ssr: { external: ['svgo'] }, },
-  integrations: [svelte()],
+  integrations: [svelte()]
 });

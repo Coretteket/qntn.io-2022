@@ -1,13 +1,13 @@
 ---
-import { locale, theme, translations } from '../scripts/stores';
-import ToggleLocale from './ToggleLocale.svelte';
-import ToggleTheme from './ToggleTheme.svelte';
+import { translations } from '../scripts/stores';
+import ToggleLocale from './ToggleLocale.astro';
+import ToggleTheme from './ToggleTheme.astro';
 const t = translations.get();
 ---
 
 <nav>
-  <ToggleLocale client:load locale={locale.get()} t={t.locale} />
-  <ToggleTheme client:load theme={theme.get()} />
+  <ToggleLocale />
+  <ToggleTheme />
 </nav>
 
 <style>

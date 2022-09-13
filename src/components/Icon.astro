@@ -1,0 +1,36 @@
+---
+import { icons as tablerIcons } from '@iconify-json/tabler';
+import { icons as ionIcons } from '@iconify-json/ion';
+import { getIconData, iconToSVG } from '@iconify/utils';
+
+const packs = {
+  tabler: tablerIcons,
+  ion: ionIcons,
+};
+
+export type Props = {
+  name: `${keyof typeof packs}:${string}`;
+  size?: number;
+  [key: string]: any;
+};
+
+const { name, size, ...restProps } = Astro.props as Props;
+const [pack, icon] = name.split(':') as [keyof typeof packs, string];
+
+const iconData = getIconData(packs[pack], icon);
+const renderData = iconToSVG(iconData!);
+
+const attributes = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  ...restProps,
+  ...renderData.attributes,
+};
+---
+
+<svg {...attributes}><Fragment set:html={renderData.body} /></svg>
+
+<style define:vars={{ size: `${size}px` }}>
+  svg {
+    font-size: var(--size);
+  }
+</style>

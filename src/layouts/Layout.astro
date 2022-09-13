@@ -1,6 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro';
-import SocialLinks from '../components/SocialLinks.svelte';
+import SocialLinks from '../components/SocialLinks.astro';
 import { load } from '../scripts/load';
 import { locale, theme, translations } from '../scripts/stores';
 import '../styles/index.css';
@@ -22,6 +22,12 @@ const t = translations.get();
         const media = window.matchMedia('(prefers-color-scheme: dark)');
         dataset.theme = media.matches ? 'dark' : 'light';
       }
+    </script>
+    <script>
+      import { listen } from 'quicklink';
+      import { slugs } from '../pages/[slug]';
+      const ignores = (s: string) => new URL(s).pathname.replace('/', '') in slugs;
+      window.addEventListener('load', listen({ ignores }));
     </script>
   </head>
   <body>

@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
+---
+
+<div>
+  {
+    socials.map((social) => (
+      <a href={`/${social}`} rel="external">
+        <Icon name={`tabler:brand-${social}`} size={24} />
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+  a {
+    color: var(--gray-8);
+    text-decoration: none;
+  }
+</style>

@@ -1,4 +1,9 @@
-<button type="button" on:click {...$$restProps}><slot /></button>
+---
+export type Props = { class: string; [key: string]: any };
+const props = Astro.props as Props;
+---
+
+<button type="button" {...props}><slot /></button>
 
 <style lang="scss">
   button {

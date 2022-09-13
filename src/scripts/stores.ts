@@ -1,10 +1,9 @@
 import { atom } from 'nanostores';
-import { loadTranslations } from './translate';
 import type { Locale, Theme, Translations } from './types';
 
 export const locale = atom<Locale>('en');
 export const theme = atom<Theme>('light');
-export const translations = atom(await loadTranslations('en'));
+export const translations = atom({} as Translations);
 
 type Stores = { locale: Locale; theme: Theme; translations: Translations };
 

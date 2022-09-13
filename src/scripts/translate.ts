@@ -1,4 +1,4 @@
-import type { Locale } from './types';
+import type { Locale, Translations } from './types';
 
 /** Object of translations for defined locales. */
 export const loaders = {
