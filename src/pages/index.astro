@@ -1,9 +1,9 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
 import Layout from '../layouts/Layout.astro';
-import { translations } from '../scripts/stores';
+import { load } from '../scripts/load';
 
-const t = translations.get();
+const { translations: t } = await load(Astro);
 ---
 
 <Layout>

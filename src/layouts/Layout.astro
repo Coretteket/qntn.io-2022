@@ -1,13 +1,10 @@
 ---
 import Head from './Head.astro';
 import Navigation from '../components/Navigation.astro';
-import { locale, theme } from '../scripts/stores';
-import { load } from '../scripts/load';
-
-await load(Astro);
+import { locale } from '../scripts/stores';
 ---
 
-<html lang={locale.get()} data-theme={theme.get()}>
+<html lang={locale.get()}>
   <Head />
   <body>
     <Navigation />

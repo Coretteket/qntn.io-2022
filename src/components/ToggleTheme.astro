@@ -11,8 +11,8 @@ const t = translations.get();
 
   const toggleTheme = () => {
     const dataTheme = document.documentElement.dataset.theme;
-    const theme = dataTheme === 'light' ? 'dark' : 'light';
-    document.cookie = `theme=${theme}`;
+    const theme = dataTheme === 'dark' ? 'light' : 'dark';
+    window.localStorage.setItem('theme', theme);
     disableTransition(() => (document.documentElement.dataset.theme = theme));
   };
 

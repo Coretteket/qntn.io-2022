@@ -18,8 +18,10 @@ export const load = async (Astro: Readonly<AstroGlobal>) => {
   const { cookies, headerLocale } = parseHeaders(Astro.request.headers);
 
   const locale = parseLocale(cookies.locale, headerLocale);
-  const theme = parseTheme(cookies.theme, 'auto');
   const translations = await loadTranslations(locale);
+  console.log(locale, translations.title)
 
-  setStores({ locale, theme, translations });
+  setStores({ locale, translations });
+
+  return { locale, translations };
 };
