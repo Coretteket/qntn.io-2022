@@ -19,9 +19,7 @@ export const load = async (Astro: Readonly<AstroGlobal>) => {
 
   const locale = parseLocale(cookies.locale, headerLocale);
   const translations = await loadTranslations(locale);
-  console.log(locale, translations.title)
 
   setStores({ locale, translations });
-
   return { locale, translations };
 };
