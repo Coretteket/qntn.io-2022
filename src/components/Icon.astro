@@ -10,11 +10,12 @@ const packs = {
 
 export type Props = {
   name: `${keyof typeof packs}:${string}`;
+  title?: string;
   size?: number;
   [key: string]: any;
 };
 
-const { name, size, ...restProps } = Astro.props as Props;
+const { name, size, title, ...restProps } = Astro.props as Props;
 const [pack, icon] = name.split(':') as [keyof typeof packs, string];
 
 const iconData = getIconData(packs[pack], icon);
@@ -27,7 +28,10 @@ const attributes = {
 };
 ---
 
-<svg {...attributes}><Fragment set:html={renderData.body} /></svg>
+<svg {...attributes}>
+  {title && <title>{title}</title>}
+  <Fragment set:html={renderData.body} />
+</svg>
 
 <style define:vars={{ size: `${size}px` }}>
   svg {

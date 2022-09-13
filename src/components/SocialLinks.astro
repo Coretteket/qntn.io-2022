@@ -1,12 +1,16 @@
 ---
 import Icon from './Icon.astro';
 const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
+
+const makeTitle = (social: typeof socials[number]) => {
+  return social.charAt(0).toUpperCase() + social.slice(1);
+};
 ---
 
 <div>
   {
     socials.map((social) => (
-      <a href={`/${social}`} rel="external">
+      <a href={`/${social}`} title={makeTitle(social)} rel="external">
         <Icon name={`tabler:brand-${social}`} size={24} />
       </a>
     ))

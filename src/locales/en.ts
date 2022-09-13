@@ -5,6 +5,7 @@ export default {
     other: 'Nederlands',
   },
   theme: {
+    label: "Toggle dark theme",
     toggle: (t: string) => `Use ${t} theme`,
     dark: 'dark',
     light: 'light',

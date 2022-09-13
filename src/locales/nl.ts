@@ -5,6 +5,7 @@ export default {
     other: 'English',
   },
   theme: {
+    label: "Wissel thema",
     toggle: (t: string) => `Gebruik ${t} thema`,
     dark: 'donker',
     light: 'licht',
