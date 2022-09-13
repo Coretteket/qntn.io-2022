@@ -6,7 +6,7 @@ specifiers:
   '@iconify-json/tabler': ^1.1.33
   '@iconify/utils': ^2.0.0
   '@types/cookie': ^0.5.1
-  astro: ^1.2.2
+  astro: ^1.2.3
   cookie: ^0.5.0
   nanostores: ^0.6.0
   quicklink: ^2.3.0
@@ -18,7 +18,7 @@ dependencies:
   '@iconify-json/tabler': 1.1.33
   '@iconify/utils': 2.0.0
   '@types/cookie': 0.5.1
-  astro: 1.2.2_sass@1.54.9
+  astro: 1.2.3_sass@1.54.9
   cookie: 0.5.0
   nanostores: 0.6.0
   quicklink: 2.3.0_wcqkhtmu7mswc6yz4uyexck3ty
@@ -805,8 +805,8 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /astro/1.2.2_sass@1.54.9:
-    resolution: {integrity: sha512-qfK7Ch7dSO0CJEwkcEx/oxMxEuaDcaHCcrJ1PGMWFzdjBXrT45tDgnXXis06yT+AuolLSOIbPhpEi3QWsGqvuQ==}
+  /astro/1.2.3_sass@1.54.9:
+    resolution: {integrity: sha512-iNZcvnaS+Hw4g/rkk4bzlnonjsws066wPkfmnQ+WUqGoH81a4GbFj93YT6zoum5kHg4Kw713abHAf3e/2mpjmg==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -943,7 +943,7 @@ packages:
       caniuse-lite: 1.0.30001399
       electron-to-chromium: 1.4.248
       node-releases: 2.0.6
-      update-browserslist-db: 1.0.8_browserslist@4.21.3
+      update-browserslist-db: 1.0.9_browserslist@4.21.3
     dev: false
 
   /buffer/6.0.3:
@@ -3880,8 +3880,8 @@ packages:
       unist-util-visit-parents: 5.1.1
     dev: false
 
-  /update-browserslist-db/1.0.8_browserslist@4.21.3:
-    resolution: {integrity: sha512-GHg7C4M7oJSJYW/ED/5QOJ7nL/E0lwTOBGsOorA7jqHr8ExUhPfwAotIAmdSw/LWv3SMLSNpzTAgeLG9zaZKTA==}
+  /update-browserslist-db/1.0.9_browserslist@4.21.3:
+    resolution: {integrity: sha512-/xsqn21EGVdXI3EXSum1Yckj3ZVZugqyOZQ/CxYPBD/R+ko9NSUScf8tFF4dOKY+2pvSSJA/S+5B8s4Zr4kyvg==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
