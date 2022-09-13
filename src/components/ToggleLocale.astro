@@ -13,10 +13,8 @@ const t = translations.get();
     location.reload();
   };
 
-  window.addEventListener('load', () => {
-    const buttons = document.querySelectorAll('.toggleLocale');
-    buttons.forEach((e) => e.addEventListener('click', toggleLocale));
-  });
+  const buttons = document.querySelectorAll('.toggleLocale');
+  buttons.forEach((e) => e.addEventListener('click', toggleLocale));
 </script>
 
 <Button class="toggleLocale" title={t.locale.toggle}>

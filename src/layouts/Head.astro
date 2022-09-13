@@ -10,9 +10,7 @@ import '../styles/index.css';
   <title>Quinten Coret</title>
   <script is:inline>
     let theme = localStorage.getItem('theme');
-    console.log(theme);
     theme = theme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    console.log(theme);
     document.documentElement.setAttribute('data-theme', theme);
   </script>
   <script>
