@@ -1,31 +1,20 @@
 ---
-import tablerIcons from '@iconify-json/tabler/icons.json' assert { type: 'json' };
-import ionIcons from '@iconify-json/ion/icons.json' assert { type: 'json' };
+import icons from '@iconify-json/tabler/icons.json' assert { type: 'json' };
 import { getIconData, iconToSVG } from '@iconify/utils';
 
-const packs = {
-  tabler: tablerIcons,
-  ion: ionIcons,
-};
-
 export type Props = {
-  name: `${keyof typeof packs}:${string}`;
+  name: string;
   title?: string;
   size?: number;
   [key: string]: any;
 };
 
 const { name, size, title, ...restProps } = Astro.props as Props;
-const [pack, icon] = name.split(':') as [keyof typeof packs, string];
 
-const iconData = getIconData(packs[pack], icon);
+const iconData = getIconData(icons, name);
 const renderData = iconToSVG(iconData!);
 
-const attributes = {
-  xmlns: 'http://www.w3.org/2000/svg',
-  ...restProps,
-  ...renderData.attributes,
-};
+const attributes = { ...restProps, ...renderData.attributes };
 ---
 
 <svg {...attributes}>

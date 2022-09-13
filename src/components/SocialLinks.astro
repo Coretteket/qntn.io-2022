@@ -11,7 +11,7 @@ const makeTitle = (social: typeof socials[number]) => {
   {
     socials.map((social) => (
       <a href={`/${social}`} title={makeTitle(social)} rel="external">
-        <Icon name={`tabler:brand-${social}`} size={24} />
+        <Icon name={`brand-${social}`} size={24} />
       </a>
     ))
   }

@@ -16,24 +16,22 @@ const t = translations.get();
     disableTransition(() => (document.documentElement.dataset.theme = theme));
   };
 
-  window.addEventListener('load', () => {
-    const buttons = document.querySelectorAll('.toggleTheme');
-    buttons.forEach((e) => {
-      e.firstElementChild?.setAttribute('data-transition', 'true');
-      e.addEventListener('click', toggleTheme);
-    });
+  const buttons = document.querySelectorAll('.toggleTheme');
+  buttons.forEach((e) => {
+    e.addEventListener('click', toggleTheme);
+    e.firstElementChild?.setAttribute('data-transition', 'true');
   });
 </script>
 
 <Button class="toggleTheme" aria-label={t.theme.label}>
-  <span>
-    <Icon name="tabler:moon" size={20} title={t.theme.toggle(t.theme.dark)} class="light" />
-    <Icon name="tabler:sun-high" size={20} title={t.theme.toggle(t.theme.light)} class="dark" />
+  <span data-transition="false">
+    <Icon name="moon" size={20} title={t.theme.toggle(t.theme.dark)} class="light" />
+    <Icon name="sun" size={20} title={t.theme.toggle(t.theme.light)} class="dark" />
   </span>
 </Button>
 
 <style lang="scss" is:global>
-  .toggleTheme svg:is(.light, .dark) {
+  .toggleTheme svg {
     transition: transform 150ms var(--easing);
     [data-theme='dark'] & {
       transform: translateY(-1.75rem);
