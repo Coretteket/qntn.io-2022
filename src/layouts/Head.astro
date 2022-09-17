@@ -26,7 +26,8 @@ const goatcounter = 'https://qntn.goatcounter.com/count';
     document.documentElement.setAttribute('data-theme', theme);
   </script>
   <script>
-    import '../scripts/quicklink';
+    import { quicklink } from '../scripts/prefetch';
+    if (import.meta.env.PROD) quicklink();
   </script>
   <script data-goatcounter={goatcounter} src="//gc.zgo.at/count.js" async></script>
 </head>
