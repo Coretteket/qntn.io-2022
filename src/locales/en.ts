@@ -2,7 +2,7 @@ export default {
   title: "Hey, I'm Quinten Coret. And I build stuff.",
   locale: {
     toggle: 'Go to Dutch site',
-    other: 'Nederlands',
+    other: 'Dutch',
   },
   theme: {
     label: "Toggle dark theme",

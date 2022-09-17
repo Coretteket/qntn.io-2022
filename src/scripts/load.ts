@@ -2,9 +2,8 @@ import type { AstroGlobal } from 'astro';
 import type { Locale } from './types';
 
 import { parse } from 'cookie';
-import { loadTranslations } from './translate';
-import { setStores } from './stores';
-import { parseLocale, parseTheme } from './types';
+import { loadTranslations, state } from './translate';
+import { parseLocale } from './utils';
 
 const parseHeaders = (headers: Headers) => {
   const cookies = parse(headers.get('cookie') ?? '');
@@ -16,10 +15,10 @@ const parseHeaders = (headers: Headers) => {
 
 export const load = async (Astro: Readonly<AstroGlobal>) => {
   const { cookies, headerLocale } = parseHeaders(Astro.request.headers);
+  const searchLocale = Astro.url.searchParams.get('lang');
 
-  const locale = parseLocale(cookies.locale, headerLocale);
-  const translations = await loadTranslations(locale);
+  state.locale = parseLocale(searchLocale ?? cookies.locale, headerLocale);
+  state.translations = await loadTranslations(state.locale);
 
-  setStores({ locale, translations });
-  return { locale, translations };
+  return state;
 };

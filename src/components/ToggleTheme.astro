@@ -1,13 +1,13 @@
 ---
-import { translations } from '../scripts/stores';
+import { state } from '../scripts/translate';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 
-const t = translations.get();
+const t = state.translations;
 ---
 
 <script>
-  import { disableTransition } from '../utils/disable-transition';
+  import { disableTransition } from '../scripts/utils';
 
   const toggleTheme = () => {
     const dataTheme = document.documentElement.dataset.theme;

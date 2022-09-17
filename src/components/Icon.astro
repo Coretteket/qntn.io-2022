@@ -14,10 +14,10 @@ const { name, size, title, ...restProps } = Astro.props as Props;
 const iconData = getIconData(icons, name);
 const renderData = iconToSVG(iconData!);
 
-const attributes = { ...restProps, ...renderData.attributes };
+const attrs = { ...restProps, ...renderData.attributes };
 ---
 
-<svg {...attributes}>
+<svg {...attrs}>
   {title && <title>{title}</title>}
   <Fragment set:html={renderData.body} />
 </svg>

@@ -2,10 +2,11 @@
 @import url('constants.css');
 
 html {
-  font-family: 'Mulish', sans-serif;
+  font-family: var(--font-body);
 }
 
 html[data-theme='dark'] {
+  color-scheme: dark;
   background-color: var(--gray-1);
   color: var(--gray-9);
 }

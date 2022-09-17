@@ -1,9 +1,9 @@
 ---
-import { translations } from '../scripts/stores';
+import { state } from '../scripts/translate';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
 
-const t = translations.get();
+const t = state.translations;
 ---
 
 <script>
@@ -21,3 +21,9 @@ const t = translations.get();
   <Icon name="message" size={20} />
   <span>{t.locale.other}</span>
 </Button>
+
+<style is:global>
+  .toggleLocale span {
+    width: 3.25rem;
+  }
+</style>

@@ -1,10 +1,18 @@
 ---
+import { state } from '../scripts/translate';
 import '../styles/index.css';
+
+const otherLocale = state.locale === 'en' ? 'nl' : 'en';
+const otherHref = new URL(Astro.url);
+otherHref.searchParams.set('lang', otherLocale);
+
+const goatcounter = 'https://qntn.goatcounter.com/count';
 ---
 
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="alternate" hreflang={otherLocale} href={otherHref} />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <title>Quinten Coret</title>
@@ -16,6 +24,5 @@ import '../styles/index.css';
   <script>
     import '../scripts/quicklink';
   </script>
-  <script data-goatcounter="https://qntn.goatcounter.com/count" src="//gc.zgo.at/count.js" async
-  ></script>
+  <script data-goatcounter={goatcounter} src="//gc.zgo.at/count.js" async></script>
 </head>

@@ -2,25 +2,23 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/vercel': ^2.0.0
-  '@iconify-json/ion': ^1.1.3
   '@iconify-json/tabler': ^1.1.33
   '@iconify/utils': ^2.0.0
   '@types/cookie': ^0.5.1
   astro: ^1.2.3
+  astro-auto-import: ^0.1.2
   cookie: ^0.5.0
-  nanostores: ^0.6.0
   quicklink: ^2.3.0
   sass: ^1.54.9
 
 dependencies:
   '@astrojs/vercel': 2.0.0
-  '@iconify-json/ion': 1.1.3
   '@iconify-json/tabler': 1.1.33
   '@iconify/utils': 2.0.0
   '@types/cookie': 0.5.1
   astro: 1.2.3_sass@1.54.9
+  astro-auto-import: 0.1.2_astro@1.2.3
   cookie: 0.5.0
-  nanostores: 0.6.0
   quicklink: 2.3.0_wcqkhtmu7mswc6yz4uyexck3ty
   sass: 1.54.9
 
@@ -406,12 +404,6 @@ packages:
     dev: false
     optional: true
 
-  /@iconify-json/ion/1.1.3:
-    resolution: {integrity: sha512-s7uPWzfogdVw5rkWhBnAWG29SO3f1+AfOsHiJIQDPZwkSsNnES2omIC7PFbDuTIGCgCHZna59aq2AQIf7pdc7w==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: false
-
   /@iconify-json/tabler/1.1.33:
     resolution: {integrity: sha512-A4EfO9oPdCNHHyexpF1rXGLhB7QhFtS5/r9EFH1GPqqQIG3OM+y0nO4qazva4YlpHMw6E4as0K6JuIGs17KD0w==}
     dependencies:
@@ -643,6 +635,10 @@ packages:
       '@types/unist': 2.0.6
     dev: false
 
+  /@types/node/18.7.17:
+    resolution: {integrity: sha512-0UyfUnt02zIuqp7yC8RYtDkp/vo8bFaQ13KkSEvUAohPOAlnVNbj5Fi3fgPSuwzakS+EvvnnZ4x9y7i6ASaSPQ==}
+    dev: false
+
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
@@ -803,6 +799,16 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /astro-auto-import/0.1.2_astro@1.2.3:
+    resolution: {integrity: sha512-uMqChXkUoKv29YIBKfFWi8d3oXGDInyYyXjRRTrqM5yFHp2fTIvelG4ZpDV7jjNghKkW9g8dzSH389e0LlOjLQ==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      astro: ^1.0.0-beta.56
+    dependencies:
+      '@types/node': 18.7.17
+      astro: 1.2.3_sass@1.54.9
     dev: false
 
   /astro/1.2.3_sass@1.54.9:
@@ -2711,11 +2717,6 @@ packages:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: false
-
-  /nanostores/0.6.0:
-    resolution: {integrity: sha512-CQpKE8wtaJAr66hbg32t0MOAeybzLywU6UsLAX18kyQL/bME+xwhjWpmrvJRBp5kueFy6hs2oHlt3HFpNP+JaA==}
-    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     dev: false
 
   /needle/2.9.1:
