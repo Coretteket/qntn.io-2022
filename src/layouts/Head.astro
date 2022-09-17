@@ -5,12 +5,13 @@ import '../styles/index.css';
 export type Props = { title?: string };
 const props = Astro.props as Props;
 
-const title = props.title ? `${props.title} – Quinten Coret` : 'Quinten Coret';
+const defaultTitle = `Quinten Coret`;
+const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
 
 const otherLocale = state.locale === 'en' ? 'nl' : 'en';
 const otherLocaleURL = `${Astro.url}?lang=${otherLocale}`;
 
-const goatcounter = 'https://qntn.goatcounter.com/count';
+const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
 ---
 
 <head>
@@ -29,5 +30,5 @@ const goatcounter = 'https://qntn.goatcounter.com/count';
     import { quicklink } from '../scripts/prefetch';
     if (import.meta.env.PROD) quicklink();
   </script>
-  <script data-goatcounter={goatcounter} src="//gc.zgo.at/count.js" async></script>
+  <script data-goatcounter={goatcounterURL} src="//gc.zgo.at/count.js" async></script>
 </head>

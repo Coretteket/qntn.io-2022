@@ -1,13 +1,16 @@
 export default {
-  title: "Hey, I'm Quinten Coret. And I build stuff.",
-  locale: {
-    toggle: 'Go to Dutch site',
-    other: 'Dutch',
+  nav: {
+    toggleLocale: 'Go to Dutch site',
+    otherLocale: 'Dutch',
+    themeLabel: "Toggle dark theme",
+    toggleTheme: (t: string) => `Use ${t} theme`,
+    darkTheme: 'dark',
+    lightTheme: 'light',
   },
-  theme: {
-    label: "Toggle dark theme",
-    toggle: (t: string) => `Use ${t} theme`,
-    dark: 'dark',
-    light: 'light',
+  index: {
+    title: "Hey, I'm Quinten Coret. And I build stuff.",
   },
+  about: {
+    page: 'About'
+  }
 };

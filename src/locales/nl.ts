@@ -1,13 +1,16 @@
 export default {
-  title: 'Hey, ik ben Quinten Coret. En ik maak dingen.',
-  locale: {
-    toggle: 'Ga naar Engelse site',
-    other: 'English',
+  nav: {
+    toggleLocale: 'Ga naar Engelse site',
+    otherLocale: 'English',
+    themeLabel: "Wissel thema",
+    toggleTheme: (t: string) => `Gebruik ${t} thema`,
+    darkTheme: 'donker',
+    lightTheme: 'licht',
   },
-  theme: {
-    label: "Wissel thema",
-    toggle: (t: string) => `Gebruik ${t} thema`,
-    dark: 'donker',
-    light: 'licht',
+  index: {
+    title: 'Hey, ik ben Quinten Coret. En ik maak dingen.',
   },
+  about: {
+    page: 'Over'
+  }
 };

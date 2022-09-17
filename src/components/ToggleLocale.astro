@@ -17,9 +17,9 @@ const t = state.translations;
   buttons.forEach((e) => e.addEventListener('click', toggleLocale));
 </script>
 
-<Button class="toggleLocale" title={t.locale.toggle}>
+<Button class="toggleLocale" title={t.nav.toggleLocale}>
   <Icon name="message" size={20} />
-  <span>{t.locale.other}</span>
+  <span>{t.nav.otherLocale}</span>
 </Button>
 
 <style is:global>

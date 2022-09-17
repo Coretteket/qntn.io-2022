@@ -23,10 +23,10 @@ const t = state.translations;
   });
 </script>
 
-<Button class="toggleTheme" aria-label={t.theme.label}>
+<Button class="toggleTheme" aria-label={t.nav.themeLabel}>
   <span data-transition="false">
-    <Icon name="moon" size={20} title={t.theme.toggle(t.theme.dark)} class="light" />
-    <Icon name="sun" size={20} title={t.theme.toggle(t.theme.light)} class="dark" />
+    <Icon name="moon" size={20} title={t.nav.toggleTheme(t.nav.darkTheme)} class="light" />
+    <Icon name="sun" size={20} title={t.nav.toggleTheme(t.nav.lightTheme)} class="dark" />
   </span>
 </Button>
 
