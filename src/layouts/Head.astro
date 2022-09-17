@@ -2,9 +2,13 @@
 import { state } from '../scripts/translate';
 import '../styles/index.css';
 
+export type Props = { title?: string };
+const props = Astro.props as Props;
+
+const title = props.title ? `${props.title} – Quinten Coret` : 'Quinten Coret';
+
 const otherLocale = state.locale === 'en' ? 'nl' : 'en';
-const otherHref = new URL(Astro.url);
-otherHref.searchParams.set('lang', otherLocale);
+const otherLocaleURL = `${Astro.url}?lang=${otherLocale}`;
 
 const goatcounter = 'https://qntn.goatcounter.com/count';
 ---
@@ -12,10 +16,10 @@ const goatcounter = 'https://qntn.goatcounter.com/count';
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="alternate" hreflang={otherLocale} href={otherHref} />
+  <link rel="alternate" hreflang={otherLocale} href={otherLocaleURL} />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
-  <title>Quinten Coret</title>
+  <title>{title}</title>
   <script is:inline>
     let theme = localStorage.getItem('theme');
     theme = theme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

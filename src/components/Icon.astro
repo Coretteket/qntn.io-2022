@@ -9,7 +9,7 @@ export type Props = {
   [key: string]: any;
 };
 
-const { name, size, title, ...restProps } = Astro.props as Props;
+const { name, size = 20, title, ...restProps } = Astro.props as Props;
 
 const iconData = getIconData(icons, name);
 const renderData = iconToSVG(iconData!);

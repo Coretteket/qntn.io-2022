@@ -2,10 +2,13 @@
 import Head from './Head.astro';
 import Navigation from '../components/Navigation.astro';
 import { state } from '../scripts/translate';
+
+export type Props = { title?: string };
+const { title } = Astro.props as Props;
 ---
 
 <html lang={state.locale}>
-  <Head />
+  <Head title={title} />
   <body>
     <Navigation />
     <main>
@@ -16,3 +19,11 @@ import { state } from '../scripts/translate';
     </footer>
   </body>
 </html>
+
+<style>
+  main,
+  footer {
+    max-width: var(--container-width);
+    margin: 0 auto;
+  }
+</style>
