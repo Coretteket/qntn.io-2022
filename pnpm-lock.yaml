@@ -6,7 +6,6 @@ specifiers:
   '@iconify/utils': ^2.0.0
   '@types/cookie': ^0.5.1
   astro: ^1.2.3
-  astro-auto-import: ^0.1.2
   cookie: ^0.5.0
   quicklink: ^2.3.0
   sass: ^1.54.9
@@ -17,7 +16,6 @@ dependencies:
   '@iconify/utils': 2.0.0
   '@types/cookie': 0.5.1
   astro: 1.2.3_sass@1.54.9
-  astro-auto-import: 0.1.2_astro@1.2.3
   cookie: 0.5.0
   quicklink: 2.3.0_wcqkhtmu7mswc6yz4uyexck3ty
   sass: 1.54.9
@@ -635,10 +633,6 @@ packages:
       '@types/unist': 2.0.6
     dev: false
 
-  /@types/node/18.7.17:
-    resolution: {integrity: sha512-0UyfUnt02zIuqp7yC8RYtDkp/vo8bFaQ13KkSEvUAohPOAlnVNbj5Fi3fgPSuwzakS+EvvnnZ4x9y7i6ASaSPQ==}
-    dev: false
-
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
     dev: false
@@ -799,16 +793,6 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       tslib: 2.4.0
-    dev: false
-
-  /astro-auto-import/0.1.2_astro@1.2.3:
-    resolution: {integrity: sha512-uMqChXkUoKv29YIBKfFWi8d3oXGDInyYyXjRRTrqM5yFHp2fTIvelG4ZpDV7jjNghKkW9g8dzSH389e0LlOjLQ==}
-    engines: {node: '>=16.0.0'}
-    peerDependencies:
-      astro: ^1.0.0-beta.56
-    dependencies:
-      '@types/node': 18.7.17
-      astro: 1.2.3_sass@1.54.9
     dev: false
 
   /astro/1.2.3_sass@1.54.9:
