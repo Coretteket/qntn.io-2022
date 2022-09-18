@@ -8,10 +8,19 @@ export default {
     lightTheme: 'licht',
   },
   index: {
-    title: 'Quinten Coret is een programmeur, dataliefhebber, en econometrist in spé.',
+    title: 'Quinten Coret is een programmeur, dataliefhebber, en econometrist in spe.',
     description: "Ik studeer Econometrie en Data Science aan de Vrije Universiteit, en ik hou ervan om data creatief toegangelijk te maken."
   },
   about: {
     page: 'Over'
-  }
+  },
+  projects: {
+    page: 'Projecten'
+  },
+  blog: {
+    page: 'Blog'
+  },
+  contact: {
+    page: 'Contact'
+  },
 };

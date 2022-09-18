@@ -13,5 +13,14 @@ export default {
   },
   about: {
     page: 'About'
-  }
+  },
+  projects: {
+    page: 'Projects'
+  },
+  blog: {
+    page: 'Blog'
+  },
+  contact: {
+    page: 'Contact'
+  },
 };

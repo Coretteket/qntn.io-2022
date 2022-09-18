@@ -1,21 +1,21 @@
 ---
 import { state } from '../scripts/translate';
-import Block from './Block.astro';
-import Icon from './Icon.astro';
+import SocialLinks from './SocialLinks.astro';
 const t = state.translations;
 ---
 
 <header>
   <div>
-    <h1><span>{t.index.title}</span></h1>
+    <h1>{t.index.title}</h1>
     <h2>{t.index.description}</h2>
+    <SocialLinks />
   </div>
   <!-- <Block width={12} image="/headshot.webp" /> -->
 </header>
 
 <style>
   header {
-    margin-block: 4rem;
+    margin-block: 6rem;
     display: flex;
     justify-content: space-between;
     gap: 2rem;
@@ -28,18 +28,16 @@ const t = state.translations;
     gap: 0.5rem;
   }
 
-  h1,
-  h2 {
-    margin-block: 0;
-  }
-
   h1 {
     font-size: 2.5rem;
     font-weight: 600;
+    margin-block: 0;
   }
 
   h2 {
     font-weight: normal;
     font-size: 1.25rem;
+    max-width: 36rem;
+    margin-block: 1rem 1.5rem;
   }
 </style>

@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { load } from '../scripts/load';
+const { translations: t } = await load(Astro);
 ---
 
 <Layout title="Blog" />
