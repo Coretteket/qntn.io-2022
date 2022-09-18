@@ -10,7 +10,8 @@ const t = state.translations;
   const toggleLocale = () => {
     const locale = document.documentElement.lang;
     document.cookie = `locale=${locale === 'en' ? 'nl' : 'en'}`;
-    location.reload();
+    // history.pushState({}, document.title, window.location.pathname); // remove search params
+    window.location.reload();
   };
 
   const buttons = document.querySelectorAll('.toggleLocale');
@@ -18,12 +19,16 @@ const t = state.translations;
 </script>
 
 <Button class="toggleLocale" title={t.nav.toggleLocale}>
-  <Icon name="message" size={20} />
+  <Icon name="tabler:message" />
   <span>{t.nav.otherLocale}</span>
 </Button>
 
 <style is:global>
-  .toggleLocale span {
-    width: 3.25rem;
+  .toggleLocale > span {
+    margin-inline: 0.25rem;
+  }
+
+  .toggleLocale {
+    padding-inline: 0.75rem;
   }
 </style>

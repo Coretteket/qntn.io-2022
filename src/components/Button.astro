@@ -8,15 +8,15 @@ const props = Astro.props as Props;
 <style lang="scss">
   button {
     display: flex;
-    gap: 0.375rem;
-    background: var(--gray-2);
+    gap: 0.25rem;
+    background-color: var(--btn-bg-color);
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     padding: 0.5rem;
     margin: 0;
     font: inherit;
     font-weight: 600;
-    color: var(--gray-7);
+    color: var(--btn-txt-color);
     cursor: pointer;
     height: 2.25rem;
     min-width: 2.25rem;
@@ -25,7 +25,7 @@ const props = Astro.props as Props;
     overflow: hidden;
     transition: box-shadow 150ms var(--easing);
     &:hover {
-      box-shadow: 0 0 0 2px var(--gray-3);
+      box-shadow: 0 0 0 2px var(--mid-color);
     }
   }
 </style>

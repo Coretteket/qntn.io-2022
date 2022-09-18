@@ -18,6 +18,13 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
   <meta charset="utf-8" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="alternate" hreflang={otherLocale} href={otherLocaleURL} />
+  <link
+    rel="preload"
+    href="/fraunces-bold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>

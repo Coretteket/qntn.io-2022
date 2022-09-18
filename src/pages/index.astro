@@ -1,4 +1,5 @@
 ---
+import Hero from '../components/Hero.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import Layout from '../layouts/Layout.astro';
 import { load } from '../scripts/load';
@@ -7,8 +8,5 @@ const { translations: t } = await load(Astro);
 ---
 
 <Layout>
-  <h1>Home</h1>
-  <a href="/about">About</a>
-  <p>{t.index.title}</p>
-  <SocialLinks />
+  <Hero />
 </Layout>

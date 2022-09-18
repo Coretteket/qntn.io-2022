@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/vercel': ^2.0.0
   '@iconify-json/tabler': ^1.1.34
+  '@iconify-json/twemoji': ^1.1.5
   '@iconify/utils': ^2.0.0
   '@types/cookie': ^0.5.1
   astro: ^1.2.6
@@ -13,6 +14,7 @@ specifiers:
 dependencies:
   '@astrojs/vercel': 2.0.0
   '@iconify-json/tabler': 1.1.34
+  '@iconify-json/twemoji': 1.1.5
   '@iconify/utils': 2.0.0
   '@types/cookie': 0.5.1
   astro: 1.2.6_sass@1.54.9
@@ -413,6 +415,12 @@ packages:
 
   /@iconify-json/tabler/1.1.34:
     resolution: {integrity: sha512-rX0Yngbf9AVn+77Axw8PFmnRyl79nkPhcru0VZy+DzkAbVfGg/GoQiUhjmhRRtHcc9emRYta2ooVuL2npKPxCg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/twemoji/1.1.5:
+    resolution: {integrity: sha512-1sTyrLUrMF7QhXS8a9XOd2ySgxgESQTRvhtN471QFdqIaXMi7oWB5UUFh0z984s/al4Iclet+O8BZfuhM9t7lg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

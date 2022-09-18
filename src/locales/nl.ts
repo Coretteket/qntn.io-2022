@@ -8,7 +8,8 @@ export default {
     lightTheme: 'licht',
   },
   index: {
-    title: 'Hey, ik ben Quinten Coret. En ik maak dingen.',
+    title: 'Quinten Coret is een programmeur, dataliefhebber, en econometrist in spé.',
+    description: "Ik studeer Econometrie en Data Science aan de Vrije Universiteit, en ik hou ervan om data creatief toegangelijk te maken."
   },
   about: {
     page: 'Over'

@@ -8,7 +8,8 @@ export default {
     lightTheme: 'light',
   },
   index: {
-    title: "Hey, I'm Quinten Coret. And I build stuff.",
+    title: "Quinten Coret is a developer, data enthusiast, and econometrician-to-be.",
+    description: "I study Econometrics and Data Science at VU Amsterdam, and I love creating accessible ways to interact with data."
   },
   about: {
     page: 'About'
