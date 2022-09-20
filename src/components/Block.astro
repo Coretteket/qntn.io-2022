@@ -1,11 +1,11 @@
 ---
-export type Props = { class?: string; width?: number; image?: string; alt?: string };
-const { class: classes, width, image, alt } = Astro.props as Props;
+export type Props = { width?: number; image?: string; alt?: string };
+const { width, image, alt } = Astro.props as Props;
 
 const vars = { 'block-width': width ? `${width}rem` : null };
 ---
 
-<div class={classes} data-image={image ? 'true' : 'false'}>
+<div data-image={image ? 'true' : null}>
   {image && <img src={image} alt={alt} />}
   <slot />
 </div>

@@ -43,8 +43,7 @@ const current = new URL(Astro.request.url).pathname;
     justify-content: space-between;
     margin-block: 2rem;
     margin-inline: auto;
-    --nav-width: min(100% - 2rem, var(--max-width) + 1.5rem);
-    max-width: var(--nav-width);
+    max-width: var(--container-width);
   }
 
   div {
