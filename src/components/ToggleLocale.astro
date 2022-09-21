@@ -1,29 +1,39 @@
 ---
 import { state } from '../scripts/translate';
-import Button from './Button.astro';
 import Icon from './Icon.astro';
 
 const t = state.translations;
 ---
 
 <script>
-  const toggleLocale = () => {
-    const locale = document.documentElement.lang;
-    document.cookie = `locale=${locale === 'en' ? 'nl' : 'en'}`;
-    // history.pushState({}, document.title, window.location.pathname); // remove search params
-    window.location.reload();
-  };
+  import { parseLocale } from '../scripts/utils';
 
-  const buttons = document.querySelectorAll('.toggleLocale');
-  buttons.forEach((e) => e.addEventListener('click', toggleLocale));
+  class ToggleLocale extends HTMLElement {
+    connectedCallback() {
+      this.addEventListener('click', this.toggleLocale.bind(this));
+    }
+
+    get locale() {
+      return parseLocale(document.documentElement.lang, 'en');
+    }
+
+    toggleLocale() {
+      document.cookie = `locale=${this.locale === 'en' ? 'nl' : 'en'}`;
+      const href = window.location.href.split('?');
+      if (href[1]?.length > 0) window.location.href = href[0];
+      else window.location.reload();
+    }
+  }
+
+  customElements.define('toggle-locale', ToggleLocale);
 </script>
 
-<Button class="toggleLocale" title={t.nav.toggleLocale}>
+<toggle-locale title={t.nav.toggleLocale}>
   <Icon name="tabler:message" />
   <span>{t.nav.otherLocale}</span>
-</Button>
+</toggle-locale>
 
-<style>
+<style lang="scss">
   span {
     margin-inline: 0.25rem;
   }

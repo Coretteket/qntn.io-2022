@@ -8,7 +8,7 @@ export default {
     lightTheme: 'light',
   },
   index: {
-    title: "Hey, I'm Quinten Coret.",
+    title: "Quinten Coret loves creating accessible ways to interact with data.",
     description: "I study Econometrics and Data Science at VU Amsterdam, and I love creating accessible ways to interact with data."
   },
   about: {

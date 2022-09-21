@@ -1,7 +1,6 @@
 ---
 import { state } from '../scripts/translate';
 import Button from './Button.astro';
-import MobileMenu from './MobileMenu.astro';
 import ToggleLocale from './ToggleLocale.astro';
 import ToggleTheme from './ToggleTheme.astro';
 
@@ -71,5 +70,31 @@ const current = new URL(Astro.request.url).pathname;
     .menu {
       display: none;
     }
+  }
+
+  :global(toggle-locale),
+  :global(toggle-theme) {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    color: var(--btn-txt-color);
+    cursor: pointer;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background-color 150ms var(--easing);
+    background-color: var(--btn-bg-color);
+    border-radius: 2rem;
+    &:hover {
+      background-color: var(--mid-color);
+    }
+  }
+
+  :global(toggle-theme) {
+    aspect-ratio: 1;
+    padding: 0.5rem;
   }
 </style>

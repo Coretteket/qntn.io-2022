@@ -12,58 +12,11 @@ const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
     <h1>{t.index.title}</h1>
     <h2>{t.index.description}</h2>
   </div>
-  <div class="grid">
-    {
-      socials.map((social) => (
-        <div class="square">
-          <Icon name={`tabler:brand-${social}`} size={32} />
-        </div>
-      ))
-    }
-  </div>
 </header>
 
 <style>
   header {
     margin-block: 6rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    /* align-items: center; */
-  }
-
-  header > div {
-    height: 17.5rem;
-  }
-
-  .grid {
-    width: 17.5rem;
-  }
-
-  div:not(.grid) {
-    background-color: hsl(216, 28%, 7%);
-    padding: 2.5rem 2.75rem;
-    border-radius: 1.5rem;
-    outline: 2px solid hsl(212, 12%, 21%);
-  }
-
-  .square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* width: 100%; */
-    /* aspect-ratio: 1; */
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
   }
 
   h1 {
