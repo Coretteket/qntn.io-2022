@@ -1,11 +1,11 @@
 ---
-export type Props = { href?: string; round?: boolean; class?: string; [key: string]: any };
-const { href, round, class: className, ...props } = Astro.props as Props;
+export type Props = { href?: string; [key: string]: any };
+const { href, ...props } = Astro.props as Props;
 
 const Button = href ? 'a' : 'button';
 ---
 
-<Button href={href} class:list={[{ round }, className]} type={!href ? 'button' : null} {...props}>
+<Button href={href} type={!href ? 'button' : null} {...props}>
   <slot />
 </Button>
 
@@ -21,7 +21,7 @@ const Button = href ? 'a' : 'button';
     padding: 0.5rem 0.75rem;
     margin: 0;
     font: inherit;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--btn-txt-color);
     cursor: pointer;
     height: 2.25rem;
@@ -33,7 +33,7 @@ const Button = href ? 'a' : 'button';
     &:hover {
       background-color: var(--btn-bg-color);
     }
-    &.round {
+    &[data-round='true'] {
       aspect-ratio: 1;
       padding: 0.5rem;
     }

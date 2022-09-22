@@ -31,10 +31,9 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <script is:inline>
-      let theme = localStorage.getItem('theme');
-      theme =
-        theme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
+      let thm = localStorage.getItem('theme');
+      thm = thm ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', thm);
     </script>
     <script>
       import { quicklink } from '../scripts/prefetch';

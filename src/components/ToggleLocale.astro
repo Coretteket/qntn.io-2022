@@ -1,5 +1,6 @@
 ---
 import { state } from '../scripts/translate';
+import Button from './Button.astro';
 import Icon from './Icon.astro';
 
 const t = state.translations;
@@ -10,7 +11,7 @@ const t = state.translations;
 
   class ToggleLocale extends HTMLElement {
     connectedCallback() {
-      this.addEventListener('click', this.toggleLocale.bind(this));
+      this.children[0].addEventListener('click', this.toggleLocale.bind(this));
     }
 
     get locale() {
@@ -28,13 +29,15 @@ const t = state.translations;
   customElements.define('toggle-locale', ToggleLocale);
 </script>
 
-<toggle-locale title={t.nav.toggleLocale}>
-  <Icon name="tabler:message" />
-  <span>{t.nav.otherLocale}</span>
+<toggle-locale>
+  <Button type="button" title={t.nav.toggleLocale}>
+    <Icon name="tabler:message" aria-label="Language" />
+    <span>{t.nav.otherLocale}</span>
+  </Button>
 </toggle-locale>
 
-<style lang="scss">
-  span {
+<style is:global>
+  toggle-locale span {
     margin-inline: 0.25rem;
   }
 </style>

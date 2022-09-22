@@ -1,5 +1,6 @@
 ---
 import { state } from '../scripts/translate';
+import Button from './Button.astro';
 import Icon from './Icon.astro';
 
 const t = state.translations;
@@ -11,8 +12,13 @@ const t = state.translations;
 
   class ToggleTheme extends HTMLElement {
     connectedCallback() {
-      this.addEventListener('click', this.toggleTheme.bind(this));
-      this.firstElementChild?.setAttribute('data-transition', 'true');
+      this.button.addEventListener('click', this.toggleTheme.bind(this));
+      this.button.children[0].setAttribute('data-transition', 'true');
+      this.button.setAttribute('aria-pressed', (this.theme === 'dark').toString());
+    }
+
+    get button() {
+      return this.children[0];
     }
 
     get theme() {
@@ -20,8 +26,9 @@ const t = state.translations;
     }
 
     set theme(theme: Theme) {
-      window.localStorage.setItem('theme', theme);
       disableTransition(() => (document.documentElement.dataset.theme = theme));
+      this.button.setAttribute('aria-pressed', (theme === 'dark').toString());
+      window.localStorage.setItem('theme', theme);
     }
 
     toggleTheme() {
@@ -32,11 +39,13 @@ const t = state.translations;
   customElements.define('toggle-theme', ToggleTheme);
 </script>
 
-<toggle-theme aria-label={t.nav.themeLabel}>
-  <span data-transition="false">
-    <Icon name="tabler:moon" title={t.nav.toggleTheme(t.nav.darkTheme)} />
-    <Icon name="tabler:sun" title={t.nav.toggleTheme(t.nav.lightTheme)} />
-  </span>
+<toggle-theme>
+  <Button type="button" aria-label={t.nav.themeLabel} data-round="true">
+    <span data-transition="false">
+      <Icon name="tabler:moon" title={t.nav.toggleTheme(t.nav.darkTheme)} />
+      <Icon name="tabler:sun" title={t.nav.toggleTheme(t.nav.lightTheme)} />
+    </span>
+  </Button>
 </toggle-theme>
 
 <style lang="scss" is:global>
