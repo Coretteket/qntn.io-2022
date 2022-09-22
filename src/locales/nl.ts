@@ -9,7 +9,8 @@ export default {
   },
   index: {
     title: 'Quinten Coret houdt ervan om data creatief toegangelijk te maken.',
-    description: "Ik studeer Econometrie en Data Science aan de Vrije Universiteit, en ik hou ervan om data creatief toegangelijk te maken."
+    projects: "Uitgelichte projecten",
+    moreProjects: "Bekijk meer projecten",
   },
   about: {
     page: 'Over'
@@ -23,4 +24,12 @@ export default {
   contact: {
     page: 'Contact'
   },
+  beterdanhugo: {
+    title: "Beter dan Hugo",
+    stat: "keer gespeeld"
+  },
+  nieuwindekamer: {
+    title: "Nieuw in de Kamer",
+    stat: "volgers"
+  }
 };

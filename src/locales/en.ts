@@ -9,7 +9,8 @@ export default {
   },
   index: {
     title: "Quinten Coret loves creating accessible ways to interact with data.",
-    description: "I study Econometrics and Data Science at VU Amsterdam, and I love creating accessible ways to interact with data."
+    projects: "Featured projects",
+    moreProjects: "View more projects",
   },
   about: {
     page: 'About'
@@ -23,4 +24,12 @@ export default {
   contact: {
     page: 'Contact'
   },
+  beterdanhugo: {
+    title: "Better than Hugo",
+    stat: "times played"
+  },
+  nieuwindekamer: {
+    title: "New in Parliament",
+    stat: "followers"
+  }
 };
