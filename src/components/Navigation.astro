@@ -18,8 +18,9 @@ const current = new URL(Astro.request.url).pathname;
 
 <nav>
   <div>
+    <img src="/headshot.webp" height="36" />
     <Button href="/">Quinten Coret</Button>
-    <div class="menu">
+    <!-- <div class="menu">
       {
         links.map((link) => (
           <Button href={link.href} aria-current={current === link.href ? 'page' : null}>
@@ -27,7 +28,7 @@ const current = new URL(Astro.request.url).pathname;
           </Button>
         ))
       }
-    </div>
+    </div> -->
   </div>
   <div>
     <ToggleTheme />
@@ -55,11 +56,20 @@ const current = new URL(Astro.request.url).pathname;
     padding: 0.75rem;
   }
 
-  a[href='/'] {
+  nav :global(a[href='/']) {
     color: var(--txt-color);
-    font-size: 1.125rem;
-    font-family: Fraunces;
+    font-weight: 700;
+    // font-size: 1.125rem;
+    // font-family: Fraunces;
   }
+
+  nav img {
+    border-radius: 50%;
+  }
+
+  // nav :first-child() {
+  //   gap: 0.5rem;
+  // }
 
   a[aria-current='page'] {
     font-weight: 600;

@@ -1,7 +1,9 @@
 ---
+import BDH from '../components/BDH.astro';
 import Button from '../components/Button.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
+import Tweet from '../components/Tweet.astro';
 import Layout from '../layouts/Layout.astro';
 import { load } from '../scripts/load';
 
@@ -15,30 +17,22 @@ const { translations: t } = await load(Astro);
       <h2>{t.index.projects}</h2>
       <a href="/projects">{t.index.moreProjects}</a>
     </div>
-    <article>
-      <h3>{t.beterdanhugo.title} <span><b>308K</b> {t.beterdanhugo.stat}</span></h3>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor condimentum nibh, quis
-        dictum nulla tincidunt quis. Donec et neque dignissim, scelerisque tellus sit amet,
-        scelerisque purus.
-      </p>
-      <a href="/projects">Read more</a>
-    </article>
-    <article>
-      <h3>{t.nieuwindekamer.title} <span><b>2.8K</b> {t.nieuwindekamer.stat}</span></h3>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor condimentum nibh, quis
-        dictum nulla tincidunt quis. Donec et neque dignissim, scelerisque tellus sit amet,
-        scelerisque purus.
-      </p>
-      <a href="/projects">Read more</a>
-    </article>
+    <div class="projects">
+      <article>
+        <BDH />
+        <!-- <h3>Beter dan Hugo</h3>
+        <p>
+          A pandemic simulation game that puts you in the shoes of health minister Hugo de Jonge
+        </p> -->
+      </article>
+      <article>
+        <Tweet />
+      </article>
+    </div>
   </section>
 </Layout>
 
-<style>
+<style lang="scss">
   h2 {
     font-size: 0.875rem;
     color: var(--btn-txt-color);
@@ -47,6 +41,7 @@ const { translations: t } = await load(Astro);
   h3 {
     font-family: Fraunces, serif;
     font-size: 1.5rem;
+    margin-top: 2rem;
     margin-bottom: 0;
     display: flex;
     gap: 1rem;
@@ -61,12 +56,28 @@ const { translations: t } = await load(Astro);
     border-radius: 2rem;
   }
 
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
   article {
-    margin-bottom: 3rem;
+    min-width: 20rem;
+    // margin-bottom: 3rem;
+    flex: 1;
+    & img {
+      width: 100%;
+      height: 20rem;
+      object-position: top;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
   }
 
   article > p {
     margin-top: 0.75rem;
+    font-size: 1rem;
   }
 
   section {
@@ -78,9 +89,10 @@ const { translations: t } = await load(Astro);
     justify-content: space-between;
     font-size: 0.875rem;
     align-items: center;
+    margin-block: 1rem;
   }
 
-  p {
-    max-width: 25rem;
-  }
+  // p {
+  //   max-width: 25rem;
+  // }
 </style>

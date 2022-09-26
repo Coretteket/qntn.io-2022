@@ -19,7 +19,9 @@ const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
   }
 
   h1 {
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
+    font-size: clamp(32px, calc(2rem + (40 - 32) * ((100vw - 400px) / (880 - 400))), 40px);
+    min-height: 0vw;
     font-weight: 600;
     margin-block: 0;
   }

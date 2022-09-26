@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^2.0.0",
-    "@iconify-json/tabler": "^1.1.35",
+    "@iconify-json/tabler": "^1.1.36",
     "@iconify-json/twemoji": "^1.1.5",
     "@iconify/utils": "^2.0.0",
     "@types/cookie": "^0.5.1",
