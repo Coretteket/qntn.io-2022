@@ -1,10 +1,6 @@
 ---
 import { state } from '../scripts/translate';
-import Icon from './Icon.astro';
-import SocialLinks from './SocialLinks.astro';
-const t = state.translations;
-
-const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
+const { t } = state;
 ---
 
 <header>

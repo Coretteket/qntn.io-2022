@@ -1,0 +1,75 @@
+---
+import A from '../../components/Anchor.astro';
+import Button from '../../components/Button.astro';
+import { Icon } from 'astro-icon';
+import Hero from '../../components/Hero.astro';
+import Project from '../../components/Project.astro';
+import Layout from '../../layouts/Layout.astro';
+import { loadTranslations } from '../../scripts/translate';
+
+export { getStaticPaths } from '../../scripts/translate';
+const { t } = await loadTranslations(Astro);
+---
+
+<Layout>
+  <Hero />
+  <section>
+    <div>
+      <h2>{t.index.projects}</h2>
+      <A href="/projects" rel="prefetch">{t.index.moreProjects}</A>
+    </div>
+    <div class="projects">
+      <Project name="NOS Stories" handle="@nosstories" img="/nos_insta.png" verified>
+        <p>
+          Quinten daagt je uit: ben je beter dan Hugo de Jonge? Avondklok of lockdown, hoe zou jij
+          het coronabeleid aanpakken?
+        </p>
+        <Button><Icon name="tabler:brand-instagram" size={18} /> 428K weergaven</Button>
+      </Project>
+      <Project name="Nieuw in de Kamer" handle="@nieuwindekamer" img="/nieuwindekamer.jpg">
+        <p>
+          Door <span>@lientje1967</span> (BBB) werd gisteren voor het eerst het woord “memes” in de Tweede
+          Kamer plenair gebruikt.
+        </p>
+        <Button><Icon name="tabler:brand-twitter" size={18} /> 2.8K volgers</Button>
+      </Project>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  h2 {
+    font-size: 0.875rem;
+    color: var(--btn-txt-color);
+  }
+
+  h3 {
+    font-family: Fraunces, serif;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  section {
+    margin-block: 4rem;
+  }
+
+  section > div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    align-items: center;
+  }
+
+  p {
+    max-width: 25rem;
+  }
+
+  .projects {
+    margin-block: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    gap: 2rem;
+  }
+</style>

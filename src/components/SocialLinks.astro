@@ -1,6 +1,6 @@
 ---
 import Button from './Button.astro';
-import Icon from './Icon.astro';
+import { Icon } from 'astro-icon';
 const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
 
 const capitalize = (social: typeof socials[number]) =>
@@ -11,7 +11,7 @@ const capitalize = (social: typeof socials[number]) =>
   {
     socials.map((social) => (
       <Button href={`/${social}`} title={capitalize(social)} round={true} rel="external">
-        <Icon name={`tabler:brand-${social}`} size={24} />
+        <Icon name={`tabler:brand-${social}`} height={24} />
       </Button>
     ))
   }

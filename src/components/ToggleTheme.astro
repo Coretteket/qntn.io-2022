@@ -1,9 +1,9 @@
 ---
 import { state } from '../scripts/translate';
 import Button from './Button.astro';
-import Icon from './Icon.astro';
+import { Icon } from 'astro-icon';
 
-const t = state.translations;
+const { t } = state;
 ---
 
 <script>
@@ -49,7 +49,7 @@ const t = state.translations;
 </toggle-theme>
 
 <style lang="scss" is:global>
-  toggle-theme svg {
+  toggle-theme [astro-icon] {
     transition: transform 150ms var(--easing);
     [data-theme='dark'] & {
       transform: translateY(-1.75rem);
