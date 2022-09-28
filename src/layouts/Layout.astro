@@ -1,0 +1,57 @@
+---
+import Navigation from '../components/Navigation.astro';
+import { state } from '../scripts/translate';
+import '../styles/index.css';
+
+export type Props = { title?: string };
+const props = Astro.props as Props;
+
+const defaultTitle = 'Quinten Coret';
+const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
+
+const otherLocale = state.locale === 'en' ? 'nl' : 'en';
+const otherLocaleURL = Astro.request.url.replace(`/${state.locale}`, `/${otherLocale}`);
+
+const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
+---
+
+<html lang={state.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="alternate" hreflang={otherLocale} href={otherLocaleURL} />
+    <link
+      rel="preload"
+      href="/fraunces-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline>
+      let thm = localStorage.getItem('theme');
+      thm = thm ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', thm);
+    </script>
+  </head>
+  <body>
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>Built with {Astro.generator}</p>
+    </footer>
+    <script data-goatcounter={goatcounterURL} src="//gc.zgo.at/count.js" async></script>
+  </body>
+</html>
+
+<style>
+  main,
+  footer {
+    max-width: var(--container-width);
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import { state } from '../scripts/translate';
+const { t } = state;
+---
+
+<header>
+  <div>
+    <h1>{t.index.title}</h1>
+  </div>
+</header>
+
+<style>
+  header {
+    margin-block: 6rem;
+  }
+
+  h1 {
+    /* font-size: 2.5rem; */
+    font-size: clamp(32px, calc(2rem + (40 - 32) * ((100vw - 400px) / (880 - 400))), 40px);
+    min-height: 0vw;
+    font-weight: 600;
+    margin-block: 0;
+  }
+
+  h2 {
+    font-weight: normal;
+    font-size: 1.25rem;
+    max-width: 36rem;
+  }
+</style>

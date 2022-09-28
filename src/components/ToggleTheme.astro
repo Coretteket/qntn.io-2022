@@ -1,0 +1,64 @@
+---
+import { state } from '../scripts/translate';
+import Button from './Button.astro';
+import { Icon } from 'astro-icon';
+
+const { t } = state;
+---
+
+<script>
+  import type { Theme } from '../scripts/types';
+  import { disableTransition, parseTheme } from '../scripts/utils';
+
+  class ToggleTheme extends HTMLElement {
+    connectedCallback() {
+      this.button.addEventListener('click', this.toggleTheme.bind(this));
+      this.button.children[0].setAttribute('data-transition', 'true');
+      this.button.setAttribute('aria-pressed', (this.theme === 'dark').toString());
+    }
+
+    get button() {
+      return this.children[0];
+    }
+
+    get theme() {
+      return parseTheme(document.documentElement.dataset.theme, 'light');
+    }
+
+    set theme(theme: Theme) {
+      disableTransition(() => (document.documentElement.dataset.theme = theme));
+      this.button.setAttribute('aria-pressed', (theme === 'dark').toString());
+      window.localStorage.setItem('theme', theme);
+    }
+
+    toggleTheme() {
+      this.theme = this.theme === 'dark' ? 'light' : 'dark';
+    }
+  }
+
+  customElements.define('toggle-theme', ToggleTheme);
+</script>
+
+<toggle-theme>
+  <Button type="button" aria-label={t.nav.themeLabel} data-round="true">
+    <span data-transition="false">
+      <Icon name="tabler:moon-stars" title={t.nav.toggleTheme(t.nav.darkTheme)} />
+      <Icon name="tabler:sun" title={t.nav.toggleTheme(t.nav.lightTheme)} />
+    </span>
+  </Button>
+</toggle-theme>
+
+<style lang="scss" is:global>
+  toggle-theme [astro-icon] {
+    transition: transform 150ms var(--easing);
+    [data-theme='dark'] & {
+      transform: translateY(-1.75rem);
+    }
+  }
+
+  toggle-theme span {
+    display: grid;
+    gap: 0.5rem;
+    align-self: flex-start;
+  }
+</style>

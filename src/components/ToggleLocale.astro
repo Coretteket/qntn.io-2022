@@ -1,0 +1,53 @@
+---
+import { state } from '../scripts/translate';
+import Button from './Button.astro';
+import { Icon } from 'astro-icon';
+
+const { t } = state;
+---
+
+<script>
+  import type { Locale } from '../scripts/types';
+  import { matches } from '../../middleware';
+  import { parseLocale } from '../scripts/utils';
+
+  class ToggleLocale extends HTMLElement {
+    connectedCallback() {
+      this.children[0].addEventListener('click', this.toggleLocale.bind(this));
+    }
+
+    get locale() {
+      return parseLocale(document.documentElement.lang, 'en');
+    }
+
+    localizeHref(locale: Locale) {
+      return location.href.replace(`/${this.locale}`, `/${locale}`);
+    }
+
+    toggleLocale() {
+      const locale = this.locale === 'en' ? 'nl' : 'en';
+      document.cookie = `locale=${locale};path=/;SameSite=Lax`;
+      if (matches(new URL(location.href))) location.href = this.localizeHref(locale);
+      else location.reload();
+    }
+  }
+
+  customElements.define('toggle-locale', ToggleLocale);
+</script>
+
+<toggle-locale>
+  <Button type="button" title={t.nav.toggleLocale}>
+    <Icon name="tabler:message" height={20} aria-label="Language" />
+    <span>{t.nav.otherLocale}</span>
+  </Button>
+</toggle-locale>
+
+<style is:global>
+  toggle-locale button {
+    padding-inline: 1rem;
+  }
+
+  toggle-locale [astro-icon] {
+    margin-right: 0.125rem;
+  }
+</style>
