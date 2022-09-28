@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { loadTranslations } from '../../scripts/translate';
 export { getStaticPaths } from '../../scripts/translate';
+const { t } = await loadTranslations(Astro);
 ---
 
-<Layout title="Contact" />
+<Layout title={t.contact.page} />

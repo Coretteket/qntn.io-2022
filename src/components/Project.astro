@@ -11,11 +11,11 @@ const { img, name, handle, verified = false } = Astro.props as Props;
 
 <article>
   <header>
-    <img src={img} width={42} height={42} />
+    <img src={img} width={42} height={42} alt="" />
     <div>
       <span>
         {name}
-        {verified && <img src="/verified.png" width={14} height={14} />}<br />
+        {verified && <img src="/verified.png" width={14} height={14} alt="verified" />}
       </span>
       <span class="handle">
         {handle}

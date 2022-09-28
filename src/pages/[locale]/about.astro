@@ -5,7 +5,4 @@ export { getStaticPaths } from '../../scripts/translate';
 const { t } = await loadTranslations(Astro);
 ---
 
-<Layout title={t.about.page}>
-  <h1>About</h1>
-  <a href="/">Home</a>
-</Layout>
+<Layout title={t.about.page} />
