@@ -1,33 +1,13 @@
 ---
-import { state } from '../scripts/translate';
 import Button from './Button.astro';
 import ToggleLocale from './ToggleLocale.astro';
 import ToggleTheme from './ToggleTheme.astro';
-
-const t = state.translations;
-
-const links = [
-  { href: '/projects', label: t.projects.page },
-  { href: '/about', label: t.about.page },
-  { href: '/blog', label: t.blog.page },
-  { href: '/contact', label: t.contact.page },
-];
-
-const current = new URL(Astro.request.url).pathname;
 ---
 
 <nav>
   <div>
+    <img src="/headshot.webp" alt="headshot" width={36} height={36} />
     <Button href="/">Quinten Coret</Button>
-    <div class="menu">
-      {
-        links.map((link) => (
-          <Button href={link.href} aria-current={current === link.href ? 'page' : null}>
-            {link.label}
-          </Button>
-        ))
-      }
-    </div>
   </div>
   <div>
     <ToggleTheme />
@@ -50,24 +30,19 @@ const current = new URL(Astro.request.url).pathname;
     gap: 0.75rem;
   }
 
+  img {
+    background-color: var(--btn-bg-color);
+    color: transparent;
+    border-radius: 50%;
+  }
+
   a {
     text-decoration: none;
     padding: 0.75rem;
   }
 
-  a[href='/'] {
+  div > :global(a) {
     color: var(--txt-color);
-    font-size: 1.125rem;
-    font-family: Fraunces;
-  }
-
-  a[aria-current='page'] {
     font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    .menu {
-      display: none;
-    }
   }
 </style>

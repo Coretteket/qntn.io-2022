@@ -1,0 +1,68 @@
+---
+export type Props = {
+  img: string;
+  name: string;
+  handle: string;
+  verified?: boolean;
+};
+
+const { img, name, handle, verified = false } = Astro.props as Props;
+---
+
+<article>
+  <header>
+    <img src={img} width={42} height={42} />
+    <div>
+      <span>
+        {name}
+        {verified && <img src="/verified.png" width={14} height={14} />}<br />
+      </span>
+      <span class="handle">
+        {handle}
+      </span>
+    </div>
+  </header>
+  <div>
+    <slot />
+  </div>
+</article>
+
+<style lang="scss">
+  article {
+    background-color: var(--btn-bg-color);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    & > img {
+      border-radius: 50%;
+    }
+    & span {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    & .handle {
+      color: var(--btn-txt-color);
+      font-weight: normal;
+    }
+  }
+
+  article :global(p) {
+    font-size: 16px;
+    margin-block: 0.75rem 1rem;
+    & :global(> span) {
+      color: hsl(207, 100%, 50%);
+    }
+  }
+
+  article :global(button) {
+    border: 2px solid hsl(0, 0%, 80%);
+    gap: 0.5rem;
+  }
+</style>

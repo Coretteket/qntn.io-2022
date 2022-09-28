@@ -6,11 +6,11 @@ import '../styles/index.css';
 export type Props = { title?: string };
 const props = Astro.props as Props;
 
-const defaultTitle = `Quinten Coret`;
+const defaultTitle = 'Quinten Coret';
 const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
 
 const otherLocale = state.locale === 'en' ? 'nl' : 'en';
-const otherLocaleURL = `${Astro.url}?lang=${otherLocale}`;
+const otherLocaleURL = Astro.request.url.replace(`/${state.locale}`, `/${otherLocale}`);
 
 const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
 ---
@@ -35,10 +35,6 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
       thm = thm ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', thm);
     </script>
-    <script>
-      import { quicklink } from '../scripts/prefetch';
-      if (import.meta.env.PROD) quicklink();
-    </script>
   </head>
   <body>
     <Navigation />
@@ -48,7 +44,6 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
     <footer>
       <p>Built with {Astro.generator}</p>
     </footer>
-
     <script data-goatcounter={goatcounterURL} src="//gc.zgo.at/count.js" async></script>
   </body>
 </html>

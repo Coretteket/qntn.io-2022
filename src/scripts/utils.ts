@@ -1,3 +1,4 @@
+import { state } from "./translate";
 import { Locale, locales, Theme, themes } from "./types";
 
 export const isType = <T>(l: readonly T[], t: unknown): t is T => l.includes(t as T);
