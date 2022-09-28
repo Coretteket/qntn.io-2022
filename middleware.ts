@@ -15,10 +15,11 @@ const parseHeaders = ({ headers }: Request) => {
   return acceptLanguage.includes('nl') ? 'nl' : 'en';
 };
 
+const headers = { headers: { 'cache-control': 'public, max-age=3600' } };
+
 /** Intercepts requests and rewrites them to the correct locale and applies cache headers. */
 export default function middleware(request: Request) {
   const url = new URL(request.url);
-  const headers = { headers: { 'cache-control': 'public, max-age=300, s-maxage=86400' } };
   if (matches(url)) return next(headers);
   const locale = parseHeaders(request);
   url.pathname = locale + url.pathname;

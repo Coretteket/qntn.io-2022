@@ -1,6 +1,9 @@
 ---
+import { Image } from '@astrojs/image/components';
+import Icon from 'astro-icon';
+
 export type Props = {
-  img: string;
+  img: ImageMetadata;
   name: string;
   handle: string;
   verified?: boolean;
@@ -11,11 +14,15 @@ const { img, name, handle, verified = false } = Astro.props as Props;
 
 <article>
   <header>
-    <img src={img} width={42} height={42} alt="" />
+    <Image src={img} width={42} height={42} format="webp" quality={90} alt="" />
     <div>
       <span>
         {name}
-        {verified && <img src="/verified.png" width={14} height={14} alt="verified" />}
+        {
+          verified && (
+            <Icon name="ic:baseline-verified" width={14} height={14} aria-label="verified" />
+          )
+        }
       </span>
       <span class="handle">
         {handle}
@@ -38,7 +45,10 @@ const { img, name, handle, verified = false } = Astro.props as Props;
     display: flex;
     align-items: center;
     gap: 1rem;
-    & > img {
+    & :global([astro-icon]) {
+      color: hsl(207, 100%, 50%);
+    }
+    & img {
       border-radius: 50%;
     }
     & span {

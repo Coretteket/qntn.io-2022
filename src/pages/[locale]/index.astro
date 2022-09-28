@@ -6,6 +6,8 @@ import Hero from '../../components/Hero.astro';
 import Project from '../../components/Project.astro';
 import Layout from '../../layouts/Layout.astro';
 import { loadTranslations } from '../../scripts/translate';
+import nosLogo from '../../assets/nos_insta.png';
+import nidkLogo from '../../assets/nieuwindekamer.jpg';
 
 export { getStaticPaths } from '../../scripts/translate';
 const { t } = await loadTranslations(Astro);
@@ -19,14 +21,14 @@ const { t } = await loadTranslations(Astro);
       <A href="/projects" rel="prefetch">{t.index.moreProjects}</A>
     </div>
     <div class="projects">
-      <Project name="NOS Stories" handle="@nosstories" img="/nos_insta.png" verified>
+      <Project name="NOS Stories" handle="@nosstories" img={nosLogo} verified>
         <p>
           Quinten daagt je uit: ben je beter dan Hugo de Jonge? Avondklok of lockdown, hoe zou jij
           het coronabeleid aanpakken?
         </p>
         <Button><Icon name="tabler:brand-instagram" size={18} /> 428K weergaven</Button>
       </Project>
-      <Project name="Nieuw in de Kamer" handle="@nieuwindekamer" img="/nieuwindekamer.jpg">
+      <Project name="Nieuw in de Kamer" handle="@nieuwindekamer" img={nidkLogo}>
         <p>
           Door <span>@lientje1967</span> (BBB) werd gisteren voor het eerst het woord “memes” in de Tweede
           Kamer plenair gebruikt.
