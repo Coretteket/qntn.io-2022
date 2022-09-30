@@ -1,5 +1,5 @@
 ---
-import { Image } from '@astrojs/image/components';
+import Image from '../components/Image.astro';
 import Button from './Button.astro';
 import ToggleLocale from './ToggleLocale.astro';
 import ToggleTheme from './ToggleTheme.astro';
@@ -7,7 +7,7 @@ import ToggleTheme from './ToggleTheme.astro';
 
 <nav>
   <div>
-    <Image src="/headshot.webp" alt="headshot" width={36} height={36} quality={90} format="webp" />
+    <Image src="/headshot.webp" width={36} aspectRatio={1} loading="eager" />
     <Button href="/">Quinten Coret</Button>
   </div>
   <div>

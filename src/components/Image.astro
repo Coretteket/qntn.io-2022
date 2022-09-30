@@ -1,0 +1,40 @@
+---
+/** Component to use @astrojs/image with custom defaults, like loading
+ *  higher resolution images, and .webp formatting. */
+
+import { getImage } from '@astrojs/image';
+import type { TransformOptions } from '@astrojs/image/dist/loaders';
+
+export interface Props extends Omit<TransformOptions, 'src'> {
+  src: string | ImageMetadata | Promise<{ default: ImageMetadata }>;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  scale?: number;
+}
+
+/** Type-safe function that returns `Astro.props` with given default values. */
+const withDefaults = <T extends Partial<Props>>(d: T): Props & T => ({ ...Astro.props, ...d });
+
+const props = withDefaults({
+  quality: 80,
+  format: 'webp',
+  loading: 'lazy',
+  decoding: 'async',
+  scale: 2,
+});
+
+/** Scales entries of object by scale factor.
+ * @example scaleObject({ width: 10, height: 20 }) === { width: 20, height: 40 } */
+const scaleObject = (numbers: Record<string, number | undefined>) =>
+  Object.fromEntries(Object.entries(numbers).map(([k, v]) => [k, v ? v * props.scale : undefined]));
+
+/** Hacky function that scales the width and height attributes passed
+ *  to the `getImage` function to display higher-quality images. */
+const getScaledImage = async () => {
+  const sizes = { width: props.width, height: props.height };
+  const { src, ...img } = await getImage({ ...props, ...scaleObject(sizes) });
+  return { ...props, ...img, ...sizes, src };
+};
+---
+
+<img {...(await getScaledImage())} />

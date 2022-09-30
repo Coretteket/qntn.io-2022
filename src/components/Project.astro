@@ -1,9 +1,9 @@
 ---
-import { Image } from '@astrojs/image/components';
+import Image from '../components/Image.astro';
 import Icon from 'astro-icon';
 
 export type Props = {
-  img: ImageMetadata;
+  img: string;
   name: string;
   handle: string;
   verified?: boolean;
@@ -14,7 +14,7 @@ const { img, name, handle, verified = false } = Astro.props as Props;
 
 <article>
   <header>
-    <Image src={img} width={42} height={42} format="webp" quality={90} alt="" />
+    <Image src={img} width={42} aspectRatio={1} />
     <div>
       <span>
         {name}
