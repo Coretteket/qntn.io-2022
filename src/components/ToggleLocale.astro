@@ -6,6 +6,13 @@ import { Icon } from 'astro-icon';
 const { t } = state;
 ---
 
+<toggle-locale>
+  <Button type="button" title={t.nav.toggleLocale}>
+    <Icon name="tabler:message" height={20} aria-label="Language" />
+    <span>{t.nav.otherLocale}</span>
+  </Button>
+</toggle-locale>
+
 <script>
   import type { Locale } from '../scripts/types';
   import { matches } from '../../middleware';
@@ -34,13 +41,6 @@ const { t } = state;
 
   customElements.define('toggle-locale', ToggleLocale);
 </script>
-
-<toggle-locale>
-  <Button type="button" title={t.nav.toggleLocale}>
-    <Icon name="tabler:message" height={20} aria-label="Language" />
-    <span>{t.nav.otherLocale}</span>
-  </Button>
-</toggle-locale>
 
 <style is:global>
   toggle-locale button {

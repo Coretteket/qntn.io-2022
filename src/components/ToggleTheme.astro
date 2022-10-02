@@ -6,6 +6,20 @@ import { Icon } from 'astro-icon';
 const { t } = state;
 ---
 
+<toggle-theme>
+  <Button type="button" aria-label={t.nav.themeLabel} data-round="true">
+    <span data-transition="false">
+      <Icon
+        name="tabler:moon-stars"
+        width={20}
+        height={20}
+        title={t.nav.toggleTheme(t.nav.darkTheme)}
+      />
+      <Icon name="tabler:sun" width={20} height={20} title={t.nav.toggleTheme(t.nav.lightTheme)} />
+    </span>
+  </Button>
+</toggle-theme>
+
 <script>
   import type { Theme } from '../scripts/types';
   import { disableTransition, parseTheme } from '../scripts/utils';
@@ -38,15 +52,6 @@ const { t } = state;
 
   customElements.define('toggle-theme', ToggleTheme);
 </script>
-
-<toggle-theme>
-  <Button type="button" aria-label={t.nav.themeLabel} data-round="true">
-    <span data-transition="false">
-      <Icon name="tabler:moon-stars" width={20} height={20} title={t.nav.toggleTheme(t.nav.darkTheme)} />
-      <Icon name="tabler:sun" width={20} height={20} title={t.nav.toggleTheme(t.nav.lightTheme)} />
-    </span>
-  </Button>
-</toggle-theme>
 
 <style lang="scss" is:global>
   toggle-theme [astro-icon] {
