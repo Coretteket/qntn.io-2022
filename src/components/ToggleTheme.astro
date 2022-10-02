@@ -22,7 +22,8 @@ const { t } = state;
 
 <script>
   import type { Theme } from '../scripts/types';
-  import { disableTransition, parseTheme } from '../scripts/utils';
+  import { disableTransition } from '../scripts/utils';
+  import { parseTheme } from '../scripts/types';
 
   class ToggleTheme extends HTMLElement {
     connectedCallback() {

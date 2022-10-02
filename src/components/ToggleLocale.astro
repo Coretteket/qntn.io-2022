@@ -15,8 +15,8 @@ const { t } = state;
 
 <script>
   import type { Locale } from '../scripts/types';
-  import { matches } from '../../middleware';
-  import { parseLocale } from '../scripts/utils';
+  import { isLocalized } from '../../middleware';
+  import { parseLocale } from '../scripts/types';
 
   class ToggleLocale extends HTMLElement {
     connectedCallback() {
@@ -34,7 +34,8 @@ const { t } = state;
     toggleLocale() {
       const locale = this.locale === 'en' ? 'nl' : 'en';
       document.cookie = `locale=${locale};path=/;SameSite=Lax`;
-      if (matches(new URL(location.href))) location.href = this.localizeHref(locale);
+      const localize = isLocalized(new URL(location.href));
+      if (localize) location.href = this.localizeHref(locale);
       else location.reload();
     }
   }

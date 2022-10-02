@@ -1,20 +1,29 @@
-import { state } from "./translate";
-import { Locale, locales, Theme, themes } from "./types";
-
-export const isType = <T>(l: readonly T[], t: unknown): t is T => l.includes(t as T);
-export const parseType = <T>(l: readonly T[], t: unknown, d: T): T => (isType(l, t) ? t : d);
-
-export const isLocale = (l: unknown): l is Locale => isType(locales, l);
-export const isTheme = (t: unknown): t is Theme => isType(themes, t);
-
-export const parseLocale = (t: unknown, d: Locale): Locale => parseType(locales, t, d);
-export const parseTheme = (t: unknown, d: Theme): Theme => parseType(themes, t, d);
-
-
+/** Helper function to disable transition until a function has been called. */
 export const disableTransition = (fn: () => void) => {
   const d = document.documentElement;
   d.setAttribute('data-transition', 'false');
   fn();
   d.offsetHeight; // force browser to re-render
   d.removeAttribute('data-transition');
+};
+
+/** Helper function to omit key from object. */
+export const omit = <T extends Record<string, any>>(key: string, obj: T) => {
+  const { [key]: omitted, ...rest } = obj;
+  return rest;
+};
+
+/** Polyfill for window.requestIdleCallback(). */
+export const shim = (callback: IdleRequestCallback, options?: IdleRequestOptions) => {
+  const timeout = options?.timeout ?? 50;
+  const start = Date.now();
+
+  return setTimeout(function () {
+    callback({
+      didTimeout: false,
+      timeRemaining: function () {
+        return Math.max(0, timeout - (Date.now() - start));
+      },
+    });
+  }, 1);
 };

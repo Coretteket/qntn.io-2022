@@ -36,6 +36,10 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
       thm = thm ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', thm);
     </script>
+    <script>
+      import prefetch from '../scripts/prefetch';
+      prefetch({});
+    </script>
   </head>
   <body>
     <Navigation />
