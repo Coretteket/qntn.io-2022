@@ -1,4 +1,4 @@
-import { parse } from "cookie";
+import { parse, serialize } from "cookie";
 import { isLocale } from "./src/scripts/types";
 import { geolocation, next, rewrite } from '@vercel/edge';
 
@@ -18,15 +18,15 @@ const parseHeaders = (request: Request) => {
   return (acceptLanguage.includes('nl') || country === 'NL') ? 'nl' : 'en';
 };
 
-const pageHeaders = { 'cache-control': 'public, max-age=14400' }; // four hours
-const publicHeaders = { 'cache-control': 'public, immutable, max-age=604800' }; // one week
+const cache = { 'cache-control': 'public, immutable, max-age=604800' }; // one week
+const cookies = (url: URL) => ({ 'set-cookie': serialize('locale', url.pathname.slice(1, 3), { sameSite: 'lax', path: '/' }) })
 
 /** Intercepts requests and rewrites them to the correct locale and applies cache headers. */
 export default function middleware(request: Request) {
   const url = new URL(request.url);
-  if (isPublic(url)) return next({ headers: publicHeaders });
-  if (isLocalized(url)) return next({ headers: pageHeaders });
+  if (isPublic(url)) return next({ headers: cache });
+  if (isLocalized(url)) return next({ headers: cookies(url) });
   const locale = parseHeaders(request);
   url.pathname = locale + url.pathname;
-  return rewrite(url, { headers: pageHeaders });
+  return rewrite(url);
 }

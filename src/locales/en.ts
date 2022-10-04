@@ -16,7 +16,7 @@ export default {
     page: 'About'
   },
   projects: {
-    page: 'Projects'
+    page: 'Projects',
   },
   blog: {
     page: 'Blog'
@@ -26,10 +26,12 @@ export default {
   },
   beterdanhugo: {
     title: "Better than Hugo",
-    stat: "times played"
+    stat: "views",
+    desc: 'Quinten challenges you: are you better than Hugo de Jonge? Curfews or lockdowns, how would you tackle the COVID-19 pandemic?',
   },
   nieuwindekamer: {
     title: "New in Parliament",
-    stat: "followers"
+    stat: "followers",
+    desc: 'Yesterday, the word “memes” was used for the first time in the plenary of parliament by @lientje1967 (BBB).'
   }
 };

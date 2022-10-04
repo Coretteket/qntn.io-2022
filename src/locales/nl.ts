@@ -16,7 +16,7 @@ export default {
     page: 'Over'
   },
   projects: {
-    page: 'Projecten'
+    page: 'Projecten',
   },
   blog: {
     page: 'Blog'
@@ -26,10 +26,12 @@ export default {
   },
   beterdanhugo: {
     title: "Beter dan Hugo",
-    stat: "keer gespeeld"
+    stat: "weergaven",
+    desc: 'Quinten daagt je uit: ben je beter dan Hugo de Jonge? Avondklok of lockdown, hoe zou jij het coronabeleid aanpakken?',
   },
   nieuwindekamer: {
     title: "Nieuw in de Kamer",
-    stat: "volgers"
+    stat: "volgers",
+    desc: 'Door @lientje1967 (BBB) werd gisteren voor het eerst het woord “memes” in de Tweede Kamer plenair gebruikt.'
   }
 };

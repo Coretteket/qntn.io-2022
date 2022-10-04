@@ -4,10 +4,13 @@ import Button from './Button.astro';
 import { Icon } from 'astro-icon';
 
 const { t } = state;
+
+const path = Astro.url.pathname.replace(`/${state.locale}`, '');
+const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
 ---
 
 <toggle-locale>
-  <Button type="button" title={t.nav.toggleLocale}>
+  <Button href={href} parse={false} type="button" title={t.nav.toggleLocale}>
     <Icon name="tabler:message" height={20} aria-label="Language" />
     <span>{t.nav.otherLocale}</span>
   </Button>
@@ -20,6 +23,7 @@ const { t } = state;
 
   class ToggleLocale extends HTMLElement {
     connectedCallback() {
+      this.children[0].outerHTML = this.children[0].outerHTML.replace(/(<\/?)a/g, '$1button');
       this.children[0].addEventListener('click', this.toggleLocale.bind(this));
     }
 
@@ -44,7 +48,8 @@ const { t } = state;
 </script>
 
 <style is:global>
-  toggle-locale button {
+  toggle-locale a,
+  button {
     padding-inline: 1rem;
   }
 
