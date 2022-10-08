@@ -1,0 +1,33 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import { state } from '../scripts/translate';
+const { t } = state;
+---
+
+<header>
+  <h1>{t.index.title}</h1>
+  <p>{t.index.description}</p>
+  <SocialLinks />
+</header>
+
+<style>
+  header {
+    margin-block: 5rem;
+  }
+
+  h1 {
+    font-size: clamp(32px, calc(2rem + (40 - 32) * ((100vw - 400px) / (880 - 400))), 40px);
+    min-height: 0vw;
+    max-width: 50rem;
+    font-weight: 600;
+    margin-block: 0;
+  }
+
+  p {
+    font-size: 20px;
+    margin-block: 2.5rem;
+    color: var(--btn-txt-color);
+    max-width: 30rem;
+    line-height: 1.5;
+  }
+</style>

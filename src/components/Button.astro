@@ -1,0 +1,38 @@
+---
+import A from './Anchor.astro';
+export type Props = { href?: string; [key: string]: any };
+const { href, ...props } = Astro.props as Props;
+
+const Button = href ? A : 'button';
+---
+
+<Button href={href} type={!href ? 'button' : null} {...props}>
+  <slot />
+</Button>
+
+<style lang="scss">
+  a,
+  button {
+    text-decoration: none;
+    background-color: var(--btn-bg-color);
+    border-radius: 2rem;
+    display: flex;
+    gap: 0.25rem;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+    font: inherit;
+    font-weight: 600;
+    color: var(--btn-txt-color);
+    cursor: pointer;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background-color 150ms var(--easing);
+    &:hover {
+      background-color: var(--mid-color);
+    }
+  }
+</style>

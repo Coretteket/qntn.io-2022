@@ -1,0 +1,30 @@
+@import url('colors.css');
+@import url('constants.css');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+  scrollbar-gutter: stable;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+h1 {
+  font-family: Fraunces, serif;
+}
+
+[data-transition='false'] :not([data-transition='true'], [data-transition='true'] *) {
+  transition: none !important;
+}

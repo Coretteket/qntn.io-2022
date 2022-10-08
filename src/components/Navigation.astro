@@ -1,0 +1,52 @@
+---
+import Image from '../components/Image.astro';
+import Button from './Button.astro';
+import ToggleLocale from './ToggleLocale.astro';
+import ToggleTheme from './ToggleTheme.astro';
+---
+
+<nav>
+  <div>
+    <Image src="/headshot.webp" width={36} aspectRatio={1} loading="eager" />
+    <Button href="/" rel="prefetch">Quinten Coret</Button>
+  </div>
+  <div>
+    <ToggleTheme />
+    <ToggleLocale />
+  </div>
+</nav>
+
+<style lang="scss">
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 3rem 2rem;
+    margin-inline: auto;
+    max-width: var(--container-width);
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  img {
+    background-color: var(--btn-bg-color);
+    color: transparent;
+    border-radius: 50%;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0.75rem;
+  }
+
+  div > :global(a) {
+    color: var(--txt-color);
+    font-weight: 600;
+    &[href='/'] {
+      padding-inline: 1rem;
+    }
+  }
+</style>

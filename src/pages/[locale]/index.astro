@@ -1,0 +1,12 @@
+---
+import Hero from '../../components/Hero.astro';
+import Layout from '../_layout.astro';
+import { loadTranslations } from '../../scripts/translate';
+
+export { getStaticPaths } from '../../scripts/translate';
+await loadTranslations(Astro);
+---
+
+<Layout>
+  <Hero />
+</Layout>
