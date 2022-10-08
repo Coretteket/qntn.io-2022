@@ -1,87 +1,12 @@
 ---
-import A from '../../components/Anchor.astro';
-import Button from '../../components/Button.astro';
-import { Icon } from 'astro-icon';
 import Hero from '../../components/Hero.astro';
-import Tweet from '../../components/Tweet.astro';
 import Layout from '../_layout.astro';
 import { loadTranslations } from '../../scripts/translate';
-import { getPlayCount, getFollowers } from '../../scripts/api';
-import Project from '../../components/Project.astro';
-import Project2 from '../../components/Project2.astro';
 
 export { getStaticPaths } from '../../scripts/translate';
-const { t, locale } = await loadTranslations(Astro);
-
-const playCount = await getPlayCount();
-const followers = await getFollowers();
-
-const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
+await loadTranslations(Astro);
 ---
 
 <Layout>
   <Hero />
-  <section>
-    <div>
-      <h2>{t.index.projects}</h2>
-      <A href="/projects" rel="prefetch">{t.index.moreProjects}</A>
-    </div>
-    <!-- <div class="projects">
-      <Tweet name="NOS Stories" handle="@nosstories" img="/nos_insta.png" verified>
-        <p>{t.beterdanhugo.desc}</p>
-        <Button>
-          <Icon name="tabler:brand-instagram" size={18} />
-          {format(playCount)}{' '}
-          {t.beterdanhugo.stat}
-        </Button>
-      </Tweet>
-      <Tweet name={t.nieuwindekamer.title} handle="@nieuwindekamer" img="/nieuwindekamer.jpg">
-        <p>{t.nieuwindekamer.desc}</p>
-        <Button>
-          <Icon name="tabler:brand-twitter" size={18} />
-          {format(followers)}{' '}
-          {t.nieuwindekamer.stat}
-        </Button>
-      </Tweet>
-    </div> -->
-    <Project />
-    <Project2 />
-  </section>
 </Layout>
-
-<style>
-  h2 {
-    font-size: 0.875rem;
-    color: var(--btn-txt-color);
-  }
-
-  h3 {
-    font-family: Fraunces, serif;
-    font-size: 1.5rem;
-    margin-bottom: 0;
-    display: flex;
-    gap: 1rem;
-  }
-
-  section {
-    margin-block: 4rem;
-  }
-
-  section > div {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-    align-items: center;
-  }
-
-  p {
-    max-width: 25rem;
-  }
-
-  .projects {
-    margin-block: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    gap: 2rem;
-  }
-</style>

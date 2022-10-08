@@ -45,5 +45,8 @@ import ToggleTheme from './ToggleTheme.astro';
   div > :global(a) {
     color: var(--txt-color);
     font-weight: 600;
+    &[href='/'] {
+      padding-inline: 1rem;
+    }
   }
 </style>

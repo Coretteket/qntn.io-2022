@@ -10,9 +10,9 @@ const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
 ---
 
 <toggle-locale>
-  <Button href={href} parse={false} title={t.nav.toggleLocale}>
+  <Button href={href} title={t.nav.locale.toggle}>
     <Icon name="tabler:message" height={20} aria-label="Language" />
-    <span>{t.nav.otherLocale}</span>
+    <span>{t.nav.locale.other}</span>
   </Button>
 </toggle-locale>
 

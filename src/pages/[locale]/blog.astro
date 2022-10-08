@@ -1,8 +1,0 @@
----
-import Layout from '../_layout.astro';
-import { loadTranslations } from '../../scripts/translate';
-export { getStaticPaths } from '../../scripts/translate';
-const { t } = await loadTranslations(Astro);
----
-
-<Layout title={t.blog.page} />

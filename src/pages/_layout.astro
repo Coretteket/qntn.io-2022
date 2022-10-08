@@ -9,8 +9,10 @@ const props = Astro.props as Props;
 const defaultTitle = 'Quinten Coret';
 const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
 
-const otherLocale = state.locale === 'en' ? 'nl' : 'en';
-const otherLocaleURL = Astro.request.url.replace(`/${state.locale}`, `/${otherLocale}`);
+const { t, locale } = state;
+
+const otherLocale = locale === 'en' ? 'nl' : 'en';
+const otherLocaleURL = Astro.request.url.replace(`/${locale}`, `/${otherLocale}`);
 
 const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
 ---
@@ -50,7 +52,7 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
       <slot />
     </main>
     <footer>
-      <p>Built with {Astro.generator}</p>
+      <p>{t.footer.wip}</p>
     </footer>
     <script data-goatcounter={goatcounterURL} src="//gc.zgo.at/count.js" async></script>
   </body>
@@ -61,5 +63,9 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
   footer {
     max-width: var(--container-width);
     margin: 0 auto;
+  }
+
+  footer {
+    color: var(--mid-color);
   }
 </style>

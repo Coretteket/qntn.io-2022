@@ -1,21 +1,17 @@
 :root {
   --bg-color: hsl(0, 0%, 96%);
   --txt-color: hsl(0, 0%, 7%);
-  --mid-color: hsl(0, 0%, 60%);
+  --mid-color: hsl(0, 0%, 50%);
   --border-color: hsl(0, 0%, 70%);
-  --btn-bg-color: hsl(0, 0%, 92%);
+  --btn-bg-color: hsl(0, 0%, 89%);
   --btn-txt-color: hsl(0, 0%, 25%);
-  --bdh-bg-color: hsl(220, 70%, 85%);
-  --nidk-bg-color: hsl(30, 80%, 85%);
 }
 
 [data-theme='dark'] {
   --bg-color: hsl(0, 0%, 6%);
   --txt-color: hsl(0, 0%, 96%);
-  --mid-color: hsl(0, 0%, 40%);
+  --mid-color: hsl(0, 0%, 50%);
   --border-color: hsl(0, 0%, 30%);
-  --btn-bg-color: hsl(0, 0%, 9%);
+  --btn-bg-color: hsl(0, 0%, 12%);
   --btn-txt-color: hsl(0, 0%, 70%);
-  --bdh-bg-color: hsl(220, 30%, 10%);
-  --nidk-bg-color: hsl(30, 30%, 10%);
 }

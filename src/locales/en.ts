@@ -4,35 +4,16 @@ export default {
       light: 'Use dark theme',
       dark: 'Use light theme',
     },
-    toggleLocale: 'Go to Dutch site',
-    otherLocale: 'Dutch',
-    themeLabel: "Toggle dark theme",
+    locale: {
+      toggle: 'Go to Dutch site',
+      other: 'Dutch',
+    }
+  },
+  footer: {
+    wip: 'It’s quite empty around here, but that’ll soon change.',
   },
   index: {
     title: "Quinten Coret loves creating accessible ways to interact with data.",
-    projects: "Featured projects",
-    moreProjects: "View more projects",
+    description: "I started coding as a seven-year-old. Fast forward eleven years, and now I'm an Econometrics and Data Science student at VU Amsterdam."
   },
-  about: {
-    page: 'About'
-  },
-  projects: {
-    page: 'Projects',
-  },
-  blog: {
-    page: 'Blog'
-  },
-  contact: {
-    page: 'Contact'
-  },
-  beterdanhugo: {
-    title: "Better than Hugo",
-    stat: "views",
-    desc: 'Quinten challenges you: are you better than Hugo de Jonge? Curfews or lockdowns, how would you tackle the COVID-19 pandemic?',
-  },
-  nieuwindekamer: {
-    title: "New in Parliament",
-    stat: "followers",
-    desc: 'Yesterday, the word “memes” was used for the first time in the plenary of parliament by @lientje1967 (BBB).'
-  }
 };
