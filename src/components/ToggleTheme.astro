@@ -4,19 +4,16 @@ import Button from './Button.astro';
 import { Icon } from 'astro-icon';
 
 const { t } = state;
+
+const { url } = Astro;
+url.searchParams.set('toggle-theme', '1');
+const href = url.pathname + url.search;
 ---
 
-<toggle-theme>
-  <Button type="button" aria-label={t.nav.themeLabel} data-round="true">
-    <span data-transition="false">
-      <Icon
-        name="tabler:moon-stars"
-        width={20}
-        height={20}
-        title={t.nav.toggleTheme(t.nav.darkTheme)}
-      />
-      <Icon name="tabler:sun" width={20} height={20} title={t.nav.toggleTheme(t.nav.lightTheme)} />
-    </span>
+<toggle-theme {...t.nav.theme}>
+  <Button type="button" data-transition="true">
+    <Icon name="tabler:moon-stars" width={20} />
+    <Icon name="tabler:sun" width={20} />
   </Button>
 </toggle-theme>
 
@@ -26,23 +23,20 @@ const { t } = state;
   import { parseTheme } from '../scripts/types';
 
   class ToggleTheme extends HTMLElement {
+    button = this.children[0];
+
     connectedCallback() {
       this.button.addEventListener('click', this.toggleTheme.bind(this));
-      this.button.children[0].setAttribute('data-transition', 'true');
-      this.button.setAttribute('aria-pressed', (this.theme === 'dark').toString());
-    }
-
-    get button() {
-      return this.children[0];
+      this.button.setAttribute('title', this.getAttribute(this.theme) ?? '');
     }
 
     get theme() {
-      return parseTheme(document.documentElement.dataset.theme, 'light');
+      return parseTheme(document.documentElement.dataset.theme);
     }
 
     set theme(theme: Theme) {
       disableTransition(() => (document.documentElement.dataset.theme = theme));
-      this.button.setAttribute('aria-pressed', (theme === 'dark').toString());
+      this.button.setAttribute('title', this.getAttribute(this.theme) ?? '');
       window.localStorage.setItem('theme', theme);
     }
 
@@ -56,15 +50,20 @@ const { t } = state;
 
 <style lang="scss" is:global>
   toggle-theme [astro-icon] {
-    transition: transform 150ms var(--easing);
+    transition: transform 100ms var(--easing);
     [data-theme='dark'] & {
       transform: translateY(-1.75rem);
     }
   }
 
-  toggle-theme span {
-    display: grid;
-    gap: 0.5rem;
-    align-self: flex-start;
+  toggle-theme button {
+    display: var(--no-script, grid);
+    gap: 1.75rem;
+    align-items: flex-start;
+    aspect-ratio: 1;
+    padding: 0.5rem;
+    [data-transition='false'] & {
+      transition: none;
+    }
   }
 </style>

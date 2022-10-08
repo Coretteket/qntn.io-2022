@@ -1,3 +1,9 @@
+/** Returns true if path is a localized route. */
+export const isLocalized = ({ pathname }: URL) => /^\/(en|nl)(\W|$)/.test(pathname);
+
+/** Returns true if path is a public file. */
+export const isPublic = ({ pathname }: URL) => /\.\w+$/.test(pathname);
+
 /** Helper function to disable transition until a function has been called. */
 export const disableTransition = (fn: () => void) => {
   const d = document.documentElement;

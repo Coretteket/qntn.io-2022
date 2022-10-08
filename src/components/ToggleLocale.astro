@@ -10,37 +10,33 @@ const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
 ---
 
 <toggle-locale>
-  <Button href={href} parse={false} type="button" title={t.nav.toggleLocale}>
+  <Button href={href} parse={false} title={t.nav.toggleLocale}>
     <Icon name="tabler:message" height={20} aria-label="Language" />
     <span>{t.nav.otherLocale}</span>
   </Button>
 </toggle-locale>
 
 <script>
-  import type { Locale } from '../scripts/types';
-  import { isLocalized } from '../../middleware';
+  import { isLocalized } from '../scripts/utils';
   import { parseLocale } from '../scripts/types';
 
   class ToggleLocale extends HTMLElement {
+    get button() {
+      return this.children[0];
+    }
+
     connectedCallback() {
-      this.children[0].outerHTML = this.children[0].outerHTML.replace(/(<\/?)a/g, '$1button');
-      this.children[0].addEventListener('click', this.toggleLocale.bind(this));
-    }
-
-    get locale() {
-      return parseLocale(document.documentElement.lang, 'en');
-    }
-
-    localizeHref(locale: Locale) {
-      return location.href.replace(`/${this.locale}`, `/${locale}`);
+      if (isLocalized(new URL(location.href))) return;
+      this.button.outerHTML = this.button.outerHTML.replace(/(<\/?)a/g, '$1button');
+      this.button.addEventListener('click', this.toggleLocale.bind(this));
+      this.button.setAttribute('type', 'button');
+      this.button.removeAttribute('href');
     }
 
     toggleLocale() {
-      const locale = this.locale === 'en' ? 'nl' : 'en';
+      const locale = parseLocale(document.documentElement.lang) === 'en' ? 'nl' : 'en';
       document.cookie = `locale=${locale};path=/;SameSite=Lax`;
-      const localize = isLocalized(new URL(location.href));
-      if (localize) location.href = this.localizeHref(locale);
-      else location.reload();
+      location.reload();
     }
   }
 

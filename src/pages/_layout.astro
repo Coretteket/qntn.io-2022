@@ -32,12 +32,19 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <script is:inline>
-      let thm = localStorage.getItem('theme');
-      thm = thm ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', thm);
+      let t = localStorage.getItem('theme');
+      t = t ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
     </script>
   </head>
   <body>
+    <noscript>
+      <style>
+        :root {
+          --no-script: none;
+        }
+      </style>
+    </noscript>
     <Navigation />
     <main>
       <slot />

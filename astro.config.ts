@@ -8,5 +8,5 @@ export default defineConfig({
   integrations: [
     image({ serviceEntryPoint: '@astrojs/image/sharp' }),
     purgecss(),
-  ],
+  ]
 });

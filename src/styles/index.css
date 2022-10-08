@@ -9,6 +9,7 @@ html {
   font-family: var(--font-body);
   background-color: var(--bg-color);
   color: var(--txt-color);
+  scrollbar-gutter: stable;
 }
 
 html[data-theme='dark'] {

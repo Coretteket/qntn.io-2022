@@ -8,8 +8,8 @@ export const loaders = {
 };
 
 /** Loads the translations for a given locale. */
-export const loadTranslations = async (Astro: Readonly<AstroGlobal>) => {
-  state.locale = Astro.params.locale as Locale;
+export const loadTranslations = async (Astro: AstroGlobal) => {
+  state.locale = Astro.params.locale as Locale ?? locales[0];
   state.t = (await loaders[state.locale]())['default'];
   return state;
 };

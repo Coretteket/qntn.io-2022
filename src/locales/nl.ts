@@ -1,11 +1,12 @@
 export default {
   nav: {
+    theme: {
+      light: 'Gebruik donker thema',
+      dark: 'Gebruik licht thema',
+    },
     toggleLocale: 'Ga naar Engelse site',
     otherLocale: 'English',
     themeLabel: "Wissel thema",
-    toggleTheme: (t: string) => `Gebruik ${t} thema`,
-    darkTheme: 'donker',
-    lightTheme: 'licht',
   },
   index: {
     title: 'Quinten Coret houdt ervan om data creatief toegangelijk te maken.',

@@ -6,25 +6,33 @@ const { t } = state;
 <header>
   <div>
     <h1>{t.index.title}</h1>
+    <p>
+      Did he just throw my cat out of the window? Hey, you know how I'm, like, always trying to save
+      the planet? Here's my chance. Forget the fat lady! You're obsessed with the fat lady! Drive us
+      out of here!
+    </p>
   </div>
 </header>
 
 <style>
   header {
     margin-block: 6rem;
+    /* padding-inline: 3rem; */
   }
 
   h1 {
     /* font-size: 2.5rem; */
     font-size: clamp(32px, calc(2rem + (40 - 32) * ((100vw - 400px) / (880 - 400))), 40px);
     min-height: 0vw;
+    max-width: 50rem;
     font-weight: 600;
     margin-block: 0;
   }
 
-  h2 {
-    font-weight: normal;
-    font-size: 1.25rem;
-    max-width: 36rem;
+  p {
+    font-size: 20px;
+    margin-block: 2.5rem;
+    color: var(--btn-txt-color);
+    max-width: 30rem;
   }
 </style>
