@@ -2,7 +2,7 @@ import { geolocation, next, rewrite } from '@vercel/edge';
 import { parse } from "cookie";
 
 import { isPublic, isLocalized } from "./src/scripts/utils";
-import { isLocale, isTheme, parseTheme } from "./src/scripts/types";
+import { isLocale } from "./src/scripts/types";
 
 /** Parses language from request headers, based on stored cookies, the presence
  * of Dutch in the `accept-language` header, and geolocation. */

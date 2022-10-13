@@ -13,9 +13,9 @@
     "@astrojs/image": "^0.8.1",
     "@types/cookie": "^0.5.1",
     "@vercel/edge": "^0.0.4",
-    "astro": "^1.4.6",
+    "astro": "^1.4.7",
     "astro-icon": "^0.7.3",
-    "astro-purgecss": "^1.1.2",
+    "astro-purgecss": "^1.2.1",
     "cookie": "^0.5.0",
     "sass": "^1.55.0",
     "sharp": "^0.31.1"

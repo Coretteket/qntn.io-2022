@@ -1,5 +1,5 @@
-@import url('colors.css');
-@import url('constants.css');
+@import 'themes';
+@import 'constants';
 
 * {
   box-sizing: border-box;
@@ -10,10 +10,6 @@ html {
   background-color: var(--bg-color);
   color: var(--txt-color);
   scrollbar-gutter: stable;
-}
-
-html[data-theme='dark'] {
-  color-scheme: dark;
 }
 
 html,

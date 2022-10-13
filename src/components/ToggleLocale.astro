@@ -10,23 +10,24 @@ const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
 ---
 
 <toggle-locale>
-  <Button href={href} parse={false} title={t.nav.toggleLocale}>
+  <Button href={href} title={t.nav.locale.toggle}>
     <Icon name="tabler:message" height={20} aria-label="Language" />
-    <span>{t.nav.otherLocale}</span>
+    <span>{t.nav.locale.other}</span>
   </Button>
 </toggle-locale>
 
 <script>
-  import { isLocalized } from '../scripts/utils';
+  import { define, isLocalized } from '../scripts/utils';
   import { parseLocale } from '../scripts/types';
 
+  @define('toggle-locale')
   class ToggleLocale extends HTMLElement {
     get button() {
       return this.children[0];
     }
 
     connectedCallback() {
-      if (isLocalized(new URL(location.href))) return;
+      if (isLocalized(new URL(location.href))) return; // only hydrate on non-localized pages
       this.button.outerHTML = this.button.outerHTML.replace(/(<\/?)a/g, '$1button');
       this.button.addEventListener('click', this.toggleLocale.bind(this));
       this.button.setAttribute('type', 'button');
@@ -39,13 +40,10 @@ const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
       location.reload();
     }
   }
-
-  customElements.define('toggle-locale', ToggleLocale);
 </script>
 
 <style is:global>
-  toggle-locale a,
-  button {
+  toggle-locale :is(a, button) {
     padding-inline: 1rem;
   }
 

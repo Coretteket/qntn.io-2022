@@ -14,7 +14,9 @@ const { t } = state;
   </div>
 </header>
 
-<style>
+<style lang="scss">
+  @use '../styles/mixins' as *;
+
   header {
     margin-block: 6rem;
     /* padding-inline: 3rem; */
@@ -22,7 +24,7 @@ const { t } = state;
 
   h1 {
     /* font-size: 2.5rem; */
-    font-size: clamp(32px, calc(2rem + (40 - 32) * ((100vw - 400px) / (880 - 400))), 40px);
+    @include fluid-type(32, 40);
     min-height: 0vw;
     max-width: 50rem;
     font-weight: 600;

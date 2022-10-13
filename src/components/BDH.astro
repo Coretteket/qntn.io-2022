@@ -1,13 +1,144 @@
-<figure></figure>
+---
+import Icon from 'astro-icon';
+import { state } from '../scripts/translate';
+import Image from './Image.astro';
 
-<style>
-  figure {
-    outline: 3px solid hsl(0, 0%, 20%);
-    border: 8px solid hsl(0, 0%, 6%);
-    border-radius: 1.5rem;
-    margin: 2rem;
-    width: min(100%, 40rem);
-    height: 20rem;
-    /* margin: 0; */
+const { locale } = state;
+
+const title = state.t.bdh.title;
+const t = state.t.bdh.app;
+
+const logo = locale === 'nl' ? '/nrc-logo.png' : '/nyt-logo.png';
+---
+
+<div class="bdh">
+  <h4>{title}</h4>
+  <div class="box">
+    <Image src="/bdh-graph.png" width={220} aspectRatio={2.5} />
+    <div class="stats">
+      <div class="box">
+        <Icon name="fa-solid:virus" width={14} /> 784
+      </div>
+      <div class="box">
+        <Icon name="fa-solid:ambulance" width={14} /> 230
+      </div>
+      <div class="box">
+        <Icon name="fa-solid:skull" width={12} /> 82
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="news">
+      <Image src={logo} width={16} aspectRatio={1} />
+      <span>{t.title}</span>
+    </div>
+    {t.headline}
+  </div>
+  <p>{t.today}<b>{t.date}</b>.</p>
+  <div class="buttons">
+    <div><Icon name="fa-solid:pause" width={12} /></div>
+    <div class="sel"><Icon name="fa-solid:play" width={12} /></div>
+    <div><Icon name="fa-solid:step-forward" width={12} /></div>
+    <div><Icon name="fa-solid:fast-forward" width={12} /></div>
+  </div>
+  <p><b>{t.header}</b></p>
+  <div class="btn">
+    <Icon name="fa-solid:people-arrows" width={14} />
+    {t.distance}
+  </div>
+</div>
+
+<style lang="scss">
+  .bdh {
+    padding-inline: 1.5rem;
+  }
+
+  h4 {
+    margin-block: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .box {
+    width: 100%;
+    background-color: #dadada;
+    border: 2px solid #8d8d8d;
+    border-radius: 0.6em;
+    margin-top: 1em;
+    padding: 0.5rem;
+    line-height: 1.1;
+    font-size: 0.9em;
+    color: #2e2e2e;
+
+    & div {
+      display: flex;
+      gap: 6px;
+    }
+
+    & .stats {
+      justify-content: space-between;
+    }
+
+    & .news {
+      gap: 0.5rem;
+      font-size: 0.9em;
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    & .box {
+      margin-top: 0.25rem;
+      padding-block: 0.25rem;
+      border-radius: 0.6em;
+      border-radius: 5px;
+      background-color: #ececec;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+
+    & :global(img[src*='graph']) {
+      width: 100%;
+    }
+
+    & :global(img[src*='logo']) {
+      border-radius: 30%;
+    }
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+
+    & > div {
+      width: 1.75rem;
+      height: 1.75rem;
+      justify-content: center;
+    }
+
+    & > .sel {
+      background-color: #2e2e2e;
+      color: #dadada;
+    }
+  }
+
+  .btn,
+  .buttons > div {
+    display: flex;
+    align-items: center;
+    border: 2px solid #2e2e2e;
+    color: #2e2e2e;
+    border-radius: 6px;
+  }
+
+  .btn {
+    padding: 0.25rem 1rem;
+    gap: 0.5rem;
   }
 </style>

@@ -7,8 +7,10 @@ export type Locale = typeof locales[number];
 export type Theme = typeof themes[number];
 export type Translations = Awaited<ReturnType<typeof loaders[Locale]>>['default'];
 
-export const isType = <T>(l: readonly T[]) => (t: unknown): t is T => l.includes(t as T);
-export const parseType = <T>(l: readonly T[]) => (t: unknown): T => (isType(l)(t) ? t : l[0]);
+export type Project = 'bdh' | 'nidk';
+
+export const isType = <T>(l: readonly T[]) => (t: any): t is T => l.includes(t as T);
+export const parseType = <T>(l: readonly T[]) => (t: any): T => (l.includes(t as T) ? t : l[0]);
 
 export const isLocale = isType(locales);
 export const isTheme = isType(themes);

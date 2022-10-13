@@ -1,7 +1,7 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import { state } from '../scripts/translate';
-import '../styles/index.css';
+import '../styles/index.scss';
 
 export type Props = { title?: string };
 const props = Astro.props as Props;
@@ -18,16 +18,10 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
 <html lang={state.locale}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="canonical" href={Astro.request.url} />
     <link rel="alternate" hreflang={otherLocale} href={otherLocaleURL} />
-    <link
-      rel="preload"
-      href="/fraunces-bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -36,8 +30,6 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
       t = t ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', t);
     </script>
-  </head>
-  <body>
     <noscript>
       <style>
         :root {
@@ -45,6 +37,8 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
         }
       </style>
     </noscript>
+  </head>
+  <body>
     <Navigation />
     <main>
       <slot />

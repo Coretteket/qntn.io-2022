@@ -8,7 +8,7 @@ import Layout from '../_layout.astro';
 import { loadTranslations } from '../../scripts/translate';
 import { getPlayCount, getFollowers } from '../../scripts/api';
 import Project from '../../components/Project.astro';
-import Project2 from '../../components/Project2.astro';
+import BDH from '../../components/BDH.astro';
 
 export { getStaticPaths } from '../../scripts/translate';
 const { t, locale } = await loadTranslations(Astro);
@@ -22,34 +22,22 @@ const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
 <Layout>
   <Hero />
   <section>
-    <div>
+    <div class="title">
       <h2>{t.index.projects}</h2>
       <A href="/projects" rel="prefetch">{t.index.moreProjects}</A>
     </div>
-    <!-- <div class="projects">
-      <Tweet name="NOS Stories" handle="@nosstories" img="/nos_insta.png" verified>
-        <p>{t.beterdanhugo.desc}</p>
-        <Button>
-          <Icon name="tabler:brand-instagram" size={18} />
-          {format(playCount)}{' '}
-          {t.beterdanhugo.stat}
-        </Button>
-      </Tweet>
-      <Tweet name={t.nieuwindekamer.title} handle="@nieuwindekamer" img="/nieuwindekamer.jpg">
-        <p>{t.nieuwindekamer.desc}</p>
-        <Button>
-          <Icon name="tabler:brand-twitter" size={18} />
-          {format(followers)}{' '}
-          {t.nieuwindekamer.stat}
-        </Button>
-      </Tweet>
-    </div> -->
-    <Project />
-    <Project2 />
+    <div class="projects">
+      <Project name="bdh">
+        <BDH slot="phone" />
+      </Project>
+      <Project name="nidk" />
+    </div>
   </section>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use '../../styles/mixins' as *;
+
   h2 {
     font-size: 0.875rem;
     color: var(--btn-txt-color);
@@ -67,21 +55,22 @@ const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
     margin-block: 4rem;
   }
 
-  section > div {
+  section > .title {
     display: flex;
     justify-content: space-between;
     font-size: 0.875rem;
     align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  @include large {
+    .projects {
+      display: grid;
+      gap: 3rem;
+    }
   }
 
   p {
     max-width: 25rem;
-  }
-
-  .projects {
-    margin-block: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    gap: 2rem;
   }
 </style>

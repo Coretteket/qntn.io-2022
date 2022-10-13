@@ -4,35 +4,32 @@ export default {
       light: 'Use dark theme',
       dark: 'Use light theme',
     },
-    toggleLocale: 'Go to Dutch site',
-    otherLocale: 'Dutch',
-    themeLabel: "Toggle dark theme",
+    locale: {
+      toggle: 'Go to Dutch site',
+      other: 'Dutch',
+    },
   },
   index: {
     title: "Quinten Coret loves creating accessible ways to interact with data.",
     projects: "Featured projects",
     moreProjects: "View more projects",
   },
-  about: {
-    page: 'About'
-  },
-  projects: {
-    page: 'Projects',
-  },
-  blog: {
-    page: 'Blog'
-  },
-  contact: {
-    page: 'Contact'
-  },
-  beterdanhugo: {
+  bdh: {
     title: "Better than Hugo",
+    desc: 'It\'s March 2020, a virus is spreading. Can you keep it under control?',
     stat: "views",
-    desc: 'Quinten challenges you: are you better than Hugo de Jonge? Curfews or lockdowns, how would you tackle the COVID-19 pandemic?',
+    app: {
+      title: 'NY Times · March 26th',
+      headline: 'Hospitals overwhelmed by \'tsunami of COVID-19 patients\'',
+      today: 'Today is ',
+      date: 'March 28th 2020',
+      header: 'General advice',
+      distance: 'Social distancing'
+    }
   },
-  nieuwindekamer: {
+  nidk: {
     title: "New in Parliament",
+    desc: 'On a mission to find unique words said in the Dutch parliament.',
     stat: "followers",
-    desc: 'Yesterday, the word “memes” was used for the first time in the plenary of parliament by @lientje1967 (BBB).'
   }
 };

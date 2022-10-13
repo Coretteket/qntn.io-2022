@@ -4,10 +4,6 @@ import Button from './Button.astro';
 import { Icon } from 'astro-icon';
 
 const { t } = state;
-
-const { url } = Astro;
-url.searchParams.set('toggle-theme', '1');
-const href = url.pathname + url.search;
 ---
 
 <toggle-theme {...t.nav.theme}>
@@ -18,38 +14,31 @@ const href = url.pathname + url.search;
 </toggle-theme>
 
 <script>
-  import type { Theme } from '../scripts/types';
-  import { disableTransition } from '../scripts/utils';
+  import { define, disableTransition } from '../scripts/utils';
   import { parseTheme } from '../scripts/types';
 
+  let theme = parseTheme(document.documentElement.dataset.theme);
+
+  @define('toggle-theme')
   class ToggleTheme extends HTMLElement {
     button = this.children[0];
 
     connectedCallback() {
       this.button.addEventListener('click', this.toggleTheme.bind(this));
-      this.button.setAttribute('title', this.getAttribute(this.theme) ?? '');
-    }
-
-    get theme() {
-      return parseTheme(document.documentElement.dataset.theme);
-    }
-
-    set theme(theme: Theme) {
-      disableTransition(() => (document.documentElement.dataset.theme = theme));
-      this.button.setAttribute('title', this.getAttribute(this.theme) ?? '');
-      window.localStorage.setItem('theme', theme);
+      this.button.setAttribute('title', this.getAttribute(theme) ?? '');
     }
 
     toggleTheme() {
-      this.theme = this.theme === 'dark' ? 'light' : 'dark';
+      theme = theme === 'dark' ? 'light' : 'dark';
+      disableTransition((d) => (d.dataset.theme = theme));
+      this.button.setAttribute('title', this.getAttribute(theme) ?? '');
+      window.localStorage.setItem('theme', theme);
     }
   }
-
-  customElements.define('toggle-theme', ToggleTheme);
 </script>
 
 <style lang="scss" is:global>
-  toggle-theme [astro-icon] {
+  toggle-theme svg {
     transition: transform 100ms var(--easing);
     [data-theme='dark'] & {
       transform: translateY(-1.75rem);
