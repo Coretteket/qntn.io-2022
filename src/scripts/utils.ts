@@ -2,7 +2,7 @@
 export const isLocalized = (href: string) => /^\/(en|nl)(\W|$)/.test(new URL(href).pathname);
 
 /** Returns true if path is a public file. */
-export const isPublic = (href: string) => /(@vite|\.\w+$)/.test(new URL(href).pathname);
+export const isPublic = (href: string) => /(@vite|_image|\.\w+$)/.test(new URL(href).pathname);
 
 /** Helper function to disable transition until a function has been called. */
 export const disableTransition = (fn: (d: HTMLElement) => void) => {
