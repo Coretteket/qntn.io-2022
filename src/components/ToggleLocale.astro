@@ -27,7 +27,7 @@ const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
     }
 
     connectedCallback() {
-      if (isLocalized(new URL(location.href))) return; // only hydrate on non-localized pages
+      if (isLocalized(location.href)) return; // only hydrate on non-localized pages
       this.button.outerHTML = this.button.outerHTML.replace(/(<\/?)a/g, '$1button');
       this.button.addEventListener('click', this.toggleLocale.bind(this));
       this.button.setAttribute('type', 'button');

@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "/github", "destination": "https://github.com/coretteket/" },
-    { "source": "/linkedin", "destination": "https://www.linkedin.com/in/qcoret/" },
-    { "source": "/twitter", "destination": "https://twitter.com/coretteket" },
-    { "source": "/telegram", "destination": "https://t.me/coretteket" }
-  ]
-}
