@@ -27,7 +27,7 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <meta name="description" content={t.index.title} />
+    <meta name="description" content={t.home.title} />
     <script is:inline>
       let t = localStorage.getItem('theme');
       t = t ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

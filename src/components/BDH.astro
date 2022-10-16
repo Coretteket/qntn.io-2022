@@ -11,19 +11,14 @@ const t = state.t.bdh.app;
 const logo = locale === 'nl' ? '/nrc-logo.png' : '/nyt-logo.png';
 ---
 
-<div class="bdh">
+<article>
   <b>{title}</b>
   <div class="box">
-    <Image
-      src="/bdh-graph.png"
-      alt="Graph of COVID-19 cases going up over time."
-      width={220}
-      aspectRatio={2.5}
-    />
+    <Image src="/bdh-graph.png" alt={t.graph} width={220} aspectRatio={2.5} />
     <div class="stats">
-      <div><Icon name="fa-solid:virus" width={14} alt="Positive tests" /> 784</div>
-      <div><Icon name="fa-solid:ambulance" width={14} alt="Hospital admissions" /> 230</div>
-      <div><Icon name="fa-solid:skull" width={12} alt="Deaths" /> 82</div>
+      <div><Icon name="fa-solid:virus" width={14} alt={t.test} /> 784</div>
+      <div><Icon name="fa-solid:ambulance" width={14} alt={t.hospital} /> 230</div>
+      <div><Icon name="fa-solid:skull" width={12} alt={t.deaths} /> 82</div>
     </div>
   </div>
   <div class="box">
@@ -35,24 +30,24 @@ const logo = locale === 'nl' ? '/nrc-logo.png' : '/nyt-logo.png';
   </div>
   <p>{t.today}<b>{t.date}</b>.</p>
   <div class="buttons">
-    <div><Icon name="fa-solid:pause" width={12} alt="Pause" /></div>
-    <div class="sel"><Icon name="fa-solid:play" width={12} alt="Play" /></div>
-    <div><Icon name="fa-solid:step-forward" width={12} alt="Faster" /></div>
-    <div><Icon name="fa-solid:fast-forward" width={12} alt="Fastest" /></div>
+    <div><Icon name="fa-solid:pause" width={12} alt={t.pause} /></div>
+    <div class="sel"><Icon name="fa-solid:play" width={12} alt={t.play} /></div>
+    <div><Icon name="fa-solid:step-forward" width={12} alt={t.step} /></div>
+    <div><Icon name="fa-solid:fast-forward" width={12} alt={t.fast} /></div>
   </div>
   <p><b>{t.header}</b></p>
   <div class="btn">
     <Icon name="fa-solid:people-arrows" width={14} alt="" />
     {t.distance}
   </div>
-</div>
+</article>
 
 <style lang="scss">
-  .bdh {
+  article {
     padding-inline: 1.5rem;
   }
 
-  .bdh > b {
+  article > b {
     display: inline-block;
     margin-top: 1rem;
     font-size: 1.5rem;
