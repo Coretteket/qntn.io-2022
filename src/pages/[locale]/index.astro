@@ -1,5 +1,4 @@
 ---
-import A from '../../components/Anchor.astro';
 import Button from '../../components/Button.astro';
 import { Icon } from 'astro-icon';
 import Hero from '../../components/Hero.astro';
@@ -24,7 +23,7 @@ const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
   <section>
     <div class="title">
       <h2>{t.index.projects}</h2>
-      <A href="/projects" rel="prefetch">{t.index.moreProjects}</A>
+      <a href="/projects">{t.index.moreProjects}</a>
     </div>
     <div class="projects">
       <Project name="bdh">

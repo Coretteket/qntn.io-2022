@@ -9,6 +9,7 @@ import { omit } from '../scripts/utils';
 
 export interface Props extends Omit<TransformOptions, 'src'> {
   src: string | ImageMetadata | Promise<{ default: ImageMetadata }>;
+  alt: string;
   loading?: 'lazy' | 'eager';
   decoding?: 'async' | 'sync' | 'auto';
   scale?: number;
@@ -21,7 +22,6 @@ const props = withDefaults({
   quality: 80,
   format: 'webp',
   loading: 'lazy',
-  decoding: 'async',
   scale: 2,
 });
 

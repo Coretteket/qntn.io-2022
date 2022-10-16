@@ -12,6 +12,8 @@ const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
 const otherLocale = state.locale === 'en' ? 'nl' : 'en';
 const otherLocaleURL = Astro.request.url.replace(`/${state.locale}`, `/${otherLocale}`);
 
+const { t } = state;
+
 const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
 ---
 
@@ -25,6 +27,7 @@ const goatcounterURL = import.meta.env.GOATCOUNTER_URL;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={t.index.title} />
     <script is:inline>
       let t = localStorage.getItem('theme');
       t = t ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

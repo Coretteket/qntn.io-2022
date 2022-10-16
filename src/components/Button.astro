@@ -1,9 +1,8 @@
 ---
-import A from './Anchor.astro';
 export type Props = { href?: string; [key: string]: any };
 const { href, ...props } = Astro.props as Props;
 
-const Button = href ? A : 'button';
+const Button = href ? 'a' : 'button';
 ---
 
 <Button href={href} type={!href ? 'button' : null} {...props}>
