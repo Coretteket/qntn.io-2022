@@ -1,5 +1,5 @@
-@import 'themes';
-@import 'constants';
+@import url('themes.css');
+@import url('constants.css');
 
 * {
   box-sizing: border-box;

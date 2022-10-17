@@ -1,29 +1,26 @@
 ---
-import Button from '../../components/Button.astro';
-import { Icon } from 'astro-icon';
-import Hero from '../../components/Hero.astro';
-import Tweet from '../../components/Tweet.astro';
-import Layout from '../_layout.astro';
-import { loadTranslations } from '../../scripts/translate';
-import { getPlayCount, getFollowers } from '../../scripts/api';
-import Project from '../../components/Project.astro';
-import BDH from '../../components/BDH.astro';
+import Hero from '@/components/Hero.astro';
+import Layout from '@/pages/_layout.astro';
+import { loadTranslations } from '@/scripts/translate';
+// import { getPlayCount, getFollowers } from '@/scripts/api';
+import Project from '@/components/Project.astro';
+import BDH from '@/components/BDH.astro';
 
-export { getStaticPaths } from '../../scripts/translate';
+export { getStaticPaths } from '@/scripts/translate';
 const { t, locale } = await loadTranslations(Astro);
 
-const playCount = await getPlayCount();
-const followers = await getFollowers();
+// const playCount = await getPlayCount();
+// const followers = await getFollowers();
 
-const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
+// const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
 ---
 
 <Layout>
   <Hero />
   <section>
     <div class="title">
-      <h2>{t.index.projects}</h2>
-      <a href="/projects">{t.index.moreProjects}</a>
+      <h2>{t.home.projects}</h2>
+      <a href="/projects">{t.home.moreProjects}</a>
     </div>
     <div class="projects">
       <Project name="bdh">
@@ -34,9 +31,7 @@ const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
   </section>
 </Layout>
 
-<style lang="scss">
-  @use '../../styles/mixins' as *;
-
+<style>
   h2 {
     font-size: 0.875rem;
     color: var(--btn-txt-color);
@@ -62,7 +57,7 @@ const { format } = Intl.NumberFormat(locale, { notation: 'compact' });
     margin-bottom: 2rem;
   }
 
-  @include large {
+  @media (min-width: 64rem) {
     .projects {
       display: grid;
       gap: 3rem;

@@ -1,5 +1,5 @@
 ---
-import { state } from '../scripts/translate';
+import { state } from '@/scripts/translate';
 import type { Project } from '../scripts/types';
 import Phone from './Phone.astro';
 
@@ -21,9 +21,7 @@ const t = state.t[name];
   </div>
 </article>
 
-<style lang="scss">
-  @use '../styles/mixins' as *;
-
+<style>
   article {
     --phone-height: 30rem;
     background-color: var(--project-bg);
@@ -33,7 +31,7 @@ const t = state.t[name];
     padding-inline: calc(4vw + 1rem);
     margin-inline: calc(-1 * var(--min-padding));
 
-    @include large {
+    @media (min-width: 64rem) {
       --phone-height: 32rem;
       min-height: var(--phone-height);
       grid-template-columns: 1fr 20rem;
@@ -47,7 +45,7 @@ const t = state.t[name];
 
   div:nth-of-type(1) {
     margin: 6rem 1rem;
-    @include large {
+    @media (min-width: 64rem) {
       margin-inline: 0;
     }
   }
@@ -58,13 +56,13 @@ const t = state.t[name];
     width: 100%;
     max-width: 20rem;
     margin-inline: auto;
-    @include large {
+    @media (min-width: 64rem) {
       padding-top: 3rem;
     }
   }
 
   h3 {
-    @include fluid-type(26, 32);
+    font-size: fluid(26px, 32px);
     font-family: Fraunces, serif;
     margin-block: 1rem;
   }

@@ -1,5 +1,5 @@
 ---
-import Image from '../components/Image.astro';
+import Image from '@/components/Image.astro';
 import Icon from 'astro-icon';
 
 export type Props = {
@@ -34,7 +34,7 @@ const { img, name, handle, verified = false } = Astro.props as Props;
   </div>
 </article>
 
-<style lang="scss">
+<style>
   article {
     background-color: var(--btn-bg-color);
     border-radius: 1.5rem;

@@ -1,6 +1,6 @@
 ---
 import Icon from 'astro-icon';
-import { state } from '../scripts/translate';
+import { state } from '@/scripts/translate';
 import Image from './Image.astro';
 
 const { locale } = state;
@@ -42,7 +42,7 @@ const logo = locale === 'nl' ? '/nrc-logo.png' : '/nyt-logo.png';
   </div>
 </article>
 
-<style lang="scss">
+<style>
   article {
     padding-inline: 1.5rem;
   }

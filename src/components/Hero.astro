@@ -1,5 +1,5 @@
 ---
-import { state } from '../scripts/translate';
+import { state } from '@/scripts/translate';
 const { t } = state;
 ---
 
@@ -7,16 +7,14 @@ const { t } = state;
   <div>
     <h1>{t.home.title}</h1>
     <p>
-      Did he just throw my cat out of the window? Hey, you know how I'm, like, always trying to save
+      Did he just throw my dog out of the window? Hey, you know how I'm, like, always trying to save
       the planet? Here's my chance. Forget the fat lady! You're obsessed with the fat lady! Drive us
       out of here!
     </p>
   </div>
 </header>
 
-<style lang="scss">
-  @use '../styles/mixins' as *;
-
+<style>
   header {
     margin-block: 6rem;
     /* padding-inline: 3rem; */
@@ -24,7 +22,7 @@ const { t } = state;
 
   h1 {
     /* font-size: 2.5rem; */
-    @include fluid-type(32, 40);
+    font-size: fluid(32px, 40px);
     min-height: 0vw;
     max-width: 50rem;
     font-weight: 600;

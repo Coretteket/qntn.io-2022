@@ -1,4 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "compilerOptions": { "experimentalDecorators": true }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+    "experimentalDecorators": true
+  }
 }

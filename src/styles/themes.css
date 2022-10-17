@@ -1,4 +1,6 @@
-@mixin light-theme {
+
+:root,
+:root[data-theme='light'] {
   color-scheme: light;
   --bg-color: hsl(0, 0%, 96%);
   --txt-color: hsl(0, 0%, 7%);
@@ -12,7 +14,7 @@
   --nidk-accent: hsl(30, 70%, 70%);
 }
 
-@mixin dark-theme {
+:root[data-theme='dark'] {
   color-scheme: dark;
   --bg-color: hsl(0, 0%, 6%);
   --txt-color: hsl(0, 0%, 96%);
@@ -26,18 +28,18 @@
   --nidk-accent: hsl(30, 30%, 30%);
 }
 
-@mixin fluid-type($min, $max) {
-  font-size: clamp(
-    #{$min}px,
-    calc(#{$min}px + #{($max - $min)} * ((100vw - 400px) / 480)),
-    #{$max}px
-  );
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include :root[data-theme='dark'];
+  }
 }
 
-$large: 64rem;
+.bdh {
+  --project-bg: var(--bdh-bg);
+  --project-accent: var(--bdh-accent);
+}
 
-@mixin large {
-  @media (min-width: #{$large}) {
-    @content;
-  }
+.nidk {
+  --project-bg: var(--nidk-bg);
+  --project-accent: var(--nidk-accent);
 }

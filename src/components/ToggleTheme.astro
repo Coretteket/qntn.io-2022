@@ -1,5 +1,5 @@
 ---
-import { state } from '../scripts/translate';
+import { state } from '@/scripts/translate';
 import Button from './Button.astro';
 import { Icon } from 'astro-icon';
 
@@ -37,10 +37,10 @@ const { t } = state;
   }
 </script>
 
-<style lang="scss" is:global>
+<style is:global>
   toggle-theme svg {
     transition: transform 100ms var(--easing);
-    [data-theme='dark'] & {
+    @nest [data-theme='dark'] & {
       transform: translateY(-1.75rem);
     }
   }
@@ -51,7 +51,7 @@ const { t } = state;
     align-items: flex-start;
     aspect-ratio: 1;
     padding: 0.5rem;
-    [data-transition='false'] & {
+    @nest [data-transition='false'] & {
       transition: none;
     }
   }

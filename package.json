@@ -14,7 +14,9 @@
     "astro": "^1.5.0",
     "astro-icon": "^0.7.3",
     "astro-purgecss": "^1.2.1",
-    "sass": "^1.55.0",
+    "postcss-fluid-type": "^1.5.0",
+    "postcss-preset-env": "^7.8.2",
+    "postcss-simple-include": "^0.1.0",
     "sharp": "^0.31.1"
   }
 }
