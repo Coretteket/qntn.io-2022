@@ -4,7 +4,7 @@ import { Cookie } from "https://deno.land/std@0.114.0/http/cookie.ts";
 import { isLocalized, isPublic } from "../../src/scripts/utils.ts";
 import { isLocale } from "../../src/scripts/types.ts";
 
-const getLocaleCookie: (url: string) => Cookie = (url: string) =>
+const getLocaleCookie: (url: string) => Cookie = (url) =>
   ({ name: 'locale', value: new URL(url).pathname.slice(1, 3), path: '/', sameSite: 'Lax' });
 
 const parseHeaders = (request: Request, context: Context) => {
