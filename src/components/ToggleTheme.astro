@@ -1,15 +1,15 @@
 ---
 import { state } from '@/scripts/translate';
-import Button from './Button.astro';
 import { Icon } from 'astro-icon';
+import Button from './Button.astro';
 
 const { t } = state;
 ---
 
-<toggle-theme {...t.nav.theme}>
-  <Button type="button" data-transition="true">
-    <Icon name="tabler:moon-stars" width={20} />
-    <Icon name="tabler:sun" width={20} />
+<toggle-theme class="js-only max-3xs:hidden">
+  <Button title={t.nav.theme.toggle}>
+    <span class="hidden gap-2 dark:flex"><Icon name="prime:sun" width={24} /></span>
+    <span class="flex gap-2 dark:hidden"><Icon name="prime:moon" width={24} /></span>
   </Button>
 </toggle-theme>
 
@@ -25,34 +25,12 @@ const { t } = state;
 
     connectedCallback() {
       this.button.addEventListener('click', this.toggleTheme.bind(this));
-      this.button.setAttribute('title', this.getAttribute(theme) ?? '');
     }
 
     toggleTheme() {
       theme = theme === 'dark' ? 'light' : 'dark';
       disableTransition((d) => (d.dataset.theme = theme));
-      this.button.setAttribute('title', this.getAttribute(theme) ?? '');
-      window.localStorage.setItem('theme', theme);
+      document.cookie = `theme=${theme};path=/;SameSite=Lax`;
     }
   }
 </script>
-
-<style is:global>
-  toggle-theme svg {
-    transition: transform 100ms var(--easing);
-    @nest [data-theme='dark'] & {
-      transform: translateY(-1.75rem);
-    }
-  }
-
-  toggle-theme button {
-    display: var(--no-script, grid);
-    gap: 1.75rem;
-    align-items: flex-start;
-    aspect-ratio: 1;
-    padding: 0.5rem;
-    @nest [data-transition='false'] & {
-      transition: none;
-    }
-  }
-</style>

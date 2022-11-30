@@ -1,0 +1,48 @@
+---
+import Navigation from '@/components/Navigation.astro';
+import Footer from '@/components/Footer.astro';
+
+import { state } from '@/scripts/translate';
+const { t } = state;
+
+import '@/app.css';
+import '@fontsource/faustina/700.css';
+import { getImage } from '@astrojs/image';
+import Show from '@/components/Show.astro';
+
+export type Props = { title?: string };
+const props = Astro.props as Props;
+
+const defaultTitle = 'Quinten Coret';
+const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
+
+const otherLocale = Astro.request.url.replace(`/${state.locale}`, `/${t.other}`);
+
+const favicon = await getImage({ src: '/headshot.webp', width: 32, height: 32, format: 'png' });
+---
+
+<html data-theme="auto" lang={state.locale} class="scroll-smooth scroll-pt-8">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon.src} />
+    <link rel="canonical" href={Astro.request.url} />
+    <link rel="alternate" hreflang={t.other} href={otherLocale} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={t.home.title} />
+    <title>{title}</title>
+    <Show when={import.meta.env.SITE_MODE === 'dev'}>
+      <meta name="google-site-verification" content="6CudLLObnPxkaTH6NJnehYnah5m4HNgurvHbt_0b6AQ" />
+      <meta name="robots" content="noindex" />
+      <script async defer data-website-id={import.meta.env.UMAMI_ID} src={import.meta.env.UMAMI_URL}></script>
+    </Show>
+    <noscript><link rel="stylesheet" href="/static/noscript.css" /></noscript>
+  </head>
+  <body>
+    <main class="px-4 mx-auto max-w-content 2xs:px-6 lg:px-8">
+      <Navigation />
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>

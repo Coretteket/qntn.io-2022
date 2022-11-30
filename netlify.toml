@@ -4,6 +4,14 @@ command = 'astro dev'
 targetPort = 3000
 
 [[edge_functions]]
+function = 'wakatime'
+path = '/api/wakatime'
+
+[[edge_functions]]
+function = 'theme'
+path = '/*'
+
+[[edge_functions]]
 function = 'redirect'
 path = '/*'
 

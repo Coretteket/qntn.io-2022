@@ -1,0 +1,26 @@
+---
+import { state } from '@/scripts/translate';
+import { Icon } from 'astro-icon';
+import Button from './Button.astro';
+
+const { t } = state;
+
+const pages = Object.entries(t.nav.pages);
+---
+
+<Button is="checkbox" id="togglemenu" class="sm:hidden">
+  <Icon name="prime:bars" width={24} class="[*:checked~*>&]:hidden" />
+  <Icon name="prime:times" width={24} class="[*:checked~*>&]:block hidden" />
+</Button>
+
+<div class="[*:checked~&]:max-h-12 flex overflow-hidden gap-6 bg-gray-100 dark:bg-gray-800 px-4 rounded max-h-0 w-full text-lg font-semibold sm:hidden justify-center">
+  <a href="/" class="py-2">Home</a>
+  {pages.map(([slug, name]) => <a href={`/${slug}`} class="py-2">{name}</a>)}
+</div>
+
+<style>
+  div {
+    transition: max-height 150ms ease-in-out;
+    max-height: 0;
+  }
+</style>

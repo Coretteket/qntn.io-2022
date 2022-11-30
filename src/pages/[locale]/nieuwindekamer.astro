@@ -1,0 +1,11 @@
+---
+export { getStaticPaths } from '@/scripts/translate';
+import { loadTranslations } from '@/scripts/translate';
+import Layout from '@/layouts/BaseLayout.astro';
+
+const { t } = await loadTranslations(Astro);
+---
+
+<Layout title={t.nidk.title}>
+  {t.nidk.desc}
+</Layout>

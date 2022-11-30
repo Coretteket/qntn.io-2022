@@ -1,26 +1,16 @@
 ---
-import Button from './Button.astro';
-import { Icon } from 'astro-icon';
-const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
+import Icon from 'astro-icon';
+import { capitalize } from '@/scripts/utils';
 
-const capitalize = (social: typeof socials[number]) =>
-  social.charAt(0).toUpperCase() + social.slice(1);
+const socials = ['linkedin', 'twitter', 'github', 'telegram'] as const;
 ---
 
-<div>
+<div class="flex gap-4 my-8">
   {
-    socials.map((social) => (
-      <Button href={`/${social}`} title={capitalize(social)} round={true} rel="external">
-        <Icon name={`tabler:brand-${social}`} height={24} />
-      </Button>
+    socials.map((name) => (
+      <a title={capitalize(name)} href={`/${name}`} class="flex items-center p-2 text-gray-700 transition-colors border-2 border-gray-200 rounded-lg shadow-sm dark:text-gray-200 dark:border-gray-800 hover:bg-gray-200 dark:hover:bg-gray-800 aspect-square">
+        <Icon name={`ri:${name}-fill`} width={26} />
+      </a>
     ))
   }
 </div>
-
-<style>
-  div {
-    display: flex;
-    height: 40px;
-    gap: 0.5rem;
-  }
-</style>

@@ -1,74 +1,30 @@
 ---
+import ProjectImage from './ProjectImage.astro';
 import { state } from '@/scripts/translate';
-import type { Project } from '../scripts/types';
-import Phone from './Phone.astro';
+import { Project, projects } from '@/scripts/types';
+import { format } from '@/scripts/utils';
+import Icon from 'astro-icon';
 
-export type Props = { name: Project };
-const { name } = Astro.props as Props;
-
+export type Props = { name: Project; stat: number };
+const { name, stat } = Astro.props;
 const t = state.t[name];
+
+const bg = (name: Project) => name === 'bdh' ? 'bg-teal-800' : 'bg-amber-800';
 ---
 
-<article class={name}>
-  <div>
-    <h3>{t.title}</h3>
-    <p>{t.desc}</p>
+<a
+  title={t.title}
+  id={projects[name]}
+  href={`/${projects[name]}`}
+  class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-square md:aspect-[5/6] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50', bg(name)]}
+>
+  <ProjectImage name={name} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0" />
+  <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
+    <h2 class="pb-1 truncate fluid-text-2xl font-hero">{t.title}</h2>
+    <div class="max-w-full px-3 py-1 my-1 overflow-hidden font-semibold truncate rounded shadow-md w-fit backdrop-blur-xl bg-white/10" title={`${format(stat, 'standard')} ${t.stat}`}>
+      <b>{format(stat)}</b>
+      {t.stat}
+    </div>
   </div>
-  <div>
-    <Phone>
-      <slot name="phone" />
-    </Phone>
-  </div>
-</article>
-
-<style>
-  article {
-    --phone-height: 30rem;
-    background-color: var(--project-bg);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr var(--phone-height);
-    padding-inline: calc(4vw + 1rem);
-    margin-inline: calc(-1 * var(--min-padding));
-
-    @media (min-width: 64rem) {
-      --phone-height: 32rem;
-      min-height: var(--phone-height);
-      grid-template-columns: 1fr 20rem;
-      grid-template-rows: 1fr;
-      padding-inline: 6rem;
-      margin-inline: 0;
-      border-radius: 2rem;
-      gap: 6rem;
-    }
-  }
-
-  div:nth-of-type(1) {
-    margin: 6rem 1rem;
-    @media (min-width: 64rem) {
-      margin-inline: 0;
-    }
-  }
-
-  div:nth-of-type(2) {
-    overflow: hidden;
-    max-height: var(--phone-height);
-    width: 100%;
-    max-width: 20rem;
-    margin-inline: auto;
-    @media (min-width: 64rem) {
-      padding-top: 3rem;
-    }
-  }
-
-  h3 {
-    font-size: fluid(26px, 32px);
-    font-family: Fraunces, serif;
-    margin-block: 1rem;
-  }
-
-  p {
-    font-size: 20px;
-    color: var(--btn-txt-color);
-  }
-</style>
+  <Icon name="bi:arrow-right" width={48} class="absolute bottom-0 right-0 w-10 mx-8 my-6 xs:w-12 lg:mx-10" />
+</a>

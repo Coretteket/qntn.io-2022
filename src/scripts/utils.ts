@@ -1,8 +1,5 @@
-/** Returns true if path is a localized route. */
-export const isLocalized = (href: string) => /^\/(en|nl)(\W|$)/.test(new URL(href).pathname);
-
-/** Returns true if path is a public file. */
-export const isPublic = (href: string) => /(@vite|_image|\.\w+$)/.test(new URL(href).pathname);
+import type { MDXInstance } from 'astro';
+import { state } from './translate';
 
 /** Helper function to disable transition until a function has been called. */
 export const disableTransition = (fn: (d: HTMLElement) => void) => {
@@ -20,5 +17,18 @@ export const omit = <T extends Record<string, any>>(key: string, obj: T) => {
 };
 
 /** Decorator that defines a custom element. */
-export const define = (name: `${string}-${string}`) => (constructor: CustomElementConstructor) =>
-  customElements.define(name, constructor);
+export const define = (name: `${string}-${string}`) => (constructor: CustomElementConstructor) => {
+  return customElements.define(name, constructor);
+};
+
+/** Format a number in the current locale with either compact or standard notation.
+ * @param mode Defaults to compact.
+ */
+export const format = (value: number, mode: 'compact' | 'standard' = 'compact') => {
+  return new Intl.NumberFormat(state.locale, { notation: mode }).format(value);
+};
+
+/** Capitalizes the first letter of a string. */
+export const capitalize = (v: string) => v.charAt(0).toUpperCase() + v.slice(1);
+
+export const getBlogSlug = <T extends Record<string,any>>(post: MDXInstance<T>) => post.file.replace(/.*\/(.+).mdx/, '$1');

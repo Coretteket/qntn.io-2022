@@ -1,0 +1,26 @@
+---
+import type { Project } from '@/scripts/types';
+import { getPicture } from '@astrojs/image';
+import { state } from '@/scripts/translate';
+
+export type Props = { name: Project; class?: string };
+const { name } = Astro.props;
+const t = state.t[name];
+
+const getDefaultPicture = (ratio: number) =>
+  getPicture({
+    aspectRatio: ratio,
+    src: `/${name}-art.png`,
+    formats: ['avif', 'webp'],
+    widths: [500],
+  });
+
+const small = await getDefaultPicture(1);
+const large = await getDefaultPicture(5/6);
+---
+
+<picture>
+  {large.sources.map((source) => <source {...source} media="(min-width:768px)" sizes="(min-width:1152px) 600px, 85vw" />)}
+  {small.sources.map((source) => <source {...source} sizes="85vw" />)}
+  <img {...large.image} class={Astro.props.class} alt={t.dalle} />
+</picture>

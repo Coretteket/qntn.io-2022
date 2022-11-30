@@ -1,0 +1,17 @@
+html {
+  scrollbar-gutter: stable;
+  --font-hero: 'Faustina';
+}
+
+html,
+[data-theme='light'] {
+  @apply [color-scheme:light] text-gray-900 bg-gray-50;
+}
+
+[data-theme='dark'] {
+  @apply [color-scheme:dark]  bg-gray-900 text-gray-50;
+}
+
+[data-transition='false'] :not([data-transition='true'], [data-transition='true'] *) {
+  @apply !transition-none;
+}

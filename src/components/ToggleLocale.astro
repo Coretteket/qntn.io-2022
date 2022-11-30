@@ -1,23 +1,22 @@
 ---
 import { state } from '@/scripts/translate';
-import Button from './Button.astro';
 import { Icon } from 'astro-icon';
-
+import Button from './Button.astro';
 const { t } = state;
 
 const path = Astro.url.pathname.replace(`/${state.locale}`, '');
-const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
+const href = `/${t.other}${path}`;
 ---
 
 <toggle-locale>
   <Button href={href} title={t.nav.locale.toggle}>
-    <Icon name="tabler:message" height={20} aria-label="Language" />
-    <span>{t.nav.locale.other}</span>
+    <Icon name="prime:globe" width={24} />
   </Button>
 </toggle-locale>
 
 <script>
-  import { define, isLocalized } from '../scripts/utils';
+  import { isLocalized } from '../scripts/matchers';
+  import { define } from '../scripts/utils';
   import { parseLocale } from '../scripts/types';
 
   let locale = parseLocale(document.documentElement.lang);
@@ -42,13 +41,3 @@ const href = `${state.locale === 'en' ? '/nl' : '/en'}${path}`;
     }
   }
 </script>
-
-<style is:global>
-  toggle-locale :is(a, button) {
-    padding-inline: 1rem;
-  }
-
-  toggle-locale [astro-icon] {
-    margin-right: 0.125rem;
-  }
-</style>
