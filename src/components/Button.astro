@@ -1,14 +1,18 @@
 ---
-export type Props = { is?: 'checkbox'; id?: string; href?: string; title?: string; class?: string };
-const { href, is, id, class: className, ...props } = Astro.props;
-const Button = href ? 'a' : is === 'checkbox' ? 'label' : 'button';
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = HTMLAttributes<'button' & 'a'>;
+
+const { href, class: className, ...props } = Astro.props as Props;
+const Button = Astro.props.href ? 'a' : 'button';
 ---
 
-{is === 'checkbox' && <input type="checkbox" id={id} class="hidden" />}
+{/*@ts-ignore*/}
 <Button
   href={href}
-  for={id}
-  class={`flex items-center justify-center gap-2 transition-colors bg-gray-100 rounded cursor-pointer dark:bg-gray-800 h-9 aspect-square hover:text-gray-600 hover:dark:text-gray-300 ${className}`}
+  class={`flex items-center justify-center gap-2 transition-colors bg-gray-100 rounded cursor-pointer dark:bg-gray-800 h-9 aspect-square hover:text-gray-600 hover:dark:text-gray-300 ${
+    className ?? ''
+  }`}
   {...props}
 >
   <slot />

@@ -2,7 +2,7 @@
 export { getStaticPaths } from '@/scripts/translate';
 import AboutPicture from '@/components/AboutPicture.astro';
 import { loadTranslations } from '@/scripts/translate';
-import Layout from '@/layouts/ContentLayout.astro';
+import Layout from '@/components/ContentLayout.astro';
 
 const { t } = await loadTranslations(Astro);
 ---

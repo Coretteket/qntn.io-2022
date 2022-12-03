@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import { getRawMD } from './src/scripts/raw-md';
+import { getRawMD } from './src/scripts/remark';
 
 import image from '@astrojs/image';
 import tailwind from '@astrojs/tailwind';

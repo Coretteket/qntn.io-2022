@@ -1,4 +1,4 @@
-import { createSignal, type ParentComponent } from 'solid-js';
+import { createSignal, For, type ParentComponent } from 'solid-js';
 
 export type Props = {
   config: {
@@ -24,9 +24,7 @@ export const PictureReload: ParentComponent<Props> = (props) => {
   return (
     <div class="max-w-wide mx-auto my-8">
       <picture>
-        {picture().sources.map((source, i) => (
-          <source srcset={source} type={'image/' + props.config.formats[i]} />
-        ))}
+        <For each={picture().sources}>{(source, i) => <source srcset={source} type={'image/' + props.config.formats[i()]} />}</For>
         <img src={picture().image} {...getDims()} class="w-full my-4 rounded-lg shadow" alt="" />
       </picture>
       <div class="flex flex-wrap justify-between text-gray-600 dark:text-gray-400 gap-x-4 not-prose">

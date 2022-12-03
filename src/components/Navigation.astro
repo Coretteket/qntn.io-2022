@@ -18,7 +18,7 @@ const headshot = await getPicture({
 
 <nav class="relative flex-wrap flex gap-3 sm:gap-4 mt-16 text-lg [&_a]:transition-colors hover:[&_a]:text-gray-600 hover:dark:[&_a]:text-gray-300 items-center">
   <div class="flex flex-grow-[1] items-center gap-6 sm:gap-8">
-    <a href="/">
+    <a href="/" aria-label="Home">
       <picture>
         {headshot.sources.map((source) => <source srcset={source.srcset} type={source.type} sizes="36px" />)}
         <img src={(headshot.image as { src: string }).src} class="rounded" width={36} height={36} alt="" />
