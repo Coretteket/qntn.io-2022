@@ -18,7 +18,7 @@ const getTheme = (request: Request, context: Context) => {
   const headerTheme = matchTheme(request.headers.get('sec-ch-prefers-color-scheme'));
 
   const theme = searchTheme ?? cookieTheme ?? headerTheme;
-  return theme;
+  return theme ;
 };
 
 /** Sets the user's preferred color scheme in cookies and applies it to the response HTML. Retrieves the user's preferred color scheme using `getTheme`, sets it in a cookie, and then modifies the HTML of the response to apply the color scheme, or inject a script to detect one client-side. */
@@ -34,6 +34,12 @@ export default async function setTheme(request: Request, context: Context) {
   let html = theme ? text.replace(/(data-theme=")auto"/, `$1${theme}"`) : text.replace(/(<\/head>)/, `${themeDetect}$1`);
   html = html.replace('?theme=', `?theme=${theme === 'light' ? 'dark' : 'light'}`);
 
-  response.headers.set('accept-ch', 'sec-ch-prefers-color-scheme');
+  // Experimental client hints: https://web.dev/user-preference-media-features-headers/
+  if (!theme) {
+    response.headers.set('accept-ch', 'sec-ch-prefers-color-scheme');
+    response.headers.set('critical-ch', 'sec-ch-prefers-color-scheme');
+    response.headers.set('vary', 'sec-ch-prefers-color-scheme');
+  }
+
   return new Response(html, response);
 }

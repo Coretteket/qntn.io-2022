@@ -19,7 +19,7 @@ function = 'set-theme'
 path = '/*'
 
 [[edge_functions]]
-function = 'localize'
+function = 'set-locale'
 path = '/*'
 
 [[headers]]
