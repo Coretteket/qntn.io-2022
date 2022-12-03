@@ -15,12 +15,12 @@ const getDefaultPicture = (ratio: number) =>
     widths: [500],
   });
 
-const small = await getDefaultPicture(1);
+// const small = await getDefaultPicture(1);
 const large = await getDefaultPicture(5/6);
 ---
 
 <picture>
-  {large.sources.map((source) => <source {...source} media="(min-width:768px)" sizes="(min-width:1152px) 600px, 85vw" />)}
-  {small.sources.map((source) => <source {...source} sizes="85vw" />)}
+  {large.sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
+  <!-- {small.sources.map((source) => <source {...source} sizes="85vw" />)} -->
   <img {...large.image} class={Astro.props.class} alt={t.dalle} />
 </picture>
