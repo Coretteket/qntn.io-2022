@@ -7,7 +7,7 @@ import { getBlogSlug } from '@/scripts/utils';
 import Icon from 'astro-icon';
 
 export const getStaticPaths = async () => {
-  const posts = await Astro.glob('../../../content/*.mdx');
+  const posts = await Astro.glob('../../../../content/*.mdx');
   return getTranslationPaths()
     .map(({ params: { locale } }) => posts.map((post) => ({ params: { locale, slug: getBlogSlug(post) }, props: { post } })))
     .flat();
