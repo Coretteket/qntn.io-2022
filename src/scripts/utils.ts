@@ -31,4 +31,20 @@ export const format = (value: number, mode: 'compact' | 'standard' = 'compact') 
 /** Capitalizes the first letter of a string. */
 export const capitalize = (v: string) => v.charAt(0).toUpperCase() + v.slice(1);
 
-export const getBlogSlug = <T extends Record<string,any>>(post: MDXInstance<T>) => post.file.replace(/.*\/(.+).mdx/, '$1');
+export const getBlogSlug = <T extends Record<string, any>>(post: MDXInstance<T>) => post.file.replace(/.*\/(.+).mdx/, '$1');
+
+export const changeTag = (parent: Element, original: Element, tag: string) => {
+  const button = document.createElement(tag);
+  button.innerHTML = original.innerHTML;
+  Array.from(original.attributes).forEach(({ name, value }) => button.setAttribute(name, value));
+  parent.replaceChild(button, original);
+  return button;
+};
+
+export const createButtonFromAnchor = (parent: Element, onclick: () => any) => {
+  const button = changeTag(parent, parent.children[0], 'button');
+  button.addEventListener('click', onclick);
+  button.setAttribute('type', 'button');
+  button.removeAttribute('href');
+  return button;
+};

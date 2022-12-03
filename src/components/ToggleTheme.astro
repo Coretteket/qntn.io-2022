@@ -6,15 +6,15 @@ import Button from './Button.astro';
 const { t } = state;
 ---
 
-<toggle-theme class="js-only max-3xs:hidden">
-  <Button title={t.nav.theme.toggle}>
+<toggle-theme class="max-3xs:hidden">
+  <Button href="?theme=" title={t.nav.theme.toggle}>
     <span class="hidden gap-2 dark:flex"><Icon name="prime:sun" width={24} /></span>
     <span class="flex gap-2 dark:hidden"><Icon name="prime:moon" width={24} /></span>
   </Button>
 </toggle-theme>
 
 <script>
-  import { define, disableTransition } from '../scripts/utils';
+  import { createButtonFromAnchor, define, disableTransition } from '../scripts/utils';
   import { parseTheme } from '../scripts/types';
 
   let theme = parseTheme(document.documentElement.dataset.theme);
@@ -24,7 +24,7 @@ const { t } = state;
     button = this.children[0];
 
     connectedCallback() {
-      this.button.addEventListener('click', this.toggleTheme.bind(this));
+      this.button = createButtonFromAnchor(this, this.toggleTheme.bind(this));
     }
 
     toggleTheme() {

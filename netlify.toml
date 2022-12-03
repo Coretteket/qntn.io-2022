@@ -8,15 +8,15 @@ function = 'wakatime'
 path = '/api/wakatime'
 
 [[edge_functions]]
-function = 'theme'
-path = '/*'
-
-[[edge_functions]]
 function = 'redirect'
 path = '/*'
 
 [[edge_functions]]
-function = 'middleware'
+function = 'set-theme'
+path = '/*'
+
+[[edge_functions]]
+function = 'localize'
 path = '/*'
 
 [[headers]]

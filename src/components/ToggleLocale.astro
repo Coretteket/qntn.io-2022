@@ -16,23 +16,18 @@ const href = `/${t.other}${path}`;
 
 <script>
   import { isLocalized } from '../scripts/matchers';
-  import { define } from '../scripts/utils';
+  import { createButtonFromAnchor, define } from '../scripts/utils';
   import { parseLocale } from '../scripts/types';
 
   let locale = parseLocale(document.documentElement.lang);
 
   @define('toggle-locale')
   class ToggleLocale extends HTMLElement {
-    get button() {
-      return this.children[0];
-    }
+    button = this.children[0];
 
     connectedCallback() {
       if (isLocalized(location.href)) return; // only hydrate on non-localized pages
-      this.button.outerHTML = this.button.outerHTML.replace(/(<\/?)a/g, '$1button');
-      this.button.addEventListener('click', this.toggleLocale.bind(this));
-      this.button.setAttribute('type', 'button');
-      this.button.removeAttribute('href');
+      this.button = createButtonFromAnchor(this, this.toggleLocale.bind(this));
     }
 
     toggleLocale() {

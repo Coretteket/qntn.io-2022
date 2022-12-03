@@ -21,7 +21,7 @@ const parseHeaders = (request: Request, context: Context) => {
 };
 
 /** Sets locale cookie on already-localized routes, and rewrites non-localized routes to the user's preferred locale. */
-export default function middleware(request: Request, context: Context) {
+export default function localize(request: Request, context: Context) {
   if (isPublic(request.url)) return;
   if (isLocalized(request.url)) {
     const cookie = getLocaleCookie(request.url);
