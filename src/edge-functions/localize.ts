@@ -1,8 +1,8 @@
 import type { Context } from 'https://edge.netlify.com';
 import type { Cookie } from 'https://deno.land/std@0.114.0/http/cookie.ts';
 
-import { isLocalized, isPublic } from '../../src/scripts/matchers.ts';
-import { isLocale } from '../../src/scripts/types.ts';
+import { isLocalized, isPublic } from '../scripts/matchers.ts';
+import { isLocale } from '../scripts/types.ts';
 
 /** Simply slices locale from localized URL path. */
 const getLocaleFromPath = (url: string) => new URL(url).pathname.slice(1, 3);

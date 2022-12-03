@@ -3,6 +3,9 @@ framework = 'astro'
 command = 'astro dev'
 targetPort = 3000
 
+[build]
+edge_functions = "/src/edge-functions"
+
 [[edge_functions]]
 function = 'wakatime'
 path = '/api/wakatime'
