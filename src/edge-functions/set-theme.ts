@@ -1,5 +1,5 @@
 import type { Context } from 'https://edge.netlify.com';
-import { matchTheme, type Theme } from '../../src/scripts/types.ts';
+import { matchTheme } from '../../src/scripts/types.ts';
 
 const themeDetect = `
   <script>
