@@ -6,7 +6,7 @@ import { getBlogSlug } from '@/scripts/utils';
 
 const { t } = await loadTranslations(Astro);
 
-const posts = await Astro.glob('../../../content/*.mdx');
+const posts = await Astro.glob('../../../../content/*.mdx');
 
 const getPostDate = (post: (typeof posts)[number]) => new Date(post.frontmatter.date).valueOf();
 const sortedPosts = posts.sort((a, b) => getPostDate(b) - getPostDate(a))
