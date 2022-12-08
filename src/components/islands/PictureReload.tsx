@@ -21,6 +21,7 @@ export const PictureReload: ParentComponent<Props> = (props) => {
     const { aspectRatio, widths } = props.config;
     return { width: widths[0], height: Math.round(widths[0] / aspectRatio) };
   };
+
   return (
     <div class="max-w-wide mx-auto my-8">
       <picture>

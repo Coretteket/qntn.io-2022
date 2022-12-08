@@ -1,4 +1,4 @@
-import type { MDXInstance } from 'astro';
+import type { MarkdownInstance, MDXInstance } from 'astro';
 import { state } from './translate';
 
 /** Helper function to disable transition until a function has been called. */
@@ -31,7 +31,14 @@ export const format = (value: number, mode: 'compact' | 'standard' = 'compact') 
 /** Capitalizes the first letter of a string. */
 export const capitalize = (v: string) => v.charAt(0).toUpperCase() + v.slice(1);
 
-export const getBlogSlug = <T extends Record<string, any>>(post: MDXInstance<T>) => post.file.replace(/.*\/(.+).mdx/, '$1');
+export const getBlogSlug = <T extends Record<string, any>>(post: MarkdownInstance<T>) => post.file.replace(/.*\/(.+).md/, '$1').split('.');
+
+export const getBlog = <T extends Record<string, any>>(post: MarkdownInstance<T>) => {
+  const [slug, locale] = post.file.replace(/.*\/(.+)\.mdx*/, '$1').split('.');
+  const path = post.file.replace(/.*\/content\/(.+).[a-z]{2}\.mdx*/, '$1').replace('pages/', '');
+  const type = post.file.replace(/.*\/content\/(.+)\/.*\.mdx*/, '$1');
+  return { path, slug, locale, type };
+};
 
 export const changeTag = (parent: Element, original: Element, tag: string) => {
   const button = document.createElement(tag);

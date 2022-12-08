@@ -28,7 +28,7 @@ export default {
     alt: 'Quinten Coret in een klaslokaal aan het overleggen achter een laptop.',
   },
   blog: {
-    untranslated: 'Sorry! Dit artikel is nog niet vertaald naar het Nederlands.',
+    untranslated: 'Sorry! Deze pagina is nog niet vertaald naar het Nederlands.',
   },
   bdh: {
     title: 'Beter dan Hugo',

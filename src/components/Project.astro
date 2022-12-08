@@ -18,9 +18,9 @@ const bg = (name: Project) => name === 'bdh' ? 'bg-teal-800' : 'bg-amber-800';
   href={`/${projects[name]}`}
   class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[5/6] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50', bg(name)]}
 >
-  <ProjectImage name={name} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0" />
+  <ProjectImage name={name} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0 brightness-110" />
   <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
-    <h2 class="pb-1 truncate fluid-text-3xl md:fluid-text-2xl font-hero">{t.title}</h2>
+    <h2 class="pb-1 truncate fluid-text-3xl md:fluid-text-2xl font-hero text-shadow">{t.title}</h2>
     <div class="max-w-full px-2.5 py-1 my-1.5 font-bold overflow-hidden lg:text-lg truncate rounded shadow-md w-fit backdrop-blur-xl bg-white/10" title={`${format(stat, 'standard')} ${t.stat}`}>
       <b>{format(stat)}</b>
       <span>{t.stat}</span>

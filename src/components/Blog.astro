@@ -1,0 +1,29 @@
+---
+import Icon from 'astro-icon';
+import { getBlogSlug } from '@/scripts/utils';
+import type { MarkdownInstance, MDXInstance } from 'astro';
+import { getPicture } from '@astrojs/image';
+
+export type Frontmatter = { title: string; date: string; locale: string; raw: string; };
+export type Props = { blog: MarkdownInstance<Frontmatter> };
+const { blog } = Astro.props as Props;
+const [slug] = getBlogSlug(blog);
+
+const { image, sources } = await getPicture({
+  aspectRatio: 6 / 5,
+  src: `/${slug}-art.png`,
+  formats: ['avif', 'webp'],
+  widths: [500],
+});
+---
+
+<a href={`/blog/${slug}`} class={`block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[6/5] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900`}>
+  <picture>
+    {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
+    <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0" alt="" />
+  </picture>
+  <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
+    <h2 class="pb-1 fluid-text-2xl md:fluid-text-xl !leading-[1.15] font-hero text-shadow">{blog.frontmatter.title}</h2>
+  </div>
+  <Icon name="bi:arrow-right" width={36} class="absolute bottom-0 right-0 w-8 mx-8 my-6 xs:w-10 lg:mx-10" />
+</a>

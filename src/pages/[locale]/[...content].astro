@@ -1,0 +1,56 @@
+---
+import { getStaticPaths as getTranslationPaths } from '@/scripts/translate';
+import { loadTranslations } from '@/scripts/translate';
+import Layout from '@/components/ContentLayout.astro';
+import Show from '@/components/Show.astro';
+import { getBlog, getBlogSlug } from '@/scripts/utils';
+import Icon from 'astro-icon';
+import type { Frontmatter } from '@/components/Blog.astro';
+import { Locale, locales } from '@/scripts/types';
+import type { MarkdownInstance } from 'astro';
+
+export const getStaticPaths = async () => {
+  const posts = await Astro.glob<MarkdownInstance<Frontmatter>>('/content/**/*.(md|mdx)');
+  const paths = posts.map((post) => {
+    const { path: content, locale, type } = getBlog(post);
+    return { params: { locale, content }, props: { post: { ...post, locale, type } } };
+  });
+
+  paths.forEach((post) => {
+    const otherLocales = locales.filter((l) => l !== post.params.locale);
+    otherLocales.forEach((locale) => {
+      if (!paths.find(({ params: p }) => p.locale === locale && p.content === post.params.content)) {
+        paths.push({ params: { ...post.params, locale }, props: post.props });
+      }
+    });
+  });
+
+  return paths;
+};
+
+type Paths = Awaited<ReturnType<typeof getStaticPaths>>[number];
+// const {  locale } = Astro.params as Paths['params'];
+const { post } = Astro.props as Paths['props'];
+const { frontmatter: matter } = post;
+
+const { t, locale } = await loadTranslations(Astro);
+
+const date = new Date(matter.date).toLocaleDateString(locale, { dateStyle: 'medium' });
+const time = Math.round(matter.raw.length / 1200);
+---
+
+<Layout title={matter.title}>
+  <Show when={locale !== post.locale} slot="banner">
+    <div class="flex justify-start gap-4 px-4 py-3 rounded-lg bg-sky-300 text-sky-900 dark:bg-sky-900 !bg-opacity-40 dark:text-sky-200 leading-[1.3]">
+      <Icon name="tabler:alert-circle" width={22} />
+      <p>{t.blog.untranslated}</p>
+    </div>
+  </Show>
+  <Show slot="subtitle" when={post.type === 'blog'}>
+    <div class="flex gap-6 text-lg text-gray-700 dark:text-gray-200">
+      <span class="flex gap-2"><Icon name="tabler:calendar" width={20} /> {date}</span>
+      <span class="flex gap-2"><Icon name="tabler:file-text" width={20} /> {time} min.</span>
+    </div>
+  </Show>
+  <post.Content />
+</Layout>

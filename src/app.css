@@ -15,3 +15,7 @@ html,
 [data-transition='false'] :not([data-transition='true'], [data-transition='true'] *) {
   @apply !transition-none;
 }
+
+.text-shadow {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+}

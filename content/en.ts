@@ -2,7 +2,7 @@ export default {
   nav: {
     pages: {
       projects: 'Projects',
-      blog: 'Posts',
+      blog: 'Blog',
       about: 'About',
     },
     theme: {
@@ -28,7 +28,7 @@ export default {
     alt: 'Quinten Coret in a classroom, discussing behind a laptop.',
   },
   blog: {
-    untranslated: 'Sorry! This post has not yet been translated into English.',
+    untranslated: 'Sorry! This page has not yet been translated into English.',
   },
   bdh: {
     title: 'Better than Hugo',

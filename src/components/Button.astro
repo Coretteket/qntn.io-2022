@@ -2,7 +2,6 @@
 import type { HTMLAttributes } from 'astro/types';
 
 export type Props = HTMLAttributes<'button' & 'a'>;
-
 const { href, class: className, ...props } = Astro.props as Props;
 const Button = Astro.props.href ? 'a' : 'button';
 ---
