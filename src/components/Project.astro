@@ -1,29 +1,43 @@
 ---
-import ProjectImage from './ProjectImage.astro';
-import { state } from '@/scripts/translate';
-import { Project, projects } from '@/scripts/types';
-import { format } from '@/scripts/utils';
 import Icon from 'astro-icon';
+import { format, getImageSlug } from '@/scripts/utils';
+import { getContentMeta, type MD } from '@/scripts/content';
+import { getProjectStat } from '@/scripts/api';
+import { getPicture } from '@astrojs/image';
 
-export type Props = { name: Project; stat: number };
-const { name, stat } = Astro.props;
-const t = state.t[name];
+export type Props = { project: MD<'project'> };
+const { project } = Astro.props;
+const { slug, path } = getContentMeta(project);
 
-const bg = (name: Project) => name === 'bdh' ? 'bg-teal-800' : 'bg-amber-800';
+const images = await Astro.glob(`../../public/assets/project/*.png`);
+const { image, sources } = await getPicture({
+  src: `/assets/project/${getImageSlug(images, slug)}.png`,
+  aspectRatio: 5 / 6,
+  formats: ['avif', 'webp'],
+  widths: [500],
+});
+
+const stat = await getProjectStat(slug);
 ---
 
 <a
-  title={t.title}
-  id={projects[name]}
-  href={`/${projects[name]}`}
-  class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[5/6] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50', bg(name)]}
+  title={project.frontmatter.title}
+  id={slug}
+  href={path}
+  class="block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[5/6] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900"
 >
-  <ProjectImage name={name} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0 brightness-110" />
+  <picture>
+    {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
+    <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0 brightness-110" />
+  </picture>
   <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
-    <h2 class="pb-1 truncate fluid-text-3xl md:fluid-text-2xl font-hero text-shadow">{t.title}</h2>
-    <div class="max-w-full px-2.5 py-1 my-1.5 font-bold overflow-hidden lg:text-lg truncate rounded shadow-md w-fit backdrop-blur-xl bg-white/10" title={`${format(stat, 'standard')} ${t.stat}`}>
+    <h2 class="pb-1 truncate fluid-text-3xl md:fluid-text-2xl font-hero text-shadow">{project.frontmatter.title}</h2>
+    <div
+      class="max-w-full px-2.5 py-0.5 lg:py-1 my-1.5 font-bold overflow-hidden text-lg truncate rounded shadow-md w-fit backdrop-blur-xl text-shadow bg-white/10"
+      title={`${format(stat, 'standard')} ${project.frontmatter.stat}`}
+    >
       <b>{format(stat)}</b>
-      <span>{t.stat}</span>
+      <span>{project.frontmatter.stat}</span>
     </div>
   </div>
   <Icon name="bi:arrow-right" width={36} class="absolute bottom-0 right-0 w-8 mx-8 my-6 xs:w-10 lg:mx-10" />

@@ -2,22 +2,18 @@
 export { getStaticPaths } from '@/scripts/translate';
 import { loadTranslations } from '@/scripts/translate';
 import Layout from '@/components/ContentLayout.astro';
-import { getBlogSlug } from '@/scripts/utils';
+import { getContentMeta, sortContent, MD } from '@/scripts/content';
 
 const { t } = await loadTranslations(Astro);
-
-const posts = await Astro.glob('/content/blog/*.md');
-
-const getPostDate = (post: (typeof posts)[number]) => new Date(post.frontmatter.date).valueOf();
-const sortedPosts = posts.sort((a, b) => getPostDate(b) - getPostDate(a))
+const posts = await Astro.glob<MD<'blog'>>('/content/blog/*.md*');
 ---
 
 <Layout title={t.nav.pages.blog}>
   <ul>
     {
-      sortedPosts.map((post) => (
+      sortContent(posts).map((post) => (
         <li>
-          <a href={`/blog/${getBlogSlug(post)[0]}`}>{post.frontmatter.title}</a>
+          <a href={getContentMeta(post).path}>{post.frontmatter.title}</a>
         </li>
       ))
     }

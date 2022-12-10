@@ -30,17 +30,5 @@ export default {
   blog: {
     untranslated: 'Sorry! Deze pagina is nog niet vertaald naar het Nederlands.',
   },
-  bdh: {
-    title: 'Beter dan Hugo',
-    desc: 'Klagen over coronabeleid, dat kan iedereen. In dit spel kan je écht laten zien of je het beter kan dan Hugo de Jonge.',
-    stat: ' keer gespeeld',
-    dalle: 'De minister van Volksgezondheid die een spelletje speelt op zijn telefoon, omringd door tientallen microfoons van nieuwszenders, olieverfschilderij - gemaakt door DALL-E.',
-  },
-  nidk: {
-    title: 'Nieuw in de Kamer',
-    desc: 'Politici zijn nooit uitgepraat. Maar zeggen ze ook iets nieuws? Deze Twitterbot vindt nieuwe woorden in de Tweede Kamer.',
-    stat: 'volgers',
-    dalle: 'Iemand die spreekt in de moderne en volle Tweede Kamer, omringd door heel veel papier, minimalistische kunst - gemaakt door DALL-E.',
-  },
   other: 'en',
 };

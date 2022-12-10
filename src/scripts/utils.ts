@@ -10,6 +10,31 @@ export const disableTransition = (fn: (d: HTMLElement) => void) => {
   d.removeAttribute('data-transition');
 };
 
+/** Replaces an element into a new tag, while preserving attributes. */
+export const changeTag = (parent: Element, original: Element, tag: string) => {
+  const button = document.createElement(tag);
+  button.innerHTML = original.innerHTML;
+  Array.from(original.attributes).forEach(({ name, value }) => button.setAttribute(name, value));
+  parent.replaceChild(button, original);
+  return button;
+};
+
+/** Turns an anchor into a button with a given `onclick`. */
+export const createButtonFromAnchor = (parent: Element, onclick: () => any) => {
+  const button = changeTag(parent, parent.children[0], 'button');
+  button.addEventListener('click', onclick);
+  button.setAttribute('type', 'button');
+  button.removeAttribute('href');
+  return button;
+};
+
+/** Warns and provides fallback image slug for content without assets. */
+export const getImageSlug = (images: Record<string,any>[], slug: string, fallback = 'default') => {
+  const found = images.filter((i) => i.default.src.includes(`/${slug}.png`)).length > 0;
+  if (!found) console.warn(`[WARN] Using fallback image for '${slug}', please find a replacement.`)
+  return found ? slug : fallback;
+}
+
 /** Helper function to omit key from object. */
 export const omit = <T extends Record<string, any>>(key: string, obj: T) => {
   const { [key]: omitted, ...rest } = obj;
@@ -30,28 +55,3 @@ export const format = (value: number, mode: 'compact' | 'standard' = 'compact') 
 
 /** Capitalizes the first letter of a string. */
 export const capitalize = (v: string) => v.charAt(0).toUpperCase() + v.slice(1);
-
-export const getBlogSlug = <T extends Record<string, any>>(post: MarkdownInstance<T>) => post.file.replace(/.*\/(.+).md/, '$1').split('.');
-
-export const getBlog = <T extends Record<string, any>>(post: MarkdownInstance<T>) => {
-  const [slug, locale] = post.file.replace(/.*\/(.+)\.mdx*/, '$1').split('.');
-  const path = post.file.replace(/.*\/content\/(.+).[a-z]{2}\.mdx*/, '$1').replace('pages/', '');
-  const type = post.file.replace(/.*\/content\/(.+)\/.*\.mdx*/, '$1');
-  return { path, slug, locale, type };
-};
-
-export const changeTag = (parent: Element, original: Element, tag: string) => {
-  const button = document.createElement(tag);
-  button.innerHTML = original.innerHTML;
-  Array.from(original.attributes).forEach(({ name, value }) => button.setAttribute(name, value));
-  parent.replaceChild(button, original);
-  return button;
-};
-
-export const createButtonFromAnchor = (parent: Element, onclick: () => any) => {
-  const button = changeTag(parent, parent.children[0], 'button');
-  button.addEventListener('click', onclick);
-  button.setAttribute('type', 'button');
-  button.removeAttribute('href');
-  return button;
-};

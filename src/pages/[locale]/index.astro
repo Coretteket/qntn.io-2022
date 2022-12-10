@@ -1,25 +1,15 @@
 ---
 import Layout from '@/components/BaseLayout.astro';
 import Project from '@/components/Project.astro';
-import Image from '@astrojs/image';
-
-import { getPlayCount, getFollowers } from '@/scripts/api';
-
+import Blog from '@/components/Blog.astro';
+import { getFeatured, type Frontmatters } from '@/scripts/content';
 import { loadTranslations } from '@/scripts/translate';
-import Icon from 'astro-icon';
+
 export { getStaticPaths } from '@/scripts/translate';
-
-import { getBlogSlug } from '@/scripts/utils';
-import Blog, { type Frontmatter } from '@/components/Blog.astro';
-
 const { t, locale } = await loadTranslations(Astro);
 
-const playCount = await getPlayCount();
-const followers = await getFollowers();
-
-const posts = await Astro.glob<Frontmatter>('/content/blog/*.md');
-const getPostDate = (post: typeof posts[number]) => new Date(post.frontmatter.date).valueOf();
-const sortedPosts = posts.sort((a, b) => getPostDate(b) - getPostDate(a));
+const posts = getFeatured(await Astro.glob<Frontmatters['blog']>('/content/blog/*.md'), locale);
+const projects = getFeatured(await Astro.glob<Frontmatters['project']>('/content/project/*.md'), locale);
 ---
 
 <Layout>
@@ -33,40 +23,21 @@ const sortedPosts = posts.sort((a, b) => getPostDate(b) - getPostDate(a));
     </p>
   </header>
   <section id="projects" class="my-20">
-    <div class="flex justify-between xs:text-lg">
+    <div class="flex justify-between text-lg">
       <h2 class="font-bold text-gray-700 dark:text-gray-200">{t.home.projects}</h2>
       <a href="/projects" class="font-semibold transition-colors text-sky-600 dark:text-sky-300 hover:text-sky-700 dark:hover:text-sky-200">View more</a>
     </div>
     <div class="grid gap-6 my-8 md:grid-cols-2">
-      <Project name="bdh" stat={playCount} />
-      <Project name="nidk" stat={followers} />
+      {projects.map((project) => <Project project={project} />)}
     </div>
   </section>
   <section id="projects" class="my-20">
-    <div class="flex justify-between xs:text-lg">
+    <div class="flex justify-between text-lg">
       <h2 class="font-bold text-gray-700 dark:text-gray-200">Laatste artikelen</h2>
       <a href="/blog" class="font-semibold transition-colors text-sky-600 dark:text-sky-300 hover:text-sky-700 dark:hover:text-sky-200">View more</a>
     </div>
     <div class="grid gap-6 my-8 md:grid-cols-2">
-      {
-        sortedPosts.map((post) => (
-          <Blog blog={post} />
-          // <a href={`/blog/${getBlogSlug(post)}`} class="my-2 px-8 py-10 border-[3px] dark:border-gray-800 border-gray-200/75 rounded-lg h-[20rem]">
-          //   <h3 class="mb-2 font-semibold fluid-text-2xl md:fluid-text-xl font-hero">{post.frontmatter.title}</h3>
-          //   <div class="flex gap-4 mb-1 text-lg text-gray-600 dark:text-gray-200">
-          //     <span class="flex gap-2">
-          //       <Icon name="tabler:calendar" width={20} /> {new Date(post.frontmatter.date).toLocaleDateString(locale, { dateStyle: 'medium' })}
-          //     </span>
-          //     <span class="flex gap-2">
-          //       <Icon name="tabler:file-text" width={20} /> {Math.round(post.frontmatter.raw.length / 1200)} min.
-          //     </span>
-          //   </div>
-          //   <div class="my-4 text-gray-800 dark:text-gray-200">
-          //     <p>{post.frontmatter.description}</p>
-          //   </div>
-          // </a>
-        ))
-      }
+      {posts.map((post) => <Blog post={post} />)}
     </div>
   </section>
 </Layout>

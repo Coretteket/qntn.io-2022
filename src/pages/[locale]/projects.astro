@@ -1,0 +1,21 @@
+---
+export { getStaticPaths } from '@/scripts/translate';
+import { loadTranslations } from '@/scripts/translate';
+import Layout from '@/components/ContentLayout.astro';
+import { getContentMeta, sortContent, type MD } from '@/scripts/content';
+
+const { t } = await loadTranslations(Astro);
+const projects = await Astro.glob<MD<'project'>>('/content/project/*.md*');
+---
+
+<Layout title={t.nav.pages.projects}>
+  <ul>
+    {
+      sortContent(projects).map((project) => (
+        <li>
+          <a href={getContentMeta(project).path}>{project.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

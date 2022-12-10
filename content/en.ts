@@ -30,17 +30,5 @@ export default {
   blog: {
     untranslated: 'Sorry! This page has not yet been translated into English.',
   },
-  bdh: {
-    title: 'Better than Hugo',
-    desc: 'Anyone can complain about pandemic policy. This game challenges you to prove you can actually keep the virus under control.',
-    stat: ' times played',
-    dalle: "A Dutch government minister playing a game on his phone while surrounded by dozens of news stations' microphones, oil painting - created by DALL-E.",
-  },
-  nidk: {
-    title: 'New in Parliament',
-    desc: 'Politicians love to talk. But do they say anything new? This Twitter bot tracks words used for the first time in the Dutch parliament.',
-    stat: 'followers',
-    dalle: 'Created by DALL-E – A person speaking in the modern and crowded Dutch parliament, surrounded by an overwhelming amount of paper, minimalistic art.',
-  },
   other: 'nl',
 };
