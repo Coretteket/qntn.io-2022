@@ -30,7 +30,7 @@ export const createButtonFromAnchor = (parent: Element, onclick: () => any) => {
 
 /** Warns and provides fallback image slug for content without assets. */
 export const getImageSlug = (images: Record<string,any>[], slug: string, fallback = 'default') => {
-  const found = images.filter((i) => i.default.src.includes(`/${slug}.png`)).length > 0;
+  const found = images.filter((i) => (i.default.src as string).match(new RegExp(`\/${slug}.*\.png`))).length > 0;
   if (!found) console.warn(`[WARN] Using fallback image for '${slug}', please find a replacement.`)
   return found ? slug : fallback;
 }
