@@ -6,7 +6,7 @@ import { getImageSlug } from '@/scripts/utils';
 
 export type Props = { post: MD<'blog'> };
 const { post } = Astro.props as Props;
-const { slug } = getContentMeta(post);
+const { path, slug } = getContentMeta(post);
 
 const images = await Astro.glob(`../../public/assets/blog/*.png`);
 const { image, sources } = await getPicture({
@@ -17,7 +17,7 @@ const { image, sources } = await getPicture({
 });
 ---
 
-<a href={`/blog/${slug}`} class="block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[6/5] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900">
+<a href={path} class="block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[6/5] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900">
   <picture>
     {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
     <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0" alt="" />

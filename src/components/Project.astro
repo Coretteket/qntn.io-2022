@@ -33,7 +33,7 @@ const stat = await getProjectStat(slug);
   <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
     <h2 class="pb-1 truncate fluid-text-3xl md:fluid-text-2xl font-hero text-shadow">{project.frontmatter.title}</h2>
     <div
-      class="max-w-full px-2.5 py-0.5 lg:py-1 my-1.5 font-bold overflow-hidden text-lg truncate rounded shadow-md w-fit backdrop-blur-xl text-shadow bg-white/10"
+      class="max-w-full px-2.5 py-0.5 lg:py-1 my-1.5 font-bold overflow-hidden text-lg truncate rounded shadow w-fit backdrop-blur-xl bg-white/10 border-l-2 border-white/50"
       title={`${format(stat, 'standard')} ${project.frontmatter.stat}`}
     >
       <b>{format(stat)}</b>

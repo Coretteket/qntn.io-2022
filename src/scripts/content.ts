@@ -3,7 +3,7 @@ import type { MarkdownInstance } from 'astro';
 import { z } from 'zod';
 
 const datify = (d: unknown) => (typeof d === 'string' ? new Date(d) : d);
-const contentSchema = z.object({ title: z.string(), raw: z.string() });
+const contentSchema = z.object({ title: z.string(), draft: z.boolean().optional(), raw: z.string() });
 const blogSchema = contentSchema.extend({ date: z.preprocess(datify, z.date()).transform((d) => d.toString()) });
 const projectSchema = blogSchema.extend({ stat: z.string() });
 
@@ -35,12 +35,14 @@ export const getContentMeta = <T extends Record<string, any>>(content: MarkdownI
 
 /** Takes content and returns paths for all localizations, and checking frontmatter. */
 export const getContentPaths = async (posts: Record<string, any>[]) => {
-  const paths = (posts as MD<'pages'>[]).map((post) => {
-    const meta = getContentMeta(post);
-    parseContent(post, meta); // error boundary
-    const { locale, path: content } = meta;
-    return { params: { locale, content }, props: { post, meta } };
-  });
+  const paths = (posts as MD<'pages'>[])
+    .filter((post) => !post.frontmatter.draft)
+    .map((post) => {
+      const meta = getContentMeta(post);
+      parseContent(post, meta); // error boundary
+      const { locale, path: content } = meta;
+      return { params: { locale, content }, props: { post, meta } };
+    });
 
   paths.forEach((post) => {
     const otherLocales = locales.filter((l) => l !== post.params.locale);
@@ -67,15 +69,27 @@ export const getContentDate = <T extends Record<string, any>>(post: MarkdownInst
 
 /** Sorts blog posts by date, and returns the first `num` (defaults to all). */
 export const sortContent = <T extends Record<string, any>>(content: MarkdownInstance<T>[], num?: number) => {
-  return content.sort((a, b) => getContentDate(b)!.numDate - getContentDate(a)!.numDate).slice(0, num) as MarkdownInstance<T>[];
+  return content
+    .filter((c) => !c.frontmatter.draft)
+    .sort((a, b) => getContentDate(b)!.numDate - getContentDate(a)!.numDate)
+    .slice(0, num) as MarkdownInstance<T>[];
+};
+
+/** Gets localized content, and falls back to unlocalized content. */
+export const getLocalized = <T extends Record<string, any>>(content: MarkdownInstance<T>[], locale: Locale) => {
+  const list = content.map((c) => ({ content: c, meta: getContentMeta(c) }));
+  let [localized, unlocalized]: typeof content[] = [[], []];
+  list.forEach((c) => c.meta.locale === locale && localized.push(c.content));
+  list.forEach((c) => !localized.find((o) => c.meta.slug === getContentMeta(o).slug) && unlocalized.push(c.content));
+  return [localized, unlocalized];
 };
 
 /** Gets last two pieces of content, prioritising localization, and checking frontmatter. */
 export const getFeatured = <T extends Record<string, any>>(content: MarkdownInstance<T>[], locale: Locale) => {
-  content.forEach((c) => parseContent(c)); // error boundary
-  const parts = content.reduce(([pass, fail], c) => (getContentMeta(c).locale === locale ? [[...pass, c], fail] : [pass, [...fail, c]]), [[], []] as typeof content[]);
-  const localized = sortContent(parts[0], 2);
-  const unlocalized = sortContent(parts[1], 2).reverse();
-  while (localized.length < 2 && unlocalized.length > 0) localized.push(unlocalized.pop()!);
-  return localized;
+  content = content.filter((c) => parseContent(c)); // error boundary
+  const [localized, unlocalized] = getLocalized(content, locale);
+  let featured = sortContent([...localized, ...unlocalized], 2);
+  if (locale === 'en') featured = sortContent(localized, 2);
+  while (featured.length < 2 && unlocalized.length > 0) featured.push(unlocalized.pop()!);
+  return featured;
 };

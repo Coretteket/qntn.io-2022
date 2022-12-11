@@ -2,16 +2,17 @@
 export { getStaticPaths } from '@/scripts/translate';
 import { loadTranslations } from '@/scripts/translate';
 import Layout from '@/components/ContentLayout.astro';
-import { getContentMeta, sortContent, MD } from '@/scripts/content';
+import { getContentMeta, sortContent, MD, getLocalized } from '@/scripts/content';
 
-const { t } = await loadTranslations(Astro);
+const { t, locale } = await loadTranslations(Astro);
 const posts = await Astro.glob<MD<'blog'>>('/content/blog/*.md*');
+const sorted = sortContent(getLocalized(posts, locale).flat());
 ---
 
 <Layout title={t.nav.pages.blog}>
   <ul>
     {
-      sortContent(posts).map((post) => (
+      sorted.map((post) => (
         <li>
           <a href={getContentMeta(post).path}>{post.frontmatter.title}</a>
         </li>
