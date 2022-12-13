@@ -55,3 +55,7 @@ export const format = (value: number, mode: 'compact' | 'standard' = 'compact') 
 
 /** Capitalizes the first letter of a string. */
 export const capitalize = (v: string) => v.charAt(0).toUpperCase() + v.slice(1);
+
+export const switcher = <T extends string | number | symbol, K extends any>(value: T, conditions: Record<T, K>) => {
+  for (const e of Object.entries(conditions) as [T, K][]) if (e[0] === value) return e[1];
+};

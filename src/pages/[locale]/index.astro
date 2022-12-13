@@ -2,20 +2,20 @@
 import Layout from '@/components/BaseLayout.astro';
 import Project from '@/components/Project.astro';
 import Blog from '@/components/Blog.astro';
-import { getFeatured, type Frontmatters } from '@/scripts/content';
+import { Content, getCollection, getFeatured, type Frontmatters } from '@/scripts/content';
 import { loadTranslations } from '@/scripts/translate';
 
 export { getStaticPaths } from '@/scripts/translate';
 const { t, locale } = await loadTranslations(Astro);
 
-const posts = getFeatured(await Astro.glob<Frontmatters['blog']>('/content/blog/*.md'), locale);
-const projects = getFeatured(await Astro.glob<Frontmatters['project']>('/content/project/*.md'), locale);
+const posts = getFeatured('blog');
+const projects = getFeatured('project');
 ---
 
 <Layout>
   <header class="my-20 md:my-24">
     <h1 class="font-bold text-gray-800 dark:text-gray-100 fluid-text-4xl font-hero !leading-[1]">{t.home.title}</h1>
-    <p class="text-gray-600 fluid-text-lg !leading-[1.25] md:!leading-[1.4] dark:text-gray-100 my-7">
+    <p class="text-gray-600 fluid-text-lg !leading-[1.25] md:!leading-[1.4] dark:text-gray-200 my-7">
       {t.home.description}
       <a href="/about" class="font-semibold transition-colors text-sky-600 dark:text-sky-300 hover:text-sky-700 dark:hover:text-sky-200">
         {t.home.moreAbout}...

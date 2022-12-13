@@ -2,10 +2,11 @@
 export { getStaticPaths } from '@/scripts/translate';
 import { loadTranslations } from '@/scripts/translate';
 import Layout from '@/components/ContentLayout.astro';
-import { getContentMeta, getLocalized, sortContent, type MD } from '@/scripts/content';
+import { getCollection, getContentMeta, getLocalized, sortContent, type MD } from '@/scripts/content';
 
 const { t , locale } = await loadTranslations(Astro);
-const projects = await Astro.glob<MD<'project'>>('/content/project/*.md*');
+
+const projects = getCollection('project');
 const sorted = sortContent(getLocalized(projects, locale).flat());
 ---
 
