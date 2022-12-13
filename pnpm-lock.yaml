@@ -5,32 +5,32 @@ specifiers:
   '@astrojs/mdx': ^0.12.2
   '@astrojs/solid-js': ^1.2.3
   '@astrojs/tailwind': ^2.1.3
-  '@fontsource/faustina': ^4.5.10
+  '@fontsource/rubik': ^4.5.13
   '@tailwindcss/typography': ^0.5.8
   astro: ^1.6.15
   astro-icon: ^0.7.3
   mdast-util-to-string: ^3.1.0
   sharp: ^0.31.2
-  solid-js: ^1.6.4
+  solid-js: ^1.6.5
   tailwindcss: ^3.2.4
   tailwindcss-fluid-text: ^2.0.7
-  zod: ^3.20.1
+  zod: ^3.20.2
 
 dependencies:
   '@astrojs/image': 0.8.1_sharp@0.31.2
   '@astrojs/mdx': 0.12.2
-  '@astrojs/solid-js': 1.2.3_solid-js@1.6.4
+  '@astrojs/solid-js': 1.2.3_solid-js@1.6.5
   '@astrojs/tailwind': 2.1.3_tailwindcss@3.2.4
-  '@fontsource/faustina': 4.5.10
+  '@fontsource/rubik': 4.5.13
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   astro: 1.6.15
   astro-icon: 0.7.3
   mdast-util-to-string: 3.1.0
   sharp: 0.31.2
-  solid-js: 1.6.4
+  solid-js: 1.6.5
   tailwindcss: 3.2.4
   tailwindcss-fluid-text: 2.0.7_tailwindcss@3.2.4
-  zod: 3.20.1
+  zod: 3.20.2
 
 packages:
 
@@ -85,7 +85,7 @@ packages:
       vscode-languageserver-protocol: 3.17.2
       vscode-languageserver-textdocument: 1.0.8
       vscode-languageserver-types: 3.17.2
-      vscode-uri: 3.0.6
+      vscode-uri: 3.0.7
     dev: false
 
   /@astrojs/markdown-remark/1.1.3:
@@ -165,14 +165,14 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/solid-js/1.2.3_solid-js@1.6.4:
+  /@astrojs/solid-js/1.2.3_solid-js@1.6.5:
     resolution: {integrity: sha512-YyWQVcIeUMGKTnK3myXmBrG6dfYL5qiQNn8fv50jV0nPgahLeSUTIVxtt5WtqmbFr5kGTwDyk63TZoUvCUWJXA==}
     engines: {node: ^14.18.0 || >=16.12.0}
     peerDependencies:
       solid-js: ^1.4.3
     dependencies:
       babel-preset-solid: 1.6.3
-      solid-js: 1.6.4
+      solid-js: 1.6.5
       vitefu: 0.2.3
     transitivePeerDependencies:
       - '@babel/core'
@@ -492,8 +492,8 @@ packages:
     dev: false
     optional: true
 
-  /@fontsource/faustina/4.5.10:
-    resolution: {integrity: sha512-ngiIDDBCBTuT3F73rs4gPiRUTj/M4QJC1/ukmV57hdRTW1SLIGvOPwggc6ntSZb+/3E/7LVjNbrqp8T6aw40+Q==}
+  /@fontsource/rubik/4.5.13:
+    resolution: {integrity: sha512-oykfZOFcr+yHiCisHEbX9byVhr7dH4V0XvUSTFZt6xk1Qx+3FFyi8iV4iy/aiKLJOFfgfN6aPMtgifGR6hvIUA==}
     dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
@@ -949,7 +949,7 @@ packages:
       vite: 3.2.5
       vitefu: 0.2.3_vite@3.2.5
       yargs-parser: 21.1.1
-      zod: 3.20.1
+      zod: 3.20.2
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -1061,7 +1061,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001439
       electron-to-chromium: 1.4.284
-      node-releases: 2.0.6
+      node-releases: 2.0.7
       update-browserslist-db: 1.0.10_browserslist@4.21.4
     dev: false
 
@@ -2468,7 +2468,7 @@ packages:
     resolution: {integrity: sha512-p+PrYlkw9DeCRkTVw1duWqPRHX6Ywh2BNKJQcZbCwAuP/59B0Lk9kakuAd7KbQprVO4GzdW8eS5++A9PUSqIyw==}
     dependencies:
       '@types/mdast': 3.0.10
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
       micromark-util-normalize-identifier: 1.0.0
     dev: false
 
@@ -2476,7 +2476,7 @@ packages:
     resolution: {integrity: sha512-T/4DVHXcujH6jx1yqpcAYYwd+z5lAYMw4Ls6yhTfbMMtCt0PHY4gEfhW9+lKsLBtyhUGKRIzcUA2FATVqnvPDA==}
     dependencies:
       '@types/mdast': 3.0.10
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
     dev: false
 
   /mdast-util-gfm-table/1.0.6:
@@ -2485,7 +2485,7 @@ packages:
       '@types/mdast': 3.0.10
       markdown-table: 3.0.3
       mdast-util-from-markdown: 1.2.0
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2494,7 +2494,7 @@ packages:
     resolution: {integrity: sha512-KZ4KLmPdABXOsfnM6JHUIjxEvcx2ulk656Z/4Balw071/5qgnhz+H1uGtf2zIGnrnvDC8xR4Fj9uKbjAFGNIeA==}
     dependencies:
       '@types/mdast': 3.0.10
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
     dev: false
 
   /mdast-util-gfm/2.0.1:
@@ -2506,7 +2506,7 @@ packages:
       mdast-util-gfm-strikethrough: 1.0.2
       mdast-util-gfm-table: 1.0.6
       mdast-util-gfm-task-list-item: 1.0.1
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2518,7 +2518,7 @@ packages:
       '@types/hast': 2.3.4
       '@types/mdast': 3.0.10
       mdast-util-from-markdown: 1.2.0
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2528,7 +2528,7 @@ packages:
     dependencies:
       '@types/estree-jsx': 0.0.1
       '@types/mdast': 3.0.10
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
       parse-entities: 4.0.0
       stringify-entities: 4.0.3
       unist-util-remove-position: 4.0.1
@@ -2543,7 +2543,7 @@ packages:
       '@types/hast': 2.3.4
       '@types/mdast': 3.0.10
       ccount: 2.0.1
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
       parse-entities: 4.0.0
       stringify-entities: 4.0.3
       unist-util-remove-position: 4.0.1
@@ -2568,7 +2568,7 @@ packages:
       '@types/hast': 2.3.4
       '@types/mdast': 3.0.10
       mdast-util-from-markdown: 1.2.0
-      mdast-util-to-markdown: 1.3.0
+      mdast-util-to-markdown: 1.4.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2587,8 +2587,8 @@ packages:
       unist-util-visit: 4.1.1
     dev: false
 
-  /mdast-util-to-markdown/1.3.0:
-    resolution: {integrity: sha512-6tUSs4r+KK4JGTTiQ7FfHmVOaDrLQJPmpjD6wPMlHGUVXoG9Vjc3jIeP+uyBWRf8clwB2blM+W7+KrlMYQnftA==}
+  /mdast-util-to-markdown/1.4.0:
+    resolution: {integrity: sha512-IjXARf/O8VGx/pc5SZ7syfydq1DYL9vd92orsG5U0b4GNCmAvXzu+n7sbzfIKrXwB0AVrYk3NV2kXl0AIi9LCA==}
     dependencies:
       '@types/mdast': 3.0.10
       '@types/unist': 2.0.6
@@ -3048,8 +3048,8 @@ packages:
       formdata-polyfill: 4.0.10
     dev: false
 
-  /node-releases/2.0.6:
-    resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
+  /node-releases/2.0.7:
+    resolution: {integrity: sha512-EJ3rzxL9pTWPjk5arA0s0dgXpnyiAbJDE6wHT62g7VsgrgQgmmZ+Ru++M1BFofncWja+Pnn3rEr3fieRySAdKQ==}
     dev: false
 
   /normalize-path/3.0.0:
@@ -3765,8 +3765,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /solid-js/1.6.4:
-    resolution: {integrity: sha512-IfJJ1ejAcRTOEB0XXk/J8tzvVNZXAdEuHtWQwTXefUteZPGWOl4aVSOrkoj3y1bjwDayqok3+Vv3TV/j4IhKyw==}
+  /solid-js/1.6.5:
+    resolution: {integrity: sha512-q1/wIIRmrWltNnP3PW/e29eRWCC24hX5amBiOXomw2kDiM6JZZ10l+chK/Oi/6ipwUxeabYl5YD2lJOObY9heA==}
     dependencies:
       csstype: 3.1.1
     dev: false
@@ -4271,7 +4271,7 @@ packages:
       '@vscode/l10n': 0.0.10
       vscode-languageserver-textdocument: 1.0.8
       vscode-languageserver-types: 3.17.2
-      vscode-uri: 3.0.6
+      vscode-uri: 3.0.7
     dev: false
 
   /vscode-html-languageservice/5.0.3:
@@ -4280,7 +4280,7 @@ packages:
       '@vscode/l10n': 0.0.10
       vscode-languageserver-textdocument: 1.0.8
       vscode-languageserver-types: 3.17.2
-      vscode-uri: 3.0.6
+      vscode-uri: 3.0.7
     dev: false
 
   /vscode-jsonrpc/8.0.2:
@@ -4326,8 +4326,8 @@ packages:
     resolution: {integrity: sha512-8TEXQxlldWAuIODdukIb+TR5s+9Ds40eSJrw+1iDDA9IFORPjMELarNQE3myz5XIkWWpdprmJjm1/SxMlWOC8A==}
     dev: false
 
-  /vscode-uri/3.0.6:
-    resolution: {integrity: sha512-fmL7V1eiDBFRRnu+gfRWTzyPpNIHJTc4mWnFkwBUmO9U3KPgJAmTx7oxi2bl/Rh6HLdU7+4C9wlj0k2E4AdKFQ==}
+  /vscode-uri/3.0.7:
+    resolution: {integrity: sha512-eOpPHogvorZRobNqJGhapa0JdwaxpjVvyBp0QIUMRMSf8ZAlqOdEquKuRmw9Qwu0qXtJIWqFtMkmvJjUZmMjVA==}
     dev: false
 
   /wcwidth/1.0.1:
@@ -4410,8 +4410,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /zod/3.20.1:
-    resolution: {integrity: sha512-At2YngeqktnHk6L9vf6Sdt7IGcRFziasf7JyQfKwxMd2rOWIUvURP6oLUTW6N0WKQ5bcIdI+IZ3+uGZCCcQcQg==}
+  /zod/3.20.2:
+    resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
     dev: false
 
   /zwitch/2.0.4:

@@ -2,12 +2,11 @@
 export { getStaticPaths } from '@/scripts/translate';
 import { loadTranslations } from '@/scripts/translate';
 import Layout from '@/components/ContentLayout.astro';
-import { getCollection, getContentMeta, getLocalized, sortContent, type MD } from '@/scripts/content';
+import { getCollection, getContentMeta, getLatest, getLocalized, sortContent, type MD } from '@/scripts/content';
 
 const { t , locale } = await loadTranslations(Astro);
 
-const projects = getCollection('project');
-const sorted = sortContent(getLocalized(projects, locale).flat());
+const sorted = getLatest('project');
 ---
 
 <Layout title={t.nav.pages.projects}>

@@ -1,6 +1,15 @@
 html {
   scrollbar-gutter: stable;
-  --font-hero: 'Faustina';
+  --font: 'RubikVariable', 'Rubik Fallback';
+  @apply font-sans;
+}
+
+@font-face {
+  font-family: 'Rubik Fallback';
+  src: local('Arial');
+  ascent-override: 91.09%;
+  descent-override: 24.36%;
+  size-adjust: 102.64%;
 }
 
 html,

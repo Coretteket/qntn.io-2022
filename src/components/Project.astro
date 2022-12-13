@@ -28,17 +28,17 @@ const stat = await getProjectStat(slug);
 >
   <picture>
     {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
-    <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0 brightness-110" />
+    <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0 brightness-110" alt="" loading="lazy" />
   </picture>
   <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
-    <h2 class="pb-1 truncate fluid-text-3xl md:fluid-text-2xl font-hero text-shadow">{project.frontmatter.title}</h2>
+    <h2 class="text-3xl sm:text-[2.2rem] font-bold truncate md:pb-1 md:pt-2 md:text-4xl font-hero text-shadow">{project.frontmatter.title}</h2>
     <div
-      class="max-w-full px-2.5 py-0.5 lg:py-1 my-1.5 font-bold overflow-hidden text-lg truncate rounded shadow w-fit backdrop-blur-xl bg-white/10 border-l-[3px] border-white/50"
+      class="max-w-full px-2.5 py-1 my-1.5 font-medium overflow-hidden text-lg truncate rounded shadow w-fit backdrop-blur-xl bg-white/10 border-l-[3px] border-white/50"
       title={`${format(stat, 'standard')} ${project.frontmatter.stat}`}
     >
-      <b>{format(stat)}</b>
+      <b class="font-extrabold">{format(stat)}</b>
       <span>{project.frontmatter.stat}</span>
     </div>
   </div>
-  <Icon name="bi:arrow-right" width={36} class="absolute bottom-0 right-0 w-8 mx-8 my-6 xs:w-10 lg:mx-10" />
+  <Icon name="icon-park-outline:arrow-right" width={36} class="absolute bottom-0 right-0 mx-8 my-6 w-9 xs:w-10 lg:mx-10" />
 </a>

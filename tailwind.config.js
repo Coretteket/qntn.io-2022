@@ -24,7 +24,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: { hero: ['var(--font-hero)', defaultTheme.fontFamily.serif] },
+      fontFamily: { sans: ['var(--font)', defaultTheme.fontFamily.sans] },
       screens: { '3xs': '350px', '2xs': '400px', xs: '448px' },
       borderRadius: { '4xl': '2rem' },
       maxWidth: { blog: '38rem', wide: '48rem', content: '64rem' },

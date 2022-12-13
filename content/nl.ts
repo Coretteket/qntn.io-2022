@@ -18,7 +18,7 @@ export default {
     },
   },
   home: {
-    title: 'Quinten Coret houdt ervan om data creatief toegankelijk te maken',
+    title: 'Quinten Coret houdt ervan om creatief data toegankelijk te maken',
     description: 'Ooit een zevenjarige die zijn eerste regels code in elkaar knutselde. Nu een student Econometrie en Data Science aan de Vrije Universiteit.',
     moreAbout: 'Lees meer',
     projects: 'Uitgelichte projecten',

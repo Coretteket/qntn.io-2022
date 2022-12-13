@@ -20,10 +20,10 @@ const { image, sources } = await getPicture({
 <a href={path} class="block group my-2 shadow dark:shadow-none rounded-lg w-full aspect-[6/5] max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900">
   <picture>
     {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
-    <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0" alt="" />
+    <img {...image} class="object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0" alt="" loading="lazy" />
   </picture>
   <div class="absolute top-0 w-full h-full p-10 md:max-lg:p-[4vw] bg-gradient-to-b from-black/60">
-    <h2 class="pb-1 fluid-text-2xl md:fluid-text-xl !leading-[1.15] font-hero text-shadow">{post.frontmatter.title}</h2>
+    <h2 class="pb-1 text-3xl !leading-[1.1] font-hero font-semibold text-shadow">{post.frontmatter.title}</h2>
   </div>
-  <Icon name="bi:arrow-right" width={36} class="absolute bottom-0 right-0 w-8 mx-8 my-6 xs:w-10 lg:mx-10" />
+  <Icon name="icon-park-outline:arrow-right" width={36} class="absolute bottom-0 right-0 mx-8 my-6 w-9 xs:w-10 lg:mx-10" />
 </a>
