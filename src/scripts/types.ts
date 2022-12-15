@@ -7,24 +7,10 @@ export type Locale = typeof locales[number];
 export type Theme = typeof themes[number];
 export type Translations = Awaited<ReturnType<typeof loaders[Locale]>>['default'];
 
-export const isType =
-  <T>(l: readonly T[]) =>
-  (t: any): t is T =>
-    l.includes(t as T);
-export const parseType =
-  <T>(l: readonly T[]) =>
-  (t: any): T =>
-    l.includes(t as T) ? t : l[0];
 export const matchType =
   <T>(l: readonly T[]) =>
-  (t: any): T | null =>
-    l.includes(t as T) ? t : null;
-
-export const isLocale = isType(locales);
-export const isTheme = isType(themes);
-
-export const parseLocale = parseType(locales);
-export const parseTheme = parseType(themes);
+  (t: unknown): T | null =>
+    l.includes(t as T) ? (t as T) : null;
 
 export const matchLocale = matchType(locales);
 export const matchTheme = matchType(themes);

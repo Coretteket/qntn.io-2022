@@ -17,9 +17,9 @@ const href = `/${t.other}${path}`;
 <script>
   import { isLocalized } from '@/scripts/matchers';
   import { createButtonFromAnchor, define } from '@/scripts/utils';
-  import { parseLocale } from '@/scripts/types';
+  import { matchLocale } from '@/scripts/types';
 
-  let locale = parseLocale(document.documentElement.lang);
+  let locale = matchLocale(document.documentElement.lang) ?? 'en';
 
   @define('toggle-locale')
   class ToggleLocale extends HTMLElement {

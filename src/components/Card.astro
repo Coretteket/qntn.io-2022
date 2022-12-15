@@ -11,12 +11,11 @@ export type Props = { content: Content<'blog' | 'project'> };
 const { frontmatter, slug, path, type } = Astro.props.content;
 const matter = frontmatter as Intersect<typeof frontmatter>;
 
-const r = [9, 10];
-const ratio = r[0] / r[1];
+const r = [7, 8].sort((a, b) => type === 'blog' ? a - b : b - a);
 
 const { image, sources } = await getPicture({
   src: getImagePath(slug, type),
-  aspectRatio: type === 'project' ? ratio : 1 / ratio,
+  aspectRatio: r[0] / r[1],
   formats: ['avif', 'webp'],
   widths: [500],
 });
@@ -28,10 +27,7 @@ const stat = type === 'project' ? await getProjectStat(slug) : 0;
   title={frontmatter.title}
   id={slug}
   href={path}
-  class:list={[
-    'block group my-2 shadow dark:shadow-none rounded-lg w-full max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900',
-    type === 'project' ? `aspect-[${r[0]}/${r[1]}]` : `aspect-[${r[1]}/${r[0]}]`,
-  ]}
+  class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900', `aspect-[${r[0]}/${r[1]}]`]}
 >
   <picture>
     {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}

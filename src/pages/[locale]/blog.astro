@@ -1,10 +1,10 @@
 ---
 export { getStaticPaths } from '@/scripts/translate';
-import { loadTranslations } from '@/scripts/translate';
 import Layout from '@/components//layouts/ContentLayout.astro';
-import { getContentMeta, sortContent, getLocalized, getCollection, getLatest } from '@/scripts/content';
+import { loadTranslations } from '@/scripts/translate';
+import { getLatest } from '@/scripts/content';
 
-const { t, locale } = await loadTranslations(Astro);
+const { t } = await loadTranslations(Astro);
 
 const sorted = getLatest('blog');
 ---
@@ -14,7 +14,7 @@ const sorted = getLatest('blog');
     {
       sorted.map((post) => (
         <li>
-          <a href={getContentMeta(post).path}>{post.frontmatter.title}</a>
+          <a href={post.path}>{post.frontmatter.title}</a>
         </li>
       ))
     }

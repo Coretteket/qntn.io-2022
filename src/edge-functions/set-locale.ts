@@ -2,7 +2,7 @@ import type { Context } from 'https://edge.netlify.com';
 import type { Cookie } from 'https://deno.land/std@0.114.0/http/cookie.ts';
 
 import { isLocalized, isPublic } from '../scripts/matchers.ts';
-import { isLocale } from '../scripts/types.ts';
+import { matchLocale } from '../scripts/types.ts';
 
 /** Simply slices locale from localized URL path. */
 const getLocaleFromPath = (url: string) => new URL(url).pathname.slice(1, 3);
@@ -14,7 +14,7 @@ const getLocaleCookie = (url: string) => ({ name: 'locale', value: getLocaleFrom
  * Prefers Dutch if user accepts any kind of Dutch, or if they are in the Netherlands. */
 const parseHeaders = (request: Request, context: Context) => {
   const cookieLocale = context.cookies.get('locale');
-  if (isLocale(cookieLocale)) return cookieLocale;
+  if (matchLocale(cookieLocale)) return cookieLocale;
   const acceptLanguage = request.headers.get('accept-language') ?? '';
   const isDutch = acceptLanguage.includes('nl') || context.geo.country?.code === 'NL';
   return isDutch ? 'nl' : 'en';

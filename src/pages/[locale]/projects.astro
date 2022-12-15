@@ -1,10 +1,10 @@
 ---
 export { getStaticPaths } from '@/scripts/translate';
-import { loadTranslations } from '@/scripts/translate';
 import Layout from '@/components/layouts/ContentLayout.astro';
-import { getCollection, getContentMeta, getLatest, getLocalized, sortContent, type MD } from '@/scripts/content';
+import { loadTranslations } from '@/scripts/translate';
+import { getLatest } from '@/scripts/content';
 
-const { t, locale } = await loadTranslations(Astro);
+const { t } = await loadTranslations(Astro);
 
 const sorted = getLatest('project');
 ---
@@ -14,7 +14,7 @@ const sorted = getLatest('project');
     {
       sorted.map((project) => (
         <li>
-          <a href={getContentMeta(project).path}>{project.frontmatter.title}</a>
+          <a href={project.path}>{project.frontmatter.title}</a>
         </li>
       ))
     }

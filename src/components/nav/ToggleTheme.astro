@@ -15,9 +15,9 @@ const { t } = state;
 
 <script>
   import { createButtonFromAnchor, define, disableTransition } from '@/scripts/utils';
-  import { parseTheme } from '@/scripts/types';
+  import { matchTheme } from '@/scripts/types';
 
-  let theme = parseTheme(document.documentElement.dataset.theme);
+  let theme = matchTheme(document.documentElement.dataset.theme) ?? 'light';
 
   @define('toggle-theme')
   class ToggleTheme extends HTMLElement {
