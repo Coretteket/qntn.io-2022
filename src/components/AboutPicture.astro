@@ -10,7 +10,7 @@ const config = (src = '') => ({
   formats: ['avif', 'webp', 'png'],
 }) as GetPictureParams;
 
-const files = await Astro.glob('../../public/me/*');
+const files = await Astro.glob('../../public/assets/about/*');
 
 const images = await Promise.all(
   files.map(async (file) => {

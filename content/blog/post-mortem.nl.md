@@ -1,7 +1,6 @@
 ---
 title: 'Beter dan Hugo: Post-Mortem'
 date: '2022/1/19'
-locale: 'nl'
 ---
 
 Op de laatste dag met De Jonge als coronaminister plaatste ik een tweetje. Het begin en einde van mijn marketingstrategie voor het spel Beter dan Hugo, dacht ik. Op het moment van schrijven, tien dagen later, is het spel bijna 300.000 keer gespeeld door minstens 150.000 unieke spelers. Met de piek van de golf aan spelers achter ons is het een goed moment om terug te kijken en in de statistieken te duiken. Deed men het een beetje Beter dan Hugo?

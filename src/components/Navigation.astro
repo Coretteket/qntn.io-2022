@@ -9,7 +9,7 @@ const { t } = state;
 const pages = Object.entries(t.nav.pages);
 
 const headshot = await getPicture({
-  src: '/headshot.webp',
+  src: '/assets/headshot.webp',
   widths: [36, 72],
   formats: ['avif'],
   aspectRatio: 1,
@@ -25,7 +25,7 @@ const headshot = await getPicture({
       </picture>
     </a>
     <a href="/" class="text-xl text-gray-800 font-hero sm:gap-8 dark:text-gray-100 hover:!text-gray-700 hover:dark:!text-gray-200">
-      <span class="inline-block mb-1">Quinten Coret</span>
+      <span class="font-semibold">Quinten Coret</span>
     </a>
     {pages.map(([page, name]) => (<a href={'/' + page} class="max-sm:hidden">{name}</a>))}
   </div>

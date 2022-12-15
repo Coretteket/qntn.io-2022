@@ -16,3 +16,11 @@ export const getFollowers = async (): Promise<number> => {
   const schema = z.object({ data: z.object({ public_metrics: z.object({ followers_count: z.number() }) }) });
   return schema.parse(result).data.public_metrics.followers_count;
 };
+
+export const getProjectStat = (slug: string) => {
+  switch (slug) {
+    case 'beterdanhugo': return getPlayCount();
+    case 'nieuwindekamer': return getFollowers();
+    default: throw Error(`No stat for project '${slug}'.`)
+  }
+}

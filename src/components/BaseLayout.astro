@@ -6,7 +6,7 @@ import { state } from '@/scripts/translate';
 const { t } = state;
 
 import '@/app.css';
-import '@fontsource/faustina/700.css';
+import '@fontsource/rubik/variable.css';
 import { getImage } from '@astrojs/image';
 import Show from '@/components/Show.astro';
 
@@ -17,8 +17,7 @@ const defaultTitle = 'Quinten Coret';
 const title = props.title ? `${props.title} – ${defaultTitle}` : defaultTitle;
 
 const otherLocale = Astro.request.url.replace(`/${state.locale}`, `/${t.other}`);
-
-const favicon = await getImage({ src: '/headshot.webp', width: 32, height: 32, format: 'png' });
+const favicon = await getImage({ src: '/assets/headshot.webp', width: 32, height: 32, format: 'png' });
 ---
 
 <html data-theme="auto" lang={state.locale} class="scroll-smooth scroll-pt-8">

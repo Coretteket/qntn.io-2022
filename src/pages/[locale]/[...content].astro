@@ -1,0 +1,30 @@
+---
+import { getContentDate, getEntry, Paths } from '@/scripts/content';
+import { loadTranslations } from '@/scripts/translate';
+import Layout from '@/components/ContentLayout.astro';
+import Show from '@/components/Show.astro';
+import Icon from 'astro-icon';
+
+export { getContentPaths as getStaticPaths } from '@/scripts/content';
+
+const { t, locale } = await loadTranslations(Astro);
+const { slug } = Astro.props as Paths['props'];
+
+const post = getEntry(slug)!;
+const { frontmatter: matter } = post;
+---
+
+<Layout title={matter.title}>
+  <Show slot="banner" when={locale !== post.locale && locale === 'en'}>
+    <div class="px-6 py-3 rounded bg-sky-300 text-sky-900 dark:bg-sky-900 !bg-opacity-40 dark:text-sky-200 leading-[1.3] border-l-[3px] border-sky-900 dark:border-sky-200/50">
+      <p>{t.blog.untranslated}</p>
+    </div>
+  </Show>
+  <Show slot="subtitle" when={post.type === 'blog'}>
+    <div class="flex gap-6 text-lg text-gray-700 dark:text-gray-200">
+      <span class="flex gap-2"><Icon name="tabler:calendar" width={20} /> {getContentDate(post)}</span>
+      <span class="flex gap-2"><Icon name="tabler:file-text" width={20} /> {Math.round(matter.raw.length / 1000)} min.</span>
+    </div>
+  </Show>
+  <post.Content />
+</Layout>

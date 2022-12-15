@@ -1,7 +1,6 @@
 ---
 title: 'Het parlementaire jaar in 7.992.417 woorden'
 date: '2020/9/15'
-locale: 'nl'
 ---
 
 Wat begon als een dom ideetje, is uitgegroeid tot een veel groter project dan ik ooit had kunnen verwachten. Geïnspireerd door het account ‘New New York Times‘, wilde ik een Twitterbot beginnen die nieuwe woorden uit de Tweede Kamer zou tweeten. Ik had geen idee hoe verschrikkelijk veel ik daarvoor nodig zou hebben. Drie maanden later ben ik dan ook een paar duizend regels aan code en veertien gigabyte aan plenaire verslagen verder.

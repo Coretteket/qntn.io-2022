@@ -1,0 +1,22 @@
+---
+export { getStaticPaths } from '@/scripts/translate';
+import { loadTranslations } from '@/scripts/translate';
+import Layout from '@/components/ContentLayout.astro';
+import { getContentMeta, sortContent, getLocalized, getCollection, getLatest } from '@/scripts/content';
+
+const { t, locale } = await loadTranslations(Astro);
+
+const sorted = getLatest('blog');
+---
+
+<Layout title={t.nav.pages.blog}>
+  <ul>
+    {
+      sorted.map((post) => (
+        <li>
+          <a href={getContentMeta(post).path}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
