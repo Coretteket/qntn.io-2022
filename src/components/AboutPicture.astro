@@ -3,12 +3,13 @@ import { PictureReload, type Props as ReloadProps } from './islands/PictureReloa
 import type { GetPictureParams } from '@astrojs/image/dist/lib/get-picture';
 import { getPicture } from '@astrojs/image';
 
-const config = (src = '') => ({
-  src,
-  widths: [1000],
-  aspectRatio: 7 / 4,
-  formats: ['avif', 'webp', 'png'],
-}) as GetPictureParams;
+const config = (src = '') =>
+  ({
+    src,
+    widths: [1000],
+    aspectRatio: 7 / 4,
+    formats: ['avif', 'webp', 'png'],
+  } as GetPictureParams);
 
 const files = await Astro.glob('../../public/assets/about/*');
 

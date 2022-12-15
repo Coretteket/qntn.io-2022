@@ -23,14 +23,14 @@ export const PictureReload: ParentComponent<Props> = (props) => {
   };
 
   return (
-    <div class="max-w-wide mx-auto my-8">
+    <div class="mx-auto my-8 max-w-wide">
       <picture>
         <For each={picture().sources}>{(source, i) => <source srcset={source} type={'image/' + props.config.formats[i()]} />}</For>
-        <img src={picture().image} {...getDims()} class="w-full my-4 rounded-lg shadow" alt="" />
+        <img src={picture().image} {...getDims()} class="my-4 w-full rounded-lg shadow" alt="" />
       </picture>
-      <div class="flex flex-wrap justify-between text-gray-600 dark:text-gray-400 gap-x-4 not-prose">
+      <div class="not-prose flex flex-wrap justify-between gap-x-4 text-gray-600 dark:text-gray-400">
         <p>That's me, pretending to code.</p>
-        <button class="font-semibold js-only text-sky-600 transition-colors dark:text-sky-300 hover:text-sky-700 dark:hover:text-sky-200" onClick={next}>
+        <button class="js-only font-semibold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200" onClick={next}>
           Show me another!
         </button>
       </div>

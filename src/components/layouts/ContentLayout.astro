@@ -1,6 +1,6 @@
 ---
 import Show from '@/components/Show.astro';
-import Layout from '@/components/BaseLayout.astro';
+import Layout from '@/components/layouts/BaseLayout.astro';
 export type Props = { title: string; subtitle?: string; name?: string };
 
 const { title, subtitle, name } = Astro.props;
@@ -10,12 +10,12 @@ const contentName = name ?? title;
 <Layout title={title}>
   <header class="mx-auto mt-20 mb-10 md:mt-24 md:mb-12">
     <slot name="banner" />
-    <h1 class="mt-10 md:mt-12 mb-4 font-bold text-gray-800 !leading-[1.1] dark:text-gray-100 text-4xl sm:text-5xl font-hero">
+    <h1 class="font-hero mt-10 mb-4 text-4xl font-bold !leading-[1.1] text-gray-800 dark:text-gray-100 sm:text-5xl md:mt-12">
       {contentName}
     </h1>
     <slot name="subtitle" />
   </header>
-  <section class="my-8 prose-p:leading-[1.5] prose-lg md:my-12">
+  <section class="prose-lg my-8 prose-p:leading-[1.5] md:my-12">
     <slot />
   </section>
 </Layout>

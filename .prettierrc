@@ -1,0 +1,12 @@
+{
+  "pluginSearchDirs": false,
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": { "parser": "astro" }
+    }
+  ],
+  "printWidth": 200,
+  "singleQuote": true
+}

@@ -18,7 +18,7 @@ const getTheme = (request: Request, context: Context) => {
   const headerTheme = matchTheme(request.headers.get('sec-ch-prefers-color-scheme'));
 
   const theme = searchTheme ?? cookieTheme ?? headerTheme;
-  return theme ;
+  return theme;
 };
 
 /** Sets the user's preferred color scheme in cookies and applies it to the response HTML. Retrieves the user's preferred color scheme using `getTheme`, sets it in a cookie, and then modifies the HTML of the response to apply the color scheme, or inject a script to detect one client-side. */

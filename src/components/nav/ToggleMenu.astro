@@ -1,7 +1,7 @@
 ---
 import { state } from '@/scripts/translate';
 import { Icon } from 'astro-icon';
-import Button from './Button.astro';
+import Button from '@/components/Button.astro';
 
 const { t } = state;
 
@@ -13,9 +13,15 @@ const pages = Object.entries(t.nav.pages);
   <Icon name="prime:times" width={24} class="[*:checked~*>&]:block hidden" />
 </Button>
 
-<div class="[*:checked~&]:max-h-12 flex overflow-hidden gap-6 bg-gray-100 dark:bg-gray-800 px-4 rounded max-h-0 w-full text-lg font-semibold sm:hidden justify-center">
+<div class="flex max-h-0 w-full justify-center gap-6 overflow-hidden rounded bg-gray-100 px-4 text-lg font-semibold dark:bg-gray-800 sm:hidden [*:checked~&]:max-h-12">
   <a href="/" class="py-2">Home</a>
-  {pages.map(([slug, name]) => <a href={`/${slug}`} class="py-2">{name}</a>)}
+  {
+    pages.map(([slug, name]) => (
+      <a href={`/${slug}`} class="py-2">
+        {name}
+      </a>
+    ))
+  }
 </div>
 
 <style>

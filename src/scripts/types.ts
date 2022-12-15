@@ -28,3 +28,5 @@ export const parseTheme = parseType(themes);
 
 export const matchLocale = matchType(locales);
 export const matchTheme = matchType(themes);
+
+export type Intersect<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;

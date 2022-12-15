@@ -1,7 +1,7 @@
 ---
 export { getStaticPaths } from '@/scripts/translate';
 import { loadTranslations } from '@/scripts/translate';
-import Layout from '@/components/ContentLayout.astro';
+import Layout from '@/components//layouts/ContentLayout.astro';
 import { getContentMeta, sortContent, getLocalized, getCollection, getLatest } from '@/scripts/content';
 
 const { t, locale } = await loadTranslations(Astro);

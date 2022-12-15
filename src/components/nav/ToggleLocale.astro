@@ -1,7 +1,7 @@
 ---
 import { state } from '@/scripts/translate';
 import { Icon } from 'astro-icon';
-import Button from './Button.astro';
+import Button from '@/components/Button.astro';
 const { t } = state;
 
 const path = Astro.url.pathname.replace(`/${state.locale}`, '');
@@ -15,9 +15,9 @@ const href = `/${t.other}${path}`;
 </toggle-locale>
 
 <script>
-  import { isLocalized } from '../scripts/matchers';
-  import { createButtonFromAnchor, define } from '../scripts/utils';
-  import { parseLocale } from '../scripts/types';
+  import { isLocalized } from '@/scripts/matchers';
+  import { createButtonFromAnchor, define } from '@/scripts/utils';
+  import { parseLocale } from '@/scripts/types';
 
   let locale = parseLocale(document.documentElement.lang);
 

@@ -23,7 +23,7 @@ export default {
     moreAbout: 'Lees meer',
     more: 'Bekijk alle',
     projects: 'Uitgelichte projecten',
-    blog: 'Laatste artikelen'
+    blog: 'Laatste artikelen',
   },
   about: {
     title: 'Over mij',

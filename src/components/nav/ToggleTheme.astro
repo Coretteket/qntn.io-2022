@@ -1,7 +1,7 @@
 ---
 import { state } from '@/scripts/translate';
 import { Icon } from 'astro-icon';
-import Button from './Button.astro';
+import Button from '@/components/Button.astro';
 
 const { t } = state;
 ---
@@ -14,8 +14,8 @@ const { t } = state;
 </toggle-theme>
 
 <script>
-  import { createButtonFromAnchor, define, disableTransition } from '../scripts/utils';
-  import { parseTheme } from '../scripts/types';
+  import { createButtonFromAnchor, define, disableTransition } from '@/scripts/utils';
+  import { parseTheme } from '@/scripts/types';
 
   let theme = parseTheme(document.documentElement.dataset.theme);
 

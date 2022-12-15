@@ -1,4 +1,5 @@
 import type { MarkdownInstance, MDXInstance } from 'astro';
+import type { Collection } from './content';
 import { state } from './translate';
 
 /** Helper function to disable transition until a function has been called. */
@@ -29,11 +30,12 @@ export const createButtonFromAnchor = (parent: Element, onclick: () => any) => {
 };
 
 /** Warns and provides fallback image slug for content without assets. */
-export const getImageSlug = (images: Record<string,any>[], slug: string, fallback = 'default') => {
-  const found = images.filter((i) => (i.default.src as string).match(new RegExp(`\/${slug}.*\.png`))).length > 0;
-  if (!found) console.warn(`[WARN] Using fallback image for '${slug}', please find a replacement.`)
-  return found ? slug : fallback;
-}
+export const getImagePath = (slug: string, type: Collection, fallback = 'default') => {
+  const images = import.meta.glob('/public/assets/*/*.png');
+  const path = (slug: string) => `/public/assets/${type}/${slug}.png`;
+  if (!(path(slug) in images)) console.warn(`[WARN] Using fallback image for '${type}/${slug}', please find a replacement.`);
+  return path(slug ?? fallback).replace('/public', '');
+};
 
 /** Helper function to omit key from object. */
 export const omit = <T extends Record<string, any>>(key: string, obj: T) => {

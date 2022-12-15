@@ -19,8 +19,11 @@ export const getFollowers = async (): Promise<number> => {
 
 export const getProjectStat = (slug: string) => {
   switch (slug) {
-    case 'beterdanhugo': return getPlayCount();
-    case 'nieuwindekamer': return getFollowers();
-    default: throw Error(`No stat for project '${slug}'.`)
+    case 'beterdanhugo':
+      return getPlayCount();
+    case 'nieuwindekamer':
+      return getFollowers();
+    default:
+      throw Error(`No stat for project '${slug}'.`);
   }
-}
+};

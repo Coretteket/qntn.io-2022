@@ -14,11 +14,11 @@ html {
 
 html,
 [data-theme='light'] {
-  @apply [color-scheme:light] text-gray-900 bg-gray-50;
+  @apply bg-gray-50 text-gray-900 [color-scheme:light];
 }
 
 [data-theme='dark'] {
-  @apply [color-scheme:dark]  bg-gray-900 text-gray-50;
+  @apply bg-gray-900  text-gray-50 [color-scheme:dark];
 }
 
 [data-transition='false'] :not([data-transition='true'], [data-transition='true'] *) {
