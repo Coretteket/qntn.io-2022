@@ -18,10 +18,12 @@ export default {
     },
   },
   home: {
-    title: 'Quinten Coret loves creating accessible ways to interact with data',
-    description: 'Once a seven-year-old cobbling together his first lines of code. Now a student of Econometrics and Data Science at VU Amsterdam.',
+    title: 'Quinten Coret loves making creative ways to interact with data',
+    description: 'Once a seven-year-old cobbling together his first lines of code. Now an Econometrics and Data Science student at VU Amsterdam.',
     moreAbout: 'Learn more',
+    more: 'View all',
     projects: 'Featured projects',
+    blog: 'Latest posts',
   },
   about: {
     title: 'About me',
