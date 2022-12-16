@@ -6,7 +6,7 @@ import type { z } from 'zod';
 
 /** Uses schemas defined in `/content/schemas.ts` to parse frontmatter. */
 export const parseContent = <T extends keyof typeof schemas>(frontmatter: Record<string, any>, type: T) => {
-  return schemas[type].parse(frontmatter) as Frontmatter<T>;
+  return schemas[type].passthrough().parse(frontmatter) as Frontmatter<T>;
 };
 
 /** Gets useful meta-information about content. */

@@ -1,4 +1,5 @@
 import z from 'zod';
+import { panic, switcher } from './utils';
 
 const { BDH_API_URL, TWITTER_API_URL, TWITTER_BEARER_TOKEN } = import.meta.env;
 
@@ -17,13 +18,9 @@ export const getFollowers = async (): Promise<number> => {
   return schema.parse(result).data.public_metrics.followers_count;
 };
 
-export const getProjectStat = (slug: string) => {
-  switch (slug) {
-    case 'beterdanhugo':
-      return getPlayCount();
-    case 'nieuwindekamer':
-      return getFollowers();
-    default:
-      throw Error(`No stat for project '${slug}'.`);
-  }
-};
+/** Gets statistic for a given project, and panics if none found. */
+export const getProjectStat = (slug: string) =>
+  switcher(slug, {
+    beterdanhugo: getPlayCount(),
+    nieuwindekamer: getFollowers(),
+  }) ?? panic(`No statistic for project '${slug}'.`);

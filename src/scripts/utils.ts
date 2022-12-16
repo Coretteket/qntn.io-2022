@@ -1,4 +1,3 @@
-import type { MarkdownInstance, MDXInstance } from 'astro';
 import type { Collection } from './content';
 import { state } from './translate';
 
@@ -58,6 +57,13 @@ export const format = (value: number, mode: 'compact' | 'standard' = 'compact') 
 /** Capitalizes the first letter of a string. */
 export const capitalize = (v: string) => v.charAt(0).toUpperCase() + v.slice(1);
 
-export const switcher = <T extends string | number | symbol, K extends any>(value: T, conditions: Record<T, K>) => {
-  for (const e of Object.entries(conditions) as [T, K][]) if (e[0] === value) return e[1];
+/** Switch statement inline. */
+export const switcher = <T extends string | number, K extends any>(value: T, conditions: { [o in T]: K }) => {
+  for (const e of Object.entries(omit('default', conditions)) as [T, K][]) if (e[0] === value) return e[1] as K;
+  return conditions['default' as T] as K | undefined;
+};
+
+/** Throws error inline. */
+export const panic = (err: string) => {
+  throw Error(err);
 };

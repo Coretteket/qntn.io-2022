@@ -1,6 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
-const fluidType = require('tailwindcss-fluid-text');
 const typography = require('@tailwindcss/typography');
 
 /** @type {import('tailwindcss').Config} */
@@ -8,15 +7,6 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: ['class', '[data-theme="dark"]'], // or 'media' or 'class'
   plugins: [
-    // https://github.com/davidhellmann/tailwindcss-fluid-type#readme
-    fluidType({
-      settings: {
-        prefix: 'fluid-',
-        screenMax: 64,
-        ratioMin: 1.1,
-        ratioMax: 1.225,
-      },
-    }),
     plugin(({ addVariant }) => {
       addVariant('kid', '&>*');
     }),
