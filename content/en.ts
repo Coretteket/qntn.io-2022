@@ -24,6 +24,7 @@ export default {
     more: 'View all',
     projects: 'Featured projects',
     blog: 'Latest posts',
+    links: 'You\'ll find me here',
   },
   about: {
     title: 'About me',

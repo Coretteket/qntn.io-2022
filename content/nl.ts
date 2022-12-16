@@ -24,6 +24,7 @@ export default {
     more: 'Bekijk alle',
     projects: 'Uitgelichte projecten',
     blog: 'Laatste artikelen',
+    links: 'Ook hier te vinden',
   },
   about: {
     title: 'Over mij',

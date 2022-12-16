@@ -11,7 +11,7 @@ export type Props = { content: Content<'blog' | 'project'> };
 const { frontmatter, slug, path, type } = Astro.props.content;
 const matter = frontmatter as Intersect<typeof frontmatter>;
 
-const r = [7, 8].sort((a, b) => type === 'blog' ? b - a : a - b);
+const r = [7, 8].sort((a, b) => (type === 'blog' ? b - a : a - b));
 
 const { image, sources } = await getPicture({
   src: getImagePath(slug, type),
@@ -33,7 +33,7 @@ const stat = type === 'project' ? await getProjectStat(slug) : 0;
     {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
     <img
       {...image}
-      class:list={['object-cover w-full h-full transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0 brightness-110', type === 'blog' && 'brightness-90']}
+      class:list={['object-cover w-full h-[101%] transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0', type === 'project' ? 'brightness-110' : 'brightness-90']}
       loading="lazy"
       alt=""
     />

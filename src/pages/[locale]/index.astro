@@ -3,6 +3,7 @@ import Layout from '@/components/layouts/BaseLayout.astro';
 import { getLatest } from '@/scripts/content';
 import { loadTranslations } from '@/scripts/translate';
 import Card from '@/components/Card.astro';
+import { Icon } from 'astro-icon';
 
 export { getStaticPaths } from '@/scripts/translate';
 const { t } = await loadTranslations(Astro);
@@ -30,7 +31,7 @@ const projects = getLatest('project', 2);
       {projects.map((project) => <Card content={project} />)}
     </div>
   </section>
-  <section id="projects" class="my-20">
+  <section id="blog" class="my-20">
     <div class="flex justify-between text-lg md:text-xl">
       <h2 class="font-bold text-gray-800 dark:text-gray-100">{t.home.blog}</h2>
       <a href="/blog" class="font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200">{t.home.more}</a>
@@ -38,6 +39,28 @@ const projects = getLatest('project', 2);
     <div class="my-8 grid gap-6 md:grid-cols-2">
       {posts.map((post) => <Card content={post} />)}
       <!-- {posts.map((post) => <Blog post={post} />)} -->
+    </div>
+  </section>
+  <section id="blog" class="my-20 text-lg md:text-xl">
+    <div class="text-lg md:text-xl">
+      <h2 class="font-bold text-gray-800 dark:text-gray-100">{t.home.links}</h2>
+    </div>
+    <div class="my-8 flex flex-wrap gap-4">
+      <a href="mailto:hi@qntn.io"  class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
+        <Icon name="mdi:email" width={24} /> hi@qntn.io
+      </a>
+      <a href="/twitter" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
+        <Icon name="mdi:twitter" width={24} /> Twitter
+      </a>
+      <a href="/github" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
+        <Icon name="mdi:github" width={24} /> GitHub
+      </a>
+      <a href="/telegram" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
+        <Icon name="mdi:telegram" width={24} /> Telegram
+      </a>
+      <a href="/linkedin" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
+        <Icon name="mdi:linkedin" width={24} /> Linkedin
+      </a>
     </div>
   </section>
 </Layout>
