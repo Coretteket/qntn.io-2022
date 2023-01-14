@@ -18,6 +18,7 @@ const { image, sources } = await getPicture({
   aspectRatio: ratio[0] / ratio[1],
   formats: ['avif', 'webp'],
   widths: [500],
+  alt: ''
 });
 
 const stat = type === 'project' ? await getProjectStat(slug) : 0;
