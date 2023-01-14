@@ -20,15 +20,14 @@ const posts = getLatest('post', 2);
     </h1>
     <p class="my-7 text-xl leading-[1.4] text-gray-700 dark:text-gray-100 sm:text-2xl md:leading-[1.5]">
       {t.home.description}
-      <a href="/about" class="link">{t.home.moreAbout}...</a>
     </p>
   </header>
-  <Section id="projects" show:more>
+  <Section id="projects">
     {projects.map((project) => <Card content={project} />)}
   </Section>
-  <Section id="blog" show:more>
+  <!-- <Section id="blog" show:more>
     {posts.map((post) => <Card content={post} />)}
-  </Section>
+  </Section> -->
   <Section id="links" class:override="flex flex-wrap my-8 gap-4">
     {links.map((name) => <SocialButton name={name} />)}
   </Section>

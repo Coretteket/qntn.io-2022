@@ -8,8 +8,10 @@ import { Show } from 'solid-js';
 import type { Intersect } from '@/scripts/types';
 
 export type Props = { content: Content<'post' | 'project'> };
-const { frontmatter, slug, path, type } = Astro.props.content;
+const { frontmatter, slug, /*path,*/ type } = Astro.props.content;
 const matter = frontmatter as Intersect<typeof frontmatter>;
+
+const path = '/' + slug;
 
 const ratio = [7, 8].sort((a, b) => (type === 'post' ? b - a : a - b));
 
@@ -18,7 +20,7 @@ const { image, sources } = await getPicture({
   aspectRatio: ratio[0] / ratio[1],
   formats: ['avif', 'webp'],
   widths: [500],
-  alt: ''
+  alt: '',
 });
 
 const stat = type === 'project' ? await getProjectStat(slug) : 0;
