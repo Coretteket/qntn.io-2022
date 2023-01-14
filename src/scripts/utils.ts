@@ -32,8 +32,11 @@ export const createButtonFromAnchor = (parent: Element, onclick: () => any) => {
 export const getImagePath = (slug: string, type: Collection, fallback = 'default') => {
   const images = import.meta.glob('/public/assets/*/*.png');
   const path = (slug: string) => `/public/assets/${type}/${slug}.png`;
-  if (!(path(slug) in images)) console.warn(`[WARN] Using fallback image for '${type}/${slug}', please find a replacement.`);
-  return path(slug ?? fallback).replace('/public', '');
+  if (!(path(slug) in images)) {
+    console.warn(`[WARN] Using fallback image for '${type}/${slug}', please find a replacement.`);
+    return path(fallback).replace('/public', '');
+  }
+  return path(slug).replace('/public', '');
 };
 
 /** Helper function to omit key from object. */

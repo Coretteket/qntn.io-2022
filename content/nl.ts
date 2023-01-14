@@ -2,7 +2,7 @@ export default {
   nav: {
     pages: {
       projects: 'Projecten',
-      blog: 'Blog',
+      posts: 'Blog',
       about: 'Over',
     },
     theme: {
@@ -26,6 +26,11 @@ export default {
     blog: 'Laatste artikelen',
     links: 'Ook hier te vinden',
   },
+  sections: {
+    projects: 'Uitgelichte projecten',
+    blog: 'Laatste artikelen',
+    links: 'Ook hier te vinden',
+  },
   about: {
     title: 'Over mij',
     alt: 'Quinten Coret in een klaslokaal aan het overleggen achter een laptop.',
@@ -34,4 +39,4 @@ export default {
     untranslated: 'Sorry! Deze pagina is nog niet vertaald naar het Nederlands.',
   },
   other: 'en',
-};
+} as const;

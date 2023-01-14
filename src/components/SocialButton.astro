@@ -1,0 +1,23 @@
+---
+import { Icon } from 'astro-icon';
+
+export const socials = new Map([
+  ['email', 'hey@qntn.io'],
+  ['twitter', 'Twitter'],
+  ['github', 'GitHub'],
+  ['linkedin', 'LinkedIn'],
+  ['telegram', 'Telegram'],
+] as const);
+
+export const links = Array.from(socials.keys());
+export type Props = { name: typeof links[number] };
+const { name } = Astro.props;
+---
+
+<a
+  href={name === 'email' ? `mailto:${socials.get('email')}` : `/${name}`}
+  class="flex cursor-pointer items-center gap-3 rounded-lg bg-sky-200 py-2 px-4 text-lg font-bold text-sky-600 transition-colors hover:text-sky-700 dark:bg-sky-900/50 dark:text-sky-200 dark:hover:text-sky-100 md:text-xl"
+>
+  <Icon name={`mdi:${name}`} width={24} />
+  {socials.get(name)}
+</a>

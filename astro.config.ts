@@ -10,5 +10,5 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://qntn.xyz',
   integrations: [image({ serviceEntryPoint: '@astrojs/image/sharp' }), tailwind(), solid(), mdx()],
-  markdown: { extendDefaultPlugins: true, remarkPlugins: [getRawMD] },
+  markdown: { remarkPlugins: [getRawMD] },
 });

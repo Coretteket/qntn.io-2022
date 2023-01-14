@@ -2,7 +2,7 @@ export default {
   nav: {
     pages: {
       projects: 'Projects',
-      blog: 'Blog',
+      posts: 'Posts',
       about: 'About',
     },
     theme: {
@@ -24,7 +24,12 @@ export default {
     more: 'View all',
     projects: 'Featured projects',
     blog: 'Latest posts',
-    links: 'You\'ll find me here',
+    links: "You'll find me here",
+  },
+  sections: {
+    projects: 'Featured projects',
+    blog: 'Latest posts',
+    links: "You'll find me here",
   },
   about: {
     title: 'About me',
@@ -34,4 +39,4 @@ export default {
     untranslated: 'Sorry! This page has not yet been translated into English.',
   },
   other: 'nl',
-};
+} as const;

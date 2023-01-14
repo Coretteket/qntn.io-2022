@@ -1,44 +1,44 @@
 import { locales, matchLocale } from './types';
 import type { MarkdownInstance } from 'astro';
 import { state } from './translate';
-import schemas from '#/schemas';
+import config from '#/config';
 import type { z } from 'zod';
 
 /** Uses schemas defined in `/content/schemas.ts` to parse frontmatter. */
-export const parseContent = <T extends keyof typeof schemas>(frontmatter: Record<string, any>, type: T) => {
-  return schemas[type].passthrough().parse(frontmatter) as Frontmatter<T>;
+export const parseContent = <T extends keyof typeof config>(frontmatter: Record<string, any>, type: T) => {
+  return config[type].passthrough().parse(frontmatter) as Frontmatter<T>;
 };
 
 /** Gets useful meta-information about content. */
 export const getContentMeta = <T extends Record<string, any>>(content: MarkdownInstance<T>) => {
   const [slug, loc] = content.file.replace(/.*\/(.+)\.mdx*/, '$1').split('.') as [Slug, string];
-  const path = content.file.replace(/.*\/content\/(.+).[a-z]{2}\.mdx*/, '$1').replace('pages/', '');
+  const path = content.file.replace(/.*\/content\/(.+).[a-z]{2}\.mdx*/, '$1').replace('page/', '');
   const type = content.file.replace(/.*\/content\/(.+)\/.*\.mdx*/, '$1') as Collection;
   const locale = matchLocale(loc) ?? 'en';
   return { path, slug, locale, type };
 };
 
-/** Gets all content, regardless of its collection, and parses it. */
-export const getCollections = () => {
-  return (Object.values(import.meta.glob(`/content/*/*.md*`, { eager: true })) as MD<'*'>[])
-    .map((collection) => {
-      const meta = getContentMeta(collection);
-      const frontmatter = parseContent(collection.frontmatter, meta.type);
-      return { ...collection, ...meta, frontmatter };
-    })
-    .filter((c) => !c.frontmatter.draft);
-};
+/** Gets content of any or a specific collection, and parses it. */
+export function getCollection(): Content[];
+export function getCollection<T extends Collection>(type: T): Content<T>[];
+export function getCollection<T extends Collection>(type?: T) {
+  const files = Object.values(import.meta.glob(`/content/*/*.md*`, { eager: true })) as MD<'*'>[];
 
-/** Gets content of a specific collection, and parses it. */
-export const getCollection = <T extends Collection>(type: T) => {
-  return getCollections()
-    .filter((collection) => collection.type === type)
-    .map((collection) => {
-      const meta = getContentMeta(collection);
-      const frontmatter = parseContent(collection.frontmatter, type);
-      return { ...collection, ...meta, type, frontmatter };
+  const collection = files
+    .filter((c) => !c.frontmatter.draft)
+    .map((c) => {
+      const meta = getContentMeta(c);
+      return { ...c, ...meta, frontmatter: parseContent(c.frontmatter, meta.type) };
     });
-};
+
+  if (type === undefined) return collection;
+
+  return collection
+    .filter((c) => c.type === type)
+    .map((c) => {
+      return { ...c, frontmatter: parseContent(c.frontmatter, type) };
+    });
+}
 
 /** Gets a specific piece of content from a slug and content type. */
 export const getEntry = <T extends string, K extends Collection>(slug: T, type: K): Content<K> | (T extends Slug ? never : undefined) => {
@@ -48,16 +48,16 @@ export const getEntry = <T extends string, K extends Collection>(slug: T, type: 
 
 /** Takes content and returns paths for all localizations, and checking frontmatter. */
 export const getContentPaths = async () => {
-  const paths = getCollections().map((post) => ({
+  const paths = getCollection().map((post) => ({
     params: { locale: post.locale, content: post.path },
     props: { slug: post.slug, type: post.type },
   }));
 
-  paths.forEach((post) => {
-    const otherLocales = locales.filter((l) => l !== post.params.locale);
+  paths.forEach((path) => {
+    const otherLocales = locales.filter((l) => l !== path.params.locale);
     otherLocales.forEach((locale) => {
-      if (!paths.find(({ params: p }) => p.locale === locale && p.content === post.params.content)) {
-        paths.push({ params: { ...post.params, locale }, props: post.props });
+      if (!paths.find(({ params: p }) => p.locale === locale && p.content === path.params.content)) {
+        paths.push({ params: { ...path.params, locale }, props: path.props });
       }
     });
   });
@@ -87,8 +87,8 @@ export const getLatest = <T extends Collection>(collection: T, num?: number) => 
 };
 
 export type MD<T extends Collection | '*'> = MarkdownInstance<Frontmatter<T extends '*' ? Collection : T>>;
-export type Content<T extends Collection = Collection> = ReturnType<typeof getCollection<T>>[number];
+export type Content<T extends Collection = Collection> = MD<T> & ReturnType<typeof getContentMeta> & { type: T };
 export type Paths = Awaited<ReturnType<typeof getContentPaths>>[number];
 export type Slug = string & { __type: 'slug' };
-export type Collection = keyof typeof schemas;
-export type Frontmatter<T extends Collection = Collection> = z.infer<typeof schemas[T]>;
+export type Collection = keyof typeof config;
+export type Frontmatter<T extends Collection = Collection> = z.infer<typeof config[T]>;

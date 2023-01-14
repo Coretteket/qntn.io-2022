@@ -6,10 +6,10 @@ import { getLatest } from '@/scripts/content';
 
 const { t } = await loadTranslations(Astro);
 
-const sorted = getLatest('blog');
+const sorted = getLatest('post');
 ---
 
-<Layout title={t.nav.pages.blog}>
+<Layout title={t.nav.pages.posts}>
   <ul>
     {
       sorted.map((post) => (

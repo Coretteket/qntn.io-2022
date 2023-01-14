@@ -3,64 +3,33 @@ import Layout from '@/components/layouts/BaseLayout.astro';
 import { getLatest } from '@/scripts/content';
 import { loadTranslations } from '@/scripts/translate';
 import Card from '@/components/Card.astro';
-import { Icon } from 'astro-icon';
+import SocialButton, { links } from '@/components/SocialButton.astro';
+import Section from '@/components/HomeSection.astro';
 
 export { getStaticPaths } from '@/scripts/translate';
 const { t } = await loadTranslations(Astro);
 
-const posts = getLatest('blog', 2);
 const projects = getLatest('project', 2);
+const posts = getLatest('post', 2);
 ---
 
 <Layout>
   <header class="my-20 md:my-24">
-    <h1 class="text-[2.7rem] font-bold leading-[1] text-gray-800 dark:text-gray-100 md:text-[3.3rem] md:leading-[1.1]">{t.home.title}</h1>
+    <h1 class="text-[2.7rem] font-bold leading-[1] text-gray-800 dark:text-gray-100 md:text-[3.3rem] md:leading-[1.1]">
+      {t.home.title}
+    </h1>
     <p class="my-7 text-xl leading-[1.4] text-gray-700 dark:text-gray-100 sm:text-2xl md:leading-[1.5]">
       {t.home.description}
-      <a href="/about" class="font-semibold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200">
-        {t.home.moreAbout}...
-      </a>
+      <a href="/about" class="link">{t.home.moreAbout}...</a>
     </p>
   </header>
-  <section id="projects" class="my-20">
-    <div class="flex justify-between text-lg md:text-xl">
-      <h2 class="font-bold text-gray-800 dark:text-gray-100">{t.home.projects}</h2>
-      <a href="/projects" class="font-semibold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200">{t.home.more}</a>
-    </div>
-    <div class="my-8 grid gap-6 md:grid-cols-2">
-      {projects.map((project) => <Card content={project} />)}
-    </div>
-  </section>
-  <section id="blog" class="my-20">
-    <div class="flex justify-between text-lg md:text-xl">
-      <h2 class="font-bold text-gray-800 dark:text-gray-100">{t.home.blog}</h2>
-      <a href="/blog" class="font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-300 dark:hover:text-sky-200">{t.home.more}</a>
-    </div>
-    <div class="my-8 grid gap-6 md:grid-cols-2">
-      {posts.map((post) => <Card content={post} />)}
-      <!-- {posts.map((post) => <Blog post={post} />)} -->
-    </div>
-  </section>
-  <section id="blog" class="my-20 text-lg md:text-xl">
-    <div class="text-lg md:text-xl">
-      <h2 class="font-bold text-gray-800 dark:text-gray-100">{t.home.links}</h2>
-    </div>
-    <div class="my-8 flex flex-wrap gap-4">
-      <a href="mailto:hi@qntn.io"  class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
-        <Icon name="mdi:email" width={24} /> hi@qntn.io
-      </a>
-      <a href="/twitter" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
-        <Icon name="mdi:twitter" width={24} /> Twitter
-      </a>
-      <a href="/github" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
-        <Icon name="mdi:github" width={24} /> GitHub
-      </a>
-      <a href="/telegram" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
-        <Icon name="mdi:telegram" width={24} /> Telegram
-      </a>
-      <a href="/linkedin" class="flex items-center gap-3 rounded-lg cursor-pointer bg-sky-200 dark:bg-sky-900/50 py-2 px-4 font-bold text-sky-600 transition-colors hover:text-sky-700 dark:text-sky-200 dark:hover:text-sky-100">
-        <Icon name="mdi:linkedin" width={24} /> Linkedin
-      </a>
-    </div>
-  </section>
+  <Section id="projects" show:more>
+    {projects.map((project) => <Card content={project} />)}
+  </Section>
+  <Section id="blog" show:more>
+    {posts.map((post) => <Card content={post} />)}
+  </Section>
+  <Section id="links" class:override="flex flex-wrap my-8 gap-4">
+    {links.map((name) => <SocialButton name={name} />)}
+  </Section>
 </Layout>

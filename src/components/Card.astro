@@ -4,18 +4,18 @@ import { format, getImagePath } from '@/scripts/utils';
 import type { Content } from '@/scripts/content';
 import { getProjectStat } from '@/scripts/api';
 import { getPicture } from '@astrojs/image';
-import Show from './Show.astro';
+import { Show } from 'solid-js';
 import type { Intersect } from '@/scripts/types';
 
-export type Props = { content: Content<'blog' | 'project'> };
+export type Props = { content: Content<'post' | 'project'> };
 const { frontmatter, slug, path, type } = Astro.props.content;
 const matter = frontmatter as Intersect<typeof frontmatter>;
 
-const r = [7, 8].sort((a, b) => (type === 'blog' ? b - a : a - b));
+const ratio = [7, 8].sort((a, b) => (type === 'post' ? b - a : a - b));
 
 const { image, sources } = await getPicture({
   src: getImagePath(slug, type),
-  aspectRatio: r[0] / r[1],
+  aspectRatio: ratio[0] / ratio[1],
   formats: ['avif', 'webp'],
   widths: [500],
 });
@@ -24,10 +24,10 @@ const stat = type === 'project' ? await getProjectStat(slug) : 0;
 ---
 
 <a
-  title={frontmatter.title}
+  title={matter.title}
   id={slug}
   href={path}
-  class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900', `aspect-[${r[0]}/${r[1]}]`]}
+  class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900', `aspect-[${ratio[0]}/${ratio[1]}]`]}
 >
   <picture>
     {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
@@ -40,7 +40,7 @@ const stat = type === 'project' ? await getProjectStat(slug) : 0;
   </picture>
   <div class="absolute top-0 h-full w-full bg-gradient-to-b from-black/60 p-10 md:max-lg:p-[4vw]">
     <h2 class:list={['text-3xl font-bold md:pb-1 md:pt-2 font-hero text-shadow', type === 'project' && 'sm:text-[2.2rem] md:text-4xl']}>
-      {frontmatter.title}
+      {matter.title}
     </h2>
     <Show when={type === 'project'}>
       <div
