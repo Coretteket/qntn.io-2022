@@ -9,7 +9,8 @@ const config = (src = '') =>
     widths: [1000],
     aspectRatio: 7 / 4,
     formats: ['avif', 'webp', 'png'],
-  } as GetPictureParams);
+    alt: ''
+  } satisfies GetPictureParams);
 
 const files = await Astro.glob('../../public/assets/about/*');
 
