@@ -22,7 +22,7 @@ const posts = getLatest('post', 2);
       {t.home.description}
     </p>
   </header>
-  <Section id="links" class:override="flex flex-wrap mt-4 my-8 gap-4">
+  <Section id="links" class:override="flex flex-wrap my-8 gap-4">
     {links.map((name) => <SocialButton name={name} />)}
   </Section>
   <Section id="projects">
