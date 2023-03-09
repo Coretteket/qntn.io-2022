@@ -1,0 +1,27 @@
+---
+import { PictureReload, type Props as ReloadProps } from './islands/PictureReload';
+import type { GetPictureParams } from '@astrojs/image/dist/lib/get-picture';
+import { getPicture } from '@astrojs/image';
+
+const config = (src = '') =>
+  ({
+    src,
+    widths: [1000],
+    aspectRatio: 7 / 4,
+    formats: ['avif', 'webp', 'png'],
+    alt: ''
+  } satisfies GetPictureParams);
+
+const files = await Astro.glob('../../public/assets/about/*');
+
+const images = await Promise.all(
+  files.map(async (file) => {
+    const picture = await getPicture(config(file.default.src.replace('/public', '')));
+    const sources = picture.sources.map((source) => source.srcset);
+    const image = (picture.image as { src: string }).src;
+    return { sources, image };
+  })
+);
+---
+
+<PictureReload data={images} config={config() as ReloadProps['config']} client:idle />

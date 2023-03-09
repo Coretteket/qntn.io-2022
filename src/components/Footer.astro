@@ -1,0 +1,12 @@
+---
+import { state } from '@/scripts/translate';
+import { Icon } from 'astro-icon';
+const { t } = state;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="my-24 flex flex-wrap justify-between gap-2 text-lg text-gray-700 dark:text-gray-200 md:my-28">
+  <span class="font-medium">Copyright © {new Date().getFullYear()}, Quinten Coret</span>
+  <a class="" href="https://github.com/coretteket/qntn.io">Open source on Github</a>
+</footer>

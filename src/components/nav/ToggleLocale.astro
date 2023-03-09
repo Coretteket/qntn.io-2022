@@ -1,0 +1,38 @@
+---
+import { state } from '@/scripts/translate';
+import { Icon } from 'astro-icon';
+import Button from '@/components/Button.astro';
+const { t } = state;
+
+const path = Astro.url.pathname.replace(`/${state.locale}`, '');
+const href = `/${t.other}${path}`;
+---
+
+<toggle-locale>
+  <Button href={href} title={t.nav.locale.toggle}>
+    <Icon name="prime:globe" width={24} />
+  </Button>
+</toggle-locale>
+
+<script>
+  import { isLocalized } from '@/scripts/matchers';
+  import { createButtonFromAnchor, define } from '@/scripts/utils';
+  import { matchLocale } from '@/scripts/types';
+
+  let locale = matchLocale(document.documentElement.lang) ?? 'en';
+
+  @define('toggle-locale')
+  class ToggleLocale extends HTMLElement {
+    button = this.children[0];
+
+    connectedCallback() {
+      if (isLocalized(location.href)) return; // only hydrate on non-localized pages
+      this.button = createButtonFromAnchor(this, this.toggleLocale.bind(this));
+    }
+
+    toggleLocale() {
+      document.cookie = `locale=${locale === 'en' ? 'nl' : 'en'};path=/;SameSite=Lax`;
+      location.reload();
+    }
+  }
+</script>

@@ -1,0 +1,41 @@
+---
+import { state } from '@/scripts/translate';
+import { getPicture } from '@astrojs/image';
+import ToggleLocale from './ToggleLocale.astro';
+import ToggleTheme from './ToggleTheme.astro';
+
+const { t } = state;
+
+const pages = Object.entries(t.nav.pages);
+
+const headshot = await getPicture({
+  src: '/assets/headshot.webp',
+  widths: [36, 72],
+  formats: ['avif'],
+  aspectRatio: 1,
+  alt: '',
+});
+---
+
+<nav class="relative flex flex-wrap items-center gap-3 text-lg sm:gap-4 [&_a]:transition-colors hover:[&_a]:text-gray-600 hover:dark:[&_a]:text-gray-300">
+  <div class="flex flex-grow-[1] items-center gap-6 sm:gap-8">
+    <a href="/" aria-label="Home">
+      <picture>
+        {headshot.sources.map((source) => <source srcset={source.srcset} type={source.type} sizes="36px" />)}
+        <img src={(headshot.image as { src: string }).src} class="rounded" width={36} height={36} alt="" />
+      </picture>
+    </a>
+    <a href="/" class="font-hero text-xl text-gray-800 hover:!text-gray-700 dark:text-gray-100 hover:dark:!text-gray-200 sm:gap-8">
+      <span class="font-semibold">Quinten Coret</span>
+    </a>
+    <!-- {
+      pages.map(([page, name]) => (
+        <a href={'/' + page} class="max-sm:hidden">
+          {name}
+        </a>
+      ))
+    } -->
+  </div>
+  <ToggleTheme />
+  <ToggleLocale />
+</nav>

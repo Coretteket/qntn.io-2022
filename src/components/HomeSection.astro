@@ -1,0 +1,19 @@
+---
+import { state } from '@/scripts/translate';
+import { Show } from 'solid-js';
+
+const { t } = state;
+
+export type Props = { id: keyof typeof t.sections; 'show:more'?: boolean; class?: string; 'class:override'?: string };
+const { id, 'show:more': more, 'class:override': override } = Astro.props;
+---
+
+<section id={id} class="my-20">
+  <div class="flex justify-between text-lg md:text-xl">
+    <h2 class="font-bold text-gray-800 dark:text-gray-100">{t.sections[id]}</h2>
+    <Show when={more}><a href={`/${id}`} class="link">{t.home.more}</a></Show>
+  </div>
+  <div class:list={override ?? ['my-8 grid gap-6 md:grid-cols-2', Astro.props.class]}>
+    <slot />
+  </div>
+</section>

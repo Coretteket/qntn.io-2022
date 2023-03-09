@@ -1,38 +1,18 @@
 ---
-import A from './Anchor.astro';
-export type Props = { href?: string; [key: string]: any };
-const { href, ...props } = Astro.props as Props;
+import type { HTMLAttributes } from 'astro/types';
 
-const Button = href ? A : 'button';
+export type Props = HTMLAttributes<'button' & 'a'>;
+const { href, class: className, ...props } = Astro.props as Props;
+const Button = Astro.props.href ? 'a' : 'button';
 ---
 
-<Button href={href} type={!href ? 'button' : null} {...props}>
+{/*@ts-ignore*/}
+<Button
+  href={href}
+  class={`flex items-center justify-center gap-2 transition-colors bg-gray-100 rounded cursor-pointer dark:bg-gray-800 h-9 aspect-square hover:text-gray-600 hover:dark:text-gray-300 ${
+    className ?? ''
+  }`}
+  {...props}
+>
   <slot />
 </Button>
-
-<style lang="scss">
-  a,
-  button {
-    text-decoration: none;
-    background-color: var(--btn-bg-color);
-    border-radius: 2rem;
-    display: flex;
-    gap: 0.25rem;
-    border: none;
-    padding: 0.5rem 0.75rem;
-    margin: 0;
-    font: inherit;
-    font-weight: 600;
-    color: var(--btn-txt-color);
-    cursor: pointer;
-    height: 2.25rem;
-    min-width: 2.25rem;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: background-color 150ms var(--easing);
-    &:hover {
-      background-color: var(--mid-color);
-    }
-  }
-</style>

@@ -10,14 +10,36 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.8.1",
-    "@types/cookie": "^0.5.1",
-    "@vercel/edge": "^0.0.4",
-    "astro": "^1.4.6",
-    "astro-icon": "^0.7.3",
-    "astro-purgecss": "^1.1.2",
-    "cookie": "^0.5.0",
-    "sass": "^1.55.0",
-    "sharp": "^0.31.1"
+    "@astrojs/image": "1.0.0-beta.2",
+    "@astrojs/mdx": "1.0.0-beta.2",
+    "@astrojs/solid-js": "2.0.0-beta.0",
+    "@astrojs/tailwind": "3.0.0-beta.1",
+    "@fontsource/rubik": "^4.5.13",
+    "@tailwindcss/typography": "^0.5.9",
+    "astro": "2.0.0-beta.2",
+    "astro-icon": "^0.8.0",
+    "prettier-plugin-astro": "^0.7.2",
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "sharp": "^0.31.3",
+    "solid-js": "^1.6.9",
+    "tailwindcss": "^3.2.4",
+    "zod": "^3.20.2"
+  },
+  "prettier": {
+    "pluginSearchDirs": false,
+    "plugins": [
+      "prettier-plugin-astro",
+      "prettier-plugin-tailwindcss"
+    ],
+    "overrides": [
+      {
+        "files": "*.astro",
+        "options": {
+          "parser": "astro"
+        }
+      }
+    ],
+    "printWidth": 200,
+    "singleQuote": true
   }
 }

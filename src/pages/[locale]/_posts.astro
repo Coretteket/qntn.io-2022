@@ -1,0 +1,22 @@
+---
+export { getStaticPaths } from '@/scripts/translate';
+import Layout from '@/components//layouts/ContentLayout.astro';
+import { loadTranslations } from '@/scripts/translate';
+import { getLatest } from '@/scripts/content';
+
+const { t } = await loadTranslations(Astro);
+
+const sorted = getLatest('post');
+---
+
+<Layout title={t.nav.pages.posts}>
+  <ul>
+    {
+      sorted.map((post) => (
+        <li>
+          <a href={post.path}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

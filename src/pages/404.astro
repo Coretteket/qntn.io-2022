@@ -1,9 +1,9 @@
 ---
-import { loadTranslations } from '../scripts/translate';
-import Layout from './_layout.astro';
+import { loadTranslations } from '@/scripts/translate';
+import Layout from '@/components/layouts/BaseLayout.astro';
 await loadTranslations(Astro);
 ---
 
 <Layout>
-  <h1>Oops, this page could not be found!</h1>
+  <h1 class="my-16">Oops, this page could not be found!</h1>
 </Layout>

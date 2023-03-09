@@ -1,0 +1,59 @@
+---
+import Icon from 'astro-icon';
+import { format, getImagePath } from '@/scripts/utils';
+import type { Content } from '@/scripts/content';
+import { getProjectStat } from '@/scripts/api';
+import { getPicture } from '@astrojs/image';
+import { Show } from 'solid-js';
+import type { Intersect } from '@/scripts/types';
+
+export type Props = { content: Content<'post' | 'project'> };
+const { frontmatter, slug, /*path,*/ type } = Astro.props.content;
+const matter = frontmatter as Intersect<typeof frontmatter>;
+
+const path = '/' + slug;
+
+const ratio = [7, 8].sort((a, b) => (type === 'post' ? b - a : a - b));
+
+const { image, sources } = await getPicture({
+  src: getImagePath(slug, type),
+  aspectRatio: ratio[0] / ratio[1],
+  formats: ['avif', 'webp'],
+  widths: [500],
+  alt: '',
+});
+
+const stat = type === 'project' ? await getProjectStat(slug) : 0;
+---
+
+<a
+  title={matter.title}
+  id={slug}
+  href={path}
+  class:list={['block group my-2 shadow dark:shadow-none rounded-lg w-full max-h-[35rem] md:max-h-full relative overflow-hidden text-gray-50 bg-gray-900', `aspect-[${ratio[0]}/${ratio[1]}]`]}
+>
+  <picture>
+    {sources.map((source) => <source {...source} sizes="(min-width:1152px) 600px, 85vw" />)}
+    <img
+      {...image}
+      class:list={['object-cover w-full h-[101%] transition-all duration-300 ease-out transform group-hover:scale-105 text-white/0', type === 'project' ? 'brightness-110' : 'brightness-90']}
+      loading="lazy"
+      alt=""
+    />
+  </picture>
+  <div class="absolute top-0 h-full w-full bg-gradient-to-b from-black/60 p-10 md:max-lg:p-[4vw]">
+    <h2 class:list={['text-3xl font-bold md:pb-1 md:pt-2 font-hero text-shadow', type === 'project' && 'sm:text-[2.2rem] md:text-4xl']}>
+      {matter.title}
+    </h2>
+    <Show when={type === 'project'}>
+      <div
+        class="my-1.5 w-fit max-w-full overflow-hidden truncate rounded border-l-[3px] border-white/25 bg-white/10 px-2.5 py-1 text-lg font-medium shadow backdrop-blur-xl"
+        title={`${format(stat, 'standard')} ${matter.stat}`}
+      >
+        <b class="font-extrabold">{format(stat)}</b>
+        <span>{matter.stat}</span>
+      </div>
+    </Show>
+  </div>
+  <Icon name="icon-park-outline:arrow-right" width={36} class="absolute bottom-0 right-0 mx-8 my-6 w-9 xs:w-10 lg:mx-10" />
+</a>

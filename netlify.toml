@@ -1,0 +1,33 @@
+[dev]
+framework = 'astro'
+command = 'astro dev'
+targetPort = 3000
+
+[build]
+edge_functions = "/src/functions"
+
+[[edge_functions]]
+function = 'wakatime'
+path = '/api/wakatime'
+
+[[edge_functions]]
+function = 'redirect'
+path = '/*'
+
+[[edge_functions]]
+function = 'set-theme'
+path = '/*'
+
+[[edge_functions]]
+function = 'set-locale'
+path = '/*'
+
+[[headers]]
+for = '/assets/*'
+[headers.values]
+Cache-Control = 'public, max-age=31536000, immutable'
+
+[[headers]]
+for = '/static/*'
+[headers.values]
+Cache-Control = 'public, max-age=86400'
