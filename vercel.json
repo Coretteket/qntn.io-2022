@@ -16,6 +16,10 @@
     {
       "source": "/telegram",
       "destination": "https://t.me/coretteket"
+    },
+    {
+      "source": "/rlai",
+      "destination": "https://docs.google.com/presentation/d/1J5qBMYE_CdUCdSJT1pbGSYJDip4RJG3BHgSh91Bz034/edit?usp=sharing"
     }
   ]
 }
